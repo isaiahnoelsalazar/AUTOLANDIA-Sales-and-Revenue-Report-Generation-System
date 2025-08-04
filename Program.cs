@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -16,7 +13,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Startup());
         }
     }
 }

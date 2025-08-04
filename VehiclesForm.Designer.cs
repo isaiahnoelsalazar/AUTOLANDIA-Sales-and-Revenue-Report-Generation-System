@@ -28,20 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.AddNewVehicleButton = new MaterialSkin.Controls.MaterialButton();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.VehicleTable = new System.Windows.Forms.ListView();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
+            // 
+            // AddNewVehicleButton
+            // 
+            this.AddNewVehicleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewVehicleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AddNewVehicleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.AddNewVehicleButton.Depth = 0;
+            this.AddNewVehicleButton.HighEmphasis = true;
+            this.AddNewVehicleButton.Icon = null;
+            this.AddNewVehicleButton.Location = new System.Drawing.Point(634, 17);
+            this.AddNewVehicleButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AddNewVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AddNewVehicleButton.Name = "AddNewVehicleButton";
+            this.AddNewVehicleButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.AddNewVehicleButton.Size = new System.Drawing.Size(149, 36);
+            this.AddNewVehicleButton.TabIndex = 0;
+            this.AddNewVehicleButton.Text = "Add new vehicle";
+            this.AddNewVehicleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.AddNewVehicleButton.UseAccentColor = false;
+            this.AddNewVehicleButton.UseVisualStyleBackColor = true;
+            this.AddNewVehicleButton.Click += new System.EventHandler(this.AddNewVehicleButton_Click);
+            // 
+            // materialDivider1
+            // 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(17, 69);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(766, 2);
+            this.materialDivider1.TabIndex = 1;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
+            // VehicleTable
+            // 
+            this.VehicleTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VehicleTable.HideSelection = false;
+            this.VehicleTable.Location = new System.Drawing.Point(17, 87);
+            this.VehicleTable.Margin = new System.Windows.Forms.Padding(8);
+            this.VehicleTable.Name = "VehicleTable";
+            this.VehicleTable.Size = new System.Drawing.Size(766, 346);
+            this.VehicleTable.TabIndex = 2;
+            this.VehicleTable.UseCompatibleStateImageBehavior = false;
+            this.VehicleTable.View = System.Windows.Forms.View.Details;
             // 
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(355, 217);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.materialLabel1.Location = new System.Drawing.Point(17, 24);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(8);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(58, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "vehicles";
+            this.materialLabel1.Size = new System.Drawing.Size(92, 29);
+            this.materialLabel1.TabIndex = 3;
+            this.materialLabel1.Text = "Vehicles";
             // 
             // VehiclesForm
             // 
@@ -49,6 +103,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.VehicleTable);
+            this.Controls.Add(this.materialDivider1);
+            this.Controls.Add(this.AddNewVehicleButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VehiclesForm";
             this.Text = "VehiclesForm";
@@ -59,6 +116,9 @@
 
         #endregion
 
+        private MaterialSkin.Controls.MaterialButton AddNewVehicleButton;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private System.Windows.Forms.ListView VehicleTable;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.TabPanel = new System.Windows.Forms.Panel();
-            this.HomeTab = new MaterialSkin.Controls.MaterialButton();
-            this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
-            this.VehiclesTab = new MaterialSkin.Controls.MaterialButton();
             this.CustomersTab = new MaterialSkin.Controls.MaterialButton();
+            this.VehiclesTab = new MaterialSkin.Controls.MaterialButton();
+            this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
+            this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -53,51 +53,28 @@
             this.TabPanel.Size = new System.Drawing.Size(200, 720);
             this.TabPanel.TabIndex = 1;
             // 
-            // HomeTab
+            // CustomersTab
             // 
-            this.HomeTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CustomersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HomeTab.AutoSize = false;
-            this.HomeTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.HomeTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.HomeTab.Depth = 0;
-            this.HomeTab.HighEmphasis = true;
-            this.HomeTab.Icon = null;
-            this.HomeTab.Location = new System.Drawing.Point(8, 83);
-            this.HomeTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.HomeTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.HomeTab.Name = "HomeTab";
-            this.HomeTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.HomeTab.Size = new System.Drawing.Size(184, 50);
-            this.HomeTab.TabIndex = 1;
-            this.HomeTab.Text = "Home";
-            this.HomeTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.HomeTab.UseAccentColor = false;
-            this.HomeTab.UseVisualStyleBackColor = true;
-            this.HomeTab.Click += new System.EventHandler(this.HomeTab_Click);
-            // 
-            // OrdersTab
-            // 
-            this.OrdersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrdersTab.AutoSize = false;
-            this.OrdersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OrdersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.OrdersTab.Depth = 0;
-            this.OrdersTab.HighEmphasis = true;
-            this.OrdersTab.Icon = null;
-            this.OrdersTab.Location = new System.Drawing.Point(8, 141);
-            this.OrdersTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.OrdersTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.OrdersTab.Name = "OrdersTab";
-            this.OrdersTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.OrdersTab.Size = new System.Drawing.Size(184, 50);
-            this.OrdersTab.TabIndex = 2;
-            this.OrdersTab.Text = "Orders";
-            this.OrdersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.OrdersTab.UseAccentColor = false;
-            this.OrdersTab.UseVisualStyleBackColor = true;
-            this.OrdersTab.Click += new System.EventHandler(this.OrdersTab_Click);
+            this.CustomersTab.AutoSize = false;
+            this.CustomersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CustomersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.CustomersTab.Depth = 0;
+            this.CustomersTab.HighEmphasis = true;
+            this.CustomersTab.Icon = null;
+            this.CustomersTab.Location = new System.Drawing.Point(8, 257);
+            this.CustomersTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.CustomersTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CustomersTab.Name = "CustomersTab";
+            this.CustomersTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.CustomersTab.Size = new System.Drawing.Size(184, 50);
+            this.CustomersTab.TabIndex = 4;
+            this.CustomersTab.Text = "Customers";
+            this.CustomersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.CustomersTab.UseAccentColor = false;
+            this.CustomersTab.UseVisualStyleBackColor = true;
+            this.CustomersTab.Click += new System.EventHandler(this.CustomersTab_Click);
             // 
             // VehiclesTab
             // 
@@ -122,28 +99,51 @@
             this.VehiclesTab.UseVisualStyleBackColor = true;
             this.VehiclesTab.Click += new System.EventHandler(this.VehiclesTab_Click);
             // 
-            // CustomersTab
+            // OrdersTab
             // 
-            this.CustomersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.OrdersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomersTab.AutoSize = false;
-            this.CustomersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CustomersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.CustomersTab.Depth = 0;
-            this.CustomersTab.HighEmphasis = true;
-            this.CustomersTab.Icon = null;
-            this.CustomersTab.Location = new System.Drawing.Point(8, 257);
-            this.CustomersTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.CustomersTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CustomersTab.Name = "CustomersTab";
-            this.CustomersTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.CustomersTab.Size = new System.Drawing.Size(184, 50);
-            this.CustomersTab.TabIndex = 4;
-            this.CustomersTab.Text = "Customers";
-            this.CustomersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.CustomersTab.UseAccentColor = false;
-            this.CustomersTab.UseVisualStyleBackColor = true;
-            this.CustomersTab.Click += new System.EventHandler(this.CustomersTab_Click);
+            this.OrdersTab.AutoSize = false;
+            this.OrdersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OrdersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.OrdersTab.Depth = 0;
+            this.OrdersTab.HighEmphasis = true;
+            this.OrdersTab.Icon = null;
+            this.OrdersTab.Location = new System.Drawing.Point(8, 141);
+            this.OrdersTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.OrdersTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.OrdersTab.Name = "OrdersTab";
+            this.OrdersTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.OrdersTab.Size = new System.Drawing.Size(184, 50);
+            this.OrdersTab.TabIndex = 2;
+            this.OrdersTab.Text = "Orders";
+            this.OrdersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.OrdersTab.UseAccentColor = false;
+            this.OrdersTab.UseVisualStyleBackColor = true;
+            this.OrdersTab.Click += new System.EventHandler(this.OrdersTab_Click);
+            // 
+            // HomeTab
+            // 
+            this.HomeTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HomeTab.AutoSize = false;
+            this.HomeTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.HomeTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.HomeTab.Depth = 0;
+            this.HomeTab.HighEmphasis = true;
+            this.HomeTab.Icon = null;
+            this.HomeTab.Location = new System.Drawing.Point(8, 83);
+            this.HomeTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.HomeTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.HomeTab.Name = "HomeTab";
+            this.HomeTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.HomeTab.Size = new System.Drawing.Size(184, 50);
+            this.HomeTab.TabIndex = 1;
+            this.HomeTab.Text = "Home";
+            this.HomeTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.HomeTab.UseAccentColor = false;
+            this.HomeTab.UseVisualStyleBackColor = true;
+            this.HomeTab.Click += new System.EventHandler(this.HomeTab_Click);
             // 
             // Logo
             // 
@@ -171,6 +171,7 @@
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(200, 24, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.TabPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
