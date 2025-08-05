@@ -20,6 +20,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
+                    string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
+                    if (!Value.Equals("None"))
+                    {
+                        string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                        for (int a = 0; a < Values.Length; a++)
+                        {
+                            PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
+                        }
+                    }
+
+                    RecreateVehicleList();
+
+                    //query = "";
+                    //NewQuery(query);
+
                     Timer.Stop();
                     new MainForm(this).Show();
                 }
@@ -31,6 +46,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             };
             Timer.Start();
+        }
+
+        private void Startup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

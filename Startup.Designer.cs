@@ -57,6 +57,7 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Startup";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Startup_FormClosing);
             this.ResumeLayout(false);
 
         }
