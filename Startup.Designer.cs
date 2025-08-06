@@ -28,42 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.ProgressBar = new MaterialSkin.Controls.MaterialProgressBar();
+            this.Banner = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialLabel1
+            // ProgressBar
             // 
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(3, 24);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(294, 273);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Setting the system up...";
-            this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ProgressBar.Depth = 0;
+            this.ProgressBar.Location = new System.Drawing.Point(0, 195);
+            this.ProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.ProgressBar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Size = new System.Drawing.Size(500, 5);
+            this.ProgressBar.TabIndex = 0;
+            // 
+            // Banner
+            // 
+            this.Banner.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Banner.Location = new System.Drawing.Point(0, 0);
+            this.Banner.Margin = new System.Windows.Forms.Padding(0);
+            this.Banner.Name = "Banner";
+            this.Banner.Size = new System.Drawing.Size(500, 200);
+            this.Banner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Banner.TabIndex = 1;
+            this.Banner.TabStop = false;
             // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
-            this.Controls.Add(this.materialLabel1);
-            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
+            this.ClientSize = new System.Drawing.Size(500, 200);
+            this.Controls.Add(this.ProgressBar);
+            this.Controls.Add(this.Banner);
+            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.MaximizeBox = false;
             this.Name = "Startup";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Startup";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Startup_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.Banner)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialProgressBar ProgressBar;
+        private System.Windows.Forms.PictureBox Banner;
     }
 }

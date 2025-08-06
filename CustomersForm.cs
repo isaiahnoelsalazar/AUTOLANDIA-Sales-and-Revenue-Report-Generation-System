@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -11,11 +12,32 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             CustomerTable.Columns.Add("CustomerName", -2);
             CustomerTable.Columns.Add("PlateNumber", -2);
+
+            RefreshCustomers();
+        }
+
+        public void RefreshCustomers()
+        {
+            RecreateCustomerList();
+            CustomerTable.Items.Clear();
+            foreach (CustomerItem Customer in CustomerList)
+            {
+                CustomerTable.Items.Add(new ListViewItem(new string[] { Customer.Name, Customer.PlateNumbers }));
+            }
+            foreach (ColumnHeader ColumnHeader in CustomerTable.Columns)
+            {
+                ColumnHeader.Width = -2;
+            }
         }
 
         private void AddNewCustomerButton_Click(object sender, EventArgs e)
         {
+            new NewCustomerDialog(this).ShowDialog();
+        }
 
+        private void AssignCustomerButton_Click(object sender, EventArgs e)
+        {
+            new AssignCustomerVehicleDialog(this).ShowDialog();
         }
     }
 }

@@ -46,6 +46,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static void RecreateCustomerList()
+        {
+            CustomerList.Clear();
+
+            try
+            {
+                string Value = GetValues("SELECT * FROM AUTOLANDIA_CustomerList");
+                if (!Value.Equals("None"))
+                {
+                    string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                    for (int a = 0; a < Values.Length; a++)
+                    {
+                        string[] Split = Values[a].Split(';');
+                        CustomerList.Add(new CustomerItem(Split[0].Split('=')[1], Split[1].Split('=')[1]));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
         public static void Do(Action action)
         {
             Thread thread = new Thread(new ThreadStart(action));
@@ -135,12 +158,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public class CustomerItem
         {
-            string name, plateNumber;
+            string name, plateNumbers;
 
-            public CustomerItem(string name, string plateNumber)
+            public CustomerItem(string name, string plateNumbers)
             {
                 this.name = name;
-                this.plateNumber = plateNumber;
+                this.plateNumbers = plateNumbers;
             }
 
             public string Name
@@ -149,10 +172,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 set { name = value; }
             }
 
-            public string PlateNumber
+            public string PlateNumbers
             {
-                get { return plateNumber; }
-                set { plateNumber = value; }
+                get { return plateNumbers; }
+                set { plateNumbers = value; }
             }
         }
 

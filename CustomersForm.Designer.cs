@@ -118,6 +118,7 @@
             this.AssignCustomerButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.AssignCustomerButton.UseAccentColor = false;
             this.AssignCustomerButton.UseVisualStyleBackColor = true;
+            this.AssignCustomerButton.Click += new System.EventHandler(this.AssignCustomerButton_Click);
             // 
             // UnassignCustomerButton
             // 

@@ -45,7 +45,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{TB_Brand.Text.ToUpper()}', '{TB_Model.Text.ToUpper()}', '{GetSize().ToUpper()}', '{TB_PlateNumber.Text.ToUpper()}', '(None)')";
                     NewQuery(Query);
 
-                    MaterialMessageBox.Show("Successfully added new vehicle!", "Success");
+                    MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
                     VehiclesForm.RefreshVehicles();
                     Close();
                 }

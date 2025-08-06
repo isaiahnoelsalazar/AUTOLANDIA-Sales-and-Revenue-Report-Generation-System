@@ -89,6 +89,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignCustomerVehicleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignCustomerVehicleDialog.Designer.cs">
+      <DependentUpon>AssignCustomerVehicleDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCustomerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCustomerDialog.Designer.cs">
+      <DependentUpon>NewCustomerDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="NewVehicleDialog.cs">
       <SubType>Form</SubType>
@@ -134,6 +146,9 @@
     <Compile Include="VehiclesForm.Designer.cs">
       <DependentUpon>VehiclesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AssignCustomerVehicleDialog.resx">
+      <DependentUpon>AssignCustomerVehicleDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomersForm.resx">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCustomerDialog.resx">
+      <DependentUpon>NewCustomerDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewVehicleDialog.resx">
       <DependentUpon>NewVehicleDialog.cs</DependentUpon>

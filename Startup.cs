@@ -1,5 +1,7 @@
-﻿using MaterialSkin.Controls;
+﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
+using MaterialSkin.Controls;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -14,6 +16,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
 
             SET_SKIN(this);
+
+            Banner.Image = Resources.autolandia_logo;
+            Banner.BackColor = Color.Black;
 
             Timer.Interval = 1000;
             Timer.Tick += (s, e) =>
@@ -30,7 +35,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
+                    ProgressBar.Increment(33);
+
                     RecreateVehicleList();
+
+                    ProgressBar.Increment(33);
+
+                    RecreateCustomerList();
+
+                    ProgressBar.Increment(34);
 
                     //query = "";
                     //NewQuery(query);
