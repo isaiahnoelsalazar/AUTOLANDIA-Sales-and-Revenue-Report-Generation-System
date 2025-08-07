@@ -42,12 +42,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{TB_Brand.Text.ToUpper()}', '{TB_Model.Text.ToUpper()}', '{GetSize().ToUpper()}', '{TB_PlateNumber.Text.ToUpper()}', '(None)')";
-                    NewQuery(Query);
+                    string Brand = TB_Brand.Text.ToUpper();
+                    string Model = TB_Model.Text.ToUpper();
+                    string Size = GetSize().ToUpper();
+                    string PlateNumber = TB_PlateNumber.Text.ToUpper();
 
-                    MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
-                    VehiclesForm.RefreshVehicles();
-                    Close();
+                    DoneButton.Enabled = false;
+
+                    new Do(() =>
+                    {
+                        string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')";
+                        NewQuery(Query);
+                    })
+                    .AfterDo(() =>
+                    {
+                        MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
+                        VehiclesForm.RefreshVehicles();
+                        Close();
+                    });
                 }
                 catch (Exception exception)
                 {

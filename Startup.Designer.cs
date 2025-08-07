@@ -53,6 +53,9 @@
             this.Banner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Banner.TabIndex = 1;
             this.Banner.TabStop = false;
+            this.Banner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Banner_MouseDown);
+            this.Banner.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Banner_MouseMove);
+            this.Banner.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Banner_MouseUp);
             // 
             // Startup
             // 

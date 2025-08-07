@@ -4,8 +4,10 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -69,10 +71,46 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public static void Do(Action action)
+        public class Do
         {
-            Thread thread = new Thread(new ThreadStart(action));
-            thread.Start();
+            Thread Thread;
+            bool IsDone = false;
+
+            public Do(Action Action)
+            {
+                Thread = new Thread(new ThreadStart(() =>
+                {
+                    Action();
+                    IsDone = true;
+                }));
+                Thread.Start();
+            }
+
+            public Do(Action Action, int Delay)
+            {
+                Thread.Sleep(Delay);
+                Thread = new Thread(new ThreadStart(() =>
+                {
+                    Action();
+                    IsDone = true;
+                }));
+                Thread.Start();
+            }
+
+            public void AfterDo(Action Action)
+            {
+                System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+                Timer.Interval = 1;
+                Timer.Tick += (s, e) =>
+                {
+                    if (IsDone)
+                    {
+                        Timer.Stop();
+                        Action();
+                    }
+                };
+                Timer.Start();
+            }
         }
 
         public static string GetValues(string Query)
@@ -95,7 +133,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Driver.Navigate().GoToUrl("https://remotephpmysqldbaccess.wuaze.com/query.php?query=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(Query)));
                 IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
                 string Response = (string)js.ExecuteScript("return document.body.innerText");
-                Console.WriteLine(Response);
                 Driver.Quit();
             }
         }

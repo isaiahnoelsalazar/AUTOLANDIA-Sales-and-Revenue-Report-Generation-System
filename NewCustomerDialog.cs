@@ -33,12 +33,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string Query = $"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{TB_Name.Text.ToUpper()}', '(None)')";
-                    NewQuery(Query);
+                    string Name = TB_Name.Text.ToUpper();
+                    
+                    DoneButton.Enabled = false;
 
-                    MaterialMessageBox.Show("Successfully added new customer!", "Notice");
-                    CustomersForm.RefreshCustomers();
-                    Close();
+                    new Do(() =>
+                    {
+                        string Query = $"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{Name}', '(None)')";
+                        NewQuery(Query);
+                    })
+                    .AfterDo(() =>
+                    {
+                        MaterialMessageBox.Show("Successfully added new customer!", "Notice");
+                        CustomersForm.RefreshCustomers();
+                        Close();
+                    });
                 }
                 catch (Exception exception)
                 {

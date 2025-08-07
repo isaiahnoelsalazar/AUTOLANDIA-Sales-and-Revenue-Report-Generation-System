@@ -36,18 +36,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{CB_Vehicles.Text.Split(',')[0]}' WHERE CustomerName='{CB_Customers.Text}'";
-                    string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CB_Customers.Text}' WHERE PlateNumber='{CB_Vehicles.Text.Split(',')[0]}'";
-                    NewQuery(Query);
-                    NewQuery(Query1);
-
-                    Console.WriteLine(Query);
-                    Console.WriteLine(Query1);
-
-                    MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
-                    CustomersForm.RefreshCustomers();
-                    RecreateVehicleList();
-                    Close();
+                    new Do(() =>
+                    {
+                        string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{CB_Vehicles.Text.Split(',')[0]}' WHERE CustomerName='{CB_Customers.Text}'";
+                        string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CB_Customers.Text}' WHERE PlateNumber='{CB_Vehicles.Text.Split(',')[0]}'";
+                        NewQuery(Query);
+                        NewQuery(Query1);
+                    })
+                    .AfterDo(() =>
+                    {
+                        MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
+                        CustomersForm.RefreshCustomers();
+                        RecreateVehicleList();
+                        Close();
+                    });
                 }
                 catch (Exception exception)
                 {

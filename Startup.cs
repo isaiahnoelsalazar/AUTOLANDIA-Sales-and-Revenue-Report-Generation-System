@@ -10,6 +10,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class Startup : MaterialForm
     {
         Timer Timer = new Timer();
+        bool TabMove = false;
+        Point PanelLocation, CursorPosition;
 
         public Startup()
         {
@@ -25,31 +27,51 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
-                    if (!Value.Equals("None"))
+                    new Do(() =>
                     {
-                        string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                        for (int a = 0; a < Values.Length; a++)
+                        string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
+                        if (!Value.Equals("None"))
                         {
-                            PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
+                            string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                            for (int a = 0; a < Values.Length; a++)
+                            {
+                                PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
+                            }
                         }
-                    }
+                    })
+                    .AfterDo(() =>
+                    {
+                        ProgressBar.Increment(33);
 
-                    ProgressBar.Increment(33);
+                        new Do(() =>
+                        {
+                            RecreateVehicleList();
+                        })
+                        .AfterDo(() =>
+                        {
+                            ProgressBar.Increment(33);
 
-                    RecreateVehicleList();
+                            new Do(() =>
+                            {
+                                RecreateCustomerList();
+                            })
+                            .AfterDo(() =>
+                            {
+                                ProgressBar.Increment(34);
 
-                    ProgressBar.Increment(33);
-
-                    RecreateCustomerList();
-
-                    ProgressBar.Increment(34);
-
-                    //query = "";
-                    //NewQuery(query);
+                                new Do(() =>
+                                {
+                                    // nothing
+                                }, 1000)
+                                .AfterDo(() =>
+                                {
+                                    new MainForm(this).Show();
+                                });
+                            });
+                        });
+                    });
 
                     Timer.Stop();
-                    new MainForm(this).Show();
                 }
                 catch (Exception exception)
                 {
@@ -64,6 +86,26 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void Startup_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Banner_MouseDown(object sender, MouseEventArgs e)
+        {
+            TabMove = true;
+            PanelLocation = Location;
+            CursorPosition = Cursor.Position;
+        }
+
+        private void Banner_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (TabMove)
+            {
+                Location = new Point(MousePosition.X - (CursorPosition.X - PanelLocation.X), MousePosition.Y - (CursorPosition.Y - PanelLocation.Y));
+            }
+        }
+
+        private void Banner_MouseUp(object sender, MouseEventArgs e)
+        {
+            TabMove = false;
         }
     }
 }
