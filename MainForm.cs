@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -34,6 +35,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TabButtons.Add(OrdersTab);
             TabButtons.Add(VehiclesTab);
             TabButtons.Add(CustomersTab);
+
+            GlobalOrdersForm = (OrdersForm)Forms[1];
+            GlobalVehiclesForm = (VehiclesForm)Forms[2];
+            GlobalCustomersForm = (CustomersForm)Forms[3];
 
             SelectTab(0);
 

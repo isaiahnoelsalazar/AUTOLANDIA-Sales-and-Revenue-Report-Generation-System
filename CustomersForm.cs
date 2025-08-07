@@ -11,7 +11,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
 
             CustomerTable.Columns.Add("CustomerName", -2);
-            CustomerTable.Columns.Add("PlateNumber", -2);
+            CustomerTable.Columns.Add("PlateNumbers", -2);
 
             RefreshCustomers();
         }

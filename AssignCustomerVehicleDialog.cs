@@ -23,10 +23,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             foreach (CustomerItem Customer in CustomerList)
             {
-                if (Customer.PlateNumbers.Equals("(None)"))
-                {
-                    CB_Customers.Items.Add(Customer.Name);
-                }
+                CB_Customers.Items.Add(Customer.Name);
             }
         }
 
@@ -36,10 +33,31 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
+                    string PlateNumber = CB_Vehicles.Text.Split(',')[0];
+                    string CustomerName = CB_Customers.Text;
+                    string CustomerPlateNumbers = CustomerList[CB_Customers.Items.IndexOf(CB_Customers.Text)].PlateNumbers;
+                    if (CustomerPlateNumbers.Equals("(None)"))
+                    {
+                        CustomerPlateNumbers = "[]";
+                    }
+                    string[] Split = CustomerPlateNumbers.Substring(1, CustomerPlateNumbers.Length - 2).Split(',');
+                    string FinalCustomerPlateNumbers = "";
+                    FinalCustomerPlateNumbers = "[";
+                    foreach (string Plate in Split)
+                    {
+                        if (!string.IsNullOrEmpty(Plate))
+                        {
+                            FinalCustomerPlateNumbers += Plate + ",";
+                        }
+                    }
+                    FinalCustomerPlateNumbers += PlateNumber + "]";
+
+                    DoneButton.Enabled = false;
+
                     new Do(() =>
                     {
-                        string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{CB_Vehicles.Text.Split(',')[0]}' WHERE CustomerName='{CB_Customers.Text}'";
-                        string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CB_Customers.Text}' WHERE PlateNumber='{CB_Vehicles.Text.Split(',')[0]}'";
+                        string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'";
+                        string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CustomerName}' WHERE PlateNumber='{PlateNumber}'";
                         NewQuery(Query);
                         NewQuery(Query1);
                     })
@@ -47,7 +65,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
                         CustomersForm.RefreshCustomers();
-                        RecreateVehicleList();
+                        GlobalVehiclesForm.RefreshVehicles();
                         Close();
                     });
                 }

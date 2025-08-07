@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +15,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
         public static List<CustomerItem> CustomerList = new List<CustomerItem>();
         public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
+
+        public static OrdersForm GlobalOrdersForm;
+        public static VehiclesForm GlobalVehiclesForm;
+        public static CustomersForm GlobalCustomersForm;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
         {
