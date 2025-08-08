@@ -89,6 +89,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivityRecordForm.Designer.cs">
+      <DependentUpon>ActivityRecordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AssignCustomerVehicleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     <Compile Include="VehiclesForm.Designer.cs">
       <DependentUpon>VehiclesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ActivityRecordForm.resx">
+      <DependentUpon>ActivityRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssignCustomerVehicleDialog.resx">
       <DependentUpon>AssignCustomerVehicleDialog.cs</DependentUpon>
     </EmbeddedResource>

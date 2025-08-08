@@ -34,6 +34,7 @@
             this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
             this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.ActivityRecordTab = new MaterialSkin.Controls.MaterialButton();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // 
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.TabPanel.Controls.Add(this.ActivityRecordTab);
             this.TabPanel.Controls.Add(this.CustomersTab);
             this.TabPanel.Controls.Add(this.VehiclesTab);
             this.TabPanel.Controls.Add(this.OrdersTab);
@@ -160,6 +162,29 @@
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseMove);
             this.Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseUp);
             // 
+            // ActivityRecordTab
+            // 
+            this.ActivityRecordTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ActivityRecordTab.AutoSize = false;
+            this.ActivityRecordTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActivityRecordTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ActivityRecordTab.Depth = 0;
+            this.ActivityRecordTab.HighEmphasis = true;
+            this.ActivityRecordTab.Icon = null;
+            this.ActivityRecordTab.Location = new System.Drawing.Point(8, 315);
+            this.ActivityRecordTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.ActivityRecordTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ActivityRecordTab.Name = "ActivityRecordTab";
+            this.ActivityRecordTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ActivityRecordTab.Size = new System.Drawing.Size(184, 50);
+            this.ActivityRecordTab.TabIndex = 5;
+            this.ActivityRecordTab.Text = "Activity Record";
+            this.ActivityRecordTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ActivityRecordTab.UseAccentColor = false;
+            this.ActivityRecordTab.UseVisualStyleBackColor = true;
+            this.ActivityRecordTab.Click += new System.EventHandler(this.ActivityRecordTab_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -185,6 +210,7 @@
         private MaterialSkin.Controls.MaterialButton OrdersTab;
         private MaterialSkin.Controls.MaterialButton CustomersTab;
         private MaterialSkin.Controls.MaterialButton VehiclesTab;
+        private MaterialSkin.Controls.MaterialButton ActivityRecordTab;
     }
 }
 

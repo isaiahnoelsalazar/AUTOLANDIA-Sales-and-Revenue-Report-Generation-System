@@ -17,7 +17,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             new HomeForm(),
             new OrdersForm(),
             new VehiclesForm(),
-            new CustomersForm()
+            new CustomersForm(),
+            new ActivityRecordForm()
         };
         List<MaterialButton> TabButtons = new List<MaterialButton>();
 
@@ -35,6 +36,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TabButtons.Add(OrdersTab);
             TabButtons.Add(VehiclesTab);
             TabButtons.Add(CustomersTab);
+            TabButtons.Add(ActivityRecordTab);
 
             GlobalOrdersForm = (OrdersForm)Forms[1];
             GlobalVehiclesForm = (VehiclesForm)Forms[2];
@@ -117,6 +119,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ActivityRecordTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(4);
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)
