@@ -139,6 +139,7 @@
             this.UnassignCustomerButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.UnassignCustomerButton.UseAccentColor = false;
             this.UnassignCustomerButton.UseVisualStyleBackColor = true;
+            this.UnassignCustomerButton.Click += new System.EventHandler(this.UnassignCustomerButton_Click);
             // 
             // CustomersForm
             // 

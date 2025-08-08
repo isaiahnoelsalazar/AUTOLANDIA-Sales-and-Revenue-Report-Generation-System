@@ -45,5 +45,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             new AssignCustomerVehicleDialog(this).ShowDialog();
         }
+
+        private void UnassignCustomerButton_Click(object sender, EventArgs e)
+        {
+            new UnassignCustomerVehicleDialog(this).ShowDialog();
+        }
     }
 }

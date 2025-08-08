@@ -41,34 +41,36 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     })
                     .AfterDo(() =>
                     {
-                        ProgressBar.Increment(33);
+                        ProgressBar.Increment(100);
 
                         new Do(() =>
                         {
-                            RecreateVehicleList();
-                        })
+                            // nothing
+                        }, 1000)
                         .AfterDo(() =>
                         {
-                            ProgressBar.Increment(33);
-
-                            new Do(() =>
-                            {
-                                RecreateCustomerList();
-                            })
-                            .AfterDo(() =>
-                            {
-                                ProgressBar.Increment(34);
-
-                                new Do(() =>
-                                {
-                                    // nothing
-                                }, 1000)
-                                .AfterDo(() =>
-                                {
-                                    new MainForm(this).Show();
-                                });
-                            });
+                            new MainForm(this).Show();
                         });
+
+                        //new Do(() =>
+                        //{
+                        //    RecreateVehicleList();
+                        //})
+                        //.AfterDo(() =>
+                        //{
+                        //    ProgressBar.Increment(33);
+
+                        //    new Do(() =>
+                        //    {
+                        //        RecreateCustomerList();
+                        //    })
+                        //    .AfterDo(() =>
+                        //    {
+                        //        ProgressBar.Increment(34);
+
+                                
+                        //    });
+                        //});
                     });
 
                     Timer.Stop();
