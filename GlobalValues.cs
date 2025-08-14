@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -15,10 +16,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
         public static List<CustomerItem> CustomerList = new List<CustomerItem>();
         public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
+        public static List<string> ActivityList = new List<string>();
 
         public static OrdersForm GlobalOrdersForm;
         public static VehiclesForm GlobalVehiclesForm;
         public static CustomersForm GlobalCustomersForm;
+        public static ActivityRecordForm GlobalActivityRecordForm;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
         {
@@ -74,6 +77,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static void RecreateActivityList()
+        {
+            ActivityList.Clear();
+
+            try
+            {
+                string Value = GetValues("SELECT * FROM AUTOLANDIA_ActivityList");
+                string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                for (int a = 0; a < Values.Length; a++)
+                {
+                    ActivityList.Add(Values[a].Split('=')[1]);
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
         public class Do
         {
             Thread Thread;
@@ -114,6 +136,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 };
                 Timer.Start();
             }
+        }
+
+        public static void RecordActivity(string Message, Action Todo)
+        {
+            new Do(() =>
+            {
+                string Query = $"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')";
+                NewQuery(Query);
+            })
+            .AfterDo(() =>
+            {
+                Todo();
+            });
         }
 
         public static string GetValues(string Query)
@@ -232,6 +267,43 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 get { return name; }
                 set { name = value; }
+            }
+        }
+
+        public class EmployeeItem
+        {
+            string employeeName, timeIn, timeOut, dateRecorded;
+
+            public EmployeeItem(string employeeName, string timeIn, string timeOut, string dateRecorded)
+            {
+                this.employeeName = employeeName;
+                this.timeIn = timeIn;
+                this.timeOut = timeOut;
+                this.dateRecorded = dateRecorded;
+            }
+
+            public string EmployeeName
+            {
+                get { return employeeName; }
+                set { employeeName = value; }
+            }
+
+            public string TimeIn
+            {
+                get { return timeIn; }
+                set { timeIn = value; }
+            }
+
+            public string TimeOut
+            {
+                get { return timeOut; }
+                set { timeOut = value; }
+            }
+
+            public string DateRecorded
+            {
+                get { return dateRecorded; }
+                set { dateRecorded = value; }
             }
         }
     }

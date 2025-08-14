@@ -42,8 +42,8 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(17, 24);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialLabel1.Location = new System.Drawing.Point(15, 15);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(118, 29);
@@ -56,10 +56,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomerTable.HideSelection = false;
-            this.CustomerTable.Location = new System.Drawing.Point(17, 87);
-            this.CustomerTable.Margin = new System.Windows.Forms.Padding(8);
+            this.CustomerTable.Location = new System.Drawing.Point(15, 70);
+            this.CustomerTable.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CustomerTable.Name = "CustomerTable";
-            this.CustomerTable.Size = new System.Drawing.Size(971, 346);
+            this.CustomerTable.Size = new System.Drawing.Size(930, 275);
             this.CustomerTable.TabIndex = 4;
             this.CustomerTable.UseCompatibleStateImageBehavior = false;
             this.CustomerTable.View = System.Windows.Forms.View.Details;
@@ -70,11 +70,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(17, 69);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialDivider1.Location = new System.Drawing.Point(15, 56);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(971, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(930, 2);
             this.materialDivider1.TabIndex = 3;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -86,8 +86,8 @@
             this.AddNewCustomerButton.Depth = 0;
             this.AddNewCustomerButton.HighEmphasis = true;
             this.AddNewCustomerButton.Icon = null;
-            this.AddNewCustomerButton.Location = new System.Drawing.Point(821, 17);
-            this.AddNewCustomerButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AddNewCustomerButton.Location = new System.Drawing.Point(781, 15);
+            this.AddNewCustomerButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AddNewCustomerButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AddNewCustomerButton.Name = "AddNewCustomerButton";
             this.AddNewCustomerButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -107,8 +107,8 @@
             this.AssignCustomerButton.Depth = 0;
             this.AssignCustomerButton.HighEmphasis = true;
             this.AssignCustomerButton.Icon = null;
-            this.AssignCustomerButton.Location = new System.Drawing.Point(565, 17);
-            this.AssignCustomerButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AssignCustomerButton.Location = new System.Drawing.Point(529, 15);
+            this.AssignCustomerButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AssignCustomerButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AssignCustomerButton.Name = "AssignCustomerButton";
             this.AssignCustomerButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -128,8 +128,8 @@
             this.UnassignCustomerButton.Depth = 0;
             this.UnassignCustomerButton.HighEmphasis = true;
             this.UnassignCustomerButton.Icon = null;
-            this.UnassignCustomerButton.Location = new System.Drawing.Point(289, 17);
-            this.UnassignCustomerButton.Margin = new System.Windows.Forms.Padding(8);
+            this.UnassignCustomerButton.Location = new System.Drawing.Point(257, 15);
+            this.UnassignCustomerButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.UnassignCustomerButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.UnassignCustomerButton.Name = "UnassignCustomerButton";
             this.UnassignCustomerButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -143,9 +143,9 @@
             // 
             // CustomersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 450);
+            this.ClientSize = new System.Drawing.Size(960, 360);
             this.Controls.Add(this.UnassignCustomerButton);
             this.Controls.Add(this.AssignCustomerButton);
             this.Controls.Add(this.materialLabel1);
@@ -153,6 +153,7 @@
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.AddNewCustomerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CustomersForm";
             this.Text = "CustomersForm";
             this.ResumeLayout(false);

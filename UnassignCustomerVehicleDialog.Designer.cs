@@ -54,12 +54,12 @@
             this.CB_Vehicles.FormattingEnabled = true;
             this.CB_Vehicles.IntegralHeight = false;
             this.CB_Vehicles.ItemHeight = 43;
-            this.CB_Vehicles.Location = new System.Drawing.Point(204, 174);
-            this.CB_Vehicles.Margin = new System.Windows.Forms.Padding(8);
+            this.CB_Vehicles.Location = new System.Drawing.Point(165, 152);
+            this.CB_Vehicles.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CB_Vehicles.MaxDropDownItems = 4;
             this.CB_Vehicles.MouseState = MaterialSkin.MouseState.OUT;
             this.CB_Vehicles.Name = "CB_Vehicles";
-            this.CB_Vehicles.Size = new System.Drawing.Size(585, 49);
+            this.CB_Vehicles.Size = new System.Drawing.Size(467, 49);
             this.CB_Vehicles.StartIndex = 0;
             this.CB_Vehicles.TabIndex = 13;
             this.CB_Vehicles.SelectedIndexChanged += new System.EventHandler(this.CB_Vehicles_SelectedIndexChanged);
@@ -80,12 +80,12 @@
             this.CB_Customers.FormattingEnabled = true;
             this.CB_Customers.IntegralHeight = false;
             this.CB_Customers.ItemHeight = 43;
-            this.CB_Customers.Location = new System.Drawing.Point(204, 107);
-            this.CB_Customers.Margin = new System.Windows.Forms.Padding(8);
+            this.CB_Customers.Location = new System.Drawing.Point(165, 91);
+            this.CB_Customers.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CB_Customers.MaxDropDownItems = 4;
             this.CB_Customers.MouseState = MaterialSkin.MouseState.OUT;
             this.CB_Customers.Name = "CB_Customers";
-            this.CB_Customers.Size = new System.Drawing.Size(585, 49);
+            this.CB_Customers.Size = new System.Drawing.Size(467, 49);
             this.CB_Customers.StartIndex = 0;
             this.CB_Customers.TabIndex = 11;
             this.CB_Customers.SelectedIndexChanged += new System.EventHandler(this.CB_Customers_SelectedIndexChanged);
@@ -95,7 +95,8 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.Location = new System.Drawing.Point(13, 188);
+            this.materialLabel3.Location = new System.Drawing.Point(10, 166);
+            this.materialLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(129, 19);
@@ -107,7 +108,8 @@
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(13, 122);
+            this.materialLabel2.Location = new System.Drawing.Point(10, 105);
+            this.materialLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(115, 19);
@@ -122,8 +124,8 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(11, 403);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
+            this.CancelButton.Location = new System.Drawing.Point(8, 316);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -143,8 +145,8 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(725, 403);
-            this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
+            this.DoneButton.Location = new System.Drawing.Point(568, 316);
+            this.DoneButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -162,8 +164,8 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(11, 44);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(8, 20, 8, 8);
+            this.materialLabel1.Location = new System.Drawing.Point(8, 36);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 16, 6, 6);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(336, 29);
@@ -176,19 +178,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(11, 89);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialDivider1.Location = new System.Drawing.Point(8, 77);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(778, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(624, 2);
             this.materialDivider1.TabIndex = 9;
             this.materialDivider1.Text = "materialDivider1";
             // 
             // UnassignCustomerVehicleDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.CB_Vehicles);
             this.Controls.Add(this.CB_Customers);
             this.Controls.Add(this.materialLabel3);
@@ -198,8 +200,9 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UnassignCustomerVehicleDialog";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UnassignCustomerVehicleDialog";
             this.ResumeLayout(false);

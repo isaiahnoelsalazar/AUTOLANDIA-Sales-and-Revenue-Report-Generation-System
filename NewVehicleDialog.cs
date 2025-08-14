@@ -48,22 +48,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string PlateNumber = TB_PlateNumber.Text.ToUpper();
 
                     DoneButton.Enabled = false;
+                    CancelButton.Enabled = false;
 
-                    new Do(() =>
+                    RecordActivity($"Added new vehicle: {Brand}, {Model}, {Size}, {PlateNumber}", () =>
                     {
-                        string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')";
-                        NewQuery(Query);
-                    })
-                    .AfterDo(() =>
-                    {
-                        MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
-                        VehiclesForm.RefreshVehicles();
-                        Close();
+                        new Do(() =>
+                        {
+                            string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')";
+                            NewQuery(Query);
+                        })
+                        .AfterDo(() =>
+                        {
+                            MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
+                            VehiclesForm.RefreshVehicles();
+                            GlobalActivityRecordForm.RefreshActivities();
+                            Close();
+                        });
                     });
                 }
                 catch (Exception exception)
                 {
                     MaterialMessageBox.Show(exception.Message, "Alert");
+                    DoneButton.Enabled = true;
+                    CancelButton.Enabled = true;
                 }
             }
             else

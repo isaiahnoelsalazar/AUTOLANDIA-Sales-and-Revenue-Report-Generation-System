@@ -42,8 +42,8 @@
             this.AddNewVehicleButton.Depth = 0;
             this.AddNewVehicleButton.HighEmphasis = true;
             this.AddNewVehicleButton.Icon = null;
-            this.AddNewVehicleButton.Location = new System.Drawing.Point(634, 17);
-            this.AddNewVehicleButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AddNewVehicleButton.Location = new System.Drawing.Point(476, 15);
+            this.AddNewVehicleButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AddNewVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AddNewVehicleButton.Name = "AddNewVehicleButton";
             this.AddNewVehicleButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -61,11 +61,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(17, 69);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialDivider1.Location = new System.Drawing.Point(15, 56);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(766, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(610, 2);
             this.materialDivider1.TabIndex = 1;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -75,10 +75,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleTable.HideSelection = false;
-            this.VehicleTable.Location = new System.Drawing.Point(17, 87);
-            this.VehicleTable.Margin = new System.Windows.Forms.Padding(8);
+            this.VehicleTable.Location = new System.Drawing.Point(15, 70);
+            this.VehicleTable.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.VehicleTable.Name = "VehicleTable";
-            this.VehicleTable.Size = new System.Drawing.Size(766, 346);
+            this.VehicleTable.Size = new System.Drawing.Size(610, 275);
             this.VehicleTable.TabIndex = 2;
             this.VehicleTable.UseCompatibleStateImageBehavior = false;
             this.VehicleTable.View = System.Windows.Forms.View.Details;
@@ -89,8 +89,8 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(17, 24);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(8);
+            this.materialLabel1.Location = new System.Drawing.Point(15, 15);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(92, 29);
@@ -99,14 +99,15 @@
             // 
             // VehiclesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.VehicleTable);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.AddNewVehicleButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VehiclesForm";
             this.Text = "VehiclesForm";
             this.ResumeLayout(false);

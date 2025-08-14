@@ -9,7 +9,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
-            OrderTable.Columns.Add("EmployeeId", -2);
+            OrderTable.Columns.Add("OrderId", -2);
+            OrderTable.Columns.Add("EmployeeName", -2);
             OrderTable.Columns.Add("PlateNumber", -2);
             OrderTable.Columns.Add("ServiceIdList", -2);
             OrderTable.Columns.Add("PackageIdList", -2);

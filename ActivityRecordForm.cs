@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -15,6 +8,31 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public ActivityRecordForm()
         {
             InitializeComponent();
+
+            ActivityTable.Columns.Add("Activity", -2);
+
+            RefreshActivities();
         }
+
+        public void RefreshActivities()
+        {
+            new Do(() =>
+            {
+                RecreateActivityList();
+            })
+            .AfterDo(() =>
+            {
+                ActivityTable.Items.Clear();
+                foreach (string Activity in ActivityList)
+                {
+                    ActivityTable.Items.Add(new ListViewItem(Activity));
+                }
+                foreach (ColumnHeader ColumnHeader in ActivityTable.Columns)
+                {
+                    ColumnHeader.Width = -2;
+                }
+            });
+        }
+
     }
 }

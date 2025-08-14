@@ -1,6 +1,6 @@
 ﻿namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    partial class ActivityRecordForm
+    partial class EmployeesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.ActivityTable = new System.Windows.Forms.ListView();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.AddNewEmployeeButton = new MaterialSkin.Controls.MaterialButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -43,23 +45,9 @@
             this.materialLabel1.Margin = new System.Windows.Forms.Padding(6);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(101, 29);
-            this.materialLabel1.TabIndex = 8;
-            this.materialLabel1.Text = "Activities";
-            // 
-            // ActivityTable
-            // 
-            this.ActivityTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActivityTable.HideSelection = false;
-            this.ActivityTable.Location = new System.Drawing.Point(15, 70);
-            this.ActivityTable.Margin = new System.Windows.Forms.Padding(6);
-            this.ActivityTable.Name = "ActivityTable";
-            this.ActivityTable.Size = new System.Drawing.Size(610, 275);
-            this.ActivityTable.TabIndex = 7;
-            this.ActivityTable.UseCompatibleStateImageBehavior = false;
-            this.ActivityTable.View = System.Windows.Forms.View.Details;
+            this.materialLabel1.Size = new System.Drawing.Size(118, 29);
+            this.materialLabel1.TabIndex = 7;
+            this.materialLabel1.Text = "Employees";
             // 
             // materialDivider1
             // 
@@ -72,21 +60,55 @@
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(610, 2);
-            this.materialDivider1.TabIndex = 6;
+            this.materialDivider1.TabIndex = 5;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // ActivityRecordForm
+            // AddNewEmployeeButton
+            // 
+            this.AddNewEmployeeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewEmployeeButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AddNewEmployeeButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.AddNewEmployeeButton.Depth = 0;
+            this.AddNewEmployeeButton.HighEmphasis = true;
+            this.AddNewEmployeeButton.Icon = null;
+            this.AddNewEmployeeButton.Location = new System.Drawing.Point(460, 15);
+            this.AddNewEmployeeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.AddNewEmployeeButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AddNewEmployeeButton.Name = "AddNewEmployeeButton";
+            this.AddNewEmployeeButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.AddNewEmployeeButton.Size = new System.Drawing.Size(165, 36);
+            this.AddNewEmployeeButton.TabIndex = 4;
+            this.AddNewEmployeeButton.Text = "Add new employee";
+            this.AddNewEmployeeButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.AddNewEmployeeButton.UseAccentColor = false;
+            this.AddNewEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddNewEmployeeButton.Click += new System.EventHandler(this.AddNewEmployeeButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 67);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(616, 281);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.ActivityTable);
             this.Controls.Add(this.materialDivider1);
+            this.Controls.Add(this.AddNewEmployeeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ActivityRecordForm";
-            this.Text = "ActivityRecordForm";
+            this.Name = "EmployeesForm";
+            this.Text = "EmployeesForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,7 +117,8 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private System.Windows.Forms.ListView ActivityTable;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialButton AddNewEmployeeButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

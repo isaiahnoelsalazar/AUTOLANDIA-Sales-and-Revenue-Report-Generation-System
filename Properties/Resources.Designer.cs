@@ -69,5 +69,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sample_employee_form {
+            get {
+                object obj = ResourceManager.GetObject("sample_employee_form", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
