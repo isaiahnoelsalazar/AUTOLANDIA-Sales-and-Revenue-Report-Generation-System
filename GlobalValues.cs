@@ -5,6 +5,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -25,12 +26,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
         public static List<CustomerItem> CustomerList = new List<CustomerItem>();
+        public static List<EmployeeItem> EmployeeList = new List<EmployeeItem>();
         public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
         public static List<string> ActivityList = new List<string>();
 
         public static OrdersForm GlobalOrdersForm;
         public static VehiclesForm GlobalVehiclesForm;
         public static CustomersForm GlobalCustomersForm;
+        public static EmployeesForm GlobalEmployeesForm;
         public static ActivityRecordForm GlobalActivityRecordForm;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
@@ -104,6 +107,79 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             catch (Exception exception)
             {
                 MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
+        public static void RecreateEmployeeList()
+        {
+            EmployeeList.Clear();
+
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
+
+            List<string> EmployeeNames = new List<string>();
+            DateTime LatestDate = new DateTime();
+
+            try
+            {
+                using (SqlDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        EmployeeNames.Add(Reader.GetString(0));
+                        LatestDate = DateTime.Parse(Reader.GetString(3));
+                        EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                    }
+                }
+
+                EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
+                    .Select(Group => Group.LastOrDefault())
+                    .ToList();
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+
+            if (DateTime.Now.Date.CompareTo(LatestDate) > 0)
+            {
+                EmployeeList.Clear();
+
+                foreach (string Name in EmployeeNames)
+                {
+                    try
+                    {
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
+                        SqlCommand Command2 = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
+
+                        Command1.ExecuteNonQuery();
+                        Command2.ExecuteNonQuery();
+                    }
+                    catch (Exception exception)
+                    {
+                        MaterialMessageBox.Show(exception.Message, "Alert");
+                    }
+                }
+
+                SqlCommand Command3 = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
+
+                try
+                {
+                    using (SqlDataReader Reader = Command3.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                        }
+                    }
+
+                    EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
+                        .Select(Group => Group.LastOrDefault())
+                        .ToList();
+                }
+                catch (Exception exception)
+                {
+                    MaterialMessageBox.Show(exception.Message, "Alert");
+                }
             }
         }
 

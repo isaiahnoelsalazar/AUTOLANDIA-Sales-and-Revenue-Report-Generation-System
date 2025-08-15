@@ -102,6 +102,12 @@
     <Compile Include="NewCustomerDialog.Designer.cs">
       <DependentUpon>NewCustomerDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewEmployeeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEmployeeDialog.Designer.cs">
+      <DependentUpon>NewEmployeeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewVehicleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerDialog.resx">
       <DependentUpon>NewCustomerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEmployeeDialog.resx">
+      <DependentUpon>NewEmployeeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewVehicleDialog.resx">
       <DependentUpon>NewVehicleDialog.cs</DependentUpon>

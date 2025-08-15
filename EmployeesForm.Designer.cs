@@ -31,8 +31,9 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.AddNewEmployeeButton = new MaterialSkin.Controls.MaterialButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.EmployeeTable = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -84,31 +85,51 @@
             this.AddNewEmployeeButton.UseVisualStyleBackColor = true;
             this.AddNewEmployeeButton.Click += new System.EventHandler(this.AddNewEmployeeButton_Click);
             // 
-            // pictureBox1
+            // EmployeeTable
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.EmployeeTable.AutoSize = true;
+            this.EmployeeTable.ColumnCount = 4;
+            this.EmployeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.EmployeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.EmployeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.EmployeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.EmployeeTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmployeeTable.Location = new System.Drawing.Point(0, 0);
+            this.EmployeeTable.Margin = new System.Windows.Forms.Padding(0);
+            this.EmployeeTable.Name = "EmployeeTable";
+            this.EmployeeTable.RowCount = 1;
+            this.EmployeeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.EmployeeTable.Size = new System.Drawing.Size(606, 0);
+            this.EmployeeTable.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 67);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(616, 281);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.EmployeeTable);
+            this.panel1.Location = new System.Drawing.Point(17, 72);
+            this.panel1.Margin = new System.Windows.Forms.Padding(8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(606, 271);
+            this.panel1.TabIndex = 9;
             // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.AddNewEmployeeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EmployeesForm";
             this.Text = "EmployeesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +140,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialButton AddNewEmployeeButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel EmployeeTable;
+        private System.Windows.Forms.Panel panel1;
     }
 }

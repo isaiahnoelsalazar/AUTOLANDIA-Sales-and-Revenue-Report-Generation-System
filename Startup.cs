@@ -41,7 +41,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
-                    ProgressBar.Increment(25);
+                    ProgressBar.Increment(20);
 
                     //new Do(() =>
                     //{
@@ -90,13 +90,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     //});
 
                     RecreateVehicleList();
-                    ProgressBar.Increment(25);
+                    ProgressBar.Increment(20);
 
                     RecreateCustomerList();
-                    ProgressBar.Increment(25);
+                    ProgressBar.Increment(20);
+
+                    RecreateEmployeeList();
+                    ProgressBar.Increment(20);
 
                     RecreateActivityList();
-                    ProgressBar.Increment(25);
+                    ProgressBar.Increment(20);
 
                     Timer.Stop();
                     new MainForm(this).Show();

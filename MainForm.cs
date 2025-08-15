@@ -43,6 +43,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             GlobalOrdersForm = (OrdersForm)Forms[1];
             GlobalVehiclesForm = (VehiclesForm)Forms[2];
             GlobalCustomersForm = (CustomersForm)Forms[3];
+            GlobalEmployeesForm = (EmployeesForm)Forms[4];
             GlobalActivityRecordForm = (ActivityRecordForm)Forms[5];
 
             SelectTab(0);

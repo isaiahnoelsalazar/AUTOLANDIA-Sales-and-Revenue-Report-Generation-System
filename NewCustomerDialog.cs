@@ -2,7 +2,6 @@
 using MaterialSkin.Controls;
 using System;
 using System.Data.SqlClient;
-using System.Reflection;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
