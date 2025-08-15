@@ -81,8 +81,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Unassigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"");
 
-                    SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'", SQL);
-                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerName='(None)' WHERE PlateNumber='{PlateNumber}'", SQL);
+                    SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CONVERT(VARCHAR, CustomerName)='{CustomerName}'", SQL);
+                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerName='(None)' WHERE CONVERT(VARCHAR, PlateNumber)='{PlateNumber}'", SQL);
 
                     Command1.ExecuteNonQuery();
                     Command2.ExecuteNonQuery();
