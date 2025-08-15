@@ -13,10 +13,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public class GlobalValues
     {
+        //public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
+        //public static string database = "Initial Catalog=saiasamazingaspsite_mainDBALL;";
+        //public static string username = "User ID=saiasamazingaspsite_mainDBALL;";
+        //public static string password = "Password=saiasamazingaspsite_mainDBALLPW;";
         public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
-        public static string database = "Initial Catalog=saiasamazingaspsite_mainDBALL;";
-        public static string username = "User ID=saiasamazingaspsite_mainDBALL;";
-        public static string password = "Password=saiasamazingaspsite_mainDBALLPW;";
+        public static string database = "Initial Catalog=saiasamazingaspsite_SampleDB;";
+        public static string username = "User ID=saiasamazingaspsite_SampleDB;";
+        public static string password = "Password=DBSamplePW;";
         public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
 
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
