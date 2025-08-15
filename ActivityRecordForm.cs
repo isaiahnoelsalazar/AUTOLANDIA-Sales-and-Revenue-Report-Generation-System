@@ -16,22 +16,34 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public void RefreshActivities()
         {
-            new Do(() =>
+            RecreateActivityList();
+
+            ActivityTable.Items.Clear();
+            foreach (string Activity in ActivityList)
             {
-                RecreateActivityList();
-            })
-            .AfterDo(() =>
+                ActivityTable.Items.Add(new ListViewItem(Activity));
+            }
+            foreach (ColumnHeader ColumnHeader in ActivityTable.Columns)
             {
-                ActivityTable.Items.Clear();
-                foreach (string Activity in ActivityList)
-                {
-                    ActivityTable.Items.Add(new ListViewItem(Activity));
-                }
-                foreach (ColumnHeader ColumnHeader in ActivityTable.Columns)
-                {
-                    ColumnHeader.Width = -2;
-                }
-            });
+                ColumnHeader.Width = -2;
+            }
+
+            //new Do(() =>
+            //{
+            //    RecreateActivityList();
+            //})
+            //.AfterDo(() =>
+            //{
+            //    ActivityTable.Items.Clear();
+            //    foreach (string Activity in ActivityList)
+            //    {
+            //        ActivityTable.Items.Add(new ListViewItem(Activity));
+            //    }
+            //    foreach (ColumnHeader ColumnHeader in ActivityTable.Columns)
+            //    {
+            //        ColumnHeader.Width = -2;
+            //    }
+            //});
         }
 
     }

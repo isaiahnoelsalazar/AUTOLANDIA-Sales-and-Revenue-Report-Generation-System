@@ -1,6 +1,7 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
 using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -50,21 +51,32 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new vehicle: {Brand}, {Model}, {Size}, {PlateNumber}", () =>
-                    {
-                        new Do(() =>
-                        {
-                            string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')";
-                            NewQuery(Query);
-                        })
-                        .AfterDo(() =>
-                        {
-                            MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
-                            VehiclesForm.RefreshVehicles();
-                            GlobalActivityRecordForm.RefreshActivities();
-                            Close();
-                        });
-                    });
+                    //RecordActivity($"Added new vehicle: {Brand}, {Model}, {Size}, {PlateNumber}", () =>
+                    //{
+                    //    new Do(() =>
+                    //    {
+                    //        string Query = $"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')";
+                    //        NewQuery(Query);
+                    //    })
+                    //    .AfterDo(() =>
+                    //    {
+                    //        MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
+                    //        VehiclesForm.RefreshVehicles();
+                    //        GlobalActivityRecordForm.RefreshActivities();
+                    //        Close();
+                    //    });
+                    //});
+
+                    RecordActivity($"Added new vehicle: {Brand}, {Model}, {Size}, {PlateNumber}");
+
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_VehicleList(VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerName) VALUES ('{Brand}', '{Model}', '{Size}', '{PlateNumber}', '(None)')", SQL);
+
+                    Command.ExecuteNonQuery();
+
+                    MaterialMessageBox.Show("Successfully added new vehicle!", "Notice");
+                    VehiclesForm.RefreshVehicles();
+                    GlobalActivityRecordForm.RefreshActivities();
+                    Close();
                 }
                 catch (Exception exception)
                 {

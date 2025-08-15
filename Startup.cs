@@ -1,6 +1,8 @@
 ﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
 using MaterialSkin.Controls;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -27,53 +29,77 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    new Do(() =>
+                    SQL.Open();
+
+                    SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList", SQL);
+
+                    using (SqlDataReader Reader = Command.ExecuteReader())
                     {
-                        string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
-                        if (!Value.Equals("None"))
+                        while (Reader.Read())
                         {
-                            string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                            for (int a = 0; a < Values.Length; a++)
-                            {
-                                PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
-                            }
+                            PaymentMethodList.Add(new PaymentMethodItem(Reader.GetString(0)));
                         }
-                    })
-                    .AfterDo(() =>
-                    {
-                        ProgressBar.Increment(100);
+                    }
 
-                        new Do(() =>
-                        {
-                            // nothing
-                        }, 1000)
-                        .AfterDo(() =>
-                        {
-                            new MainForm(this).Show();
-                        });
+                    ProgressBar.Increment(25);
 
-                        //new Do(() =>
-                        //{
-                        //    RecreateVehicleList();
-                        //})
-                        //.AfterDo(() =>
-                        //{
-                        //    ProgressBar.Increment(33);
+                    //new Do(() =>
+                    //{
+                    //    string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
+                    //    if (!Value.Equals("None"))
+                    //    {
+                    //        string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                    //        for (int a = 0; a < Values.Length; a++)
+                    //        {
+                    //            PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
+                    //        }
+                    //    }
+                    //})
+                    //.AfterDo(() =>
+                    //{
+                    //    ProgressBar.Increment(100);
 
-                        //    new Do(() =>
-                        //    {
-                        //        RecreateCustomerList();
-                        //    })
-                        //    .AfterDo(() =>
-                        //    {
-                        //        ProgressBar.Increment(34);
+                    //    new Do(() =>
+                    //    {
+                    //        // nothing
+                    //    }, 1000)
+                    //    .AfterDo(() =>
+                    //    {
+                    //        new MainForm(this).Show();
+                    //    });
 
-                                
-                        //    });
-                        //});
-                    });
+                    //    //new Do(() =>
+                    //    //{
+                    //    //    RecreateVehicleList();
+                    //    //})
+                    //    //.AfterDo(() =>
+                    //    //{
+                    //    //    ProgressBar.Increment(33);
+
+                    //    //    new Do(() =>
+                    //    //    {
+                    //    //        RecreateCustomerList();
+                    //    //    })
+                    //    //    .AfterDo(() =>
+                    //    //    {
+                    //    //        ProgressBar.Increment(34);
+
+
+                    //    //    });
+                    //    //});
+                    //});
+
+                    RecreateVehicleList();
+                    ProgressBar.Increment(25);
+
+                    RecreateCustomerList();
+                    ProgressBar.Increment(25);
+
+                    RecreateActivityList();
+                    ProgressBar.Increment(25);
 
                     Timer.Stop();
+                    new MainForm(this).Show();
                 }
                 catch (Exception exception)
                 {

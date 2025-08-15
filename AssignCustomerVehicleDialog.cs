@@ -1,5 +1,6 @@
 ﻿using MaterialSkin.Controls;
 using System;
+using System.Data.SqlClient;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -55,24 +56,38 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Assigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"", () =>
-                    {
-                        new Do(() =>
-                        {
-                            string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'";
-                            string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CustomerName}' WHERE PlateNumber='{PlateNumber}'";
-                            NewQuery(Query);
-                            NewQuery(Query1);
-                        })
-                        .AfterDo(() =>
-                        {
-                            MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
-                            CustomersForm.RefreshCustomers();
-                            GlobalVehiclesForm.RefreshVehicles();
-                            GlobalActivityRecordForm.RefreshActivities();
-                            Close();
-                        });
-                    });
+                    //RecordActivity($"Assigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"", () =>
+                    //{
+                    //    new Do(() =>
+                    //    {
+                    //        string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'";
+                    //        string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CustomerName}' WHERE PlateNumber='{PlateNumber}'";
+                    //        NewQuery(Query);
+                    //        NewQuery(Query1);
+                    //    })
+                    //    .AfterDo(() =>
+                    //    {
+                    //        MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
+                    //        CustomersForm.RefreshCustomers();
+                    //        GlobalVehiclesForm.RefreshVehicles();
+                    //        GlobalActivityRecordForm.RefreshActivities();
+                    //        Close();
+                    //    });
+                    //});
+
+                    RecordActivity($"Assigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"");
+
+                    SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'", SQL);
+                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CustomerName}' WHERE PlateNumber='{PlateNumber}'", SQL);
+
+                    Command1.ExecuteNonQuery();
+                    Command2.ExecuteNonQuery();
+
+                    MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
+                    CustomersForm.RefreshCustomers();
+                    GlobalVehiclesForm.RefreshVehicles();
+                    GlobalActivityRecordForm.RefreshActivities();
+                    Close();
                 }
                 catch (Exception exception)
                 {

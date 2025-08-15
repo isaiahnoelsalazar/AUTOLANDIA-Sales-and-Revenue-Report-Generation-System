@@ -67,7 +67,7 @@
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Location = new System.Drawing.Point(8, 77);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(624, 2);
@@ -84,7 +84,7 @@
             this.TB_Brand.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Brand.LeadingIcon = null;
             this.TB_Brand.Location = new System.Drawing.Point(165, 91);
-            this.TB_Brand.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_Brand.Margin = new System.Windows.Forms.Padding(6);
             this.TB_Brand.MaxLength = 50;
             this.TB_Brand.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Brand.Multiline = false;
@@ -104,7 +104,7 @@
             this.TB_Model.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Model.LeadingIcon = null;
             this.TB_Model.Location = new System.Drawing.Point(165, 153);
-            this.TB_Model.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_Model.Margin = new System.Windows.Forms.Padding(6);
             this.TB_Model.MaxLength = 50;
             this.TB_Model.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Model.Multiline = false;
@@ -124,7 +124,7 @@
             this.TB_PlateNumber.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_PlateNumber.LeadingIcon = null;
             this.TB_PlateNumber.Location = new System.Drawing.Point(165, 262);
-            this.TB_PlateNumber.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_PlateNumber.Margin = new System.Windows.Forms.Padding(6);
             this.TB_PlateNumber.MaxLength = 50;
             this.TB_PlateNumber.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_PlateNumber.Multiline = false;
@@ -223,7 +223,7 @@
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
             this.DoneButton.Location = new System.Drawing.Point(568, 356);
-            this.DoneButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DoneButton.Margin = new System.Windows.Forms.Padding(6);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -244,7 +244,7 @@
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
             this.CancelButton.Location = new System.Drawing.Point(8, 356);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(6);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -330,7 +330,7 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewVehicleDialog";
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -1,18 +1,24 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+//using OpenQA.Selenium;
+//using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public class GlobalValues
     {
+        public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
+        public static string database = "Initial Catalog=saiasamazingaspsite_mainDBALL;";
+        public static string username = "User ID=saiasamazingaspsite_mainDBALL;";
+        public static string password = "Password=saiasamazingaspsite_mainDBALLPW;";
+        public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
+
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
         public static List<CustomerItem> CustomerList = new List<CustomerItem>();
         public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
@@ -35,16 +41,26 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             VehicleList.Clear();
 
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleList", SQL);
+
             try
             {
-                string Value = GetValues("SELECT * FROM AUTOLANDIA_VehicleList");
-                if (!Value.Equals("None"))
+                //string Value = GetValues("SELECT * FROM AUTOLANDIA_VehicleList");
+                //if (!Value.Equals("None"))
+                //{
+                //    string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                //    for (int a = 0; a < Values.Length; a++)
+                //    {
+                //        string[] Split = Values[a].Split(';');
+                //        VehicleList.Add(new VehicleItem(Split[0].Split('=')[1], Split[1].Split('=')[1], Split[2].Split('=')[1], Split[3].Split('=')[1], Split[4].Split('=')[1]));
+                //    }
+                //}
+
+                using (SqlDataReader Reader = Command.ExecuteReader())
                 {
-                    string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                    for (int a = 0; a < Values.Length; a++)
+                    while (Reader.Read())
                     {
-                        string[] Split = Values[a].Split(';');
-                        VehicleList.Add(new VehicleItem(Split[0].Split('=')[1], Split[1].Split('=')[1], Split[2].Split('=')[1], Split[3].Split('=')[1], Split[4].Split('=')[1]));
+                        VehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4)));
                     }
                 }
             }
@@ -58,16 +74,26 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             CustomerList.Clear();
 
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_CustomerList", SQL);
+
             try
             {
-                string Value = GetValues("SELECT * FROM AUTOLANDIA_CustomerList");
-                if (!Value.Equals("None"))
+                //string Value = GetValues("SELECT * FROM AUTOLANDIA_CustomerList");
+                //if (!Value.Equals("None"))
+                //{
+                //    string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                //    for (int a = 0; a < Values.Length; a++)
+                //    {
+                //        string[] Split = Values[a].Split(';');
+                //        CustomerList.Add(new CustomerItem(Split[0].Split('=')[1], Split[1].Split('=')[1]));
+                //    }
+                //}
+
+                using (SqlDataReader Reader = Command.ExecuteReader())
                 {
-                    string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                    for (int a = 0; a < Values.Length; a++)
+                    while (Reader.Read())
                     {
-                        string[] Split = Values[a].Split(';');
-                        CustomerList.Add(new CustomerItem(Split[0].Split('=')[1], Split[1].Split('=')[1]));
+                        CustomerList.Add(new CustomerItem(Reader.GetString(0), Reader.GetString(1)));
                     }
                 }
             }
@@ -81,13 +107,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             ActivityList.Clear();
 
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList", SQL);
+
             try
             {
-                string Value = GetValues("SELECT * FROM AUTOLANDIA_ActivityList");
-                string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                for (int a = 0; a < Values.Length; a++)
+                //string Value = GetValues("SELECT * FROM AUTOLANDIA_ActivityList");
+                //string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
+                //for (int a = 0; a < Values.Length; a++)
+                //{
+                //    ActivityList.Add(Values[a].Split('=')[1].Split(';')[0]);
+                //}
+
+                using (SqlDataReader Reader = Command.ExecuteReader())
                 {
-                    ActivityList.Add(Values[a].Split('=')[1]);
+                    while (Reader.Read())
+                    {
+                        ActivityList.Add(Reader.GetString(0));
+                    }
                 }
             }
             catch (Exception exception)
@@ -96,96 +132,107 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public class Do
-        {
-            Thread Thread;
-            bool IsDone = false;
+        //public class Do
+        //{
+        //    Thread Thread;
+        //    bool IsDone = false;
 
-            public Do(Action Action)
+        //    public Do(Action Action)
+        //    {
+        //        Thread = new Thread(new ThreadStart(() =>
+        //        {
+        //            Action();
+        //            IsDone = true;
+        //        }));
+        //        Thread.Start();
+        //    }
+
+        //    public Do(Action Action, int Delay)
+        //    {
+        //        Thread.Sleep(Delay);
+        //        Thread = new Thread(new ThreadStart(() =>
+        //        {
+        //            Action();
+        //            IsDone = true;
+        //        }));
+        //        Thread.Start();
+        //    }
+
+        //    public void AfterDo(Action Action)
+        //    {
+        //        System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+        //        Timer.Interval = 1;
+        //        Timer.Tick += (s, e) =>
+        //        {
+        //            if (IsDone)
+        //            {
+        //                Timer.Stop();
+        //                Action();
+        //            }
+        //        };
+        //        Timer.Start();
+        //    }
+        //}
+
+        public static void RecordActivity(string Message/*, Action Todo*/)
+        {
+            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')", SQL);
+
+            try
             {
-                Thread = new Thread(new ThreadStart(() =>
-                {
-                    Action();
-                    IsDone = true;
-                }));
-                Thread.Start();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
             }
 
-            public Do(Action Action, int Delay)
-            {
-                Thread.Sleep(Delay);
-                Thread = new Thread(new ThreadStart(() =>
-                {
-                    Action();
-                    IsDone = true;
-                }));
-                Thread.Start();
-            }
-
-            public void AfterDo(Action Action)
-            {
-                System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
-                Timer.Interval = 1;
-                Timer.Tick += (s, e) =>
-                {
-                    if (IsDone)
-                    {
-                        Timer.Stop();
-                        Action();
-                    }
-                };
-                Timer.Start();
-            }
+            //new Do(() =>
+            //{
+            //    string Query = $"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')";
+            //    NewQuery(Query);
+            //})
+            //.AfterDo(() =>
+            //{
+            //    Todo();
+            //});
         }
 
-        public static void RecordActivity(string Message, Action Todo)
-        {
-            new Do(() =>
-            {
-                string Query = $"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')";
-                NewQuery(Query);
-            })
-            .AfterDo(() =>
-            {
-                Todo();
-            });
-        }
+        //public static string GetValues(string Query)
+        //{
+        //    string Response = string.Empty;
+        //    using (IWebDriver Driver = SeleniumDriver())
+        //    {
+        //        Driver.Navigate().GoToUrl("https://remotephpmysqldbaccess.wuaze.com/get.php?get=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(Query)));
+        //        IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
+        //        Response = (string)js.ExecuteScript("return document.body.innerText");
+        //        Driver.Quit();
+        //    }
+        //    return Response.Equals("None") ? "None" : Response.Substring(4);
+        //}
 
-        public static string GetValues(string Query)
-        {
-            string Response = string.Empty;
-            using (IWebDriver Driver = SeleniumDriver())
-            {
-                Driver.Navigate().GoToUrl("https://remotephpmysqldbaccess.wuaze.com/get.php?get=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(Query)));
-                IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
-                Response = (string)js.ExecuteScript("return document.body.innerText");
-                Driver.Quit();
-            }
-            return Response.Equals("None") ? "None" : Response.Substring(4);
-        }
+        //public static void NewQuery(string Query)
+        //{
+        //    using (IWebDriver Driver = SeleniumDriver())
+        //    {
+        //        Driver.Navigate().GoToUrl("https://remotephpmysqldbaccess.wuaze.com/query.php?query=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(Query)));
+        //        IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
+        //        string Response = (string)js.ExecuteScript("return document.body.innerText");
+        //        Driver.Quit();
+        //    }
+        //}
 
-        public static void NewQuery(string Query)
-        {
-            using (IWebDriver Driver = SeleniumDriver())
-            {
-                Driver.Navigate().GoToUrl("https://remotephpmysqldbaccess.wuaze.com/query.php?query=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(Query)));
-                IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
-                string Response = (string)js.ExecuteScript("return document.body.innerText");
-                Driver.Quit();
-            }
-        }
-
-        static IWebDriver SeleniumDriver()
-        {
-            var DriverService = ChromeDriverService.CreateDefaultService();
-            DriverService.HideCommandPromptWindow = true;
-            var Options = new ChromeOptions();
-            Options.AddArgument("--headless");
-            Options.AddArgument("--disable-gpu");
-            Options.AddArgument("--no-sandbox");
-            Options.AddArgument("--disable-dev-shm-usage");
-            return new ChromeDriver(DriverService, Options);
-        }
+        //static IWebDriver SeleniumDriver()
+        //{
+        //    var DriverService = ChromeDriverService.CreateDefaultService();
+        //    DriverService.HideCommandPromptWindow = true;
+        //    var Options = new ChromeOptions();
+        //    Options.AddArgument("--headless");
+        //    Options.AddArgument("--disable-gpu");
+        //    Options.AddArgument("--no-sandbox");
+        //    Options.AddArgument("--disable-dev-shm-usage");
+        //    return new ChromeDriver(DriverService, Options);
+        //}
 
         public class VehicleItem
         {

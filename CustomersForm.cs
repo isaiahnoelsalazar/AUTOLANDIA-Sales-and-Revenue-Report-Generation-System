@@ -18,22 +18,34 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public void RefreshCustomers()
         {
-            new Do(() =>
+            RecreateCustomerList();
+
+            CustomerTable.Items.Clear();
+            foreach (CustomerItem Customer in CustomerList)
             {
-                RecreateCustomerList();
-            })
-            .AfterDo(() =>
+                CustomerTable.Items.Add(new ListViewItem(new string[] { Customer.Name, Customer.PlateNumbers }));
+            }
+            foreach (ColumnHeader ColumnHeader in CustomerTable.Columns)
             {
-                CustomerTable.Items.Clear();
-                foreach (CustomerItem Customer in CustomerList)
-                {
-                    CustomerTable.Items.Add(new ListViewItem(new string[] { Customer.Name, Customer.PlateNumbers }));
-                }
-                foreach (ColumnHeader ColumnHeader in CustomerTable.Columns)
-                {
-                    ColumnHeader.Width = -2;
-                }
-            });
+                ColumnHeader.Width = -2;
+            }
+
+            //new Do(() =>
+            //{
+            //    RecreateCustomerList();
+            //})
+            //.AfterDo(() =>
+            //{
+            //    CustomerTable.Items.Clear();
+            //    foreach (CustomerItem Customer in CustomerList)
+            //    {
+            //        CustomerTable.Items.Add(new ListViewItem(new string[] { Customer.Name, Customer.PlateNumbers }));
+            //    }
+            //    foreach (ColumnHeader ColumnHeader in CustomerTable.Columns)
+            //    {
+            //        ColumnHeader.Width = -2;
+            //    }
+            //});
         }
 
         private void AddNewCustomerButton_Click(object sender, EventArgs e)

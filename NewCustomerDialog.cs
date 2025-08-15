@@ -1,6 +1,8 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
 using System;
+using System.Data.SqlClient;
+using System.Reflection;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -38,21 +40,32 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new customer: {Name}", () =>
-                    {
-                        new Do(() =>
-                        {
-                            string Query = $"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{Name}', '(None)')";
-                            NewQuery(Query);
-                        })
-                        .AfterDo(() =>
-                        {
-                            MaterialMessageBox.Show("Successfully added new customer!", "Notice");
-                            CustomersForm.RefreshCustomers();
-                            GlobalActivityRecordForm.RefreshActivities();
-                            Close();
-                        });
-                    });
+                    //RecordActivity($"Added new customer: {Name}", () =>
+                    //{
+                    //    new Do(() =>
+                    //    {
+                    //        string Query = $"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{Name}', '(None)')";
+                    //        NewQuery(Query);
+                    //    })
+                    //    .AfterDo(() =>
+                    //    {
+                    //        MaterialMessageBox.Show("Successfully added new customer!", "Notice");
+                    //        CustomersForm.RefreshCustomers();
+                    //        GlobalActivityRecordForm.RefreshActivities();
+                    //        Close();
+                    //    });
+                    //});
+
+                    RecordActivity($"Added new customer: {Name}");
+
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{Name}', '(None)')", SQL);
+
+                    Command.ExecuteNonQuery();
+
+                    MaterialMessageBox.Show("Successfully added new customer!", "Notice");
+                    CustomersForm.RefreshCustomers();
+                    GlobalActivityRecordForm.RefreshActivities();
+                    Close();
                 }
                 catch (Exception exception)
                 {
