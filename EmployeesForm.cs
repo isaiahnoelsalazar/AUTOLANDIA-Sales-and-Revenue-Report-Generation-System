@@ -56,6 +56,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
+                        RecordActivity($"Employee \"{f_EmployeeName}\" timed in");
+
                         SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeIn = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
 
                         Command.ExecuteNonQuery();
@@ -65,6 +67,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         TimeOut.ForeColor = Color.White;
                         TimeOut.BackColor = Color.FromArgb(200, 0, 0);
                         TimeOut.Enabled = true;
+
+                        GlobalActivityRecordForm.RefreshActivities();
                     }
                     catch (Exception exception)
                     {
@@ -80,12 +84,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
+                        RecordActivity($"Employee \"{f_EmployeeName}\" timed out");
+
                         SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
 
                         Command.ExecuteNonQuery();
 
                         TimeOut.BackColor = SystemColors.Control;
                         TimeOut.Enabled = false;
+
+                        GlobalActivityRecordForm.RefreshActivities();
                     }
                     catch (Exception exception)
                     {
