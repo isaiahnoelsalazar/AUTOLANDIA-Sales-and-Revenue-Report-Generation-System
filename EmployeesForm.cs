@@ -101,6 +101,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 };
 
+                if (Employee.TimeIn.Equals("true"))
+                {
+                    TimeIn.BackColor = SystemColors.Control;
+                    TimeIn.Enabled = false;
+                    TimeOut.ForeColor = Color.White;
+                    TimeOut.BackColor = Color.FromArgb(200, 0, 0);
+                    TimeOut.Enabled = true;
+                }
+                if (Employee.TimeOut.Equals("true"))
+                {
+                    TimeOut.BackColor = SystemColors.Control;
+                    TimeOut.Enabled = false;
+                }
+
                 MaterialLabel Date = new MaterialLabel();
                 Date.Text = Employee.DateRecorded;
                 Date.Dock = DockStyle.Fill;

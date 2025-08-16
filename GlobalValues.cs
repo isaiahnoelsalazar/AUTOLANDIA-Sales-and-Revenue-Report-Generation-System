@@ -6,9 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
