@@ -58,7 +58,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         RecordActivity($"Employee \"{f_EmployeeName}\" timed in");
 
-                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeIn = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
+                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeIn = '{DateTime.Now.ToString("g")}" +
+                            $"' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
 
                         Command.ExecuteNonQuery();
 
@@ -86,7 +87,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         RecordActivity($"Employee \"{f_EmployeeName}\" timed out");
 
-                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
+                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{DateTime.Now.ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{f_EmployeeName}' AND CONVERT(VARCHAR, DateRecorded)='{f_DateRecorded}'", SQL);
 
                         Command.ExecuteNonQuery();
 
@@ -101,7 +102,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 };
 
-                if (Employee.TimeIn.Equals("true"))
+                if (!Employee.TimeIn.Equals(""))
                 {
                     TimeIn.BackColor = SystemColors.Control;
                     TimeIn.Enabled = false;
@@ -109,7 +110,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     TimeOut.BackColor = Color.FromArgb(200, 0, 0);
                     TimeOut.Enabled = true;
                 }
-                if (Employee.TimeOut.Equals("true"))
+                if (!Employee.TimeOut.Equals(""))
                 {
                     TimeOut.BackColor = SystemColors.Control;
                     TimeOut.Enabled = false;

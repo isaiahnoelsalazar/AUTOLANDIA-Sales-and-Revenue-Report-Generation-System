@@ -11,10 +11,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public class GlobalValues
     {
-        //public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
-        //public static string database = "Initial Catalog=saiasamazingaspsite_mainDBALL;";
-        //public static string username = "User ID=saiasamazingaspsite_mainDBALL;";
-        //public static string password = "Password=saiasamazingaspsite_mainDBALLPW;";
         public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
         public static string database = "Initial Catalog=saiasamazingaspsite_SampleDB;";
         public static string username = "User ID=saiasamazingaspsite_SampleDB;";
@@ -145,7 +141,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
-                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = 'true' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{DateTime.Now.Date.ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
                         SqlCommand Command2 = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
 
                         Command1.ExecuteNonQuery();
