@@ -31,9 +31,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     SQL.Open();
 
-                    SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList", SQL);
+                    SqlCommand Command1 = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList", SQL);
+                    SqlCommand Command2 = new SqlCommand("SELECT * FROM AUTOLANDIA_ServiceList", SQL);
+                    SqlCommand Command3 = new SqlCommand("SELECT * FROM AUTOLANDIA_PackageList", SQL);
 
-                    using (SqlDataReader Reader = Command.ExecuteReader())
+                    using (SqlDataReader Reader = Command1.ExecuteReader())
                     {
                         while (Reader.Read())
                         {
@@ -41,7 +43,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
-                    ProgressBar.Increment(20);
+                    ProgressBar.Increment(5);
+
+                    using (SqlDataReader Reader = Command2.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            ServiceList.Add(new ServiceItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetDouble(3)));
+                        }
+                        ServiceList.Reverse();
+                    }
+
+                    ProgressBar.Increment(5);
+
+                    using (SqlDataReader Reader = Command3.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            PackageList.Add(new PackageItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetDouble(4)));
+                        }
+                    }
+
+                    ProgressBar.Increment(10);
 
                     //new Do(() =>
                     //{

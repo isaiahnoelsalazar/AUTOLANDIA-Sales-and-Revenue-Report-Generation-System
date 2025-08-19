@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -17,6 +18,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static string password = "Password=DBSamplePW;";
         public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
 
+        public static List<ServiceItem> ServiceList = new List<ServiceItem>();
+        public static List<PackageItem> PackageList = new List<PackageItem>();
+        public static List<OrderItem> OrderList = new List<OrderItem>();
         public static List<VehicleItem> VehicleList = new List<VehicleItem>();
         public static List<CustomerItem> CustomerList = new List<CustomerItem>();
         public static List<EmployeeItem> EmployeeList = new List<EmployeeItem>();
@@ -61,6 +65,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     while (Reader.Read())
                     {
                         VehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4)));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
+        public static void RecreateOrderList()
+        {
+            OrderList.Clear();
+
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_OrderList", SQL);
+            try
+            {
+                using (SqlDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        OrderList.Add(new OrderItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetDouble(5), Reader.GetString(6), Reader.GetString(7)));
                     }
                 }
             }
@@ -424,6 +449,155 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 get { return dateRecorded; }
                 set { dateRecorded = value; }
+            }
+        }
+
+        public class OrderItem
+        {
+            string orderId, employeeName, plateNumber, serviceIdList, packageIdList, paymentMethodName, dateCreated;
+            double orderBalance;
+
+            public OrderItem(string orderId, string employeeName, string plateNumber, string serviceIdList, string packageIdList, double orderBalance, string paymentMethodName, string dateCreated)
+            {
+                this.orderId = orderId;
+                this.employeeName = employeeName;
+                this.plateNumber = plateNumber;
+                this.serviceIdList = serviceIdList;
+                this.packageIdList = packageIdList;
+                this.orderBalance = orderBalance;
+                this.paymentMethodName = paymentMethodName;
+                this.dateCreated = dateCreated;
+            }
+
+            public string OrderId
+            {
+                get { return orderId; }
+                set { orderId = value; }
+            }
+
+            public string EmployeeName
+            {
+                get { return employeeName; }
+                set { employeeName = value; }
+            }
+
+            public string PlateNumber
+            {
+                get { return plateNumber; }
+                set { plateNumber = value; }
+            }
+
+            public string ServiceIdList
+            {
+                get { return serviceIdList; }
+                set { serviceIdList = value; }
+            }
+
+            public string PackageIdList
+            {
+                get { return packageIdList; }
+                set { packageIdList = value; }
+            }
+
+            public double OrderBalance
+            {
+                get { return orderBalance; }
+                set { orderBalance = value; }
+            }
+
+            public string PaymentMethodName
+            {
+                get { return paymentMethodName; }
+                set { paymentMethodName = value; }
+            }
+
+            public string DateCreated
+            {
+                get { return dateCreated; }
+                set { dateCreated = value; }
+            }
+        }
+
+        public class ServiceItem
+        {
+            string id, name, size;
+            double price;
+
+            public ServiceItem(string id, string name, string size, double price)
+            {
+                this.id = id;
+                this.name = name;
+                this.size = size;
+                this.price = price;
+            }
+
+            public string ID
+            {
+                get { return id; }
+                set { id = value; }
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            public string Size
+            {
+                get { return size; }
+                set { size = value; }
+            }
+
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
+            }
+        }
+
+        public class PackageItem
+        {
+            string id, name, details, size;
+            double price;
+
+            public PackageItem(string id, string name, string details, string size, double price)
+            {
+                this.id = id;
+                this.name = name;
+                this.details = details;
+                this.size = size;
+                this.price = price;
+            }
+
+            public string ID
+            {
+                get { return id; }
+                set { id = value; }
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            public string Details
+            {
+                get { return details; }
+                set { details = value; }
+            }
+
+            public string Size
+            {
+                get { return size; }
+                set { size = value; }
+            }
+
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
             }
         }
     }

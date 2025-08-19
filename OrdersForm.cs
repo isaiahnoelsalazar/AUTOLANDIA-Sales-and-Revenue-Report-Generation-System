@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -19,9 +20,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             OrderTable.Columns.Add("DateCreated", -2);
         }
 
+        public void RefreshOrders()
+        {
+            RecreateOrderList();
+
+            OrderTable.Items.Clear();
+
+            foreach (OrderItem Order in OrderList)
+            {
+                OrderTable.Items.Add(new ListViewItem(new string[] { Order.OrderId, Order.EmployeeName, Order.PlateNumber, Order.ServiceIdList, Order.PackageIdList, Order.OrderBalance.ToString(), Order.PaymentMethodName, Order.DateCreated }));
+            }
+            foreach (ColumnHeader ColumnHeader in OrderTable.Columns)
+            {
+                ColumnHeader.Width = -2;
+            }
+        }
+
         private void CreateNewOrderButton_Click(object sender, EventArgs e)
         {
-
+            new NewOrderDialog(this).ShowDialog();
         }
     }
 }
