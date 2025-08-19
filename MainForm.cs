@@ -40,6 +40,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TabButtons.Add(EmployeesTab);
             TabButtons.Add(ActivityRecordTab);
 
+            GlobalHomeForm = (HomeForm)Forms[0];
             GlobalOrdersForm = (OrdersForm)Forms[1];
             GlobalVehiclesForm = (VehiclesForm)Forms[2];
             GlobalCustomersForm = (CustomersForm)Forms[3];

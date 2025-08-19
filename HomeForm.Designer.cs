@@ -28,39 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            this.WeeklySalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.WeeklySalesChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialLabel1
+            // WeeklySalesChart
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(284, 119);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(41, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "home";
+            this.WeeklySalesChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.WeeklySalesChart.ChartAreas.Add(chartArea1);
+            this.WeeklySalesChart.Location = new System.Drawing.Point(17, 17);
+            this.WeeklySalesChart.Margin = new System.Windows.Forms.Padding(8);
+            this.WeeklySalesChart.Name = "WeeklySalesChart";
+            this.WeeklySalesChart.Size = new System.Drawing.Size(606, 326);
+            this.WeeklySalesChart.TabIndex = 0;
+            this.WeeklySalesChart.Text = "Weekly Sales";
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
-            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.WeeklySalesChart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
+            ((System.ComponentModel.ISupportInitialize)(this.WeeklySalesChart)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart WeeklySalesChart;
     }
 }

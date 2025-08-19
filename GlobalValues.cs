@@ -27,6 +27,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
         public static List<string> ActivityList = new List<string>();
 
+        public static HomeForm GlobalHomeForm;
         public static OrdersForm GlobalOrdersForm;
         public static VehiclesForm GlobalVehiclesForm;
         public static CustomersForm GlobalCustomersForm;
@@ -166,7 +167,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
-                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{DateTime.Now.Date.ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{LatestDate.Date.AddDays(1).AddMinutes(-1).ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
                         SqlCommand Command2 = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
 
                         Command1.ExecuteNonQuery();

@@ -18,6 +18,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             OrderTable.Columns.Add("OrderBalance", -2);
             OrderTable.Columns.Add("PaymentMethodName", -2);
             OrderTable.Columns.Add("DateCreated", -2);
+
+            RefreshOrders();
         }
 
         public void RefreshOrders()

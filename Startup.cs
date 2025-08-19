@@ -112,8 +112,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     //    //});
                     //});
 
+                    RecreateOrderList();
+                    ProgressBar.Increment(10);
+
                     RecreateVehicleList();
-                    ProgressBar.Increment(20);
+                    ProgressBar.Increment(10);
 
                     RecreateCustomerList();
                     ProgressBar.Increment(20);

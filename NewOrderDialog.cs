@@ -149,6 +149,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     MaterialMessageBox.Show("Successfully added new order!", "Notice");
                     OrdersForm.RefreshOrders();
                     GlobalActivityRecordForm.RefreshActivities();
+                    GlobalHomeForm.RefreshHome();
                     Close();
                 }
                 catch (Exception exception)
