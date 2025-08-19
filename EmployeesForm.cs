@@ -133,5 +133,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             new NewEmployeeDialog(this).ShowDialog();
         }
+
+        private void SalaryCalcutationButton_Click(object sender, EventArgs e)
+        {
+            new SalaryCalculationDialog().ShowDialog();
+        }
     }
 }

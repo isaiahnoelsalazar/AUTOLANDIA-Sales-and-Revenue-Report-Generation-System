@@ -80,5 +80,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 MonthlySales.Points[a].SetValueY(TotalSales);
             }
         }
+
+        private void ViewWeeklySalesButton_Click(object sender, EventArgs e)
+        {
+            new ViewWeeklySalesDialog().ShowDialog();
+        }
+
+        private void ViewMonthlySalesButton_Click(object sender, EventArgs e)
+        {
+            new ViewMonthlySalesDialog().ShowDialog();
+        }
     }
 }

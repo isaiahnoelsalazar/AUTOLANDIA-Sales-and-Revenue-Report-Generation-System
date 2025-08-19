@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.WeeklySalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ViewWeeklySalesButton = new MaterialSkin.Controls.MaterialButton();
             this.MonthlySalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ViewWeeklySalesButton = new MaterialSkin.Controls.MaterialButton();
             this.ViewMonthlySalesButton = new MaterialSkin.Controls.MaterialButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.WeeklySalesChart)).BeginInit();
@@ -46,8 +46,8 @@
             // 
             // WeeklySalesChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.WeeklySalesChart.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.WeeklySalesChart.ChartAreas.Add(chartArea3);
             this.WeeklySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeeklySalesChart.Location = new System.Drawing.Point(0, 0);
             this.WeeklySalesChart.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -104,6 +104,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(610, 227);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // MonthlySalesChart
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.MonthlySalesChart.ChartAreas.Add(chartArea4);
+            this.MonthlySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MonthlySalesChart.Location = new System.Drawing.Point(309, 0);
+            this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.MonthlySalesChart.Name = "MonthlySalesChart";
+            this.MonthlySalesChart.Size = new System.Drawing.Size(301, 227);
+            this.MonthlySalesChart.TabIndex = 1;
+            this.MonthlySalesChart.Text = "Weekly Sales";
+            // 
             // ViewWeeklySalesButton
             // 
             this.ViewWeeklySalesButton.AutoSize = false;
@@ -124,18 +136,7 @@
             this.ViewWeeklySalesButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.ViewWeeklySalesButton.UseAccentColor = false;
             this.ViewWeeklySalesButton.UseVisualStyleBackColor = true;
-            // 
-            // MonthlySalesChart
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.MonthlySalesChart.ChartAreas.Add(chartArea2);
-            this.MonthlySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MonthlySalesChart.Location = new System.Drawing.Point(309, 0);
-            this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.MonthlySalesChart.Name = "MonthlySalesChart";
-            this.MonthlySalesChart.Size = new System.Drawing.Size(301, 227);
-            this.MonthlySalesChart.TabIndex = 1;
-            this.MonthlySalesChart.Text = "Weekly Sales";
+            this.ViewWeeklySalesButton.Click += new System.EventHandler(this.ViewWeeklySalesButton_Click);
             // 
             // ViewMonthlySalesButton
             // 
@@ -157,6 +158,7 @@
             this.ViewMonthlySalesButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.ViewMonthlySalesButton.UseAccentColor = false;
             this.ViewMonthlySalesButton.UseVisualStyleBackColor = true;
+            this.ViewMonthlySalesButton.Click += new System.EventHandler(this.ViewMonthlySalesButton_Click);
             // 
             // tableLayoutPanel2
             // 

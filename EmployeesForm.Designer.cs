@@ -33,6 +33,7 @@
             this.AddNewEmployeeButton = new MaterialSkin.Controls.MaterialButton();
             this.EmployeeTable = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SalaryCalcutationButton = new MaterialSkin.Controls.MaterialButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,11 +117,33 @@
             this.panel1.Size = new System.Drawing.Size(606, 271);
             this.panel1.TabIndex = 9;
             // 
+            // SalaryCalcutationButton
+            // 
+            this.SalaryCalcutationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SalaryCalcutationButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SalaryCalcutationButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SalaryCalcutationButton.Depth = 0;
+            this.SalaryCalcutationButton.HighEmphasis = true;
+            this.SalaryCalcutationButton.Icon = null;
+            this.SalaryCalcutationButton.Location = new System.Drawing.Point(271, 15);
+            this.SalaryCalcutationButton.Margin = new System.Windows.Forms.Padding(6);
+            this.SalaryCalcutationButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SalaryCalcutationButton.Name = "SalaryCalcutationButton";
+            this.SalaryCalcutationButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SalaryCalcutationButton.Size = new System.Drawing.Size(177, 36);
+            this.SalaryCalcutationButton.TabIndex = 10;
+            this.SalaryCalcutationButton.Text = "Salary calculation";
+            this.SalaryCalcutationButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SalaryCalcutationButton.UseAccentColor = false;
+            this.SalaryCalcutationButton.UseVisualStyleBackColor = true;
+            this.SalaryCalcutationButton.Click += new System.EventHandler(this.SalaryCalcutationButton_Click);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.SalaryCalcutationButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
@@ -142,5 +165,6 @@
         private MaterialSkin.Controls.MaterialButton AddNewEmployeeButton;
         private System.Windows.Forms.TableLayoutPanel EmployeeTable;
         private System.Windows.Forms.Panel panel1;
+        private MaterialSkin.Controls.MaterialButton SalaryCalcutationButton;
     }
 }

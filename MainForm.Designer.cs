@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.TabPanel = new System.Windows.Forms.Panel();
+            this.EmployeesTab = new MaterialSkin.Controls.MaterialButton();
             this.ActivityRecordTab = new MaterialSkin.Controls.MaterialButton();
             this.CustomersTab = new MaterialSkin.Controls.MaterialButton();
             this.VehiclesTab = new MaterialSkin.Controls.MaterialButton();
             this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
             this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
-            this.EmployeesTab = new MaterialSkin.Controls.MaterialButton();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,29 @@
             this.TabPanel.Size = new System.Drawing.Size(150, 720);
             this.TabPanel.TabIndex = 1;
             // 
+            // EmployeesTab
+            // 
+            this.EmployeesTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EmployeesTab.AutoSize = false;
+            this.EmployeesTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EmployeesTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.EmployeesTab.Depth = 0;
+            this.EmployeesTab.HighEmphasis = true;
+            this.EmployeesTab.Icon = null;
+            this.EmployeesTab.Location = new System.Drawing.Point(6, 255);
+            this.EmployeesTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
+            this.EmployeesTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.EmployeesTab.Name = "EmployeesTab";
+            this.EmployeesTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.EmployeesTab.Size = new System.Drawing.Size(138, 41);
+            this.EmployeesTab.TabIndex = 5;
+            this.EmployeesTab.Text = "Employees";
+            this.EmployeesTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.EmployeesTab.UseAccentColor = false;
+            this.EmployeesTab.UseVisualStyleBackColor = true;
+            this.EmployeesTab.Click += new System.EventHandler(this.EmployeesTab_Click);
+            // 
             // ActivityRecordTab
             // 
             this.ActivityRecordTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -73,7 +96,7 @@
             this.ActivityRecordTab.Name = "ActivityRecordTab";
             this.ActivityRecordTab.NoAccentTextColor = System.Drawing.Color.Empty;
             this.ActivityRecordTab.Size = new System.Drawing.Size(138, 41);
-            this.ActivityRecordTab.TabIndex = 5;
+            this.ActivityRecordTab.TabIndex = 6;
             this.ActivityRecordTab.Text = "Activity Record";
             this.ActivityRecordTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.ActivityRecordTab.UseAccentColor = false;
@@ -187,29 +210,6 @@
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseMove);
             this.Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseUp);
             // 
-            // EmployeesTab
-            // 
-            this.EmployeesTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmployeesTab.AutoSize = false;
-            this.EmployeesTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EmployeesTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EmployeesTab.Depth = 0;
-            this.EmployeesTab.HighEmphasis = true;
-            this.EmployeesTab.Icon = null;
-            this.EmployeesTab.Location = new System.Drawing.Point(6, 255);
-            this.EmployeesTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
-            this.EmployeesTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EmployeesTab.Name = "EmployeesTab";
-            this.EmployeesTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EmployeesTab.Size = new System.Drawing.Size(138, 41);
-            this.EmployeesTab.TabIndex = 6;
-            this.EmployeesTab.Text = "Employees";
-            this.EmployeesTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EmployeesTab.UseAccentColor = false;
-            this.EmployeesTab.UseVisualStyleBackColor = true;
-            this.EmployeesTab.Click += new System.EventHandler(this.EmployeesTab_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,7 +218,7 @@
             this.Controls.Add(this.TabPanel);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(150, 20, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
