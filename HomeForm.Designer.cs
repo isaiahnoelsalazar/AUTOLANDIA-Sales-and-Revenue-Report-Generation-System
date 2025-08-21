@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.WeeklySalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.GreetingLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MonthlySalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -46,8 +46,8 @@
             // 
             // WeeklySalesChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.WeeklySalesChart.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.WeeklySalesChart.ChartAreas.Add(chartArea1);
             this.WeeklySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeeklySalesChart.Location = new System.Drawing.Point(0, 0);
             this.WeeklySalesChart.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -58,19 +58,19 @@
             this.WeeklySalesChart.TabIndex = 0;
             this.WeeklySalesChart.Text = "Weekly Sales";
             // 
-            // materialLabel1
+            // GreetingLabel
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(15, 15);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(102, 29);
-            this.materialLabel1.TabIndex = 5;
-            this.materialLabel1.Text = "Summary";
+            this.GreetingLabel.AutoSize = true;
+            this.GreetingLabel.Depth = 0;
+            this.GreetingLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.GreetingLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.GreetingLabel.Location = new System.Drawing.Point(15, 15);
+            this.GreetingLabel.Margin = new System.Windows.Forms.Padding(6);
+            this.GreetingLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.GreetingLabel.Name = "GreetingLabel";
+            this.GreetingLabel.Size = new System.Drawing.Size(353, 29);
+            this.GreetingLabel.TabIndex = 5;
+            this.GreetingLabel.Text = "Good day! Here is your summary:";
             // 
             // materialDivider1
             // 
@@ -106,8 +106,8 @@
             // 
             // MonthlySalesChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.MonthlySalesChart.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.MonthlySalesChart.ChartAreas.Add(chartArea2);
             this.MonthlySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MonthlySalesChart.Location = new System.Drawing.Point(309, 0);
             this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
@@ -183,7 +183,7 @@
             this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.GreetingLabel);
             this.Controls.Add(this.materialDivider1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -201,7 +201,7 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart WeeklySalesChart;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel GreetingLabel;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private MaterialSkin.Controls.MaterialButton ViewWeeklySalesButton;

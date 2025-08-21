@@ -1,7 +1,6 @@
 ﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -65,52 +64,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
 
                     ProgressBar.Increment(10);
-
-                    //new Do(() =>
-                    //{
-                    //    string Value = GetValues("SELECT * FROM AUTOLANDIA_PaymentMethodList");
-                    //    if (!Value.Equals("None"))
-                    //    {
-                    //        string[] Values = Value.Split(new string[] { "row:" }, StringSplitOptions.None);
-                    //        for (int a = 0; a < Values.Length; a++)
-                    //        {
-                    //            PaymentMethodList.Add(new PaymentMethodItem(Values[a].Split('=')[1].Replace(";", "")));
-                    //        }
-                    //    }
-                    //})
-                    //.AfterDo(() =>
-                    //{
-                    //    ProgressBar.Increment(100);
-
-                    //    new Do(() =>
-                    //    {
-                    //        // nothing
-                    //    }, 1000)
-                    //    .AfterDo(() =>
-                    //    {
-                    //        new MainForm(this).Show();
-                    //    });
-
-                    //    //new Do(() =>
-                    //    //{
-                    //    //    RecreateVehicleList();
-                    //    //})
-                    //    //.AfterDo(() =>
-                    //    //{
-                    //    //    ProgressBar.Increment(33);
-
-                    //    //    new Do(() =>
-                    //    //    {
-                    //    //        RecreateCustomerList();
-                    //    //    })
-                    //    //    .AfterDo(() =>
-                    //    //    {
-                    //    //        ProgressBar.Increment(34);
-
-
-                    //    //    });
-                    //    //});
-                    //});
 
                     RecreateOrderList();
                     ProgressBar.Increment(10);

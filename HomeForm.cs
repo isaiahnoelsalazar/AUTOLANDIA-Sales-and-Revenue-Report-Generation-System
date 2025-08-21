@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -8,9 +9,32 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class HomeForm : Form
     {
+        string Time = string.Empty;
+
         public HomeForm()
         {
             InitializeComponent();
+
+            new Thread(new ThreadStart(() =>
+            {
+                while (true)
+                {
+                    int Hour = Convert.ToInt32(DateTime.Now.ToString("HH"));
+                    Time = Hour >= 12 ? Hour < 6 ? "evening" : "afternoon" : Hour < 4 ? "evening" : "morning";
+                    try
+                    {
+                        GreetingLabel.BeginInvoke((MethodInvoker)delegate ()
+                        {
+                            GreetingLabel.Text = $"Good {Time}! Here is your summary:";
+                        });
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                    Thread.Sleep(1000);
+                }
+            })).Start();
 
             RefreshHome();
         }
