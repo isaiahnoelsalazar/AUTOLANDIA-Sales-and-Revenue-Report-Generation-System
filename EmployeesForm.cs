@@ -69,6 +69,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         TimeOut.BackColor = Color.FromArgb(200, 0, 0);
                         TimeOut.Enabled = true;
 
+                        RecreateEmployeeList();
                         GlobalActivityRecordForm.RefreshActivities();
                     }
                     catch (Exception exception)
@@ -94,6 +95,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         TimeOut.BackColor = SystemColors.Control;
                         TimeOut.Enabled = false;
 
+                        RecreateEmployeeList();
                         GlobalActivityRecordForm.RefreshActivities();
                     }
                     catch (Exception exception)

@@ -32,7 +32,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (EmployeeItem Employee in EmployeeList)
             {
-                CB_Employees.Items.Add(Employee.EmployeeName);
+                if (DateTime.Parse(Employee.DateRecorded).ToString("d").Equals(DateTime.Now.Date.ToString("d")) &&
+                    !Employee.TimeIn.Equals("") && Employee.TimeOut.Equals(""))
+                {
+                    CB_Employees.Items.Add(Employee.EmployeeName);
+                }
             }
 
             foreach (PaymentMethodItem Method in PaymentMethodList)
