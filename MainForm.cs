@@ -106,6 +106,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             SelectTab(3);
         }
 
+        private void ActivityRecordTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(5);
+        }
+
+        private void EmployeesTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(4);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void Logo_MouseDown(object sender, MouseEventArgs e)
         {
             TabMove = true;
@@ -119,21 +134,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 Location = new Point(MousePosition.X - (CursorPosition.X - PanelLocation.X), MousePosition.Y - (CursorPosition.Y - PanelLocation.Y));
             }
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void ActivityRecordTab_Click(object sender, EventArgs e)
-        {
-            SelectTab(5);
-        }
-
-        private void EmployeesTab_Click(object sender, EventArgs e)
-        {
-            SelectTab(4);
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)
