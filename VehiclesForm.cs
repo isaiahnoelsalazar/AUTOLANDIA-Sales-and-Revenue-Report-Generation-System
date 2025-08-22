@@ -32,23 +32,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ColumnHeader.Width = -2;
             }
-
-            //new Do(() =>
-            //{
-            //    RecreateVehicleList();
-            //})
-            //.AfterDo(() =>
-            //{
-            //    VehicleTable.Items.Clear();
-            //    foreach (VehicleItem Vehicle in VehicleList)
-            //    {
-            //        VehicleTable.Items.Add(new ListViewItem(new string[] { Vehicle.Brand, Vehicle.Model, Vehicle.Size, Vehicle.PlateNumber, Vehicle.CustomerName }));
-            //    }
-            //    foreach (ColumnHeader ColumnHeader in VehicleTable.Columns)
-            //    {
-            //        ColumnHeader.Width = -2;
-            //    }
-            //});
         }
 
         private void AddNewVehicleButton_Click(object sender, EventArgs e)

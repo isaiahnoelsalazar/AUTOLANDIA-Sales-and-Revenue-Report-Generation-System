@@ -60,25 +60,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    //RecordActivity($"Unassigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"", () =>
-                    //{
-                    //    new Do(() =>
-                    //    {
-                    //        string Query = $"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerName='{CustomerName}'";
-                    //        string Query1 = $"UPDATE AUTOLANDIA_VehicleList SET CustomerName='(None)' WHERE PlateNumber='{PlateNumber}'";
-                    //        NewQuery(Query);
-                    //        NewQuery(Query1);
-                    //    })
-                    //    .AfterDo(() =>
-                    //    {
-                    //        MaterialMessageBox.Show("Successfully unassigned customer to a vehicle!", "Notice");
-                    //        CustomersForm.RefreshCustomers();
-                    //        GlobalVehiclesForm.RefreshVehicles();
-                    //        GlobalActivityRecordForm.RefreshActivities();
-                    //        Close();
-                    //    });
-                    //});
-
                     RecordActivity($"Unassigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"");
 
                     SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CONVERT(VARCHAR, CustomerName)='{CustomerName}'", SQL);

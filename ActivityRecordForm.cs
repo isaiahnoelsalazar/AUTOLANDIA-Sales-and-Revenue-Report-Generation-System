@@ -27,24 +27,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ColumnHeader.Width = -2;
             }
-
-            //new Do(() =>
-            //{
-            //    RecreateActivityList();
-            //})
-            //.AfterDo(() =>
-            //{
-            //    ActivityTable.Items.Clear();
-            //    foreach (string Activity in ActivityList)
-            //    {
-            //        ActivityTable.Items.Add(new ListViewItem(Activity));
-            //    }
-            //    foreach (ColumnHeader ColumnHeader in ActivityTable.Columns)
-            //    {
-            //        ColumnHeader.Width = -2;
-            //    }
-            //});
         }
-
     }
 }

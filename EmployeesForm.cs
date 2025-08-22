@@ -13,13 +13,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
-            //EmployeeTable.Columns.Add("EmployeeName", -2);
-            //EmployeeTable.Columns.Add("TimeIn", -2);
-            //EmployeeTable.Columns.Add("TimeOut", -2);
-            //EmployeeTable.Columns.Add("DateRecorded", -2);
-
-            //pictureBox1.Image = Resources.sample_employee_form;
-
             RefreshEmployees();
         }
 
