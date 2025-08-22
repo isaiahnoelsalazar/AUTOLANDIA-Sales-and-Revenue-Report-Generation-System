@@ -122,81 +122,131 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             DateTime Today = DateTime.Now;
 
+            string ErrorMessage = string.Empty;
+
             if (RB_Service.Checked)
             {
-                string ServiceIds = "[";
-                for (int a = 0; a < ServiceTable.Items.Count; a++)
+                if (CB_Employees.Text.Equals(""))
                 {
-                    foreach (ServiceItem Service in Temp)
+                    ErrorMessage += "Please select an employee.\n";
+                }
+                if (CB_Vehicles.Text.Equals(""))
+                {
+                    ErrorMessage += "Please select a vehicle.\n";
+                }
+                if (ServiceTable.Items.Count == 0)
+                {
+                    ErrorMessage += "Please select at least one service.\n";
+                }
+                if (CB_PaymentMethod.Text.Equals(""))
+                {
+                    ErrorMessage += "Please select a payment method.\n";
+                }
+
+                if (ErrorMessage.Equals(""))
+                {
+                    string ServiceIds = "[";
+                    for (int a = 0; a < ServiceTable.Items.Count; a++)
                     {
-                        if (ServiceTable.Items[a].Text.Equals(Service.Name) && Service.Size.Equals(SelectedVehicle.Size))
+                        foreach (ServiceItem Service in Temp)
                         {
-                            ServiceIds += Service.ID + ", ";
-                            break;
+                            if (ServiceTable.Items[a].Text.Equals(Service.Name) && Service.Size.Equals(SelectedVehicle.Size))
+                            {
+                                ServiceIds += Service.ID + ", ";
+                                break;
+                            }
                         }
                     }
+                    ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 2);
+                    ServiceIds += "]";
+
+                    try
+                    {
+                        DoneButton.Enabled = false;
+                        CancelButton.Enabled = false;
+
+                        RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
+
+                        SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '{ServiceIds}', '(None)', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
+
+                        Command.ExecuteNonQuery();
+
+                        MaterialMessageBox.Show("Successfully added new order!", "Notice");
+                        OrdersForm.RefreshOrders();
+                        GlobalActivityRecordForm.RefreshActivities();
+                        GlobalHomeForm.RefreshHome();
+                        Close();
+                    }
+                    catch (Exception exception)
+                    {
+                        MaterialMessageBox.Show(exception.Message, "Alert");
+                        DoneButton.Enabled = true;
+                        CancelButton.Enabled = true;
+                    }
                 }
-                ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 2);
-                ServiceIds += "]";
-
-                try
+                else
                 {
-                    DoneButton.Enabled = false;
-                    CancelButton.Enabled = false;
-
-                    RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
-
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '{ServiceIds}', '(None)', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
-
-                    Command.ExecuteNonQuery();
-
-                    MaterialMessageBox.Show("Successfully added new order!", "Notice");
-                    OrdersForm.RefreshOrders();
-                    GlobalActivityRecordForm.RefreshActivities();
-                    GlobalHomeForm.RefreshHome();
-                    Close();
-                }
-                catch (Exception exception)
-                {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                    DoneButton.Enabled = true;
-                    CancelButton.Enabled = true;
+                    MaterialMessageBox.Show(ErrorMessage, "Alert");
                 }
             }
             if (RB_Package.Checked)
             {
-                string PackageId = string.Empty;
-
-                foreach (PackageItem Package in PackageList)
+                if (CB_Employees.Text.Equals(""))
                 {
-                    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
+                    ErrorMessage += "Please select an employee.\n";
+                }
+                if (CB_Vehicles.Text.Equals(""))
+                {
+                    ErrorMessage += "Please select a vehicle.\n";
+                }
+                if (PackageTable.Items.Count == 0)
+                {
+                    ErrorMessage += "Please select a package.\n";
+                }
+                if (CB_PaymentMethod.Text.Equals(""))
+                {
+                    ErrorMessage += "Please select a payment method.\n";
+                }
+
+                if (ErrorMessage.Equals(""))
+                {
+                    string PackageId = string.Empty;
+
+                    foreach (PackageItem Package in PackageList)
                     {
-                        PackageId = Package.ID;
-                        break;
+                        if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
+                        {
+                            PackageId = Package.ID;
+                            break;
+                        }
+                    }
+
+                    try
+                    {
+                        DoneButton.Enabled = false;
+                        CancelButton.Enabled = false;
+
+                        RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
+
+                        SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '(None)', '{PackageId}', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
+
+                        Command.ExecuteNonQuery();
+
+                        MaterialMessageBox.Show("Successfully added new order!", "Notice");
+                        OrdersForm.RefreshOrders();
+                        GlobalActivityRecordForm.RefreshActivities();
+                        Close();
+                    }
+                    catch (Exception exception)
+                    {
+                        MaterialMessageBox.Show(exception.Message, "Alert");
+                        DoneButton.Enabled = true;
+                        CancelButton.Enabled = true;
                     }
                 }
-
-                try
+                else
                 {
-                    DoneButton.Enabled = false;
-                    CancelButton.Enabled = false;
-
-                    RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
-
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '(None)', '{PackageId}', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
-
-                    Command.ExecuteNonQuery();
-
-                    MaterialMessageBox.Show("Successfully added new order!", "Notice");
-                    OrdersForm.RefreshOrders();
-                    GlobalActivityRecordForm.RefreshActivities();
-                    Close();
-                }
-                catch (Exception exception)
-                {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                    DoneButton.Enabled = true;
-                    CancelButton.Enabled = true;
+                    MaterialMessageBox.Show(ErrorMessage, "Alert");
                 }
             }
         }
