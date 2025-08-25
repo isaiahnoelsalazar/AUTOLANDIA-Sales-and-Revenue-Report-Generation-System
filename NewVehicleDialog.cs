@@ -16,6 +16,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
 
             this.VehiclesForm = VehiclesForm;
+
+            foreach (VehicleItem Vehicle in VehicleList)
+            {
+                if (!CB_Brand.Items.Contains(Vehicle.Brand))
+                {
+                    CB_Brand.Items.Add(Vehicle.Brand);
+                }
+                if (!CB_Model.Items.Contains(Vehicle.Model))
+                {
+                    CB_Model.Items.Add(Vehicle.Model);
+                }
+            }
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -91,6 +103,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
             return "";
+        }
+
+        private void CB_Brand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TB_Brand.Text = CB_Brand.Text;
+        }
+
+        private void CB_Model_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TB_Model.Text = CB_Model.Text;
         }
     }
 }

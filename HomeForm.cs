@@ -20,7 +20,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 while (true)
                 {
                     int Hour = Convert.ToInt32(DateTime.Now.ToString("HH"));
-                    Time = Hour >= 12 ? Hour < 6 ? "evening" : "afternoon" : Hour < 4 ? "evening" : "morning";
+                    Time = Hour >= 12 ? Hour < 6 ? "afternoon" : "evening" : Hour < 4 ? "evening" : "morning";
                     try
                     {
                         GreetingLabel.BeginInvoke((MethodInvoker)delegate ()

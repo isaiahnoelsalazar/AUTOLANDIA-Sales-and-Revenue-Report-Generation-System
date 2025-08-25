@@ -44,6 +44,8 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.CB_Brand = new MaterialSkin.Controls.MaterialComboBox();
+            this.CB_Model = new MaterialSkin.Controls.MaterialComboBox();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -89,7 +91,7 @@
             this.TB_Brand.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Brand.Multiline = false;
             this.TB_Brand.Name = "TB_Brand";
-            this.TB_Brand.Size = new System.Drawing.Size(467, 50);
+            this.TB_Brand.Size = new System.Drawing.Size(415, 50);
             this.TB_Brand.TabIndex = 6;
             this.TB_Brand.Text = "";
             this.TB_Brand.TrailingIcon = null;
@@ -109,7 +111,7 @@
             this.TB_Model.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Model.Multiline = false;
             this.TB_Model.Name = "TB_Model";
-            this.TB_Model.Size = new System.Drawing.Size(467, 50);
+            this.TB_Model.Size = new System.Drawing.Size(415, 50);
             this.TB_Model.TabIndex = 7;
             this.TB_Model.Text = "";
             this.TB_Model.TrailingIcon = null;
@@ -308,11 +310,63 @@
             this.materialLabel5.TabIndex = 19;
             this.materialLabel5.Text = "Plate Number";
             // 
+            // CB_Brand
+            // 
+            this.CB_Brand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_Brand.AutoResize = false;
+            this.CB_Brand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CB_Brand.Depth = 0;
+            this.CB_Brand.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Brand.DropDownHeight = 174;
+            this.CB_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Brand.DropDownWidth = 121;
+            this.CB_Brand.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.CB_Brand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CB_Brand.FormattingEnabled = true;
+            this.CB_Brand.IntegralHeight = false;
+            this.CB_Brand.ItemHeight = 43;
+            this.CB_Brand.Location = new System.Drawing.Point(594, 91);
+            this.CB_Brand.Margin = new System.Windows.Forms.Padding(8);
+            this.CB_Brand.MaxDropDownItems = 4;
+            this.CB_Brand.MouseState = MaterialSkin.MouseState.OUT;
+            this.CB_Brand.Name = "CB_Brand";
+            this.CB_Brand.Size = new System.Drawing.Size(36, 49);
+            this.CB_Brand.StartIndex = 0;
+            this.CB_Brand.TabIndex = 20;
+            this.CB_Brand.SelectedIndexChanged += new System.EventHandler(this.CB_Brand_SelectedIndexChanged);
+            // 
+            // CB_Model
+            // 
+            this.CB_Model.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_Model.AutoResize = false;
+            this.CB_Model.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CB_Model.Depth = 0;
+            this.CB_Model.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Model.DropDownHeight = 174;
+            this.CB_Model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Model.DropDownWidth = 121;
+            this.CB_Model.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.CB_Model.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CB_Model.FormattingEnabled = true;
+            this.CB_Model.IntegralHeight = false;
+            this.CB_Model.ItemHeight = 43;
+            this.CB_Model.Location = new System.Drawing.Point(594, 153);
+            this.CB_Model.Margin = new System.Windows.Forms.Padding(8);
+            this.CB_Model.MaxDropDownItems = 4;
+            this.CB_Model.MouseState = MaterialSkin.MouseState.OUT;
+            this.CB_Model.Name = "CB_Model";
+            this.CB_Model.Size = new System.Drawing.Size(36, 49);
+            this.CB_Model.StartIndex = 0;
+            this.CB_Model.TabIndex = 21;
+            this.CB_Model.SelectedIndexChanged += new System.EventHandler(this.CB_Model_SelectedIndexChanged);
+            // 
             // NewVehicleDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 400);
+            this.Controls.Add(this.CB_Model);
+            this.Controls.Add(this.CB_Brand);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
@@ -358,5 +412,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialComboBox CB_Brand;
+        private MaterialSkin.Controls.MaterialComboBox CB_Model;
     }
 }

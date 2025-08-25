@@ -199,7 +199,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public static void RecordActivity(string Message/*, Action Todo*/)
+        public static void RecordActivity(string Message)
         {
             SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')", SQL);
 
