@@ -39,6 +39,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             SkinManager.ColorScheme = new ColorScheme(0, 0, Primary.Grey500, 0, TextShade.WHITE);
         }
 
+        public class EmployeeItemComparer : IComparer<EmployeeItem>
+        {
+            public int Compare(EmployeeItem a, EmployeeItem b)
+            {
+                return a.EmployeeName.CompareTo(b.EmployeeName);
+            }
+        }
+
         public static void RecreateVehicleList()
         {
             VehicleList.Clear();

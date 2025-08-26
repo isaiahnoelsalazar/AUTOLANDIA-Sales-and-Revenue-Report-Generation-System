@@ -1,7 +1,10 @@
 ﻿using MaterialSkin.Controls;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -24,7 +27,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             EmployeeTable.RowStyles.Clear();
             EmployeeTable.RowCount = 0;
 
-            foreach (EmployeeItem Employee in EmployeeList)
+            List<EmployeeItem> Temp = new List<EmployeeItem>(EmployeeList);
+            Temp.Sort(new EmployeeItemComparer());
+
+            foreach (EmployeeItem Employee in Temp)
             {
                 EmployeeTable.RowCount = EmployeeTable.RowCount + 1;
                 EmployeeTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 50f));
