@@ -39,11 +39,106 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             SkinManager.ColorScheme = new ColorScheme(0, 0, Primary.Grey500, 0, TextShade.WHITE);
         }
 
+        public class PaymentMethodItemComparer : IComparer<PaymentMethodItem>
+        {
+            public int Compare(PaymentMethodItem a, PaymentMethodItem b)
+            {
+                return a.Name.CompareTo(b.Name);
+            }
+        }
+
         public class EmployeeItemComparer : IComparer<EmployeeItem>
         {
             public int Compare(EmployeeItem a, EmployeeItem b)
             {
                 return a.EmployeeName.CompareTo(b.EmployeeName);
+            }
+        }
+
+        public class CustomerItemComparer : IComparer<CustomerItem>
+        {
+            int Type;
+
+            public CustomerItemComparer(int Type)
+            {
+                this.Type = Type;
+            }
+
+            public int Compare(CustomerItem a, CustomerItem b)
+            {
+                switch (Type)
+                {
+                    case 0:
+                        return a.Name.CompareTo(b.Name);
+                    case 1:
+                        return a.PlateNumbers.Equals("(None)") && b.PlateNumbers.Equals("(None)") ? a.Name.CompareTo(b.Name) : a.PlateNumbers.CompareTo(b.PlateNumbers);
+                    default:
+                        return 0;
+                }
+            }
+        }
+
+        public class VehicleItemComparer : IComparer<VehicleItem>
+        {
+            int Type;
+
+            public VehicleItemComparer(int Type)
+            {
+                this.Type = Type;
+            }
+
+            public int Compare(VehicleItem a, VehicleItem b)
+            {
+                switch (Type)
+                {
+                    case 0:
+                        return a.Brand.CompareTo(b.Brand);
+                    case 1:
+                        return a.Model.CompareTo(b.Model);
+                    case 2:
+                        return a.Size.CompareTo(b.Size);
+                    case 3:
+                        return a.PlateNumber.CompareTo(b.PlateNumber);
+                    case 4:
+                        return a.CustomerName.Equals("(None)") && b.CustomerName.Equals("(None)") ? a.Brand.CompareTo(b.Brand) : a.CustomerName.CompareTo(b.CustomerName);
+                    default:
+                        return 0;
+                }
+            }
+        }
+
+        public class OrderItemComparer : IComparer<OrderItem>
+        {
+            int Type;
+
+            public OrderItemComparer(int Type)
+            {
+                this.Type = Type;
+            }
+
+            public int Compare(OrderItem a, OrderItem b)
+            {
+                switch (Type)
+                {
+                    case 0:
+                        return a.OrderId.CompareTo(b.OrderId);
+                    case 1:
+                        return a.EmployeeName.CompareTo(b.EmployeeName);
+                    case 2:
+                        return a.PlateNumber.CompareTo(b.PlateNumber);
+                    case 3:
+                        return a.ServiceIdList.Equals("(None)") && b.ServiceIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.ServiceIdList.CompareTo(b.ServiceIdList);
+                    case 4:
+                        return a.PackageIdList.Equals("(None)") && b.PackageIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.PackageIdList.CompareTo(b.PackageIdList);
+                    case 5:
+                        return a.OrderBalance.CompareTo(b.OrderBalance);
+                    case 6:
+                        return a.PaymentMethodName.CompareTo(b.PaymentMethodName);
+                    case 7:
+                        return a.DateCreated.CompareTo(b.DateCreated);
+                    default:
+                        return 0;
+                }
             }
         }
 

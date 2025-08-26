@@ -29,7 +29,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             Temp.Reverse();
 
-            foreach (EmployeeItem Employee in EmployeeList)
+            List<EmployeeItem> TempEmployeeList = new List<EmployeeItem>(EmployeeList);
+            TempEmployeeList.Sort(new EmployeeItemComparer());
+
+            foreach (EmployeeItem Employee in TempEmployeeList)
             {
                 if (DateTime.Parse(Employee.DateRecorded).ToString("d").Equals(DateTime.Now.Date.ToString("d")) &&
                     !Employee.TimeIn.Equals("") && Employee.TimeOut.Equals(""))
@@ -38,12 +41,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            foreach (PaymentMethodItem Method in PaymentMethodList)
+            List<PaymentMethodItem> TempPaymentMethodList = new List<PaymentMethodItem>(PaymentMethodList);
+            TempPaymentMethodList.Sort(new PaymentMethodItemComparer());
+
+            foreach (PaymentMethodItem Method in TempPaymentMethodList)
             {
                 CB_PaymentMethod.Items.Add(Method.Name);
             }
 
-            foreach (VehicleItem Vehicle in VehicleList)
+            List<VehicleItem> TempVehicleList = new List<VehicleItem>(VehicleList);
+            TempVehicleList.Sort(new VehicleItemComparer(4));
+
+            foreach (VehicleItem Vehicle in TempVehicleList)
             {
                 if (!Vehicle.CustomerName.Equals("(None)"))
                 {
