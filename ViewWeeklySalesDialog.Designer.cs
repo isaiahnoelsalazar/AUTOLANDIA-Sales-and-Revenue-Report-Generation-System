@@ -30,6 +30,7 @@
         {
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.WeeklySalesTable = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -60,11 +61,26 @@
             this.materialDivider1.TabIndex = 9;
             this.materialDivider1.Text = "materialDivider1";
             // 
+            // WeeklySalesTable
+            // 
+            this.WeeklySalesTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WeeklySalesTable.HideSelection = false;
+            this.WeeklySalesTable.Location = new System.Drawing.Point(9, 97);
+            this.WeeklySalesTable.Margin = new System.Windows.Forms.Padding(8);
+            this.WeeklySalesTable.Name = "WeeklySalesTable";
+            this.WeeklySalesTable.Size = new System.Drawing.Size(622, 292);
+            this.WeeklySalesTable.TabIndex = 10;
+            this.WeeklySalesTable.UseCompatibleStateImageBehavior = false;
+            this.WeeklySalesTable.View = System.Windows.Forms.View.Details;
+            // 
             // ViewWeeklySalesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 400);
+            this.Controls.Add(this.WeeklySalesTable);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -81,5 +97,6 @@
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private System.Windows.Forms.ListView WeeklySalesTable;
     }
 }
