@@ -136,6 +136,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            new SettingsForm().ShowDialog();
+        }
+
         private void Logo_MouseUp(object sender, MouseEventArgs e)
         {
             TabMove = false;

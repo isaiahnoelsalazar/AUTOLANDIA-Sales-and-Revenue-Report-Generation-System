@@ -36,6 +36,7 @@
             this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
             this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.SettingsButton = new MaterialSkin.Controls.MaterialButton();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +45,7 @@
             // 
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.TabPanel.Controls.Add(this.SettingsButton);
             this.TabPanel.Controls.Add(this.EmployeesTab);
             this.TabPanel.Controls.Add(this.ActivityRecordTab);
             this.TabPanel.Controls.Add(this.CustomersTab);
@@ -210,6 +212,29 @@
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseMove);
             this.Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseUp);
             // 
+            // SettingsButton
+            // 
+            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingsButton.AutoSize = false;
+            this.SettingsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SettingsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SettingsButton.Depth = 0;
+            this.SettingsButton.HighEmphasis = true;
+            this.SettingsButton.Icon = null;
+            this.SettingsButton.Location = new System.Drawing.Point(6, 673);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(6);
+            this.SettingsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SettingsButton.Size = new System.Drawing.Size(138, 41);
+            this.SettingsButton.TabIndex = 7;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SettingsButton.UseAccentColor = false;
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +263,7 @@
         private MaterialSkin.Controls.MaterialButton VehiclesTab;
         private MaterialSkin.Controls.MaterialButton ActivityRecordTab;
         private MaterialSkin.Controls.MaterialButton EmployeesTab;
+        private MaterialSkin.Controls.MaterialButton SettingsButton;
     }
 }
 

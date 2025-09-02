@@ -1,6 +1,6 @@
 ﻿namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    partial class ViewMonthlySalesDialog
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.MonthlySalesTable = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -43,9 +42,9 @@
             this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 16, 6, 6);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(149, 29);
-            this.materialLabel1.TabIndex = 10;
-            this.materialLabel1.Text = "Monthly sales";
+            this.materialLabel1.Size = new System.Drawing.Size(88, 29);
+            this.materialLabel1.TabIndex = 8;
+            this.materialLabel1.Text = "Settings";
             // 
             // materialDivider1
             // 
@@ -57,37 +56,22 @@
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(622, 2);
-            this.materialDivider1.TabIndex = 11;
+            this.materialDivider1.Size = new System.Drawing.Size(624, 2);
+            this.materialDivider1.TabIndex = 9;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // MonthlySalesTable
-            // 
-            this.MonthlySalesTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MonthlySalesTable.HideSelection = false;
-            this.MonthlySalesTable.Location = new System.Drawing.Point(9, 97);
-            this.MonthlySalesTable.Margin = new System.Windows.Forms.Padding(8);
-            this.MonthlySalesTable.Name = "MonthlySalesTable";
-            this.MonthlySalesTable.Size = new System.Drawing.Size(622, 292);
-            this.MonthlySalesTable.TabIndex = 12;
-            this.MonthlySalesTable.UseCompatibleStateImageBehavior = false;
-            this.MonthlySalesTable.View = System.Windows.Forms.View.Details;
-            // 
-            // ViewMonthlySalesDialog
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 400);
-            this.Controls.Add(this.MonthlySalesTable);
+            this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Name = "ViewMonthlySalesDialog";
+            this.Name = "SettingsForm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ViewMonthlySalesDialog";
+            this.Text = "SettingsForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +81,5 @@
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private System.Windows.Forms.ListView MonthlySalesTable;
     }
 }
