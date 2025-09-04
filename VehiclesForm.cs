@@ -79,5 +79,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             new NewVehicleDialog(this).ShowDialog();
         }
+
+        private void EditTableValuesButton_Click(object sender, EventArgs e)
+        {
+            new EditVehiclesDataForm(this).ShowDialog();
+        }
     }
 }

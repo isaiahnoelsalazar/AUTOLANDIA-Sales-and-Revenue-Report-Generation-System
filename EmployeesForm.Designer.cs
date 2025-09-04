@@ -34,6 +34,7 @@
             this.EmployeeTable = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SalaryCalcutationButton = new MaterialSkin.Controls.MaterialButton();
+            this.EditTableValuesButton = new MaterialSkin.Controls.MaterialButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(610, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(765, 2);
             this.materialDivider1.TabIndex = 5;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -73,7 +74,7 @@
             this.AddNewEmployeeButton.Depth = 0;
             this.AddNewEmployeeButton.HighEmphasis = true;
             this.AddNewEmployeeButton.Icon = null;
-            this.AddNewEmployeeButton.Location = new System.Drawing.Point(460, 15);
+            this.AddNewEmployeeButton.Location = new System.Drawing.Point(615, 15);
             this.AddNewEmployeeButton.Margin = new System.Windows.Forms.Padding(6);
             this.AddNewEmployeeButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AddNewEmployeeButton.Name = "AddNewEmployeeButton";
@@ -100,7 +101,7 @@
             this.EmployeeTable.Name = "EmployeeTable";
             this.EmployeeTable.RowCount = 1;
             this.EmployeeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.EmployeeTable.Size = new System.Drawing.Size(606, 0);
+            this.EmployeeTable.Size = new System.Drawing.Size(761, 0);
             this.EmployeeTable.TabIndex = 8;
             // 
             // panel1
@@ -114,7 +115,7 @@
             this.panel1.Location = new System.Drawing.Point(17, 72);
             this.panel1.Margin = new System.Windows.Forms.Padding(8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(606, 271);
+            this.panel1.Size = new System.Drawing.Size(761, 271);
             this.panel1.TabIndex = 9;
             // 
             // SalaryCalcutationButton
@@ -125,7 +126,7 @@
             this.SalaryCalcutationButton.Depth = 0;
             this.SalaryCalcutationButton.HighEmphasis = true;
             this.SalaryCalcutationButton.Icon = null;
-            this.SalaryCalcutationButton.Location = new System.Drawing.Point(271, 15);
+            this.SalaryCalcutationButton.Location = new System.Drawing.Point(426, 15);
             this.SalaryCalcutationButton.Margin = new System.Windows.Forms.Padding(6);
             this.SalaryCalcutationButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SalaryCalcutationButton.Name = "SalaryCalcutationButton";
@@ -138,11 +139,33 @@
             this.SalaryCalcutationButton.UseVisualStyleBackColor = true;
             this.SalaryCalcutationButton.Click += new System.EventHandler(this.SalaryCalcutationButton_Click);
             // 
+            // EditTableValuesButton
+            // 
+            this.EditTableValuesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditTableValuesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EditTableValuesButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.EditTableValuesButton.Depth = 0;
+            this.EditTableValuesButton.HighEmphasis = true;
+            this.EditTableValuesButton.Icon = null;
+            this.EditTableValuesButton.Location = new System.Drawing.Point(256, 15);
+            this.EditTableValuesButton.Margin = new System.Windows.Forms.Padding(6);
+            this.EditTableValuesButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.EditTableValuesButton.Name = "EditTableValuesButton";
+            this.EditTableValuesButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.EditTableValuesButton.Size = new System.Drawing.Size(158, 36);
+            this.EditTableValuesButton.TabIndex = 11;
+            this.EditTableValuesButton.Text = "Edit table values";
+            this.EditTableValuesButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.EditTableValuesButton.UseAccentColor = false;
+            this.EditTableValuesButton.UseVisualStyleBackColor = true;
+            this.EditTableValuesButton.Click += new System.EventHandler(this.EditTableValuesButton_Click);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(795, 360);
+            this.Controls.Add(this.EditTableValuesButton);
             this.Controls.Add(this.SalaryCalcutationButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialLabel1);
@@ -166,5 +189,6 @@
         private System.Windows.Forms.TableLayoutPanel EmployeeTable;
         private System.Windows.Forms.Panel panel1;
         private MaterialSkin.Controls.MaterialButton SalaryCalcutationButton;
+        private MaterialSkin.Controls.MaterialButton EditTableValuesButton;
     }
 }

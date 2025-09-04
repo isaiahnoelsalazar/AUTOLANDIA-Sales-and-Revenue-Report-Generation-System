@@ -211,7 +211,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             EmployeeList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
+            SqlCommand Command = new SqlCommand("SELECT DISTINCT CAST(EmployeeName AS nvarchar(MAX)), CAST(TimeIn AS nvarchar(MAX)), CAST(TimeOut AS nvarchar(MAX)), CAST(DateRecorded AS nvarchar(MAX)) FROM AUTOLANDIA_EmployeeList", SQL);
 
             List<string> EmployeeNames = new List<string>();
             DateTime LatestDate = new DateTime();
@@ -284,7 +284,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             ActivityList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList", SQL);
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList ORDER BY CAST(Message AS nvarchar(MAX)) ASC", SQL);
 
             try
             {
@@ -304,7 +304,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public static void RecordActivity(string Message)
         {
-            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{DateTime.Now.ToString() + " - " + Message}')", SQL);
+            DateTime Now = DateTime.Now;
+            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{Now.ToString("d") + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}" + " - " + Message}')", SQL);
 
             try
             {

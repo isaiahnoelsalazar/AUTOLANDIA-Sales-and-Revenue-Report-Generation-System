@@ -78,6 +78,30 @@
     <Compile Include="CustomersForm.Designer.cs">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditCustomersDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomersDataForm.Designer.cs">
+      <DependentUpon>EditCustomersDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEmployeesDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEmployeesDataForm.Designer.cs">
+      <DependentUpon>EditEmployeesDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditOrdersDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditOrdersDataForm.Designer.cs">
+      <DependentUpon>EditOrdersDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditVehiclesDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditVehiclesDataForm.Designer.cs">
+      <DependentUpon>EditVehiclesDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +209,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomersForm.resx">
       <DependentUpon>CustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCustomersDataForm.resx">
+      <DependentUpon>EditCustomersDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployeesDataForm.resx">
+      <DependentUpon>EditEmployeesDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditOrdersDataForm.resx">
+      <DependentUpon>EditOrdersDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditVehiclesDataForm.resx">
+      <DependentUpon>EditVehiclesDataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
