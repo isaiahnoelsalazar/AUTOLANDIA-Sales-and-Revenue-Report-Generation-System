@@ -14,13 +14,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
             this.NewOrderDialog = NewOrderDialog;
 
-            foreach (ServiceItem Service in ServiceList)
-            {
-                if (!InCheckedListBox(Service.Name))
-                {
-                    ServiceListCheckBox.Items.Add(Service.Name);
-                }
-            }
+            //foreach (ServiceItem Service in ServiceList)
+            //{
+            //    if (!InCheckedListBox(Service.Name))
+            //    {
+            //        ServiceListCheckBox.Items.Add(Service.Name);
+            //    }
+            //}
 
             if (NewOrderDialog.Checkedboxes != null)
             {

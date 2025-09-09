@@ -8,13 +8,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class NewCustomerDialog : MaterialForm
     {
-        CustomersForm CustomersForm;
+        PeopleForm PeopleForm;
 
-        public NewCustomerDialog(CustomersForm CustomersForm)
+        public NewCustomerDialog(PeopleForm PeopleForm)
         {
             InitializeComponent();
 
-            this.CustomersForm = CustomersForm;
+            this.PeopleForm = PeopleForm;
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -24,6 +24,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (Check.HasNumbers(TB_Name.Text) || Check.HasSymbols(TB_Name.Text))
             {
                 ErrorMessage += "Customer name cannot contain numbers nor symbols." + Environment.NewLine;
+            }
+            if (!Check.IsAValidPhilippineMobileNumber(TB_MobileNumber.Text) && !string.IsNullOrEmpty(TB_MobileNumber.Text))
+            {
+                ErrorMessage += "Mobile number is not valid. Use the prefixes \"09\", \"+639\", or \"639\"." + Environment.NewLine;
             }
             if (string.IsNullOrEmpty(TB_Name.Text))
             {
@@ -35,18 +39,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 try
                 {
                     string Name = TB_Name.Text.ToUpper();
+                    string MobileNumber = TB_MobileNumber.Text.ToUpper();
                     
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new customer: {Name}");
+                    RecordActivity($"Added new customer: {Name} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : MobileNumber)})");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerName, PlateNumbers) VALUES ('{Name}', '(None)')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, CustomerName, PlateNumbers, MobileNumber) VALUES ('{GlobalCustomerList.Count + 1}', '{Name}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}')", SQL);
 
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully added new customer!", "Notice");
-                    CustomersForm.RefreshCustomers();
+                    PeopleForm.RefreshCustomers();
                     GlobalActivityRecordForm.RefreshActivities();
                     Close();
                 }

@@ -23,50 +23,50 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             PackageLabel.Visible = false;
             CB_Packages.Visible = false;
 
-            foreach (ServiceItem Service in ServiceList)
-            {
-                Temp.Add(Service);
-            }
-            Temp.Reverse();
+            //foreach (ServiceItem Service in ServiceList)
+            //{
+            //    Temp.Add(Service);
+            //}
+            //Temp.Reverse();
 
-            List<EmployeeItem> TempEmployeeList = new List<EmployeeItem>(EmployeeList);
-            TempEmployeeList.Sort(new EmployeeItemComparer());
+            //List<EmployeeItem> TempEmployeeList = new List<EmployeeItem>(EmployeeList);
+            //TempEmployeeList.Sort(new EmployeeItemComparer());
 
-            foreach (EmployeeItem Employee in TempEmployeeList)
-            {
-                if (DateTime.Parse(Employee.DateRecorded).ToString("d").Equals(DateTime.Now.Date.ToString("d")) &&
-                    !Employee.TimeIn.Equals("") && Employee.TimeOut.Equals(""))
-                {
-                    CB_Employees.Items.Add(Employee.EmployeeName);
-                }
-            }
+            //foreach (EmployeeItem Employee in TempEmployeeList)
+            //{
+            //    if (DateTime.Parse(Employee.DateRecorded).ToString("d").Equals(DateTime.Now.Date.ToString("d")) &&
+            //        !Employee.TimeIn.Equals("") && Employee.TimeOut.Equals(""))
+            //    {
+            //        CB_Employees.Items.Add(Employee.EmployeeName);
+            //    }
+            //}
 
-            List<PaymentMethodItem> TempPaymentMethodList = new List<PaymentMethodItem>(PaymentMethodList);
-            TempPaymentMethodList.Sort(new PaymentMethodItemComparer());
+            //List<PaymentMethodItem> TempPaymentMethodList = new List<PaymentMethodItem>(PaymentMethodList);
+            //TempPaymentMethodList.Sort(new PaymentMethodItemComparer());
 
-            foreach (PaymentMethodItem Method in TempPaymentMethodList)
-            {
-                CB_PaymentMethod.Items.Add(Method.Name);
-            }
+            //foreach (PaymentMethodItem Method in TempPaymentMethodList)
+            //{
+            //    CB_PaymentMethod.Items.Add(Method.Name);
+            //}
 
-            List<VehicleItem> TempVehicleList = new List<VehicleItem>(VehicleList);
-            TempVehicleList.Sort(new VehicleItemComparer(4));
+            //List<VehicleItem> TempVehicleList = new List<VehicleItem>(VehicleList);
+            //TempVehicleList.Sort(new VehicleItemComparer(4));
 
-            foreach (VehicleItem Vehicle in TempVehicleList)
-            {
-                if (!Vehicle.CustomerName.Equals("(None)"))
-                {
-                    CB_Vehicles.Items.Add(Vehicle.CustomerName + ", " + Vehicle.PlateNumber + ", " + Vehicle.Brand + ", " + Vehicle.Model);
-                }
-            }
+            //foreach (VehicleItem Vehicle in TempVehicleList)
+            //{
+            //    if (!Vehicle.CustomerName.Equals("(None)"))
+            //    {
+            //        CB_Vehicles.Items.Add(Vehicle.CustomerName + ", " + Vehicle.PlateNumber + ", " + Vehicle.Brand + ", " + Vehicle.Model);
+            //    }
+            //}
 
-            foreach (PackageItem Package in PackageList)
-            {
-                if (!CB_Packages.Items.Contains(Package.Name))
-                {
-                    CB_Packages.Items.Add(Package.Name);
-                }
-            }
+            //foreach (PackageItem Package in PackageList)
+            //{
+            //    if (!CB_Packages.Items.Contains(Package.Name))
+            //    {
+            //        CB_Packages.Items.Add(Package.Name);
+            //    }
+            //}
         }
 
         public void SetServices(MaterialCheckedListBox.ItemsList Checkboxes)
@@ -107,14 +107,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 if (RB_Package.Checked)
                 {
-                    foreach (PackageItem Package in PackageList)
-                    {
-                        if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
-                        {
-                            Price += Package.Price;
-                            break;
-                        }
-                    }
+                    //foreach (PackageItem Package in PackageList)
+                    //{
+                    //    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
+                    //    {
+                    //        Price += Package.Price;
+                    //        break;
+                    //    }
+                    //}
                 }
             }
 
@@ -173,16 +173,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DoneButton.Enabled = false;
                         CancelButton.Enabled = false;
 
-                        RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
+                        //RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
 
-                        SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '{ServiceIds}', '(None)', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
+                        //SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '{ServiceIds}', '(None)', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
 
-                        Command.ExecuteNonQuery();
+                        //Command.ExecuteNonQuery();
 
                         MaterialMessageBox.Show("Successfully added new order!", "Notice");
                         OrdersForm.RefreshOrders();
                         GlobalActivityRecordForm.RefreshActivities();
-                        GlobalHomeForm.RefreshHome();
+                        //GlobalHomeForm.RefreshHome();
                         Close();
                     }
                     catch (Exception exception)
@@ -220,25 +220,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     string PackageId = string.Empty;
 
-                    foreach (PackageItem Package in PackageList)
-                    {
-                        if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
-                        {
-                            PackageId = Package.ID;
-                            break;
-                        }
-                    }
+                    //foreach (PackageItem Package in PackageList)
+                    //{
+                    //    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(SelectedVehicle.Size))
+                    //    {
+                    //        PackageId = Package.ID;
+                    //        break;
+                    //    }
+                    //}
 
                     try
                     {
                         DoneButton.Enabled = false;
                         CancelButton.Enabled = false;
 
-                        RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
+                        //RecordActivity($"Added new order with reference number: {OrderList.Count + 1}");
 
-                        SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '(None)', '{PackageId}', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
+                        //SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeName, PlateNumber, ServiceIdList, PackageIdList, OrderBalance, PaymentMethodName, DateCreated) VALUES ('{OrderList.Count + 1}', '{CB_Employees.Text}', '{SelectedVehicle.PlateNumber}', '(None)', '{PackageId}', {TB_Price.Text}, '{CB_PaymentMethod.Text}', '{Today.ToString()}')", SQL);
 
-                        Command.ExecuteNonQuery();
+                        //Command.ExecuteNonQuery();
 
                         MaterialMessageBox.Show("Successfully added new order!", "Notice");
                         OrdersForm.RefreshOrders();
@@ -292,13 +292,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void CB_Vehicles_TextChanged(object sender, EventArgs e)
         {
-            foreach (VehicleItem Vehicle in VehicleList)
-            {
-                if (CB_Vehicles.Text.Split(',')[0].Equals(Vehicle.CustomerName) && CB_Vehicles.Text.Split(',')[1].Trim().Equals(Vehicle.PlateNumber))
-                {
-                    SelectedVehicle = Vehicle;
-                }
-            }
+            //foreach (VehicleItem Vehicle in VehicleList)
+            //{
+            //    if (CB_Vehicles.Text.Split(',')[0].Equals(Vehicle.CustomerName) && CB_Vehicles.Text.Split(',')[1].Trim().Equals(Vehicle.PlateNumber))
+            //    {
+            //        SelectedVehicle = Vehicle;
+            //    }
+            //}
 
             RefreshPrice();
         }
@@ -307,17 +307,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             PackageTable.Items.Clear();
 
-            foreach (PackageItem Package in PackageList)
-            {
-                if (Package.Name.Equals(CB_Packages.Text))
-                {
-                    foreach (string Item in Package.Details.Split(','))
-                    {
-                        PackageTable.Items.Add(Item);
-                    }
-                    break;
-                }
-            }
+            //foreach (PackageItem Package in PackageList)
+            //{
+            //    if (Package.Name.Equals(CB_Packages.Text))
+            //    {
+            //        foreach (string Item in Package.Details.Split(','))
+            //        {
+            //            PackageTable.Items.Add(Item);
+            //        }
+            //        break;
+            //    }
+            //}
 
             RefreshPrice();
         }

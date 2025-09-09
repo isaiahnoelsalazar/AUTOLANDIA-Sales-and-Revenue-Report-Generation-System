@@ -1,7 +1,6 @@
 ﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
 using MaterialSkin.Controls;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -30,54 +29,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     SQL.Open();
 
-                    SqlCommand Command1 = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList", SQL);
-                    SqlCommand Command2 = new SqlCommand("SELECT * FROM AUTOLANDIA_ServiceList", SQL);
-                    SqlCommand Command3 = new SqlCommand("SELECT * FROM AUTOLANDIA_PackageList", SQL);
+                    RecreateGlobalPaymentMethodList();
+                    ProgressBar.Increment(10);
+                    
+                    RecreateGlobalServiceList();
+                    ProgressBar.Increment(15);
 
-                    using (SqlDataReader Reader = Command1.ExecuteReader())
-                    {
-                        while (Reader.Read())
-                        {
-                            PaymentMethodList.Add(new PaymentMethodItem(Reader.GetString(0)));
-                        }
-                    }
+                    RecreateGlobalPackageList();
+                    ProgressBar.Increment(15);
 
-                    ProgressBar.Increment(5);
-
-                    using (SqlDataReader Reader = Command2.ExecuteReader())
-                    {
-                        while (Reader.Read())
-                        {
-                            ServiceList.Add(new ServiceItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetDouble(3)));
-                        }
-                        ServiceList.Reverse();
-                    }
-
-                    ProgressBar.Increment(5);
-
-                    using (SqlDataReader Reader = Command3.ExecuteReader())
-                    {
-                        while (Reader.Read())
-                        {
-                            PackageList.Add(new PackageItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetDouble(4)));
-                        }
-                    }
-
+                    RecreateGlobalCustomerList();
                     ProgressBar.Increment(10);
 
-                    RecreateOrderList();
+                    RecreateGlobalVehicleList();
                     ProgressBar.Increment(10);
 
-                    RecreateVehicleList();
+                    RecreateGlobalEmployeeList();
+                    ProgressBar.Increment(10);
+                    
+                    RecreateGlobalEmployeeTimeList();
                     ProgressBar.Increment(10);
 
-                    RecreateCustomerList();
-                    ProgressBar.Increment(20);
-
-                    RecreateEmployeeList();
-                    ProgressBar.Increment(20);
-
-                    RecreateActivityList();
+                    RecreateGlobalActivityList();
                     ProgressBar.Increment(20);
 
                     Timer.Stop();
