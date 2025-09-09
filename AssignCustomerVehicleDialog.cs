@@ -5,12 +5,11 @@ using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    public partial class UnassignCustomerVehicleDialog : MaterialForm
+    public partial class AssignCustomerVehicleDialog : MaterialForm
     {
         CustomersForm CustomersForm;
-        bool VehicleChanged = false;
 
-        public UnassignCustomerVehicleDialog(CustomersForm CustomersForm)
+        public AssignCustomerVehicleDialog(CustomersForm CustomersForm)
         {
             InitializeComponent();
 
@@ -18,7 +17,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (VehicleItem Vehicle in VehicleList)
             {
-                if (!Vehicle.CustomerName.Equals("(None)"))
+                if (Vehicle.CustomerName.Equals("(None)"))
                 {
                     CB_Vehicles.Items.Add(Vehicle.PlateNumber + ", " + Vehicle.Brand + ", " + Vehicle.Model);
                 }
@@ -49,26 +48,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (!string.IsNullOrEmpty(Plate))
                         {
-                            if (!Plate.Equals(PlateNumber))
-                            {
-                                FinalCustomerPlateNumbers += Plate + ",";
-                            }
+                            FinalCustomerPlateNumbers += Plate + ",";
                         }
                     }
-                    FinalCustomerPlateNumbers = FinalCustomerPlateNumbers.Substring(0, FinalCustomerPlateNumbers.Length - 1) + "]";
+                    FinalCustomerPlateNumbers += PlateNumber + "]";
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Unassigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"");
+                    RecordActivity($"Assigned customer \"{CustomerName}\" to vehicle \"{PlateNumber}\"");
 
                     SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CONVERT(VARCHAR, CustomerName)='{CustomerName}'", SQL);
-                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerName='(None)' WHERE CONVERT(VARCHAR, PlateNumber)='{PlateNumber}'", SQL);
+                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerName='{CustomerName}' WHERE CONVERT(VARCHAR, PlateNumber)='{PlateNumber}'", SQL);
 
                     Command1.ExecuteNonQuery();
                     Command2.ExecuteNonQuery();
 
-                    MaterialMessageBox.Show("Successfully unassigned customer to a vehicle!", "Notice");
+                    MaterialMessageBox.Show("Successfully assigned customer to a vehicle!", "Notice");
                     CustomersForm.RefreshCustomers();
                     GlobalVehiclesForm.RefreshVehicles();
                     GlobalActivityRecordForm.RefreshActivities();
@@ -90,29 +86,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void CB_Customers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (VehicleChanged)
-            {
-                CB_Vehicles.Items.Clear();
-                foreach (VehicleItem Vehicle in VehicleList)
-                {
-                    if (Vehicle.CustomerName.Equals(CB_Customers.Text))
-                    {
-                        CB_Vehicles.Items.Add(Vehicle.PlateNumber + ", " + Vehicle.Brand + ", " + Vehicle.Model);
-                    }
-                }
-                VehicleChanged = false;
-            }
-        }
-
-        private void CB_Vehicles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CB_Customers.Text = VehicleList[CB_Vehicles.SelectedIndex].CustomerName;
-            CB_Customers.Refresh();
-            VehicleChanged = true;
         }
     }
 }

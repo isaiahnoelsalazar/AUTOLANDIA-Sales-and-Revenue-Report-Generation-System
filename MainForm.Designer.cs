@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.TabPanel = new System.Windows.Forms.Panel();
-            this.ReportsTab = new MaterialSkin.Controls.MaterialButton();
-            this.AccountButton = new MaterialSkin.Controls.MaterialButton();
-            this.ServicesAndPackagesTab = new MaterialSkin.Controls.MaterialButton();
+            this.EmployeesTab = new MaterialSkin.Controls.MaterialButton();
             this.ActivityRecordTab = new MaterialSkin.Controls.MaterialButton();
-            this.PeopleTab = new MaterialSkin.Controls.MaterialButton();
-            this.BillingTab = new MaterialSkin.Controls.MaterialButton();
-            this.TransactionsTab = new MaterialSkin.Controls.MaterialButton();
+            this.CustomersTab = new MaterialSkin.Controls.MaterialButton();
+            this.VehiclesTab = new MaterialSkin.Controls.MaterialButton();
+            this.OrdersTab = new MaterialSkin.Controls.MaterialButton();
             this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.SettingsButton = new MaterialSkin.Controls.MaterialButton();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -46,89 +45,42 @@
             // 
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TabPanel.Controls.Add(this.ReportsTab);
-            this.TabPanel.Controls.Add(this.AccountButton);
-            this.TabPanel.Controls.Add(this.ServicesAndPackagesTab);
+            this.TabPanel.Controls.Add(this.SettingsButton);
+            this.TabPanel.Controls.Add(this.EmployeesTab);
             this.TabPanel.Controls.Add(this.ActivityRecordTab);
-            this.TabPanel.Controls.Add(this.PeopleTab);
-            this.TabPanel.Controls.Add(this.BillingTab);
-            this.TabPanel.Controls.Add(this.TransactionsTab);
+            this.TabPanel.Controls.Add(this.CustomersTab);
+            this.TabPanel.Controls.Add(this.VehiclesTab);
+            this.TabPanel.Controls.Add(this.OrdersTab);
             this.TabPanel.Controls.Add(this.HomeTab);
             this.TabPanel.Controls.Add(this.Logo);
             this.TabPanel.Location = new System.Drawing.Point(0, 0);
             this.TabPanel.Margin = new System.Windows.Forms.Padding(0);
             this.TabPanel.Name = "TabPanel";
-            this.TabPanel.Size = new System.Drawing.Size(200, 720);
+            this.TabPanel.Size = new System.Drawing.Size(150, 720);
             this.TabPanel.TabIndex = 1;
             // 
-            // ReportsTab
+            // EmployeesTab
             // 
-            this.ReportsTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.EmployeesTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReportsTab.AutoSize = false;
-            this.ReportsTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ReportsTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.ReportsTab.Depth = 0;
-            this.ReportsTab.HighEmphasis = true;
-            this.ReportsTab.Icon = null;
-            this.ReportsTab.Location = new System.Drawing.Point(8, 378);
-            this.ReportsTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.ReportsTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ReportsTab.Name = "ReportsTab";
-            this.ReportsTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.ReportsTab.Size = new System.Drawing.Size(184, 50);
-            this.ReportsTab.TabIndex = 6;
-            this.ReportsTab.Text = "Reports";
-            this.ReportsTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.ReportsTab.UseAccentColor = false;
-            this.ReportsTab.UseVisualStyleBackColor = true;
-            this.ReportsTab.Click += new System.EventHandler(this.ReportsTab_Click);
-            // 
-            // AccountButton
-            // 
-            this.AccountButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AccountButton.AutoSize = false;
-            this.AccountButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AccountButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.AccountButton.Depth = 0;
-            this.AccountButton.HighEmphasis = true;
-            this.AccountButton.Icon = null;
-            this.AccountButton.Location = new System.Drawing.Point(8, 662);
-            this.AccountButton.Margin = new System.Windows.Forms.Padding(8);
-            this.AccountButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.AccountButton.Name = "AccountButton";
-            this.AccountButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.AccountButton.Size = new System.Drawing.Size(184, 50);
-            this.AccountButton.TabIndex = 8;
-            this.AccountButton.Text = "Account";
-            this.AccountButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.AccountButton.UseAccentColor = false;
-            this.AccountButton.UseVisualStyleBackColor = true;
-            this.AccountButton.Click += new System.EventHandler(this.AccountButton_Click);
-            // 
-            // ServicesAndPackagesTab
-            // 
-            this.ServicesAndPackagesTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ServicesAndPackagesTab.AutoSize = false;
-            this.ServicesAndPackagesTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ServicesAndPackagesTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.ServicesAndPackagesTab.Depth = 0;
-            this.ServicesAndPackagesTab.HighEmphasis = true;
-            this.ServicesAndPackagesTab.Icon = null;
-            this.ServicesAndPackagesTab.Location = new System.Drawing.Point(8, 204);
-            this.ServicesAndPackagesTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.ServicesAndPackagesTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ServicesAndPackagesTab.Name = "ServicesAndPackagesTab";
-            this.ServicesAndPackagesTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.ServicesAndPackagesTab.Size = new System.Drawing.Size(184, 50);
-            this.ServicesAndPackagesTab.TabIndex = 3;
-            this.ServicesAndPackagesTab.Text = "Services and Packages";
-            this.ServicesAndPackagesTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.ServicesAndPackagesTab.UseAccentColor = false;
-            this.ServicesAndPackagesTab.UseVisualStyleBackColor = true;
-            this.ServicesAndPackagesTab.Click += new System.EventHandler(this.ServicesAndPackagesTab_Click);
+            this.EmployeesTab.AutoSize = false;
+            this.EmployeesTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EmployeesTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.EmployeesTab.Depth = 0;
+            this.EmployeesTab.HighEmphasis = true;
+            this.EmployeesTab.Icon = null;
+            this.EmployeesTab.Location = new System.Drawing.Point(6, 255);
+            this.EmployeesTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
+            this.EmployeesTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.EmployeesTab.Name = "EmployeesTab";
+            this.EmployeesTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.EmployeesTab.Size = new System.Drawing.Size(138, 41);
+            this.EmployeesTab.TabIndex = 5;
+            this.EmployeesTab.Text = "Employees";
+            this.EmployeesTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.EmployeesTab.UseAccentColor = false;
+            this.EmployeesTab.UseVisualStyleBackColor = true;
+            this.EmployeesTab.Click += new System.EventHandler(this.EmployeesTab_Click);
             // 
             // ActivityRecordTab
             // 
@@ -140,87 +92,87 @@
             this.ActivityRecordTab.Depth = 0;
             this.ActivityRecordTab.HighEmphasis = true;
             this.ActivityRecordTab.Icon = null;
-            this.ActivityRecordTab.Location = new System.Drawing.Point(8, 436);
-            this.ActivityRecordTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.ActivityRecordTab.Location = new System.Drawing.Point(6, 302);
+            this.ActivityRecordTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
             this.ActivityRecordTab.MouseState = MaterialSkin.MouseState.HOVER;
             this.ActivityRecordTab.Name = "ActivityRecordTab";
             this.ActivityRecordTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.ActivityRecordTab.Size = new System.Drawing.Size(184, 50);
-            this.ActivityRecordTab.TabIndex = 7;
+            this.ActivityRecordTab.Size = new System.Drawing.Size(138, 41);
+            this.ActivityRecordTab.TabIndex = 6;
             this.ActivityRecordTab.Text = "Activity Record";
             this.ActivityRecordTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.ActivityRecordTab.UseAccentColor = false;
             this.ActivityRecordTab.UseVisualStyleBackColor = true;
             this.ActivityRecordTab.Click += new System.EventHandler(this.ActivityRecordTab_Click);
             // 
-            // PeopleTab
+            // CustomersTab
             // 
-            this.PeopleTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CustomersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PeopleTab.AutoSize = false;
-            this.PeopleTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PeopleTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.PeopleTab.Depth = 0;
-            this.PeopleTab.HighEmphasis = true;
-            this.PeopleTab.Icon = null;
-            this.PeopleTab.Location = new System.Drawing.Point(8, 146);
-            this.PeopleTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.PeopleTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.PeopleTab.Name = "PeopleTab";
-            this.PeopleTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.PeopleTab.Size = new System.Drawing.Size(184, 50);
-            this.PeopleTab.TabIndex = 2;
-            this.PeopleTab.Text = "People";
-            this.PeopleTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.PeopleTab.UseAccentColor = false;
-            this.PeopleTab.UseVisualStyleBackColor = true;
-            this.PeopleTab.Click += new System.EventHandler(this.PeopleTab_Click);
+            this.CustomersTab.AutoSize = false;
+            this.CustomersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CustomersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.CustomersTab.Depth = 0;
+            this.CustomersTab.HighEmphasis = true;
+            this.CustomersTab.Icon = null;
+            this.CustomersTab.Location = new System.Drawing.Point(6, 208);
+            this.CustomersTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
+            this.CustomersTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CustomersTab.Name = "CustomersTab";
+            this.CustomersTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.CustomersTab.Size = new System.Drawing.Size(138, 41);
+            this.CustomersTab.TabIndex = 4;
+            this.CustomersTab.Text = "Customers";
+            this.CustomersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.CustomersTab.UseAccentColor = false;
+            this.CustomersTab.UseVisualStyleBackColor = true;
+            this.CustomersTab.Click += new System.EventHandler(this.CustomersTab_Click);
             // 
-            // BillingTab
+            // VehiclesTab
             // 
-            this.BillingTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.VehiclesTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BillingTab.AutoSize = false;
-            this.BillingTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BillingTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BillingTab.Depth = 0;
-            this.BillingTab.HighEmphasis = true;
-            this.BillingTab.Icon = null;
-            this.BillingTab.Location = new System.Drawing.Point(8, 320);
-            this.BillingTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.BillingTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BillingTab.Name = "BillingTab";
-            this.BillingTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BillingTab.Size = new System.Drawing.Size(184, 50);
-            this.BillingTab.TabIndex = 5;
-            this.BillingTab.Text = "Billing";
-            this.BillingTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.BillingTab.UseAccentColor = false;
-            this.BillingTab.UseVisualStyleBackColor = true;
-            this.BillingTab.Click += new System.EventHandler(this.BillingTab_Click);
+            this.VehiclesTab.AutoSize = false;
+            this.VehiclesTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.VehiclesTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.VehiclesTab.Depth = 0;
+            this.VehiclesTab.HighEmphasis = true;
+            this.VehiclesTab.Icon = null;
+            this.VehiclesTab.Location = new System.Drawing.Point(6, 161);
+            this.VehiclesTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
+            this.VehiclesTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.VehiclesTab.Name = "VehiclesTab";
+            this.VehiclesTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.VehiclesTab.Size = new System.Drawing.Size(138, 41);
+            this.VehiclesTab.TabIndex = 3;
+            this.VehiclesTab.Text = "Vehicles";
+            this.VehiclesTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.VehiclesTab.UseAccentColor = false;
+            this.VehiclesTab.UseVisualStyleBackColor = true;
+            this.VehiclesTab.Click += new System.EventHandler(this.VehiclesTab_Click);
             // 
-            // TransactionsTab
+            // OrdersTab
             // 
-            this.TransactionsTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.OrdersTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TransactionsTab.AutoSize = false;
-            this.TransactionsTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TransactionsTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.TransactionsTab.Depth = 0;
-            this.TransactionsTab.HighEmphasis = true;
-            this.TransactionsTab.Icon = null;
-            this.TransactionsTab.Location = new System.Drawing.Point(8, 262);
-            this.TransactionsTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.TransactionsTab.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TransactionsTab.Name = "TransactionsTab";
-            this.TransactionsTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.TransactionsTab.Size = new System.Drawing.Size(184, 50);
-            this.TransactionsTab.TabIndex = 4;
-            this.TransactionsTab.Text = "Transactions";
-            this.TransactionsTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.TransactionsTab.UseAccentColor = false;
-            this.TransactionsTab.UseVisualStyleBackColor = true;
-            this.TransactionsTab.Click += new System.EventHandler(this.TransactionsTab_Click);
+            this.OrdersTab.AutoSize = false;
+            this.OrdersTab.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OrdersTab.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.OrdersTab.Depth = 0;
+            this.OrdersTab.HighEmphasis = true;
+            this.OrdersTab.Icon = null;
+            this.OrdersTab.Location = new System.Drawing.Point(6, 114);
+            this.OrdersTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
+            this.OrdersTab.MouseState = MaterialSkin.MouseState.HOVER;
+            this.OrdersTab.Name = "OrdersTab";
+            this.OrdersTab.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.OrdersTab.Size = new System.Drawing.Size(138, 41);
+            this.OrdersTab.TabIndex = 2;
+            this.OrdersTab.Text = "Orders";
+            this.OrdersTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.OrdersTab.UseAccentColor = false;
+            this.OrdersTab.UseVisualStyleBackColor = true;
+            this.OrdersTab.Click += new System.EventHandler(this.OrdersTab_Click);
             // 
             // HomeTab
             // 
@@ -232,12 +184,12 @@
             this.HomeTab.Depth = 0;
             this.HomeTab.HighEmphasis = true;
             this.HomeTab.Icon = null;
-            this.HomeTab.Location = new System.Drawing.Point(8, 88);
-            this.HomeTab.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.HomeTab.Location = new System.Drawing.Point(6, 67);
+            this.HomeTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
             this.HomeTab.MouseState = MaterialSkin.MouseState.HOVER;
             this.HomeTab.Name = "HomeTab";
             this.HomeTab.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.HomeTab.Size = new System.Drawing.Size(184, 50);
+            this.HomeTab.Size = new System.Drawing.Size(138, 41);
             this.HomeTab.TabIndex = 1;
             this.HomeTab.Text = "Home";
             this.HomeTab.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -252,13 +204,36 @@
             this.Logo.Location = new System.Drawing.Point(0, 0);
             this.Logo.Margin = new System.Windows.Forms.Padding(0);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(200, 80);
+            this.Logo.Size = new System.Drawing.Size(150, 61);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
             this.Logo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseDown);
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseMove);
             this.Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseUp);
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingsButton.AutoSize = false;
+            this.SettingsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SettingsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SettingsButton.Depth = 0;
+            this.SettingsButton.HighEmphasis = true;
+            this.SettingsButton.Icon = null;
+            this.SettingsButton.Location = new System.Drawing.Point(6, 673);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(6);
+            this.SettingsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SettingsButton.Size = new System.Drawing.Size(138, 41);
+            this.SettingsButton.TabIndex = 7;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SettingsButton.UseAccentColor = false;
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // MainForm
             // 
@@ -270,7 +245,7 @@
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.Padding = new System.Windows.Forms.Padding(200, 20, 0, 0);
+            this.Padding = new System.Windows.Forms.Padding(150, 20, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.TabPanel.ResumeLayout(false);
@@ -283,13 +258,12 @@
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Panel TabPanel;
         private MaterialSkin.Controls.MaterialButton HomeTab;
-        private MaterialSkin.Controls.MaterialButton TransactionsTab;
-        private MaterialSkin.Controls.MaterialButton PeopleTab;
-        private MaterialSkin.Controls.MaterialButton BillingTab;
+        private MaterialSkin.Controls.MaterialButton OrdersTab;
+        private MaterialSkin.Controls.MaterialButton CustomersTab;
+        private MaterialSkin.Controls.MaterialButton VehiclesTab;
         private MaterialSkin.Controls.MaterialButton ActivityRecordTab;
-        private MaterialSkin.Controls.MaterialButton ServicesAndPackagesTab;
-        private MaterialSkin.Controls.MaterialButton AccountButton;
-        private MaterialSkin.Controls.MaterialButton ReportsTab;
+        private MaterialSkin.Controls.MaterialButton EmployeesTab;
+        private MaterialSkin.Controls.MaterialButton SettingsButton;
     }
 }
 

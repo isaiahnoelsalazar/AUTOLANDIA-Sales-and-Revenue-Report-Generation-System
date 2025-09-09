@@ -8,26 +8,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class NewEmployeeDialog : MaterialForm
     {
-        PeopleForm PeopleForm;
+        EmployeesForm EmployeesForm;
 
-        public NewEmployeeDialog(PeopleForm PeopleForm)
+        public NewEmployeeDialog(EmployeesForm EmployeesForm)
         {
             InitializeComponent();
 
-            this.PeopleForm = PeopleForm;
+            this.EmployeesForm = EmployeesForm;
         }
 
-        private void DoneButton_Click(object sender, EventArgs e)
+        private void DoneButton_Click(object sender, System.EventArgs e)
         {
             string ErrorMessage = "";
 
             if (Check.HasNumbers(TB_Name.Text) || Check.HasSymbols(TB_Name.Text))
             {
                 ErrorMessage += "Employee name cannot contain numbers nor symbols." + Environment.NewLine;
-            }
-            if (!Check.IsAValidPhilippineMobileNumber(TB_MobileNumber.Text) && !string.IsNullOrEmpty(TB_MobileNumber.Text))
-            {
-                ErrorMessage += "Mobile number is not valid. Use the prefixes \"09\", \"+639\", or \"639\"." + Environment.NewLine;
             }
             if (string.IsNullOrEmpty(TB_Name.Text))
             {
@@ -39,19 +35,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 try
                 {
                     string Name = TB_Name.Text.ToUpper();
-                    string MobileNumber = TB_MobileNumber.Text.ToUpper();
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new employee: {Name} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : MobileNumber)})");
+                    RecordActivity($"Added new employee: {Name}");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeId, EmployeeName, MobileNumber) VALUES ('{GlobalEmployeeList.Count + 1}', '{Name}', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
 
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully added new employee!", "Notice");
-                    PeopleForm.RefreshEmployees();
+                    EmployeesForm.RefreshEmployees();
                     GlobalActivityRecordForm.RefreshActivities();
                     Close();
                 }

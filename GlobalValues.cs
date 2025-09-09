@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -14,19 +15,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static string password = "Password=DBSamplePW;";
         public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
 
-        public static List<ServiceItem> GlobalServiceList = new List<ServiceItem>();
-        public static List<PackageItem> GlobalPackageList = new List<PackageItem>();
-        public static List<OrderItem> GlobalOrderList = new List<OrderItem>();
-        public static List<VehicleItem> GlobalVehicleList = new List<VehicleItem>();
-        public static List<CustomerItem> GlobalCustomerList = new List<CustomerItem>();
-        public static List<EmployeeItem> GlobalEmployeeList = new List<EmployeeItem>();
-        public static List<EmployeeTimeItem> GlobalEmployeeTimeList = new List<EmployeeTimeItem>();
-        public static List<string> GlobalPaymentMethodList = new List<string>();
-        public static List<string> GlobalActivityList = new List<string>();
+        public static List<ServiceItem> ServiceList = new List<ServiceItem>();
+        public static List<PackageItem> PackageList = new List<PackageItem>();
+        public static List<OrderItem> OrderList = new List<OrderItem>();
+        public static List<VehicleItem> VehicleList = new List<VehicleItem>();
+        public static List<CustomerItem> CustomerList = new List<CustomerItem>();
+        public static List<EmployeeItem> EmployeeList = new List<EmployeeItem>();
+        public static List<PaymentMethodItem> PaymentMethodList = new List<PaymentMethodItem>();
+        public static List<string> ActivityList = new List<string>();
 
         public static HomeForm GlobalHomeForm;
-        public static PeopleForm GlobalPeopleForm;
-        public static ServicesAndPackagesForm GlobalServicesAndPackagesForm;
+        public static OrdersForm GlobalOrdersForm;
+        public static VehiclesForm GlobalVehiclesForm;
+        public static CustomersForm GlobalCustomersForm;
+        public static EmployeesForm GlobalEmployeesForm;
         public static ActivityRecordForm GlobalActivityRecordForm;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
@@ -37,21 +39,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             SkinManager.ColorScheme = new ColorScheme(0, 0, Primary.Grey500, 0, TextShade.WHITE);
         }
 
-        public class PaymentMethodItemComparer : IComparer<string>
+        public class PaymentMethodItemComparer : IComparer<PaymentMethodItem>
         {
-            public int Compare(string a, string b)
+            public int Compare(PaymentMethodItem a, PaymentMethodItem b)
             {
-                return a.CompareTo(b);
+                return a.Name.CompareTo(b.Name);
             }
         }
 
-        //public class EmployeeItemComparer : IComparer<EmployeeItem>
-        //{
-        //    public int Compare(EmployeeItem a, EmployeeItem b)
-        //    {
-        //        return a.EmployeeName.CompareTo(b.EmployeeName);
-        //    }
-        //}
+        public class EmployeeItemComparer : IComparer<EmployeeItem>
+        {
+            public int Compare(EmployeeItem a, EmployeeItem b)
+            {
+                return a.EmployeeName.CompareTo(b.EmployeeName);
+            }
+        }
 
         public class CustomerItemComparer : IComparer<CustomerItem>
         {
@@ -97,170 +99,54 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         return a.Size.CompareTo(b.Size);
                     case 3:
                         return a.PlateNumber.CompareTo(b.PlateNumber);
-                    //case 4:
-                    //    return a.CustomerName.Equals("(None)") && b.CustomerName.Equals("(None)") ? a.Brand.CompareTo(b.Brand) : a.CustomerName.CompareTo(b.CustomerName);
+                    case 4:
+                        return a.CustomerName.Equals("(None)") && b.CustomerName.Equals("(None)") ? a.Brand.CompareTo(b.Brand) : a.CustomerName.CompareTo(b.CustomerName);
                     default:
                         return 0;
                 }
             }
         }
 
-        //public class OrderItemComparer : IComparer<OrderItem>
-        //{
-        //    int Type;
-
-        //    public OrderItemComparer(int Type)
-        //    {
-        //        this.Type = Type;
-        //    }
-
-        //    public int Compare(OrderItem a, OrderItem b)
-        //    {
-        //        switch (Type)
-        //        {
-        //            case 0:
-        //                return a.OrderId.CompareTo(b.OrderId);
-        //            case 1:
-        //                return a.EmployeeName.CompareTo(b.EmployeeName);
-        //            case 2:
-        //                return a.PlateNumber.CompareTo(b.PlateNumber);
-        //            case 3:
-        //                return a.ServiceIdList.Equals("(None)") && b.ServiceIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.ServiceIdList.CompareTo(b.ServiceIdList);
-        //            case 4:
-        //                return a.PackageIdList.Equals("(None)") && b.PackageIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.PackageIdList.CompareTo(b.PackageIdList);
-        //            case 5:
-        //                return a.OrderBalance.CompareTo(b.OrderBalance);
-        //            case 6:
-        //                return a.PaymentMethodName.CompareTo(b.PaymentMethodName);
-        //            case 7:
-        //                return a.DateCreated.CompareTo(b.DateCreated);
-        //            default:
-        //                return 0;
-        //        }
-        //    }
-        //}
-
-        //public static void RecreateVehicleList()
-        //{
-        //    VehicleList.Clear();
-
-        //    SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleList", SQL);
-
-        //    try
-        //    {
-        //        using (SqlDataReader Reader = Command.ExecuteReader())
-        //        {
-        //            while (Reader.Read())
-        //            {
-        //                VehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4)));
-        //            }
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        MaterialMessageBox.Show(exception.Message, "Alert");
-        //    }
-        //}
-
-        //public static void RecreateOrderList()
-        //{
-        //    OrderList.Clear();
-
-        //    SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_OrderList", SQL);
-        //    try
-        //    {
-        //        using (SqlDataReader Reader = Command.ExecuteReader())
-        //        {
-        //            while (Reader.Read())
-        //            {
-        //                OrderList.Add(new OrderItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetDouble(5), Reader.GetString(6), Reader.GetString(7)));
-        //            }
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        MaterialMessageBox.Show(exception.Message, "Alert");
-        //    }
-        //}
-
-        //public static void RecreateEmployeeList()
-        //{
-        //    EmployeeList.Clear();
-
-        //    SqlCommand Command = new SqlCommand("SELECT DISTINCT CAST(EmployeeName AS nvarchar(MAX)), CAST(TimeIn AS nvarchar(MAX)), CAST(TimeOut AS nvarchar(MAX)), CAST(DateRecorded AS nvarchar(MAX)) FROM AUTOLANDIA_EmployeeList", SQL);
-
-        //    List<string> EmployeeNames = new List<string>();
-        //    DateTime LatestDate = new DateTime();
-
-        //    try
-        //    {
-        //        using (SqlDataReader Reader = Command.ExecuteReader())
-        //        {
-        //            while (Reader.Read())
-        //            {
-        //                EmployeeNames.Add(Reader.GetString(0));
-        //                LatestDate = DateTime.Parse(Reader.GetString(3));
-        //                //EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
-        //            }
-        //        }
-
-        //        EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
-        //            .Select(Group => Group.LastOrDefault())
-        //            .ToList();
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        MaterialMessageBox.Show(exception.Message, "Alert");
-        //    }
-
-        //    if (DateTime.Now.Date.CompareTo(LatestDate) > 0)
-        //    {
-        //        EmployeeList.Clear();
-
-        //        foreach (string Name in EmployeeNames)
-        //        {
-        //            try
-        //            {
-        //                SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{LatestDate.Date.AddDays(1).AddMinutes(-1).ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
-        //                SqlCommand Command2 = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
-
-        //                Command1.ExecuteNonQuery();
-        //                Command2.ExecuteNonQuery();
-        //            }
-        //            catch (Exception exception)
-        //            {
-        //                MaterialMessageBox.Show(exception.Message, "Alert");
-        //            }
-        //        }
-
-        //        SqlCommand Command3 = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
-
-        //        try
-        //        {
-        //            using (SqlDataReader Reader = Command3.ExecuteReader())
-        //            {
-        //                while (Reader.Read())
-        //                {
-        //                    //EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
-        //                }
-        //            }
-
-        //            EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
-        //                .Select(Group => Group.LastOrDefault())
-        //                .ToList();
-        //        }
-        //        catch (Exception exception)
-        //        {
-        //            MaterialMessageBox.Show(exception.Message, "Alert");
-        //        }
-        //    }
-        //}
-
-        public static void RecreateGlobalPaymentMethodList()
+        public class OrderItemComparer : IComparer<OrderItem>
         {
-            GlobalPaymentMethodList.Clear();
+            int Type;
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList ORDER BY PaymentMethodName ASC", SQL);
+            public OrderItemComparer(int Type)
+            {
+                this.Type = Type;
+            }
+
+            public int Compare(OrderItem a, OrderItem b)
+            {
+                switch (Type)
+                {
+                    case 0:
+                        return a.OrderId.CompareTo(b.OrderId);
+                    case 1:
+                        return a.EmployeeName.CompareTo(b.EmployeeName);
+                    case 2:
+                        return a.PlateNumber.CompareTo(b.PlateNumber);
+                    case 3:
+                        return a.ServiceIdList.Equals("(None)") && b.ServiceIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.ServiceIdList.CompareTo(b.ServiceIdList);
+                    case 4:
+                        return a.PackageIdList.Equals("(None)") && b.PackageIdList.Equals("(None)") ? a.OrderId.CompareTo(b.OrderId) : a.PackageIdList.CompareTo(b.PackageIdList);
+                    case 5:
+                        return a.OrderBalance.CompareTo(b.OrderBalance);
+                    case 6:
+                        return a.PaymentMethodName.CompareTo(b.PaymentMethodName);
+                    case 7:
+                        return a.DateCreated.CompareTo(b.DateCreated);
+                    default:
+                        return 0;
+                }
+            }
+        }
+
+        public static void RecreateVehicleList()
+        {
+            VehicleList.Clear();
+
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleList", SQL);
 
             try
             {
@@ -268,7 +154,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalPaymentMethodList.Add(Reader.GetString(0));
+                        VehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4)));
                     }
                 }
             }
@@ -278,19 +164,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public static void RecreateGlobalPackageList()
+        public static void RecreateOrderList()
         {
-            GlobalPackageList.Clear();
+            OrderList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PackageList", SQL);
-
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_OrderList", SQL);
             try
             {
                 using (SqlDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
-                        GlobalPackageList.Add(new PackageItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetDouble(4)));
+                        OrderList.Add(new OrderItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetDouble(5), Reader.GetString(6), Reader.GetString(7)));
                     }
                 }
             }
@@ -300,11 +185,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public static void RecreateGlobalServiceList()
+        public static void RecreateCustomerList()
         {
-            GlobalServiceList.Clear();
+            CustomerList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ServiceList", SQL);
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_CustomerList", SQL);
 
             try
             {
@@ -312,7 +197,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalServiceList.Add(new ServiceItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetDouble(3)));
+                        CustomerList.Add(new CustomerItem(Reader.GetString(0), Reader.GetString(1)));
                     }
                 }
             }
@@ -322,11 +207,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public static void RecreateGlobalEmployeeList()
+        public static void RecreateEmployeeList()
         {
-            GlobalEmployeeList.Clear();
+            EmployeeList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList ORDER BY EmployeeId ASC", SQL);
+            SqlCommand Command = new SqlCommand("SELECT DISTINCT CAST(EmployeeName AS nvarchar(MAX)), CAST(TimeIn AS nvarchar(MAX)), CAST(TimeOut AS nvarchar(MAX)), CAST(DateRecorded AS nvarchar(MAX)) FROM AUTOLANDIA_EmployeeList", SQL);
+
+            List<string> EmployeeNames = new List<string>();
+            DateTime LatestDate = new DateTime();
 
             try
             {
@@ -334,65 +222,69 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalEmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2)));
+                        EmployeeNames.Add(Reader.GetString(0));
+                        LatestDate = DateTime.Parse(Reader.GetString(3));
+                        EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
                     }
                 }
+
+                EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
+                    .Select(Group => Group.LastOrDefault())
+                    .ToList();
             }
             catch (Exception exception)
             {
                 MaterialMessageBox.Show(exception.Message, "Alert");
             }
-        }
 
-        public static void RecreateGlobalEmployeeTimeList()
-        {
-            GlobalEmployeeTimeList.Clear();
-
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeTimeList ORDER BY EmployeeId ASC", SQL);
-
-            try
+            if (DateTime.Now.Date.CompareTo(LatestDate) > 0)
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                EmployeeList.Clear();
+
+                foreach (string Name in EmployeeNames)
                 {
-                    while (Reader.Read())
+                    try
                     {
-                        GlobalEmployeeTimeList.Add(new EmployeeTimeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET TimeOut = '{LatestDate.Date.AddDays(1).AddMinutes(-1).ToString("g")}' WHERE CONVERT(VARCHAR, EmployeeName)='{Name}' AND CONVERT(VARCHAR, DateRecorded)='{LatestDate.ToString("d")}'", SQL);
+                        SqlCommand Command2 = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeName, TimeIn, TimeOut, DateRecorded) VALUES ('{Name}', '', '', '{DateTime.Now.Date.ToString("d")}')", SQL);
+
+                        Command1.ExecuteNonQuery();
+                        Command2.ExecuteNonQuery();
+                    }
+                    catch (Exception exception)
+                    {
+                        MaterialMessageBox.Show(exception.Message, "Alert");
                     }
                 }
-            }
-            catch (Exception exception)
-            {
-                MaterialMessageBox.Show(exception.Message, "Alert");
-            }
-        }
 
-        public static void RecreateGlobalCustomerList()
-        {
-            GlobalCustomerList.Clear();
+                SqlCommand Command3 = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_CustomerList ORDER BY CustomerId ASC", SQL);
-
-            try
-            {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                try
                 {
-                    while (Reader.Read())
+                    using (SqlDataReader Reader = Command3.ExecuteReader())
                     {
-                        GlobalCustomerList.Add(new CustomerItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                        while (Reader.Read())
+                        {
+                            EmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                        }
                     }
+
+                    EmployeeList = EmployeeList.GroupBy(E => E.EmployeeName)
+                        .Select(Group => Group.LastOrDefault())
+                        .ToList();
+                }
+                catch (Exception exception)
+                {
+                    MaterialMessageBox.Show(exception.Message, "Alert");
                 }
             }
-            catch (Exception exception)
-            {
-                MaterialMessageBox.Show(exception.Message, "Alert");
-            }
         }
 
-        public static void RecreateGlobalVehicleList()
+        public static void RecreateActivityList()
         {
-            GlobalVehicleList.Clear();
+            ActivityList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleList ORDER BY VehicleId ASC", SQL);
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList ORDER BY CAST(Message AS nvarchar(MAX)) ASC", SQL);
 
             try
             {
@@ -400,29 +292,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalVehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5)));
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                MaterialMessageBox.Show(exception.Message, "Alert");
-            }
-        }
-
-        public static void RecreateGlobalActivityList()
-        {
-            GlobalActivityList.Clear();
-
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList ORDER BY Message DESC", SQL);
-
-            try
-            {
-                using (SqlDataReader Reader = Command.ExecuteReader())
-                {
-                    while (Reader.Read())
-                    {
-                        GlobalActivityList.Add(Reader.GetString(0));
+                        ActivityList.Add(Reader.GetString(0));
                     }
                 }
             }
@@ -435,7 +305,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static void RecordActivity(string Message)
         {
             DateTime Now = DateTime.Now;
-            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}" + " - " + Message}')", SQL);
+            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{Now.ToString("d") + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}" + " - " + Message}')", SQL);
 
             try
             {
@@ -444,6 +314,275 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             catch (Exception exception)
             {
                 MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
+        public class VehicleItem
+        {
+            string brand, model, size, plateNumber, customerName;
+
+            public VehicleItem(string brand, string model, string size, string plateNumber, string customerName)
+            {
+                this.brand = brand;
+                this.model = model;
+                this.size = size;
+                this.plateNumber = plateNumber;
+                this.customerName = customerName;
+            }
+
+            public string Brand
+            {
+                get { return brand; }
+                set { brand = value; }
+            }
+
+            public string Model
+            {
+                get { return model; }
+                set { model = value; }
+            }
+
+            public string Size
+            {
+                get { return size; }
+                set { size = value; }
+            }
+
+            public string PlateNumber
+            {
+                get { return plateNumber; }
+                set { plateNumber = value; }
+            }
+
+            public string CustomerName
+            {
+                get { return customerName; }
+                set { customerName = value; }
+            }
+        }
+
+        public class CustomerItem
+        {
+            string name, plateNumbers;
+
+            public CustomerItem(string name, string plateNumbers)
+            {
+                this.name = name;
+                this.plateNumbers = plateNumbers;
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            public string PlateNumbers
+            {
+                get { return plateNumbers; }
+                set { plateNumbers = value; }
+            }
+        }
+
+        public class PaymentMethodItem
+        {
+            string name;
+
+            public PaymentMethodItem(string name)
+            {
+                this.name = name;
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+        }
+
+        public class EmployeeItem
+        {
+            string employeeName, timeIn, timeOut, dateRecorded;
+
+            public EmployeeItem(string employeeName, string timeIn, string timeOut, string dateRecorded)
+            {
+                this.employeeName = employeeName;
+                this.timeIn = timeIn;
+                this.timeOut = timeOut;
+                this.dateRecorded = dateRecorded;
+            }
+
+            public string EmployeeName
+            {
+                get { return employeeName; }
+                set { employeeName = value; }
+            }
+
+            public string TimeIn
+            {
+                get { return timeIn; }
+                set { timeIn = value; }
+            }
+
+            public string TimeOut
+            {
+                get { return timeOut; }
+                set { timeOut = value; }
+            }
+
+            public string DateRecorded
+            {
+                get { return dateRecorded; }
+                set { dateRecorded = value; }
+            }
+        }
+
+        public class OrderItem
+        {
+            string orderId, employeeName, plateNumber, serviceIdList, packageIdList, paymentMethodName, dateCreated;
+            double orderBalance;
+
+            public OrderItem(string orderId, string employeeName, string plateNumber, string serviceIdList, string packageIdList, double orderBalance, string paymentMethodName, string dateCreated)
+            {
+                this.orderId = orderId;
+                this.employeeName = employeeName;
+                this.plateNumber = plateNumber;
+                this.serviceIdList = serviceIdList;
+                this.packageIdList = packageIdList;
+                this.orderBalance = orderBalance;
+                this.paymentMethodName = paymentMethodName;
+                this.dateCreated = dateCreated;
+            }
+
+            public string OrderId
+            {
+                get { return orderId; }
+                set { orderId = value; }
+            }
+
+            public string EmployeeName
+            {
+                get { return employeeName; }
+                set { employeeName = value; }
+            }
+
+            public string PlateNumber
+            {
+                get { return plateNumber; }
+                set { plateNumber = value; }
+            }
+
+            public string ServiceIdList
+            {
+                get { return serviceIdList; }
+                set { serviceIdList = value; }
+            }
+
+            public string PackageIdList
+            {
+                get { return packageIdList; }
+                set { packageIdList = value; }
+            }
+
+            public double OrderBalance
+            {
+                get { return orderBalance; }
+                set { orderBalance = value; }
+            }
+
+            public string PaymentMethodName
+            {
+                get { return paymentMethodName; }
+                set { paymentMethodName = value; }
+            }
+
+            public string DateCreated
+            {
+                get { return dateCreated; }
+                set { dateCreated = value; }
+            }
+        }
+
+        public class ServiceItem
+        {
+            string id, name, size;
+            double price;
+
+            public ServiceItem(string id, string name, string size, double price)
+            {
+                this.id = id;
+                this.name = name;
+                this.size = size;
+                this.price = price;
+            }
+
+            public string ID
+            {
+                get { return id; }
+                set { id = value; }
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            public string Size
+            {
+                get { return size; }
+                set { size = value; }
+            }
+
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
+            }
+        }
+
+        public class PackageItem
+        {
+            string id, name, details, size;
+            double price;
+
+            public PackageItem(string id, string name, string details, string size, double price)
+            {
+                this.id = id;
+                this.name = name;
+                this.details = details;
+                this.size = size;
+                this.price = price;
+            }
+
+            public string ID
+            {
+                get { return id; }
+                set { id = value; }
+            }
+
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            public string Details
+            {
+                get { return details; }
+                set { details = value; }
+            }
+
+            public string Size
+            {
+                get { return size; }
+                set { size = value; }
+            }
+
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
             }
         }
     }

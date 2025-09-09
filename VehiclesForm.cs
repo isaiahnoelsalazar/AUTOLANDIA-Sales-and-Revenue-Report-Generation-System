@@ -20,59 +20,59 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             VehicleTable.Columns.Add("PlateNumber", -2);
             VehicleTable.Columns.Add("CustomerName", -2);
 
-            //VehicleTable.ColumnClick += (s, e) =>
-            //{
-            //    List<VehicleItem> Temp = new List<VehicleItem>(VehicleList);
-            //    Temp.Sort(new VehicleItemComparer(e.Column));
+            VehicleTable.ColumnClick += (s, e) =>
+            {
+                List<VehicleItem> Temp = new List<VehicleItem>(VehicleList);
+                Temp.Sort(new VehicleItemComparer(e.Column));
 
-            //    if (LastClickedColumn == e.Column)
-            //    {
-            //        if (!Reverse)
-            //        {
-            //            Temp.Reverse();
-            //            Reverse = true;
-            //        }
-            //        else
-            //        {
-            //            Reverse = false;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        LastClickedColumn = e.Column;
-            //        Reverse = false;
-            //    }
+                if (LastClickedColumn == e.Column)
+                {
+                    if (!Reverse)
+                    {
+                        Temp.Reverse();
+                        Reverse = true;
+                    }
+                    else
+                    {
+                        Reverse = false;
+                    }
+                }
+                else
+                {
+                    LastClickedColumn = e.Column;
+                    Reverse = false;
+                }
 
-            //    VehicleTable.Items.Clear();
-            //    foreach (VehicleItem Vehicle in Temp)
-            //    {
-            //        //VehicleTable.Items.Add(new ListViewItem(new string[] { Vehicle.Brand, Vehicle.Model, Vehicle.Size, Vehicle.PlateNumber, Vehicle.CustomerName }));
-            //    }
-            //    foreach (ColumnHeader ColumnHeader in VehicleTable.Columns)
-            //    {
-            //        ColumnHeader.Width = -2;
-            //    }
-            //};
+                VehicleTable.Items.Clear();
+                foreach (VehicleItem Vehicle in Temp)
+                {
+                    VehicleTable.Items.Add(new ListViewItem(new string[] { Vehicle.Brand, Vehicle.Model, Vehicle.Size, Vehicle.PlateNumber, Vehicle.CustomerName }));
+                }
+                foreach (ColumnHeader ColumnHeader in VehicleTable.Columns)
+                {
+                    ColumnHeader.Width = -2;
+                }
+            };
 
             RefreshVehicles();
         }
 
         public void RefreshVehicles()
         {
-            //RecreateVehicleList();
+            RecreateVehicleList();
 
-            //List<VehicleItem> Temp = new List<VehicleItem>(VehicleList);
-            //Temp.Sort(new VehicleItemComparer(LastClickedColumn));
+            List<VehicleItem> Temp = new List<VehicleItem>(VehicleList);
+            Temp.Sort(new VehicleItemComparer(LastClickedColumn));
 
-            //VehicleTable.Items.Clear();
-            //foreach (VehicleItem Vehicle in Temp)
-            //{
-            //    //VehicleTable.Items.Add(new ListViewItem(new string[] { Vehicle.Brand, Vehicle.Model, Vehicle.Size, Vehicle.PlateNumber, Vehicle.CustomerName }));
-            //}
-            //foreach (ColumnHeader ColumnHeader in VehicleTable.Columns)
-            //{
-            //    ColumnHeader.Width = -2;
-            //}
+            VehicleTable.Items.Clear();
+            foreach (VehicleItem Vehicle in Temp)
+            {
+                VehicleTable.Items.Add(new ListViewItem(new string[] { Vehicle.Brand, Vehicle.Model, Vehicle.Size, Vehicle.PlateNumber, Vehicle.CustomerName }));
+            }
+            foreach (ColumnHeader ColumnHeader in VehicleTable.Columns)
+            {
+                ColumnHeader.Width = -2;
+            }
         }
 
         private void AddNewVehicleButton_Click(object sender, EventArgs e)
