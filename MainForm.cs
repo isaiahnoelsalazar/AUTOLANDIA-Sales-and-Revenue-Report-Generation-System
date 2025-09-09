@@ -15,11 +15,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         List<Form> Forms = new List<Form>()
         {
             new HomeForm(),
-            new OrdersForm(),
-            new VehiclesForm(),
-            new CustomersForm(),
-            new EmployeesForm(),
+            new PeopleForm(),
+            new ServicesAndPackagesForm(),
+            new ActivityRecordForm(),
+            new ActivityRecordForm(),
+            new ActivityRecordForm(),
             new ActivityRecordForm()
+
         };
         List<MaterialButton> TabButtons = new List<MaterialButton>();
 
@@ -34,18 +36,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TabPanel.BackColor = Color.Black;
 
             TabButtons.Add(HomeTab);
-            TabButtons.Add(OrdersTab);
-            TabButtons.Add(VehiclesTab);
-            TabButtons.Add(CustomersTab);
-            TabButtons.Add(EmployeesTab);
+            TabButtons.Add(PeopleTab);
+            TabButtons.Add(ServicesAndPackagesTab);
+            TabButtons.Add(TransactionsTab);
+            TabButtons.Add(BillingTab);
+            TabButtons.Add(ReportsTab);
             TabButtons.Add(ActivityRecordTab);
 
             GlobalHomeForm = (HomeForm)Forms[0];
-            GlobalOrdersForm = (OrdersForm)Forms[1];
-            GlobalVehiclesForm = (VehiclesForm)Forms[2];
-            GlobalCustomersForm = (CustomersForm)Forms[3];
-            GlobalEmployeesForm = (EmployeesForm)Forms[4];
-            GlobalActivityRecordForm = (ActivityRecordForm)Forms[5];
+            GlobalPeopleForm = (PeopleForm)Forms[1];
+            GlobalServicesAndPackagesForm = (ServicesAndPackagesForm)Forms[2];
+            GlobalActivityRecordForm = (ActivityRecordForm)Forms[6];
 
             SelectTab(0);
 
@@ -91,29 +92,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             SelectTab(0);
         }
 
-        private void OrdersTab_Click(object sender, EventArgs e)
-        {
-            SelectTab(1);
-        }
-
-        private void VehiclesTab_Click(object sender, EventArgs e)
-        {
-            SelectTab(2);
-        }
-
-        private void CustomersTab_Click(object sender, EventArgs e)
+        private void TransactionsTab_Click(object sender, EventArgs e)
         {
             SelectTab(3);
         }
 
-        private void ActivityRecordTab_Click(object sender, EventArgs e)
-        {
-            SelectTab(5);
-        }
-
-        private void EmployeesTab_Click(object sender, EventArgs e)
+        private void BillingTab_Click(object sender, EventArgs e)
         {
             SelectTab(4);
+        }
+
+        private void PeopleTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(1);
+        }
+
+        private void ActivityRecordTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(6);
+        }
+
+        private void ServicesAndPackagesTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(2);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -136,9 +137,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        private void SettingsButton_Click(object sender, EventArgs e)
+        private void AccountButton_Click(object sender, EventArgs e)
         {
-            new SettingsForm().ShowDialog();
+        }
+
+        private void ReportsTab_Click(object sender, EventArgs e)
+        {
+            SelectTab(5);
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)

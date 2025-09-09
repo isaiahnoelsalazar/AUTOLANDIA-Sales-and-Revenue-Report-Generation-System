@@ -28,14 +28,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             double ThisMonthSales = 0;
             int ThisMonthOrders = 0;
 
-            foreach (OrderItem Order in OrderList)
-            {
-                if (Today.ToString("Y").Equals(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
-                {
-                    ThisMonthSales += Order.OrderBalance;
-                    ThisMonthOrders++;
-                }
-            }
+            //foreach (OrderItem Order in OrderList)
+            //{
+            //    if (Today.ToString("Y").Equals(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
+            //    {
+            //        ThisMonthSales += Order.OrderBalance;
+            //        ThisMonthOrders++;
+            //    }
+            //}
 
             MonthlySalesTable.Items.Add(new ListViewItem(new string[] { "This Month's Total Sales", ThisMonthSales.ToString() }));
             MonthlySalesTable.Items.Add(new ListViewItem(new string[] { "This Month's Total Orders", ThisMonthOrders.ToString() }));
@@ -46,13 +46,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 double TotalMonthlySales = 0;
 
-                foreach (OrderItem Order in OrderList)
-                {
-                    if (Month == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
-                    {
-                        TotalMonthlySales += Order.OrderBalance;
-                    }
-                }
+                //foreach (OrderItem Order in OrderList)
+                //{
+                //    if (Month == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
+                //    {
+                //        TotalMonthlySales += Order.OrderBalance;
+                //    }
+                //}
 
                 MonthlySalesTable.Items.Add(new ListViewItem(new string[] { Month.ToString("Y"), TotalMonthlySales.ToString() }));
             }
@@ -64,13 +64,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 int TotalOrders = 0;
 
-                foreach (OrderItem Order in OrderList)
-                {
-                    if (Month == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
-                    {
-                        TotalOrders++;
-                    }
-                }
+                //foreach (OrderItem Order in OrderList)
+                //{
+                //    if (Month == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("Y")))
+                //    {
+                //        TotalOrders++;
+                //    }
+                //}
 
                 MonthlySalesTable.Items.Add(new ListViewItem(new string[] { Month.ToString("Y"), TotalOrders.ToString() }));
             }

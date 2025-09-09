@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -17,15 +16,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public void RefreshActivities()
         {
-            RecreateActivityList();
+            RecreateGlobalActivityList();
 
             ActivityTable.Items.Clear();
 
-            List<string> Temp = new List<string>(ActivityList);
-            Temp.Sort();
-            Temp.Reverse();
-
-            foreach (string Activity in Temp)
+            foreach (string Activity in GlobalActivityList)
             {
                 ActivityTable.Items.Add(new ListViewItem(Activity));
             }

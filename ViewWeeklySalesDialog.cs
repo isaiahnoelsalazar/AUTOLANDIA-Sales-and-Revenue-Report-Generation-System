@@ -28,14 +28,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             double TotalWeeklySales = 0;
             int TotalOrders = 0;
 
-            foreach (OrderItem Order in OrderList)
-            {
-                if (Days.Contains(DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d"))))
-                {
-                    TotalWeeklySales += Order.OrderBalance;
-                    TotalOrders++;
-                }
-            }
+            //foreach (OrderItem Order in OrderList)
+            //{
+            //    if (Days.Contains(DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d"))))
+            //    {
+            //        TotalWeeklySales += Order.OrderBalance;
+            //        TotalOrders++;
+            //    }
+            //}
 
             WeeklySalesTable.Items.Add(new ListViewItem(new string[] { "This Week's Total Sales", TotalWeeklySales.ToString() }));
             WeeklySalesTable.Items.Add(new ListViewItem(new string[] { "This Week's Total Orders", TotalOrders.ToString() }));
@@ -46,13 +46,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 double DaySale = 0;
 
-                foreach (OrderItem Order in OrderList)
-                {
-                    if (Day == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d")))
-                    {
-                        DaySale += Order.OrderBalance;
-                    }
-                }
+                //foreach (OrderItem Order in OrderList)
+                //{
+                //    if (Day == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d")))
+                //    {
+                //        DaySale += Order.OrderBalance;
+                //    }
+                //}
 
                 WeeklySalesTable.Items.Add(new ListViewItem(new string[] { Day.ToString("d"), DaySale.ToString() }));
             }
@@ -64,13 +64,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 int DayOrders = 0;
 
-                foreach (OrderItem Order in OrderList)
-                {
-                    if (Day == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d")))
-                    {
-                        DayOrders++;
-                    }
-                }
+                //foreach (OrderItem Order in OrderList)
+                //{
+                //    if (Day == DateTime.Parse(DateTime.Parse(Order.DateCreated).Date.ToString("d")))
+                //    {
+                //        DayOrders++;
+                //    }
+                //}
 
                 WeeklySalesTable.Items.Add(new ListViewItem(new string[] { Day.ToString("d"), DayOrders.ToString() }));
             }

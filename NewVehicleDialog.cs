@@ -17,17 +17,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             this.VehiclesForm = VehiclesForm;
 
-            foreach (VehicleItem Vehicle in VehicleList)
-            {
-                if (!CB_Brand.Items.Contains(Vehicle.Brand))
-                {
-                    CB_Brand.Items.Add(Vehicle.Brand);
-                }
-                if (!CB_Model.Items.Contains(Vehicle.Model))
-                {
-                    CB_Model.Items.Add(Vehicle.Model);
-                }
-            }
+            //foreach (VehicleItem Vehicle in VehicleList)
+            //{
+            //    if (!CB_Brand.Items.Contains(Vehicle.Brand))
+            //    {
+            //        CB_Brand.Items.Add(Vehicle.Brand);
+            //    }
+            //    if (!CB_Model.Items.Contains(Vehicle.Model))
+            //    {
+            //        CB_Model.Items.Add(Vehicle.Model);
+            //    }
+            //}
         }
 
         private void DoneButton_Click(object sender, EventArgs e)

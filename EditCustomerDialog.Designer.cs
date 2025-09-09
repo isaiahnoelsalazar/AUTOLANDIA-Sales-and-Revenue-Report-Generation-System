@@ -1,6 +1,6 @@
 ﻿namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    partial class AssignCustomerVehicleDialog
+    partial class EditCustomerDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.TB_MobileNumber = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
             this.DoneButton = new MaterialSkin.Controls.MaterialButton();
+            this.TB_Name = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.CB_Customers = new MaterialSkin.Controls.MaterialComboBox();
-            this.CB_Vehicles = new MaterialSkin.Controls.MaterialComboBox();
             this.SuspendLayout();
             // 
             // materialLabel3
@@ -43,26 +43,44 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.Location = new System.Drawing.Point(10, 166);
-            this.materialLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel3.Location = new System.Drawing.Point(12, 164);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(147, 19);
-            this.materialLabel3.TabIndex = 4;
-            this.materialLabel3.Text = "Unassigned Vehicles";
+            this.materialLabel3.Size = new System.Drawing.Size(180, 19);
+            this.materialLabel3.TabIndex = 16;
+            this.materialLabel3.Text = "Mobile number (optional)";
+            // 
+            // TB_MobileNumber
+            // 
+            this.TB_MobileNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_MobileNumber.AnimateReadOnly = false;
+            this.TB_MobileNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_MobileNumber.Depth = 0;
+            this.TB_MobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_MobileNumber.LeadingIcon = null;
+            this.TB_MobileNumber.Location = new System.Drawing.Point(203, 149);
+            this.TB_MobileNumber.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_MobileNumber.MaxLength = 50;
+            this.TB_MobileNumber.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_MobileNumber.Multiline = false;
+            this.TB_MobileNumber.Name = "TB_MobileNumber";
+            this.TB_MobileNumber.Size = new System.Drawing.Size(427, 50);
+            this.TB_MobileNumber.TabIndex = 15;
+            this.TB_MobileNumber.Text = "";
+            this.TB_MobileNumber.TrailingIcon = null;
             // 
             // materialLabel2
             // 
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(10, 105);
-            this.materialLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(12, 105);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(115, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Customer Name";
+            this.materialLabel2.Size = new System.Drawing.Size(113, 19);
+            this.materialLabel2.TabIndex = 14;
+            this.materialLabel2.Text = "Customer name";
             // 
             // CancelButton
             // 
@@ -72,13 +90,13 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(8, 316);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CancelButton.Location = new System.Drawing.Point(10, 314);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.CancelButton.Size = new System.Drawing.Size(77, 36);
-            this.CancelButton.TabIndex = 7;
+            this.CancelButton.TabIndex = 13;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.CancelButton.UseAccentColor = false;
@@ -93,18 +111,38 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(568, 316);
-            this.DoneButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DoneButton.Location = new System.Drawing.Point(566, 314);
+            this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.DoneButton.Size = new System.Drawing.Size(64, 36);
-            this.DoneButton.TabIndex = 6;
+            this.DoneButton.TabIndex = 12;
             this.DoneButton.Text = "Done";
             this.DoneButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.DoneButton.UseAccentColor = false;
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            // 
+            // TB_Name
+            // 
+            this.TB_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_Name.AnimateReadOnly = false;
+            this.TB_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_Name.Depth = 0;
+            this.TB_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Name.LeadingIcon = null;
+            this.TB_Name.Location = new System.Drawing.Point(203, 91);
+            this.TB_Name.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_Name.MaxLength = 50;
+            this.TB_Name.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_Name.Multiline = false;
+            this.TB_Name.Name = "TB_Name";
+            this.TB_Name.Size = new System.Drawing.Size(427, 50);
+            this.TB_Name.TabIndex = 11;
+            this.TB_Name.Text = "";
+            this.TB_Name.TrailingIcon = null;
             // 
             // materialLabel1
             // 
@@ -112,13 +150,13 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(8, 36);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 16, 6, 6);
+            this.materialLabel1.Location = new System.Drawing.Point(10, 36);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(310, 29);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Assign customer to a vehicle";
+            this.materialLabel1.Size = new System.Drawing.Size(229, 29);
+            this.materialLabel1.TabIndex = 9;
+            this.materialLabel1.Text = "Edit customer details";
             // 
             // materialDivider1
             // 
@@ -126,83 +164,32 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(8, 77);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider1.Location = new System.Drawing.Point(10, 81);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(624, 2);
-            this.materialDivider1.TabIndex = 1;
+            this.materialDivider1.Size = new System.Drawing.Size(620, 2);
+            this.materialDivider1.TabIndex = 10;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // CB_Customers
-            // 
-            this.CB_Customers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CB_Customers.AutoResize = false;
-            this.CB_Customers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CB_Customers.Depth = 0;
-            this.CB_Customers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CB_Customers.DropDownHeight = 174;
-            this.CB_Customers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_Customers.DropDownWidth = 121;
-            this.CB_Customers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.CB_Customers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CB_Customers.FormattingEnabled = true;
-            this.CB_Customers.IntegralHeight = false;
-            this.CB_Customers.ItemHeight = 43;
-            this.CB_Customers.Location = new System.Drawing.Point(165, 91);
-            this.CB_Customers.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.CB_Customers.MaxDropDownItems = 4;
-            this.CB_Customers.MouseState = MaterialSkin.MouseState.OUT;
-            this.CB_Customers.Name = "CB_Customers";
-            this.CB_Customers.Size = new System.Drawing.Size(467, 49);
-            this.CB_Customers.StartIndex = 0;
-            this.CB_Customers.TabIndex = 3;
-            // 
-            // CB_Vehicles
-            // 
-            this.CB_Vehicles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CB_Vehicles.AutoResize = false;
-            this.CB_Vehicles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CB_Vehicles.Depth = 0;
-            this.CB_Vehicles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CB_Vehicles.DropDownHeight = 174;
-            this.CB_Vehicles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_Vehicles.DropDownWidth = 121;
-            this.CB_Vehicles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.CB_Vehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CB_Vehicles.FormattingEnabled = true;
-            this.CB_Vehicles.IntegralHeight = false;
-            this.CB_Vehicles.ItemHeight = 43;
-            this.CB_Vehicles.Location = new System.Drawing.Point(165, 152);
-            this.CB_Vehicles.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.CB_Vehicles.MaxDropDownItems = 4;
-            this.CB_Vehicles.MouseState = MaterialSkin.MouseState.OUT;
-            this.CB_Vehicles.Name = "CB_Vehicles";
-            this.CB_Vehicles.Size = new System.Drawing.Size(467, 49);
-            this.CB_Vehicles.StartIndex = 0;
-            this.CB_Vehicles.TabIndex = 5;
-            // 
-            // AssignCustomerVehicleDialog
+            // EditCustomerDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
-            this.Controls.Add(this.CB_Vehicles);
-            this.Controls.Add(this.CB_Customers);
             this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.TB_MobileNumber);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DoneButton);
+            this.Controls.Add(this.TB_Name);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "AssignCustomerVehicleDialog";
+            this.Name = "EditCustomerDialog";
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AssignCustomerVehicleDialog";
+            this.Text = "EditCustomerDialog";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,12 +198,12 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialTextBox TB_MobileNumber;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialButton CancelButton;
         private MaterialSkin.Controls.MaterialButton DoneButton;
+        private MaterialSkin.Controls.MaterialTextBox TB_Name;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialComboBox CB_Customers;
-        private MaterialSkin.Controls.MaterialComboBox CB_Vehicles;
     }
 }
