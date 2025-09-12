@@ -1,4 +1,6 @@
 ﻿using MaterialSkin.Controls;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -7,29 +9,75 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class SelectServicesDialog : MaterialForm
     {
-        NewOrderDialog NewOrderDialog;
+        NewTransactionDialog NewTransactionDialog;
+        EditTransactionDialog EditTransactionDialog;
 
-        public SelectServicesDialog(NewOrderDialog NewOrderDialog)
+        public SelectServicesDialog(NewTransactionDialog NewTransactionDialog)
         {
             InitializeComponent();
-            this.NewOrderDialog = NewOrderDialog;
+            this.NewTransactionDialog = NewTransactionDialog;
 
-            //foreach (ServiceItem Service in ServiceList)
-            //{
-            //    if (!InCheckedListBox(Service.Name))
-            //    {
-            //        ServiceListCheckBox.Items.Add(Service.Name);
-            //    }
-            //}
+            List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+            Temp.Reverse();
 
-            if (NewOrderDialog.Checkedboxes != null)
+            foreach (ServiceItem Service in Temp)
             {
-                NewOrderDialog.Checkedboxes.Reverse();
+                if (!InCheckedListBox(Service.Name))
+                {
+                    ServiceListCheckBox.Items.Add(Service.Name);
+                }
+            }
+
+            if (NewTransactionDialog.ServiceCheckedboxes != null)
+            {
+                NewTransactionDialog.ServiceCheckedboxes.Reverse();
                 for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
                 {
-                    if (NewOrderDialog.Checkedboxes[a].Checked)
+                    if (NewTransactionDialog.ServiceCheckedboxes[a].Checked)
                     {
                         ServiceListCheckBox.Items[a].Checked = true;
+                    }
+                }
+            }
+        }
+
+        public SelectServicesDialog(EditTransactionDialog EditTransactionDialog, TableLayoutControlCollection ServiceListControls)
+        {
+            InitializeComponent();
+            this.EditTransactionDialog = EditTransactionDialog;
+
+            List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+            Temp.Reverse();
+
+            foreach (ServiceItem Service in Temp)
+            {
+                if (!InCheckedListBox(Service.Name))
+                {
+                    ServiceListCheckBox.Items.Add(Service.Name);
+                }
+            }
+
+            if (EditTransactionDialog.ServiceCheckedboxes != null)
+            {
+                EditTransactionDialog.ServiceCheckedboxes.Reverse();
+                for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
+                {
+                    if (EditTransactionDialog.ServiceCheckedboxes[a].Checked)
+                    {
+                        ServiceListCheckBox.Items[a].Checked = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (Control Service in ServiceListControls)
+                {
+                    for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
+                    {
+                        if (ServiceListCheckBox.Items[a].Text.Equals(Service.Controls[0].Text.Trim()))
+                        {
+                            ServiceListCheckBox.Items[a].Checked = true;
+                        }
                     }
                 }
             }
@@ -47,23 +95,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             return false;
         }
 
-        private void DoneButton_Click(object sender, System.EventArgs e)
+        private void DoneButton_Click(object sender, EventArgs e)
         {
-            NewOrderDialog.SetServices(ServiceListCheckBox.Items);
-            Close();
-        }
-
-        private void CancelButton_Click(object sender, System.EventArgs e)
-        {
-            if (NewOrderDialog.Checkedboxes != null)
+            if (NewTransactionDialog != null)
             {
-                NewOrderDialog.Checkedboxes.Reverse();
+                NewTransactionDialog.SetServices(ServiceListCheckBox.Items);
             }
-
+            if (EditTransactionDialog != null)
+            {
+                EditTransactionDialog.SetServices(ServiceListCheckBox.Items);
+            }
             Close();
         }
 
-        private void SelectServicesDialog_Load(object sender, System.EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void SelectServicesDialog_Load(object sender, EventArgs e)
         {
             Timer Timer = new Timer();
             Timer.Interval = 1;
@@ -73,6 +123,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Timer.Stop();
             };
             Timer.Start();
+        }
+
+        private void SelectServicesDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (NewTransactionDialog != null)
+            {
+                if (NewTransactionDialog.ServiceCheckedboxes != null)
+                {
+                    NewTransactionDialog.ServiceCheckedboxes.Reverse();
+                }
+            }
+            if (EditTransactionDialog != null)
+            {
+                if (EditTransactionDialog.ServiceCheckedboxes != null)
+                {
+                    EditTransactionDialog.ServiceCheckedboxes.Reverse();
+                }
+            }
         }
     }
 }

@@ -120,22 +120,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 Panel.Click += (sndr, evnt) =>
                 {
+                    new EditServiceDialog(this, Service.ID).ShowDialog();
                 };
                 Id.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Service ID: {Service.ID}\nService Name: {Service.Name}\nService Size: {Service.Size}\nService Price: {Service.Price}", "Details");
+                    new EditServiceDialog(this, Service.ID).ShowDialog();
                 };
                 Name.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Service ID: {Service.ID}\nService Name: {Service.Name}\nService Size: {Service.Size}\nService Price: {Service.Price}", "Details");
+                    new EditServiceDialog(this, Service.ID).ShowDialog();
                 };
                 Size.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Service ID: {Service.ID}\nService Name: {Service.Name}\nService Size: {Service.Size}\nService Price: {Service.Price}", "Details");
+                    new EditServiceDialog(this, Service.ID).ShowDialog();
                 };
                 Price.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Service ID: {Service.ID}\nService Name: {Service.Name}\nService Size: {Service.Size}\nService Price: {Service.Price}", "Details");
+                    new EditServiceDialog(this, Service.ID).ShowDialog();
                 };
 
                 ServiceList.RowStyles.Add(Row);
@@ -253,26 +254,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 Panel.Click += (sndr, evnt) =>
                 {
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
                 Id.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Package ID: {Package.ID}\nPackage Name: {Package.Name}\nPackage Details: {Package.Details}\nPackage Size: {Package.Size}\nPackage Price: {Package.Price}", "Details");
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
                 Name.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Package ID: {Package.ID}\nPackage Name: {Package.Name}\nPackage Details: {Package.Details}\nPackage Size: {Package.Size}\nPackage Price: {Package.Price}", "Details");
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
                 Details.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Package ID: {Package.ID}\nPackage Name: {Package.Name}\nPackage Details: {Package.Details}\nPackage Size: {Package.Size}\nPackage Price: {Package.Price}", "Details");
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
                 Size.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Package ID: {Package.ID}\nPackage Name: {Package.Name}\nPackage Details: {Package.Details}\nPackage Size: {Package.Size}\nPackage Price: {Package.Price}", "Details");
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
                 Price.Click += (sndr, evnt) =>
                 {
-                    MaterialMessageBox.Show($"Package ID: {Package.ID}\nPackage Name: {Package.Name}\nPackage Details: {Package.Details}\nPackage Size: {Package.Size}\nPackage Price: {Package.Price}", "Details");
+                    new EditPackageDialog(this, Package.ID).ShowDialog();
                 };
 
                 PackageList.RowStyles.Add(Row);

@@ -6,13 +6,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class HomeForm : Form
     {
+        Thread TimeThread;
         string Time = string.Empty;
 
         public HomeForm()
         {
             InitializeComponent();
 
-            new Thread(new ThreadStart(() =>
+            TimeThread = new Thread(new ThreadStart(() =>
             {
                 while (true)
                 {
@@ -22,7 +23,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         GreetingLabel.BeginInvoke((MethodInvoker)delegate ()
                         {
-                            GreetingLabel.Text = $"Good {Time}! Here is your summary:";
+                            GreetingLabel.Text = $"Good {Time}!";
                         });
                     }
                     catch
@@ -31,7 +32,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     Thread.Sleep(1000);
                 }
-            })).Start();
+            }));
+            TimeThread.Start();
+        }
+
+        private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TimeThread.Abort();
         }
     }
 }

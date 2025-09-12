@@ -72,6 +72,31 @@
     <Compile Include="AddCustomerVehicleDialog.Designer.cs">
       <DependentUpon>AddCustomerVehicleDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillingForm.Designer.cs">
+      <DependentUpon>BillingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillingItem.cs" />
+    <Compile Include="EditPackageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPackageDialog.Designer.cs">
+      <DependentUpon>EditPackageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditServiceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditServiceDialog.Designer.cs">
+      <DependentUpon>EditServiceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTransactionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTransactionDialog.Designer.cs">
+      <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinkCustomerVehicleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,12 +104,6 @@
       <DependentUpon>LinkCustomerVehicleDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerItem.cs" />
-    <Compile Include="CustomersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomersForm.Designer.cs">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditCustomerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,17 +122,17 @@
     <Compile Include="EditEmployeeDialog.Designer.cs">
       <DependentUpon>EditEmployeeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewTransactionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewTransactionDialog.Designer.cs">
+      <DependentUpon>NewTransactionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PreviewCustomerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PreviewCustomerDialog.Designer.cs">
       <DependentUpon>PreviewCustomerDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditCustomersDataForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCustomersDataForm.Designer.cs">
-      <DependentUpon>EditCustomersDataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PreviewEmployeeDialog.cs">
       <SubType>Form</SubType>
@@ -121,31 +140,7 @@
     <Compile Include="PreviewEmployeeDialog.Designer.cs">
       <DependentUpon>PreviewEmployeeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditEmployeesDataForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditEmployeesDataForm.Designer.cs">
-      <DependentUpon>EditEmployeesDataForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditOrdersDataForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditOrdersDataForm.Designer.cs">
-      <DependentUpon>EditOrdersDataForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditVehiclesDataForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditVehiclesDataForm.Designer.cs">
-      <DependentUpon>EditVehiclesDataForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmployeeItem.cs" />
-    <Compile Include="EmployeesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmployeesForm.Designer.cs">
-      <DependentUpon>EmployeesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmployeeTimeItem.cs" />
     <Compile Include="GlobalValues.cs" />
     <Compile Include="HomeForm.cs">
@@ -172,25 +167,7 @@
     <Compile Include="NewEmployeeDialog.Designer.cs">
       <DependentUpon>NewEmployeeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewOrderDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewOrderDialog.Designer.cs">
-      <DependentUpon>NewOrderDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewVehicleDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewVehicleDialog.Designer.cs">
-      <DependentUpon>NewVehicleDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="OrderItem.cs" />
-    <Compile Include="OrdersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrdersForm.Designer.cs">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PackageItem.cs" />
     <Compile Include="PeopleForm.cs">
       <SubType>Form</SubType>
@@ -212,17 +189,17 @@
     <Compile Include="ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalaryCalculationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SalaryCalculationDialog.Designer.cs">
-      <DependentUpon>SalaryCalculationDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="SelectCustomerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SelectCustomerDialog.Designer.cs">
       <DependentUpon>SelectCustomerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectEmployeeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectEmployeeDialog.Designer.cs">
+      <DependentUpon>SelectEmployeeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectServicesDialog.cs">
       <SubType>Form</SubType>
@@ -243,54 +220,39 @@
     <Compile Include="ServicesAndPackagesForm.Designer.cs">
       <DependentUpon>ServicesAndPackagesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Startup.Designer.cs">
       <DependentUpon>Startup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UnassignCustomerVehicleDialog.cs">
+    <Compile Include="TransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UnassignCustomerVehicleDialog.Designer.cs">
-      <DependentUpon>UnassignCustomerVehicleDialog.cs</DependentUpon>
+    <Compile Include="TransactionsForm.Designer.cs">
+      <DependentUpon>TransactionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="VehicleItem.cs" />
-    <Compile Include="VehiclesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VehiclesForm.Designer.cs">
-      <DependentUpon>VehiclesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewMonthlySalesDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewMonthlySalesDialog.Designer.cs">
-      <DependentUpon>ViewMonthlySalesDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewWeeklySalesDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewWeeklySalesDialog.Designer.cs">
-      <DependentUpon>ViewWeeklySalesDialog.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ActivityRecordForm.resx">
       <DependentUpon>ActivityRecordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddCustomerVehicleDialog.resx">
       <DependentUpon>AddCustomerVehicleDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillingForm.resx">
+      <DependentUpon>BillingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPackageDialog.resx">
+      <DependentUpon>EditPackageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditServiceDialog.resx">
+      <DependentUpon>EditServiceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTransactionDialog.resx">
+      <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LinkCustomerVehicleDialog.resx">
       <DependentUpon>LinkCustomerVehicleDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomersForm.resx">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditCustomerDialog.resx">
       <DependentUpon>EditCustomerDialog.cs</DependentUpon>
@@ -301,26 +263,14 @@
     <EmbeddedResource Include="EditEmployeeDialog.resx">
       <DependentUpon>EditEmployeeDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewTransactionDialog.resx">
+      <DependentUpon>NewTransactionDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PreviewCustomerDialog.resx">
       <DependentUpon>PreviewCustomerDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditCustomersDataForm.resx">
-      <DependentUpon>EditCustomersDataForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PreviewEmployeeDialog.resx">
       <DependentUpon>PreviewEmployeeDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditEmployeesDataForm.resx">
-      <DependentUpon>EditEmployeesDataForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditOrdersDataForm.resx">
-      <DependentUpon>EditOrdersDataForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditVehiclesDataForm.resx">
-      <DependentUpon>EditVehiclesDataForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeesForm.resx">
-      <DependentUpon>EmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
@@ -333,15 +283,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewEmployeeDialog.resx">
       <DependentUpon>NewEmployeeDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewOrderDialog.resx">
-      <DependentUpon>NewOrderDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewVehicleDialog.resx">
-      <DependentUpon>NewVehicleDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrdersForm.resx">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PeopleForm.resx">
       <DependentUpon>PeopleForm.cs</DependentUpon>
@@ -362,11 +303,11 @@
     <EmbeddedResource Include="ReportsForm.resx">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalaryCalculationDialog.resx">
-      <DependentUpon>SalaryCalculationDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SelectCustomerDialog.resx">
       <DependentUpon>SelectCustomerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectEmployeeDialog.resx">
+      <DependentUpon>SelectEmployeeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectServicesDialog.resx">
       <DependentUpon>SelectServicesDialog.cs</DependentUpon>
@@ -377,23 +318,11 @@
     <EmbeddedResource Include="ServicesAndPackagesForm.resx">
       <DependentUpon>ServicesAndPackagesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Startup.resx">
       <DependentUpon>Startup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UnassignCustomerVehicleDialog.resx">
-      <DependentUpon>UnassignCustomerVehicleDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VehiclesForm.resx">
-      <DependentUpon>VehiclesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewMonthlySalesDialog.resx">
-      <DependentUpon>ViewMonthlySalesDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewWeeklySalesDialog.resx">
-      <DependentUpon>ViewWeeklySalesDialog.cs</DependentUpon>
+    <EmbeddedResource Include="TransactionsForm.resx">
+      <DependentUpon>TransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

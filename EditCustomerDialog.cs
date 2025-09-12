@@ -25,9 +25,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (Customer.ID.Equals(CustomerID))
                 {
                     TB_Name.Text = Customer.Name;
-                    TB_MobileNumber.Text = Customer.MobileNumber;
                     PreviousCustomerName = Customer.Name;
-                    PreviousMobileNumber = Customer.MobileNumber;
+                    if (!Customer.MobileNumber.Equals("(Mobile number not set)"))
+                    {
+                        TB_MobileNumber.Text = Customer.MobileNumber;
+                        PreviousMobileNumber = Customer.MobileNumber;
+                    }
                 }
             }
         }

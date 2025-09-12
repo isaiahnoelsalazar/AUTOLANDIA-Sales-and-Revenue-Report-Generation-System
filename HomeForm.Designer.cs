@@ -42,9 +42,9 @@
             this.GreetingLabel.Margin = new System.Windows.Forms.Padding(8);
             this.GreetingLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.GreetingLabel.Name = "GreetingLabel";
-            this.GreetingLabel.Size = new System.Drawing.Size(353, 29);
+            this.GreetingLabel.Size = new System.Drawing.Size(109, 29);
             this.GreetingLabel.TabIndex = 5;
-            this.GreetingLabel.Text = "Good day! Here is your summary:";
+            this.GreetingLabel.Text = "Good day!";
             // 
             // materialDivider1
             // 
@@ -72,6 +72,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

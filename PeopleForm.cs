@@ -157,6 +157,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
+                        Today = DateTime.Now;
+
                         RecordActivity($"Employee \"{Employee.Name}\" timed in");
 
                         SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeTimeList (EmployeeId, TimeIn, TimeOut, DateCreated) VALUES " +
@@ -181,6 +183,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
+                        Today = DateTime.Now;
+
                         RecordActivity($"Employee \"{Employee.Name}\" timed out");
 
                         SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeTimeList SET TimeOut='{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}" +

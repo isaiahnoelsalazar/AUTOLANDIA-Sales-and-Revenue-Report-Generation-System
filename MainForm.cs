@@ -17,9 +17,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             new HomeForm(),
             new PeopleForm(),
             new ServicesAndPackagesForm(),
-            new ActivityRecordForm(),
-            new ActivityRecordForm(),
-            new ActivityRecordForm(),
+            new TransactionsForm(),
+            new BillingForm(),
+            new ReportsForm(),
             new ActivityRecordForm()
 
         };
@@ -46,6 +46,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             GlobalHomeForm = (HomeForm)Forms[0];
             GlobalPeopleForm = (PeopleForm)Forms[1];
             GlobalServicesAndPackagesForm = (ServicesAndPackagesForm)Forms[2];
+            GlobalBillingForm = (BillingForm)Forms[4];
             GlobalActivityRecordForm = (ActivityRecordForm)Forms[6];
 
             SelectTab(0);

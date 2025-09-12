@@ -25,9 +25,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (Employee.ID.Equals(EmployeeID))
                 {
                     TB_Name.Text = Employee.Name;
-                    TB_MobileNumber.Text = Employee.MobileNumber;
                     PreviousEmployeeName = Employee.Name;
-                    PreviousMobileNumber = Employee.MobileNumber;
+                    if (!Employee.MobileNumber.Equals("(Mobile number not set)"))
+                    {
+                        TB_MobileNumber.Text = Employee.MobileNumber;
+                        PreviousMobileNumber = Employee.MobileNumber;
+                    }
                 }
             }
         }

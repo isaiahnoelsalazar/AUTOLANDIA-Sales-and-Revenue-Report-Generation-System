@@ -50,8 +50,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecreateGlobalEmployeeTimeList();
                     ProgressBar.Increment(10);
 
+                    RecreateGlobalBillingList();
+                    ProgressBar.Increment(10);
+
                     RecreateGlobalActivityList();
-                    ProgressBar.Increment(20);
+                    ProgressBar.Increment(10);
 
                     Timer.Stop();
                     new MainForm(this).Show();

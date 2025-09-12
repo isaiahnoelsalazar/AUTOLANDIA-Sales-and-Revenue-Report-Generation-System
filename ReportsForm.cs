@@ -1,12 +1,12 @@
-﻿using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    public partial class ReportsForm : MaterialForm
+    public partial class ReportsForm : Form
     {
         public ReportsForm()
         {
@@ -43,7 +43,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             for (int a = 0; a < 7; a++)
             {
                 Days[a] = StartOfWeek.AddDays(a);
-                DailySales.Points.AddXY(Days[a].ToString("D"), 0);
+                DailySales.Points.AddXY(Days[a].ToString("d"), 0);
             }
             for (int a = 0; a < 12; a++)
             {
@@ -83,12 +83,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void ViewWeeklySalesButton_Click(object sender, EventArgs e)
         {
-            new ViewWeeklySalesDialog().ShowDialog();
+            //new ViewWeeklySalesDialog().ShowDialog();
         }
 
         private void ViewMonthlySalesButton_Click(object sender, EventArgs e)
         {
-            new ViewMonthlySalesDialog().ShowDialog();
+            //new ViewMonthlySalesDialog().ShowDialog();
         }
     }
 }

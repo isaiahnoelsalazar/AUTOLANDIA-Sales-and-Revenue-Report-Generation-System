@@ -37,19 +37,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ServiceListContainer = new System.Windows.Forms.Panel();
             this.ServiceList = new System.Windows.Forms.TableLayoutPanel();
-            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
-            this.EditServiceListButton = new MaterialSkin.Controls.MaterialButton();
             this.PackagesTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.PackageListContainer = new System.Windows.Forms.Panel();
             this.PackageList = new System.Windows.Forms.TableLayoutPanel();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.EditPackageListButton = new MaterialSkin.Controls.MaterialButton();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.ServicesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,8 +73,6 @@
             // 
             this.ServicesTab.Controls.Add(this.tableLayoutPanel2);
             this.ServicesTab.Controls.Add(this.ServiceListContainer);
-            this.ServicesTab.Controls.Add(this.materialDivider2);
-            this.ServicesTab.Controls.Add(this.EditServiceListButton);
             this.ServicesTab.Location = new System.Drawing.Point(4, 52);
             this.ServicesTab.Margin = new System.Windows.Forms.Padding(0);
             this.ServicesTab.Name = "ServicesTab";
@@ -101,8 +95,8 @@
             this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 62);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 8);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -160,10 +154,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ServiceListContainer.AutoScroll = true;
             this.ServiceListContainer.Controls.Add(this.ServiceList);
-            this.ServiceListContainer.Location = new System.Drawing.Point(8, 110);
+            this.ServiceListContainer.Location = new System.Drawing.Point(8, 56);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(616, 189);
+            this.ServiceListContainer.Size = new System.Drawing.Size(616, 243);
             this.ServiceListContainer.TabIndex = 12;
             // 
             // ServiceList
@@ -181,47 +175,10 @@
             this.ServiceList.Size = new System.Drawing.Size(616, 0);
             this.ServiceList.TabIndex = 0;
             // 
-            // materialDivider2
-            // 
-            this.materialDivider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider2.Depth = 0;
-            this.materialDivider2.Location = new System.Drawing.Point(8, 52);
-            this.materialDivider2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
-            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(616, 2);
-            this.materialDivider2.TabIndex = 11;
-            this.materialDivider2.Text = "materialDivider2";
-            // 
-            // EditServiceListButton
-            // 
-            this.EditServiceListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditServiceListButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EditServiceListButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EditServiceListButton.Depth = 0;
-            this.EditServiceListButton.HighEmphasis = true;
-            this.EditServiceListButton.Icon = null;
-            this.EditServiceListButton.Location = new System.Drawing.Point(476, 8);
-            this.EditServiceListButton.Margin = new System.Windows.Forms.Padding(8);
-            this.EditServiceListButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EditServiceListButton.Name = "EditServiceListButton";
-            this.EditServiceListButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EditServiceListButton.Size = new System.Drawing.Size(148, 36);
-            this.EditServiceListButton.TabIndex = 10;
-            this.EditServiceListButton.Text = "Edit service list";
-            this.EditServiceListButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EditServiceListButton.UseAccentColor = false;
-            this.EditServiceListButton.UseVisualStyleBackColor = true;
-            this.EditServiceListButton.Click += new System.EventHandler(this.EditServiceListButton_Click);
-            // 
             // PackagesTab
             // 
             this.PackagesTab.Controls.Add(this.tableLayoutPanel1);
             this.PackagesTab.Controls.Add(this.PackageListContainer);
-            this.PackagesTab.Controls.Add(this.materialDivider1);
-            this.PackagesTab.Controls.Add(this.EditPackageListButton);
             this.PackagesTab.Location = new System.Drawing.Point(4, 52);
             this.PackagesTab.Margin = new System.Windows.Forms.Padding(0);
             this.PackagesTab.Name = "PackagesTab";
@@ -246,13 +203,35 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 62);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 48);
             this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(499, 8);
+            this.label9.Margin = new System.Windows.Forms.Padding(8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 32);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Price";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(426, 8);
+            this.label8.Margin = new System.Windows.Forms.Padding(8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 32);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Size";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -294,10 +273,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PackageListContainer.AutoScroll = true;
             this.PackageListContainer.Controls.Add(this.PackageList);
-            this.PackageListContainer.Location = new System.Drawing.Point(8, 110);
+            this.PackageListContainer.Location = new System.Drawing.Point(8, 56);
             this.PackageListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.PackageListContainer.Name = "PackageListContainer";
-            this.PackageListContainer.Size = new System.Drawing.Size(616, 189);
+            this.PackageListContainer.Size = new System.Drawing.Size(616, 243);
             this.PackageListContainer.TabIndex = 8;
             // 
             // PackageList
@@ -315,63 +294,6 @@
             this.PackageList.Size = new System.Drawing.Size(616, 0);
             this.PackageList.TabIndex = 0;
             // 
-            // materialDivider1
-            // 
-            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(8, 52);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(616, 2);
-            this.materialDivider1.TabIndex = 7;
-            this.materialDivider1.Text = "materialDivider1";
-            // 
-            // EditPackageListButton
-            // 
-            this.EditPackageListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditPackageListButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EditPackageListButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EditPackageListButton.Depth = 0;
-            this.EditPackageListButton.HighEmphasis = true;
-            this.EditPackageListButton.Icon = null;
-            this.EditPackageListButton.Location = new System.Drawing.Point(468, 8);
-            this.EditPackageListButton.Margin = new System.Windows.Forms.Padding(8);
-            this.EditPackageListButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EditPackageListButton.Name = "EditPackageListButton";
-            this.EditPackageListButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EditPackageListButton.Size = new System.Drawing.Size(156, 36);
-            this.EditPackageListButton.TabIndex = 1;
-            this.EditPackageListButton.Text = "Edit package list";
-            this.EditPackageListButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EditPackageListButton.UseAccentColor = false;
-            this.EditPackageListButton.UseVisualStyleBackColor = true;
-            this.EditPackageListButton.Click += new System.EventHandler(this.EditPackageListButton_Click);
-            // 
-            // label8
-            // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(426, 8);
-            this.label8.Margin = new System.Windows.Forms.Padding(8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 32);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Size";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(499, 8);
-            this.label9.Margin = new System.Windows.Forms.Padding(8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 32);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Price";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ServicesAndPackagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,12 +307,10 @@
             this.Load += new System.EventHandler(this.ServicesAndPackagesForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.ServicesTab.ResumeLayout(false);
-            this.ServicesTab.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ServiceListContainer.ResumeLayout(false);
             this.ServiceListContainer.PerformLayout();
             this.PackagesTab.ResumeLayout(false);
-            this.PackagesTab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.PackageListContainer.ResumeLayout(false);
             this.PackageListContainer.PerformLayout();
@@ -409,16 +329,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel PackageListContainer;
         private System.Windows.Forms.TableLayoutPanel PackageList;
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialButton EditPackageListButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel ServiceListContainer;
         private System.Windows.Forms.TableLayoutPanel ServiceList;
-        private MaterialSkin.Controls.MaterialDivider materialDivider2;
-        private MaterialSkin.Controls.MaterialButton EditServiceListButton;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;

@@ -2,17 +2,17 @@
 {
     public class OrderItem
     {
-        string id, employeeID, plateNumber, serviceIDList, packageIDList, dateCreated;
-        double balance;
+        string id, employeeIDList, serviceIDList, packageID, vehicleId, progress, lastUpdated, dateCreated;
 
-        public OrderItem(string id, string employeeID, string plateNumber, string serviceIDList, string packageIDList, double balance, string dateCreated)
+        public OrderItem(string id, string employeeIDList, string serviceIDList, string packageID, string vehicleId, string progress, string lastUpdated, string dateCreated)
         {
             this.id = id;
-            this.employeeID = employeeID;
-            this.plateNumber = plateNumber;
+            this.employeeIDList = employeeIDList;
             this.serviceIDList = serviceIDList;
-            this.packageIDList = packageIDList;
-            this.balance = balance;
+            this.packageID = packageID;
+            this.vehicleId = vehicleId;
+            this.progress = progress;
+            this.lastUpdated = lastUpdated;
             this.dateCreated = dateCreated;
         }
 
@@ -22,16 +22,10 @@
             set { id = value; }
         }
 
-        public string EmployeeID
+        public string EmployeeIDList
         {
-            get { return employeeID; }
-            set { employeeID = value; }
-        }
-
-        public string PlateNumber
-        {
-            get { return plateNumber; }
-            set { plateNumber = value; }
+            get { return employeeIDList; }
+            set { employeeIDList = value; }
         }
 
         public string ServiceIDList
@@ -40,16 +34,28 @@
             set { serviceIDList = value; }
         }
 
-        public string PackageIDList
+        public string PackageID
         {
-            get { return packageIDList; }
-            set { packageIDList = value; }
+            get { return packageID; }
+            set { packageID = value; }
         }
 
-        public double Balance
+        public string VehicleId
         {
-            get { return balance; }
-            set { balance = value; }
+            get { return vehicleId; }
+            set { vehicleId = value; }
+        }
+
+        public string Progress
+        {
+            get { return progress; }
+            set { progress = value; }
+        }
+
+        public string LastUpdated
+        {
+            get { return lastUpdated; }
+            set { lastUpdated = value; }
         }
 
         public string DateCreated
