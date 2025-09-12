@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ViewWeeklySalesButton = new MaterialSkin.Controls.MaterialButton();
             this.ViewMonthlySalesButton = new MaterialSkin.Controls.MaterialButton();
@@ -123,8 +123,8 @@
             // 
             // MonthlySalesChart
             // 
-            chartArea5.Name = "ChartArea1";
-            this.MonthlySalesChart.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.MonthlySalesChart.ChartAreas.Add(chartArea1);
             this.MonthlySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MonthlySalesChart.Location = new System.Drawing.Point(313, 0);
             this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
@@ -135,8 +135,8 @@
             // 
             // WeeklySalesChart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.WeeklySalesChart.ChartAreas.Add(chartArea6);
+            chartArea2.Name = "ChartArea1";
+            this.WeeklySalesChart.ChartAreas.Add(chartArea2);
             this.WeeklySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeeklySalesChart.Location = new System.Drawing.Point(0, 0);
             this.WeeklySalesChart.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -154,6 +154,7 @@
             this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ReportsForm";
             this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

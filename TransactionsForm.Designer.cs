@@ -40,6 +40,8 @@
             this.TransactionList = new System.Windows.Forms.TableLayoutPanel();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.AddNewTransactionButton = new MaterialSkin.Controls.MaterialButton();
+            this.SearchBarTransaction = new MaterialSkin.Controls.MaterialTextBox();
+            this.FilterTransaction = new MaterialSkin.Controls.MaterialComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.TransactionListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -211,11 +213,61 @@
             this.AddNewTransactionButton.UseVisualStyleBackColor = true;
             this.AddNewTransactionButton.Click += new System.EventHandler(this.AddNewTransactionButton_Click);
             // 
+            // SearchBarTransaction
+            // 
+            this.SearchBarTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarTransaction.AnimateReadOnly = false;
+            this.SearchBarTransaction.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarTransaction.Depth = 0;
+            this.SearchBarTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarTransaction.Hint = "Search";
+            this.SearchBarTransaction.LeadingIcon = null;
+            this.SearchBarTransaction.Location = new System.Drawing.Point(9, 9);
+            this.SearchBarTransaction.MaxLength = 50;
+            this.SearchBarTransaction.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarTransaction.Multiline = false;
+            this.SearchBarTransaction.Name = "SearchBarTransaction";
+            this.SearchBarTransaction.Size = new System.Drawing.Size(250, 36);
+            this.SearchBarTransaction.TabIndex = 21;
+            this.SearchBarTransaction.Text = "";
+            this.SearchBarTransaction.TrailingIcon = null;
+            this.SearchBarTransaction.UseTallSize = false;
+            this.SearchBarTransaction.TextChanged += new System.EventHandler(this.SearchBarTransaction_TextChanged);
+            // 
+            // FilterTransaction
+            // 
+            this.FilterTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterTransaction.AutoResize = false;
+            this.FilterTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterTransaction.Depth = 0;
+            this.FilterTransaction.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterTransaction.DropDownHeight = 118;
+            this.FilterTransaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterTransaction.DropDownWidth = 121;
+            this.FilterTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterTransaction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterTransaction.FormattingEnabled = true;
+            this.FilterTransaction.IntegralHeight = false;
+            this.FilterTransaction.ItemHeight = 29;
+            this.FilterTransaction.Location = new System.Drawing.Point(283, 10);
+            this.FilterTransaction.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.FilterTransaction.MaxDropDownItems = 4;
+            this.FilterTransaction.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterTransaction.Name = "FilterTransaction";
+            this.FilterTransaction.Size = new System.Drawing.Size(150, 35);
+            this.FilterTransaction.StartIndex = 0;
+            this.FilterTransaction.TabIndex = 28;
+            this.FilterTransaction.UseTallSize = false;
+            this.FilterTransaction.TextChanged += new System.EventHandler(this.FilterTransaction_TextChanged);
+            // 
             // TransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.FilterTransaction);
+            this.Controls.Add(this.SearchBarTransaction);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.TransactionListContainer);
             this.Controls.Add(this.materialDivider2);
@@ -246,5 +298,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarTransaction;
+        private MaterialSkin.Controls.MaterialComboBox FilterTransaction;
     }
 }

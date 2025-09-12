@@ -37,6 +37,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.BillingListContainer = new System.Windows.Forms.Panel();
             this.BillingList = new System.Windows.Forms.TableLayoutPanel();
+            this.SearchBarBilling = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
+            this.FilterBilling = new MaterialSkin.Controls.MaterialComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.BillingListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +61,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 9);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 63);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -139,10 +142,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BillingListContainer.AutoScroll = true;
             this.BillingListContainer.Controls.Add(this.BillingList);
-            this.BillingListContainer.Location = new System.Drawing.Point(9, 57);
+            this.BillingListContainer.Location = new System.Drawing.Point(9, 111);
             this.BillingListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.BillingListContainer.Name = "BillingListContainer";
-            this.BillingListContainer.Size = new System.Drawing.Size(622, 294);
+            this.BillingListContainer.Size = new System.Drawing.Size(622, 240);
             this.BillingListContainer.TabIndex = 20;
             // 
             // BillingList
@@ -160,11 +163,75 @@
             this.BillingList.Size = new System.Drawing.Size(622, 0);
             this.BillingList.TabIndex = 0;
             // 
+            // SearchBarBilling
+            // 
+            this.SearchBarBilling.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarBilling.AnimateReadOnly = false;
+            this.SearchBarBilling.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarBilling.Depth = 0;
+            this.SearchBarBilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarBilling.Hint = "Search";
+            this.SearchBarBilling.LeadingIcon = null;
+            this.SearchBarBilling.Location = new System.Drawing.Point(9, 9);
+            this.SearchBarBilling.MaxLength = 50;
+            this.SearchBarBilling.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarBilling.Multiline = false;
+            this.SearchBarBilling.Name = "SearchBarBilling";
+            this.SearchBarBilling.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarBilling.TabIndex = 24;
+            this.SearchBarBilling.Text = "";
+            this.SearchBarBilling.TrailingIcon = null;
+            this.SearchBarBilling.UseTallSize = false;
+            this.SearchBarBilling.TextChanged += new System.EventHandler(this.SearchBarBilling_TextChanged);
+            // 
+            // materialDivider2
+            // 
+            this.materialDivider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(9, 53);
+            this.materialDivider2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(622, 2);
+            this.materialDivider2.TabIndex = 23;
+            this.materialDivider2.Text = "materialDivider2";
+            // 
+            // FilterBilling
+            // 
+            this.FilterBilling.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterBilling.AutoResize = false;
+            this.FilterBilling.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterBilling.Depth = 0;
+            this.FilterBilling.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterBilling.DropDownHeight = 118;
+            this.FilterBilling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterBilling.DropDownWidth = 121;
+            this.FilterBilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterBilling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterBilling.FormattingEnabled = true;
+            this.FilterBilling.IntegralHeight = false;
+            this.FilterBilling.ItemHeight = 29;
+            this.FilterBilling.Location = new System.Drawing.Point(481, 9);
+            this.FilterBilling.MaxDropDownItems = 4;
+            this.FilterBilling.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterBilling.Name = "FilterBilling";
+            this.FilterBilling.Size = new System.Drawing.Size(150, 35);
+            this.FilterBilling.StartIndex = 0;
+            this.FilterBilling.TabIndex = 28;
+            this.FilterBilling.UseTallSize = false;
+            this.FilterBilling.TextChanged += new System.EventHandler(this.FilterBilling_TextChanged);
+            // 
             // BillingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.FilterBilling);
+            this.Controls.Add(this.SearchBarBilling);
+            this.Controls.Add(this.materialDivider2);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.BillingListContainer);
             this.DoubleBuffered = true;
@@ -189,5 +256,8 @@
         private System.Windows.Forms.Panel BillingListContainer;
         private System.Windows.Forms.TableLayoutPanel BillingList;
         private System.Windows.Forms.Label label2;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarBilling;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
+        private MaterialSkin.Controls.MaterialComboBox FilterBilling;
     }
 }

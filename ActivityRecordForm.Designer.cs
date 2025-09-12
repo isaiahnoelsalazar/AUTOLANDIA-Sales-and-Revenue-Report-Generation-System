@@ -28,24 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.ActivityTable = new System.Windows.Forms.ListView();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.SearchBarActivity = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.SuspendLayout();
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.materialLabel1.Location = new System.Drawing.Point(15, 15);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(101, 29);
-            this.materialLabel1.TabIndex = 8;
-            this.materialLabel1.Text = "Activities";
             // 
             // ActivityTable
             // 
@@ -53,50 +39,70 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ActivityTable.HideSelection = false;
-            this.ActivityTable.Location = new System.Drawing.Point(15, 70);
-            this.ActivityTable.Margin = new System.Windows.Forms.Padding(6);
+            this.ActivityTable.Location = new System.Drawing.Point(9, 63);
+            this.ActivityTable.Margin = new System.Windows.Forms.Padding(0);
             this.ActivityTable.Name = "ActivityTable";
-            this.ActivityTable.Size = new System.Drawing.Size(610, 275);
+            this.ActivityTable.Size = new System.Drawing.Size(622, 288);
             this.ActivityTable.TabIndex = 7;
             this.ActivityTable.UseCompatibleStateImageBehavior = false;
             this.ActivityTable.View = System.Windows.Forms.View.Details;
             // 
-            // materialDivider1
+            // SearchBarActivity
             // 
-            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SearchBarActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(15, 56);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(6);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(610, 2);
-            this.materialDivider1.TabIndex = 6;
-            this.materialDivider1.Text = "materialDivider1";
+            this.SearchBarActivity.AnimateReadOnly = false;
+            this.SearchBarActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarActivity.Depth = 0;
+            this.SearchBarActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarActivity.Hint = "Search";
+            this.SearchBarActivity.LeadingIcon = null;
+            this.SearchBarActivity.Location = new System.Drawing.Point(9, 9);
+            this.SearchBarActivity.MaxLength = 50;
+            this.SearchBarActivity.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarActivity.Multiline = false;
+            this.SearchBarActivity.Name = "SearchBarActivity";
+            this.SearchBarActivity.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarActivity.TabIndex = 24;
+            this.SearchBarActivity.Text = "";
+            this.SearchBarActivity.TrailingIcon = null;
+            this.SearchBarActivity.UseTallSize = false;
+            this.SearchBarActivity.TextChanged += new System.EventHandler(this.SearchBarActivity_TextChanged);
+            // 
+            // materialDivider2
+            // 
+            this.materialDivider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(9, 53);
+            this.materialDivider2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(622, 2);
+            this.materialDivider2.TabIndex = 23;
+            this.materialDivider2.Text = "materialDivider2";
             // 
             // ActivityRecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
-            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.SearchBarActivity);
+            this.Controls.Add(this.materialDivider2);
             this.Controls.Add(this.ActivityTable);
-            this.Controls.Add(this.materialDivider1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ActivityRecordForm";
             this.Text = "ActivityRecordForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.ListView ActivityTable;
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarActivity;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
     }
 }

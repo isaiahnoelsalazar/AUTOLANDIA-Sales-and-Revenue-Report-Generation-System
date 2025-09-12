@@ -51,17 +51,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.AddNewCustomerButton = new MaterialSkin.Controls.MaterialButton();
             this.VehiclesTab = new System.Windows.Forms.TabPage();
-            this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
-            this.AddNewVehicleButton = new MaterialSkin.Controls.MaterialButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.VehicleListContainer = new System.Windows.Forms.Panel();
             this.VehicleList = new System.Windows.Forms.TableLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
+            this.AddNewVehicleButton = new MaterialSkin.Controls.MaterialButton();
+            this.SearchBarEmployee = new MaterialSkin.Controls.MaterialTextBox();
+            this.SearchBarCustomer = new MaterialSkin.Controls.MaterialTextBox();
+            this.SearchBarVehicle = new MaterialSkin.Controls.MaterialTextBox();
+            this.FilterEmployee = new MaterialSkin.Controls.MaterialComboBox();
+            this.FilterCustomer = new MaterialSkin.Controls.MaterialComboBox();
+            this.FilterVehicle = new MaterialSkin.Controls.MaterialComboBox();
             this.tabControl1.SuspendLayout();
             this.EmployeesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -91,6 +97,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             // EmployeesTab
             // 
+            this.EmployeesTab.BackColor = System.Drawing.Color.White;
+            this.EmployeesTab.Controls.Add(this.FilterEmployee);
+            this.EmployeesTab.Controls.Add(this.SearchBarEmployee);
             this.EmployeesTab.Controls.Add(this.tableLayoutPanel2);
             this.EmployeesTab.Controls.Add(this.EmployeeListContainer);
             this.EmployeesTab.Controls.Add(this.materialDivider2);
@@ -101,7 +110,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.EmployeesTab.Size = new System.Drawing.Size(632, 304);
             this.EmployeesTab.TabIndex = 0;
             this.EmployeesTab.Text = "Employees";
-            this.EmployeesTab.UseVisualStyleBackColor = true;
             this.EmployeesTab.Enter += new System.EventHandler(this.EmployeesTab_Enter);
             // 
             // tableLayoutPanel2
@@ -122,6 +130,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(616, 48);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
@@ -234,6 +243,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             // CustomersTab
             // 
+            this.CustomersTab.BackColor = System.Drawing.Color.White;
+            this.CustomersTab.Controls.Add(this.FilterCustomer);
+            this.CustomersTab.Controls.Add(this.SearchBarCustomer);
             this.CustomersTab.Controls.Add(this.tableLayoutPanel1);
             this.CustomersTab.Controls.Add(this.CustomerListContainer);
             this.CustomersTab.Controls.Add(this.materialDivider1);
@@ -244,7 +256,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.CustomersTab.Size = new System.Drawing.Size(632, 304);
             this.CustomersTab.TabIndex = 1;
             this.CustomersTab.Text = "Customers";
-            this.CustomersTab.UseVisualStyleBackColor = true;
             this.CustomersTab.Enter += new System.EventHandler(this.CustomersTab_Enter);
             // 
             // tableLayoutPanel1
@@ -364,6 +375,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             // VehiclesTab
             // 
+            this.VehiclesTab.BackColor = System.Drawing.Color.White;
+            this.VehiclesTab.Controls.Add(this.FilterVehicle);
+            this.VehiclesTab.Controls.Add(this.SearchBarVehicle);
             this.VehiclesTab.Controls.Add(this.tableLayoutPanel3);
             this.VehiclesTab.Controls.Add(this.VehicleListContainer);
             this.VehiclesTab.Controls.Add(this.materialDivider3);
@@ -374,43 +388,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.VehiclesTab.Size = new System.Drawing.Size(632, 304);
             this.VehiclesTab.TabIndex = 2;
             this.VehiclesTab.Text = "Vehicles";
-            this.VehiclesTab.UseVisualStyleBackColor = true;
             this.VehiclesTab.Enter += new System.EventHandler(this.VehiclesTab_Enter);
-            // 
-            // materialDivider3
-            // 
-            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider3.Depth = 0;
-            this.materialDivider3.Location = new System.Drawing.Point(8, 52);
-            this.materialDivider3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
-            this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider3.Name = "materialDivider3";
-            this.materialDivider3.Size = new System.Drawing.Size(616, 2);
-            this.materialDivider3.TabIndex = 9;
-            this.materialDivider3.Text = "materialDivider3";
-            // 
-            // AddNewVehicleButton
-            // 
-            this.AddNewVehicleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddNewVehicleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AddNewVehicleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.AddNewVehicleButton.Depth = 0;
-            this.AddNewVehicleButton.HighEmphasis = true;
-            this.AddNewVehicleButton.Icon = null;
-            this.AddNewVehicleButton.Location = new System.Drawing.Point(475, 8);
-            this.AddNewVehicleButton.Margin = new System.Windows.Forms.Padding(8);
-            this.AddNewVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.AddNewVehicleButton.Name = "AddNewVehicleButton";
-            this.AddNewVehicleButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.AddNewVehicleButton.Size = new System.Drawing.Size(149, 36);
-            this.AddNewVehicleButton.TabIndex = 8;
-            this.AddNewVehicleButton.Text = "Add new vehicle";
-            this.AddNewVehicleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.AddNewVehicleButton.UseAccentColor = false;
-            this.AddNewVehicleButton.UseVisualStyleBackColor = true;
-            this.AddNewVehicleButton.Click += new System.EventHandler(this.AddNewVehicleButton_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -436,6 +414,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(616, 48);
             this.tableLayoutPanel3.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(499, 8);
+            this.label13.Margin = new System.Windows.Forms.Padding(8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(109, 32);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Owner Name";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(8, 8);
+            this.label12.Margin = new System.Windows.Forms.Padding(8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 32);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "ID";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -509,27 +509,181 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.VehicleList.Size = new System.Drawing.Size(616, 0);
             this.VehicleList.TabIndex = 0;
             // 
-            // label12
+            // materialDivider3
             // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(8, 8);
-            this.label12.Margin = new System.Windows.Forms.Padding(8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 32);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "ID";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider3.Depth = 0;
+            this.materialDivider3.Location = new System.Drawing.Point(8, 52);
+            this.materialDivider3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider3.Name = "materialDivider3";
+            this.materialDivider3.Size = new System.Drawing.Size(616, 2);
+            this.materialDivider3.TabIndex = 9;
+            this.materialDivider3.Text = "materialDivider3";
             // 
-            // label13
+            // AddNewVehicleButton
             // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(499, 8);
-            this.label13.Margin = new System.Windows.Forms.Padding(8);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(109, 32);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Owner Name";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AddNewVehicleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewVehicleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AddNewVehicleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.AddNewVehicleButton.Depth = 0;
+            this.AddNewVehicleButton.HighEmphasis = true;
+            this.AddNewVehicleButton.Icon = null;
+            this.AddNewVehicleButton.Location = new System.Drawing.Point(475, 8);
+            this.AddNewVehicleButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AddNewVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AddNewVehicleButton.Name = "AddNewVehicleButton";
+            this.AddNewVehicleButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.AddNewVehicleButton.Size = new System.Drawing.Size(149, 36);
+            this.AddNewVehicleButton.TabIndex = 8;
+            this.AddNewVehicleButton.Text = "Add new vehicle";
+            this.AddNewVehicleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.AddNewVehicleButton.UseAccentColor = false;
+            this.AddNewVehicleButton.UseVisualStyleBackColor = true;
+            this.AddNewVehicleButton.Click += new System.EventHandler(this.AddNewVehicleButton_Click);
+            // 
+            // SearchBarEmployee
+            // 
+            this.SearchBarEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarEmployee.AnimateReadOnly = false;
+            this.SearchBarEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarEmployee.Depth = 0;
+            this.SearchBarEmployee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarEmployee.Hint = "Search";
+            this.SearchBarEmployee.LeadingIcon = null;
+            this.SearchBarEmployee.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarEmployee.MaxLength = 50;
+            this.SearchBarEmployee.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarEmployee.Multiline = false;
+            this.SearchBarEmployee.Name = "SearchBarEmployee";
+            this.SearchBarEmployee.Size = new System.Drawing.Size(250, 36);
+            this.SearchBarEmployee.TabIndex = 14;
+            this.SearchBarEmployee.Text = "";
+            this.SearchBarEmployee.TrailingIcon = null;
+            this.SearchBarEmployee.UseTallSize = false;
+            this.SearchBarEmployee.TextChanged += new System.EventHandler(this.SearchBarEmployee_TextChanged);
+            // 
+            // SearchBarCustomer
+            // 
+            this.SearchBarCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarCustomer.AnimateReadOnly = false;
+            this.SearchBarCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarCustomer.Depth = 0;
+            this.SearchBarCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarCustomer.Hint = "Search";
+            this.SearchBarCustomer.LeadingIcon = null;
+            this.SearchBarCustomer.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarCustomer.MaxLength = 50;
+            this.SearchBarCustomer.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarCustomer.Multiline = false;
+            this.SearchBarCustomer.Name = "SearchBarCustomer";
+            this.SearchBarCustomer.Size = new System.Drawing.Size(250, 36);
+            this.SearchBarCustomer.TabIndex = 15;
+            this.SearchBarCustomer.Text = "";
+            this.SearchBarCustomer.TrailingIcon = null;
+            this.SearchBarCustomer.UseTallSize = false;
+            this.SearchBarCustomer.TextChanged += new System.EventHandler(this.SearchBarCustomer_TextChanged);
+            // 
+            // SearchBarVehicle
+            // 
+            this.SearchBarVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarVehicle.AnimateReadOnly = false;
+            this.SearchBarVehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarVehicle.Depth = 0;
+            this.SearchBarVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarVehicle.Hint = "Search";
+            this.SearchBarVehicle.LeadingIcon = null;
+            this.SearchBarVehicle.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarVehicle.MaxLength = 50;
+            this.SearchBarVehicle.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarVehicle.Multiline = false;
+            this.SearchBarVehicle.Name = "SearchBarVehicle";
+            this.SearchBarVehicle.Size = new System.Drawing.Size(250, 36);
+            this.SearchBarVehicle.TabIndex = 20;
+            this.SearchBarVehicle.Text = "";
+            this.SearchBarVehicle.TrailingIcon = null;
+            this.SearchBarVehicle.UseTallSize = false;
+            this.SearchBarVehicle.TextChanged += new System.EventHandler(this.SearchBarVehicle_TextChanged);
+            // 
+            // FilterEmployee
+            // 
+            this.FilterEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterEmployee.AutoResize = false;
+            this.FilterEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterEmployee.Depth = 0;
+            this.FilterEmployee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterEmployee.DropDownHeight = 118;
+            this.FilterEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterEmployee.DropDownWidth = 121;
+            this.FilterEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterEmployee.FormattingEnabled = true;
+            this.FilterEmployee.IntegralHeight = false;
+            this.FilterEmployee.ItemHeight = 29;
+            this.FilterEmployee.Location = new System.Drawing.Point(298, 9);
+            this.FilterEmployee.MaxDropDownItems = 4;
+            this.FilterEmployee.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterEmployee.Name = "FilterEmployee";
+            this.FilterEmployee.Size = new System.Drawing.Size(150, 35);
+            this.FilterEmployee.StartIndex = 0;
+            this.FilterEmployee.TabIndex = 26;
+            this.FilterEmployee.UseTallSize = false;
+            this.FilterEmployee.TextChanged += new System.EventHandler(this.FilterEmployee_TextChanged);
+            // 
+            // FilterCustomer
+            // 
+            this.FilterCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterCustomer.AutoResize = false;
+            this.FilterCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterCustomer.Depth = 0;
+            this.FilterCustomer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterCustomer.DropDownHeight = 118;
+            this.FilterCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterCustomer.DropDownWidth = 121;
+            this.FilterCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterCustomer.FormattingEnabled = true;
+            this.FilterCustomer.IntegralHeight = false;
+            this.FilterCustomer.ItemHeight = 29;
+            this.FilterCustomer.Location = new System.Drawing.Point(296, 9);
+            this.FilterCustomer.MaxDropDownItems = 4;
+            this.FilterCustomer.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterCustomer.Name = "FilterCustomer";
+            this.FilterCustomer.Size = new System.Drawing.Size(150, 35);
+            this.FilterCustomer.StartIndex = 0;
+            this.FilterCustomer.TabIndex = 27;
+            this.FilterCustomer.UseTallSize = false;
+            this.FilterCustomer.TextChanged += new System.EventHandler(this.FilterCustomer_TextChanged);
+            // 
+            // FilterVehicle
+            // 
+            this.FilterVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterVehicle.AutoResize = false;
+            this.FilterVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterVehicle.Depth = 0;
+            this.FilterVehicle.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterVehicle.DropDownHeight = 118;
+            this.FilterVehicle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterVehicle.DropDownWidth = 121;
+            this.FilterVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterVehicle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterVehicle.FormattingEnabled = true;
+            this.FilterVehicle.IntegralHeight = false;
+            this.FilterVehicle.ItemHeight = 29;
+            this.FilterVehicle.Location = new System.Drawing.Point(314, 9);
+            this.FilterVehicle.MaxDropDownItems = 4;
+            this.FilterVehicle.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterVehicle.Name = "FilterVehicle";
+            this.FilterVehicle.Size = new System.Drawing.Size(150, 35);
+            this.FilterVehicle.StartIndex = 0;
+            this.FilterVehicle.TabIndex = 27;
+            this.FilterVehicle.UseTallSize = false;
+            this.FilterVehicle.TextChanged += new System.EventHandler(this.FilterVehicle_TextChanged);
             // 
             // PeopleForm
             // 
@@ -596,5 +750,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private TableLayoutPanel VehicleList;
         private Label label12;
         private Label label13;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarEmployee;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarCustomer;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarVehicle;
+        private MaterialSkin.Controls.MaterialComboBox FilterEmployee;
+        private MaterialSkin.Controls.MaterialComboBox FilterCustomer;
+        private MaterialSkin.Controls.MaterialComboBox FilterVehicle;
     }
 }

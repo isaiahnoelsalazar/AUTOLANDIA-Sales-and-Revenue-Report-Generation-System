@@ -46,6 +46,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PackageListContainer = new System.Windows.Forms.Panel();
             this.PackageList = new System.Windows.Forms.TableLayoutPanel();
+            this.SearchBarService = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
+            this.SearchBarPackage = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.FilterPackage = new MaterialSkin.Controls.MaterialComboBox();
+            this.FilterService = new MaterialSkin.Controls.MaterialComboBox();
             this.tabControl1.SuspendLayout();
             this.ServicesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -71,6 +77,10 @@
             // 
             // ServicesTab
             // 
+            this.ServicesTab.BackColor = System.Drawing.Color.White;
+            this.ServicesTab.Controls.Add(this.FilterService);
+            this.ServicesTab.Controls.Add(this.SearchBarService);
+            this.ServicesTab.Controls.Add(this.materialDivider3);
             this.ServicesTab.Controls.Add(this.tableLayoutPanel2);
             this.ServicesTab.Controls.Add(this.ServiceListContainer);
             this.ServicesTab.Location = new System.Drawing.Point(4, 52);
@@ -79,7 +89,6 @@
             this.ServicesTab.Size = new System.Drawing.Size(632, 304);
             this.ServicesTab.TabIndex = 0;
             this.ServicesTab.Text = "Services";
-            this.ServicesTab.UseVisualStyleBackColor = true;
             this.ServicesTab.Enter += new System.EventHandler(this.ServicesTab_Enter);
             // 
             // tableLayoutPanel2
@@ -95,8 +104,8 @@
             this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 62);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -154,10 +163,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ServiceListContainer.AutoScroll = true;
             this.ServiceListContainer.Controls.Add(this.ServiceList);
-            this.ServiceListContainer.Location = new System.Drawing.Point(8, 56);
+            this.ServiceListContainer.Location = new System.Drawing.Point(8, 110);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(616, 243);
+            this.ServiceListContainer.Size = new System.Drawing.Size(616, 189);
             this.ServiceListContainer.TabIndex = 12;
             // 
             // ServiceList
@@ -177,6 +186,10 @@
             // 
             // PackagesTab
             // 
+            this.PackagesTab.BackColor = System.Drawing.Color.White;
+            this.PackagesTab.Controls.Add(this.FilterPackage);
+            this.PackagesTab.Controls.Add(this.SearchBarPackage);
+            this.PackagesTab.Controls.Add(this.materialDivider1);
             this.PackagesTab.Controls.Add(this.tableLayoutPanel1);
             this.PackagesTab.Controls.Add(this.PackageListContainer);
             this.PackagesTab.Location = new System.Drawing.Point(4, 52);
@@ -185,7 +198,6 @@
             this.PackagesTab.Size = new System.Drawing.Size(632, 304);
             this.PackagesTab.TabIndex = 1;
             this.PackagesTab.Text = "Packages";
-            this.PackagesTab.UseVisualStyleBackColor = true;
             this.PackagesTab.Enter += new System.EventHandler(this.PackagesTab_Enter);
             // 
             // tableLayoutPanel1
@@ -203,8 +215,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 62);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -273,10 +285,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PackageListContainer.AutoScroll = true;
             this.PackageListContainer.Controls.Add(this.PackageList);
-            this.PackageListContainer.Location = new System.Drawing.Point(8, 56);
+            this.PackageListContainer.Location = new System.Drawing.Point(8, 110);
             this.PackageListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.PackageListContainer.Name = "PackageListContainer";
-            this.PackageListContainer.Size = new System.Drawing.Size(616, 243);
+            this.PackageListContainer.Size = new System.Drawing.Size(616, 189);
             this.PackageListContainer.TabIndex = 8;
             // 
             // PackageList
@@ -293,6 +305,128 @@
             this.PackageList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PackageList.Size = new System.Drawing.Size(616, 0);
             this.PackageList.TabIndex = 0;
+            // 
+            // SearchBarService
+            // 
+            this.SearchBarService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarService.AnimateReadOnly = false;
+            this.SearchBarService.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarService.Depth = 0;
+            this.SearchBarService.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarService.Hint = "Search";
+            this.SearchBarService.LeadingIcon = null;
+            this.SearchBarService.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarService.MaxLength = 50;
+            this.SearchBarService.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarService.Multiline = false;
+            this.SearchBarService.Name = "SearchBarService";
+            this.SearchBarService.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarService.TabIndex = 23;
+            this.SearchBarService.Text = "";
+            this.SearchBarService.TrailingIcon = null;
+            this.SearchBarService.UseTallSize = false;
+            this.SearchBarService.TextChanged += new System.EventHandler(this.SearchBarService_TextChanged);
+            // 
+            // materialDivider3
+            // 
+            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider3.Depth = 0;
+            this.materialDivider3.Location = new System.Drawing.Point(8, 52);
+            this.materialDivider3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider3.Name = "materialDivider3";
+            this.materialDivider3.Size = new System.Drawing.Size(616, 2);
+            this.materialDivider3.TabIndex = 22;
+            this.materialDivider3.Text = "materialDivider3";
+            // 
+            // SearchBarPackage
+            // 
+            this.SearchBarPackage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarPackage.AnimateReadOnly = false;
+            this.SearchBarPackage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarPackage.Depth = 0;
+            this.SearchBarPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarPackage.Hint = "Search";
+            this.SearchBarPackage.LeadingIcon = null;
+            this.SearchBarPackage.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarPackage.MaxLength = 50;
+            this.SearchBarPackage.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarPackage.Multiline = false;
+            this.SearchBarPackage.Name = "SearchBarPackage";
+            this.SearchBarPackage.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarPackage.TabIndex = 23;
+            this.SearchBarPackage.Text = "";
+            this.SearchBarPackage.TrailingIcon = null;
+            this.SearchBarPackage.UseTallSize = false;
+            this.SearchBarPackage.TextChanged += new System.EventHandler(this.SearchBarPackage_TextChanged);
+            // 
+            // materialDivider1
+            // 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(8, 52);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(616, 2);
+            this.materialDivider1.TabIndex = 22;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
+            // FilterPackage
+            // 
+            this.FilterPackage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterPackage.AutoResize = false;
+            this.FilterPackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterPackage.Depth = 0;
+            this.FilterPackage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterPackage.DropDownHeight = 118;
+            this.FilterPackage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterPackage.DropDownWidth = 121;
+            this.FilterPackage.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterPackage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterPackage.FormattingEnabled = true;
+            this.FilterPackage.IntegralHeight = false;
+            this.FilterPackage.ItemHeight = 29;
+            this.FilterPackage.Location = new System.Drawing.Point(474, 8);
+            this.FilterPackage.MaxDropDownItems = 4;
+            this.FilterPackage.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterPackage.Name = "FilterPackage";
+            this.FilterPackage.Size = new System.Drawing.Size(150, 35);
+            this.FilterPackage.StartIndex = 0;
+            this.FilterPackage.TabIndex = 24;
+            this.FilterPackage.UseTallSize = false;
+            this.FilterPackage.TextChanged += new System.EventHandler(this.FilterPackage_TextChanged);
+            // 
+            // FilterService
+            // 
+            this.FilterService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterService.AutoResize = false;
+            this.FilterService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterService.Depth = 0;
+            this.FilterService.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterService.DropDownHeight = 118;
+            this.FilterService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterService.DropDownWidth = 121;
+            this.FilterService.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterService.FormattingEnabled = true;
+            this.FilterService.IntegralHeight = false;
+            this.FilterService.ItemHeight = 29;
+            this.FilterService.Location = new System.Drawing.Point(474, 7);
+            this.FilterService.MaxDropDownItems = 4;
+            this.FilterService.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterService.Name = "FilterService";
+            this.FilterService.Size = new System.Drawing.Size(150, 35);
+            this.FilterService.StartIndex = 0;
+            this.FilterService.TabIndex = 25;
+            this.FilterService.UseTallSize = false;
+            this.FilterService.TextChanged += new System.EventHandler(this.FilterService_TextChanged);
             // 
             // ServicesAndPackagesForm
             // 
@@ -338,5 +472,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarService;
+        private MaterialSkin.Controls.MaterialDivider materialDivider3;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarPackage;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialComboBox FilterPackage;
+        private MaterialSkin.Controls.MaterialComboBox FilterService;
     }
 }
