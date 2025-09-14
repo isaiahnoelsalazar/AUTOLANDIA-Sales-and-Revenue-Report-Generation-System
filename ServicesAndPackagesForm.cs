@@ -1,5 +1,4 @@
-﻿using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -46,114 +45,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (ServiceItem Service in GlobalServiceList)
             {
-                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                TableLayoutPanel Panel = new TableLayoutPanel
-                {
-                    ColumnCount = 4
-                };
-                Label Id = new Label();
-                Label Name = new Label();
-                Label Size = new Label();
-                Label Price = new Label();
-
-                if (DefaultBackgroundColor == null)
-                {
-                    DefaultBackgroundColor = Panel.BackColor;
-                }
-
-                Panel.Dock = DockStyle.Top;
-                Panel.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Panel.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-                Panel.ColumnStyles.Clear();
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
-                Panel.Margin = new Padding(0);
-
-                Id.Dock = DockStyle.Fill;
-                Id.Text = Service.ID;
-                Id.TextAlign = ContentAlignment.MiddleCenter;
-                Id.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Id.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Name.Dock = DockStyle.Fill;
-                Name.Text = Service.Name;
-                Name.TextAlign = ContentAlignment.MiddleCenter;
-                Name.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Name.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Size.Dock = DockStyle.Fill;
-                Size.Text = Service.Size;
-                Size.TextAlign = ContentAlignment.MiddleCenter;
-                Size.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Size.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Price.Dock = DockStyle.Fill;
-                Price.Text = Service.Price.ToString();
-                Price.TextAlign = ContentAlignment.MiddleCenter;
-                Price.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Price.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Panel.Click += (sndr, evnt) =>
-                {
-                    new EditServiceDialog(this, Service.ID).ShowDialog();
-                };
-                Id.Click += (sndr, evnt) =>
-                {
-                    new EditServiceDialog(this, Service.ID).ShowDialog();
-                };
-                Name.Click += (sndr, evnt) =>
-                {
-                    new EditServiceDialog(this, Service.ID).ShowDialog();
-                };
-                Size.Click += (sndr, evnt) =>
-                {
-                    new EditServiceDialog(this, Service.ID).ShowDialog();
-                };
-                Price.Click += (sndr, evnt) =>
-                {
-                    new EditServiceDialog(this, Service.ID).ShowDialog();
-                };
-
-                ServiceList.RowStyles.Add(Row);
-                Panel.Controls.Add(Id, 0, 0);
-                Panel.Controls.Add(Name, 1, 0);
-                Panel.Controls.Add(Size, 2, 0);
-                Panel.Controls.Add(Price, 3, 0);
-                ServiceList.Controls.Add(Panel);
-
-                tableLayoutPanel2.Width = ServiceList.Width;
+                RefreshRows(Service);
             }
         }
 
@@ -166,133 +58,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (PackageItem Package in GlobalPackageList)
             {
-                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                TableLayoutPanel Panel = new TableLayoutPanel
-                {
-                    ColumnCount = 5
-                };
-                Label Id = new Label();
-                Label Name = new Label();
-                Label Details = new Label();
-                Label Size = new Label();
-                Label Price = new Label();
-
-                if (DefaultBackgroundColor == null)
-                {
-                    DefaultBackgroundColor = Panel.BackColor;
-                }
-
-                Panel.Dock = DockStyle.Top;
-                Panel.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Panel.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-                Panel.ColumnStyles.Clear();
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                Panel.Margin = new Padding(0);
-
-                Id.Dock = DockStyle.Fill;
-                Id.Text = Package.ID;
-                Id.TextAlign = ContentAlignment.MiddleCenter;
-                Id.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Id.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Name.Dock = DockStyle.Fill;
-                Name.Text = Package.Name;
-                Name.TextAlign = ContentAlignment.MiddleCenter;
-                Name.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Name.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Details.Dock = DockStyle.Fill;
-                Details.Text = Package.Details;
-                Details.TextAlign = ContentAlignment.MiddleCenter;
-                Details.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Details.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Size.Dock = DockStyle.Fill;
-                Size.Text = Package.Size;
-                Size.TextAlign = ContentAlignment.MiddleCenter;
-                Size.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Size.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Price.Dock = DockStyle.Fill;
-                Price.Text = Package.Price.ToString();
-                Price.TextAlign = ContentAlignment.MiddleCenter;
-                Price.MouseEnter += (sndr, evnt) =>
-                {
-                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                };
-                Price.MouseLeave += (sndr, evnt) =>
-                {
-                    Panel.BackColor = DefaultBackgroundColor;
-                };
-
-                Panel.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-                Id.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-                Name.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-                Details.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-                Size.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-                Price.Click += (sndr, evnt) =>
-                {
-                    new EditPackageDialog(this, Package.ID).ShowDialog();
-                };
-
-                PackageList.RowStyles.Add(Row);
-                Panel.Controls.Add(Id, 0, 0);
-                Panel.Controls.Add(Name, 1, 0);
-                Panel.Controls.Add(Details, 2, 0);
-                Panel.Controls.Add(Size, 3, 0);
-                Panel.Controls.Add(Price, 4, 0);
-                PackageList.Controls.Add(Panel);
-
-                tableLayoutPanel1.Width = PackageList.Width;
+                RefreshRows(Package);
             }
         }
 
@@ -323,228 +89,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Service.ID.ToUpper().Contains(SearchBarService.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 4
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Service.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Service.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Service.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Service.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-
-                        ServiceList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Size, 2, 0);
-                        Panel.Controls.Add(Price, 3, 0);
-                        ServiceList.Controls.Add(Panel);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
+                        RefreshRows(Service);
                     }
                 }
                 if (FilterService.SelectedIndex == 1)
                 {
                     if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 4
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Service.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Service.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Service.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Service.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-
-                        ServiceList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Size, 2, 0);
-                        Panel.Controls.Add(Price, 3, 0);
-                        ServiceList.Controls.Add(Panel);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
+                        RefreshRows(Service);
                     }
                 }
             }
@@ -561,399 +113,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Package.ID.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
                 if (FilterPackage.SelectedIndex == 1)
                 {
                     if (Package.Name.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
                 if (FilterPackage.SelectedIndex == 2)
                 {
                     if (Package.Details.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
             }
@@ -970,399 +144,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Package.ID.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
                 if (FilterPackage.SelectedIndex == 1)
                 {
                     if (Package.Name.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
                 if (FilterPackage.SelectedIndex == 2)
                 {
                     if (Package.Details.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 5
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Details = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Package.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Details.Dock = DockStyle.Fill;
-                        Details.Text = Package.Details;
-                        Details.TextAlign = ContentAlignment.MiddleCenter;
-                        Details.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Details.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Package.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Package.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Details.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditPackageDialog(this, Package.ID).ShowDialog();
-                        };
-
-                        PackageList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Details, 2, 0);
-                        Panel.Controls.Add(Size, 3, 0);
-                        Panel.Controls.Add(Price, 4, 0);
-                        PackageList.Controls.Add(Panel);
-
-                        tableLayoutPanel1.Width = PackageList.Width;
+                        RefreshRows(Package);
                     }
                 }
             }
@@ -1379,231 +175,260 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Service.ID.ToUpper().Contains(SearchBarService.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 4
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Service.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Service.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Service.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Service.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-
-                        ServiceList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Size, 2, 0);
-                        Panel.Controls.Add(Price, 3, 0);
-                        ServiceList.Controls.Add(Panel);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
+                        RefreshRows(Service);
                     }
                 }
                 if (FilterService.SelectedIndex == 1)
                 {
                     if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 4
-                        };
-                        Label Id = new Label();
-                        Label Name = new Label();
-                        Label Size = new Label();
-                        Label Price = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Top;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
-                        Panel.Margin = new Padding(0);
-
-                        Id.Dock = DockStyle.Fill;
-                        Id.Text = Service.ID;
-                        Id.TextAlign = ContentAlignment.MiddleCenter;
-                        Id.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Id.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Service.Name;
-                        Name.TextAlign = ContentAlignment.MiddleCenter;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Size.Dock = DockStyle.Fill;
-                        Size.Text = Service.Size;
-                        Size.TextAlign = ContentAlignment.MiddleCenter;
-                        Size.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Size.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = Service.Price.ToString();
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Panel.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Id.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Name.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Size.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-                        Price.Click += (sndr, evnt) =>
-                        {
-                            new EditServiceDialog(this, Service.ID).ShowDialog();
-                        };
-
-                        ServiceList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Id, 0, 0);
-                        Panel.Controls.Add(Name, 1, 0);
-                        Panel.Controls.Add(Size, 2, 0);
-                        Panel.Controls.Add(Price, 3, 0);
-                        ServiceList.Controls.Add(Panel);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
+                        RefreshRows(Service);
                     }
                 }
             }
+        }
+
+        void RefreshRows(PackageItem Package)
+        {
+            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            TableLayoutPanel Panel = new TableLayoutPanel
+            {
+                ColumnCount = 5
+            };
+            Label Id = new Label();
+            Label Name = new Label();
+            Label Details = new Label();
+            Label Size = new Label();
+            Label Price = new Label();
+
+            if (DefaultBackgroundColor == null)
+            {
+                DefaultBackgroundColor = Panel.BackColor;
+            }
+
+            Panel.Dock = DockStyle.Top;
+            Panel.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Panel.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+            Panel.ColumnStyles.Clear();
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.Margin = new Padding(0);
+
+            Id.Dock = DockStyle.Fill;
+            Id.Text = Package.ID;
+            Id.TextAlign = ContentAlignment.MiddleCenter;
+            Id.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Id.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Name.Dock = DockStyle.Fill;
+            Name.Text = Package.Name;
+            Name.TextAlign = ContentAlignment.MiddleCenter;
+            Name.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Name.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Details.Dock = DockStyle.Fill;
+            Details.Text = Package.Details;
+            Details.TextAlign = ContentAlignment.MiddleCenter;
+            Details.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Details.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Size.Dock = DockStyle.Fill;
+            Size.Text = Package.Size;
+            Size.TextAlign = ContentAlignment.MiddleCenter;
+            Size.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Size.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Price.Dock = DockStyle.Fill;
+            Price.Text = Package.Price.ToString();
+            Price.TextAlign = ContentAlignment.MiddleCenter;
+            Price.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Price.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Panel.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Id.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Name.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Details.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Size.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Price.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+
+            PackageList.RowStyles.Add(Row);
+            Panel.Controls.Add(Id, 0, 0);
+            Panel.Controls.Add(Name, 1, 0);
+            Panel.Controls.Add(Details, 2, 0);
+            Panel.Controls.Add(Size, 3, 0);
+            Panel.Controls.Add(Price, 4, 0);
+            PackageList.Controls.Add(Panel);
+
+            tableLayoutPanel1.Width = PackageList.Width;
+        }
+
+        void RefreshRows(ServiceItem Service)
+        {
+            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            TableLayoutPanel Panel = new TableLayoutPanel
+            {
+                ColumnCount = 4
+            };
+            Label Id = new Label();
+            Label Name = new Label();
+            Label Size = new Label();
+            Label Price = new Label();
+
+            if (DefaultBackgroundColor == null)
+            {
+                DefaultBackgroundColor = Panel.BackColor;
+            }
+
+            Panel.Dock = DockStyle.Top;
+            Panel.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Panel.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+            Panel.ColumnStyles.Clear();
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27f));
+            Panel.Margin = new Padding(0);
+
+            Id.Dock = DockStyle.Fill;
+            Id.Text = Service.ID;
+            Id.TextAlign = ContentAlignment.MiddleCenter;
+            Id.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Id.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Name.Dock = DockStyle.Fill;
+            Name.Text = Service.Name;
+            Name.TextAlign = ContentAlignment.MiddleCenter;
+            Name.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Name.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Size.Dock = DockStyle.Fill;
+            Size.Text = Service.Size;
+            Size.TextAlign = ContentAlignment.MiddleCenter;
+            Size.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Size.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Price.Dock = DockStyle.Fill;
+            Price.Text = Service.Price.ToString();
+            Price.TextAlign = ContentAlignment.MiddleCenter;
+            Price.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Price.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            Panel.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            Id.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            Name.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            Size.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            Price.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+
+            ServiceList.RowStyles.Add(Row);
+            Panel.Controls.Add(Id, 0, 0);
+            Panel.Controls.Add(Name, 1, 0);
+            Panel.Controls.Add(Size, 2, 0);
+            Panel.Controls.Add(Price, 3, 0);
+            ServiceList.Controls.Add(Panel);
+
+            tableLayoutPanel2.Width = ServiceList.Width;
         }
     }
 }
