@@ -250,24 +250,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             Panel.Click += (sndr, evnt) =>
             {
+                new EditBillingDialog(this, Billing.ID).ShowDialog();
             };
             Id.Click += (sndr, evnt) =>
             {
+                new EditBillingDialog(this, Billing.ID).ShowDialog();
             };
             Balance.Click += (sndr, evnt) =>
             {
-            };
-            Progress.Click += (sndr, evnt) =>
-            {
+                new EditBillingDialog(this, Billing.ID).ShowDialog();
             };
             LastUpdated.Click += (sndr, evnt) =>
             {
-            };
-            LastUpdated.Click += (sndr, evnt) =>
-            {
+                new EditBillingDialog(this, Billing.ID).ShowDialog();
             };
             DateCreated.Click += (sndr, evnt) =>
             {
+                new EditBillingDialog(this, Billing.ID).ShowDialog();
             };
 
             BillingList.RowStyles.Add(Row);

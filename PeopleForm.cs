@@ -794,5 +794,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             tableLayoutPanel3.Width = VehicleList.Width;
         }
+
+        private void EmployeeScheduleButton_Click(object sender, EventArgs e)
+        {
+            new EmployeeScheduleDialog().ShowDialog();
+        }
     }
 }

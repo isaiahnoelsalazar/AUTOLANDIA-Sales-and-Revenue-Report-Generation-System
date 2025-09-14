@@ -79,6 +79,12 @@
       <DependentUpon>BillingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BillingItem.cs" />
+    <Compile Include="EditBillingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBillingDialog.Designer.cs">
+      <DependentUpon>EditBillingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPackageDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="EditTransactionDialog.Designer.cs">
       <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeScheduleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeScheduleDialog.Designer.cs">
+      <DependentUpon>EmployeeScheduleDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="LinkCustomerVehicleDialog.cs">
       <SubType>Form</SubType>
@@ -242,6 +254,9 @@
     <EmbeddedResource Include="BillingForm.resx">
       <DependentUpon>BillingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditBillingDialog.resx">
+      <DependentUpon>EditBillingDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditPackageDialog.resx">
       <DependentUpon>EditPackageDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditTransactionDialog.resx">
       <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeScheduleDialog.resx">
+      <DependentUpon>EmployeeScheduleDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LinkCustomerVehicleDialog.resx">
       <DependentUpon>LinkCustomerVehicleDialog.cs</DependentUpon>
