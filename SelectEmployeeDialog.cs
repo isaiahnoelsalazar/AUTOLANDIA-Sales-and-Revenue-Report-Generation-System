@@ -11,6 +11,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     {
         NewTransactionDialog NewTransactionDialog;
         EditTransactionDialog EditTransactionDialog;
+        string EmployeeList;
 
         public SelectEmployeeDialog(NewTransactionDialog NewTransactionDialog)
         {
@@ -49,6 +50,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
 
             this.EditTransactionDialog = EditTransactionDialog;
+            this.EmployeeList = EmployeeList;
 
             List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
             Temp.Sort(new EmployeeNameComparer());
@@ -146,6 +148,95 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (EditTransactionDialog.EmployeeCheckedboxes != null)
                 {
                     EditTransactionDialog.EmployeeCheckedboxes.Reverse();
+                }
+            }
+        }
+
+        private void SearchBarEmployee_TextChanged(object sender, EventArgs e)
+        {
+            EmployeeListCheckBox.Items.Clear();
+            EmployeeListCheckBox.Controls.Clear();
+
+            if (NewTransactionDialog != null)
+            {
+                List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
+                Temp.Sort(new EmployeeNameComparer());
+                Temp.Reverse();
+
+                foreach (EmployeeItem Employee in Temp)
+                {
+                    string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                    if (!InCheckedListBox(EmployeeDetail))
+                    {
+                        if (Employee.Name.ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
+                        {
+                            EmployeeListCheckBox.Items.Add(EmployeeDetail);
+                        }
+                        else if (string.IsNullOrEmpty(SearchBarEmployee.Text.ToUpper()))
+                        {
+                            EmployeeListCheckBox.Items.Add(EmployeeDetail);
+                        }
+                    }
+                }
+
+                if (NewTransactionDialog.EmployeeCheckedboxes != null)
+                {
+                    NewTransactionDialog.EmployeeCheckedboxes.Reverse();
+                    for (int a = 0; a < EmployeeListCheckBox.Items.Count; a++)
+                    {
+                        if (NewTransactionDialog.EmployeeCheckedboxes[a].Checked)
+                        {
+                            EmployeeListCheckBox.Items[a].Checked = true;
+                        }
+                    }
+                }
+            }
+            if (EditTransactionDialog != null)
+            {
+                List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
+                Temp.Sort(new EmployeeNameComparer());
+                Temp.Reverse();
+
+                foreach (EmployeeItem Employee in Temp)
+                {
+                    string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                    if (!InCheckedListBox(EmployeeDetail))
+                    {
+                        if (Employee.Name.ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
+                        {
+                            EmployeeListCheckBox.Items.Add(EmployeeDetail);
+                        }
+                        else if (string.IsNullOrEmpty(SearchBarEmployee.Text.ToUpper()))
+                        {
+                            EmployeeListCheckBox.Items.Add(EmployeeDetail);
+                        }
+                    }
+                }
+
+                if (EditTransactionDialog.EmployeeCheckedboxes != null)
+                {
+                    EditTransactionDialog.EmployeeCheckedboxes.Reverse();
+                    for (int a = 0; a < EmployeeListCheckBox.Items.Count; a++)
+                    {
+                        if (EditTransactionDialog.EmployeeCheckedboxes[a].Checked)
+                        {
+                            EmployeeListCheckBox.Items[a].Checked = true;
+                        }
+                    }
+                }
+                else
+                {
+                    string[] EmployeeListSplit = EmployeeList.Split(',');
+                    foreach (string Employee in EmployeeListSplit)
+                    {
+                        for (int a = 0; a < EmployeeListCheckBox.Items.Count; a++)
+                        {
+                            if (EmployeeListCheckBox.Items[a].Text.Equals(Employee.Trim()))
+                            {
+                                EmployeeListCheckBox.Items[a].Checked = true;
+                            }
+                        }
+                    }
                 }
             }
         }

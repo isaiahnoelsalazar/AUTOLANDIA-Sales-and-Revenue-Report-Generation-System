@@ -11,6 +11,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     {
         NewTransactionDialog NewTransactionDialog;
         EditTransactionDialog EditTransactionDialog;
+        TableLayoutControlCollection ServiceListControls;
 
         public SelectServicesDialog(NewTransactionDialog NewTransactionDialog)
         {
@@ -45,6 +46,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
             this.EditTransactionDialog = EditTransactionDialog;
+            this.ServiceListControls = ServiceListControls;
 
             List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
             Temp.Reverse();
@@ -139,6 +141,90 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (EditTransactionDialog.ServiceCheckedboxes != null)
                 {
                     EditTransactionDialog.ServiceCheckedboxes.Reverse();
+                }
+            }
+        }
+
+        private void SearchBarService_TextChanged(object sender, EventArgs e)
+        {
+            ServiceListCheckBox.Items.Clear();
+            ServiceListCheckBox.Controls.Clear();
+
+            if (NewTransactionDialog != null)
+            {
+                List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+                Temp.Reverse();
+
+                foreach (ServiceItem Service in Temp)
+                {
+                    if (!InCheckedListBox(Service.Name))
+                    {
+                        if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
+                        {
+                            ServiceListCheckBox.Items.Add(Service.Name);
+                        }
+                        else if (string.IsNullOrEmpty(SearchBarService.Text.ToUpper()))
+                        {
+                            ServiceListCheckBox.Items.Add(Service.Name);
+                        }
+                    }
+                }
+
+                if (NewTransactionDialog.ServiceCheckedboxes != null)
+                {
+                    NewTransactionDialog.ServiceCheckedboxes.Reverse();
+                    for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
+                    {
+                        if (NewTransactionDialog.ServiceCheckedboxes[a].Checked)
+                        {
+                            ServiceListCheckBox.Items[a].Checked = true;
+                        }
+                    }
+                }
+            }
+            if (EditTransactionDialog != null)
+            {
+                List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+                Temp.Reverse();
+
+                foreach (ServiceItem Service in Temp)
+                {
+                    if (!InCheckedListBox(Service.Name))
+                    {
+                        if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
+                        {
+                            ServiceListCheckBox.Items.Add(Service.Name);
+                        }
+                        else if (string.IsNullOrEmpty(SearchBarService.Text.ToUpper()))
+                        {
+                            ServiceListCheckBox.Items.Add(Service.Name);
+                        }
+                    }
+                }
+
+                if (EditTransactionDialog.ServiceCheckedboxes != null)
+                {
+                    EditTransactionDialog.ServiceCheckedboxes.Reverse();
+                    for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
+                    {
+                        if (EditTransactionDialog.ServiceCheckedboxes[a].Checked)
+                        {
+                            ServiceListCheckBox.Items[a].Checked = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Control Service in ServiceListControls)
+                    {
+                        for (int a = 0; a < ServiceListCheckBox.Items.Count; a++)
+                        {
+                            if (ServiceListCheckBox.Items[a].Text.Equals(Service.Controls[0].Text.Trim()))
+                            {
+                                ServiceListCheckBox.Items[a].Checked = true;
+                            }
+                        }
+                    }
                 }
             }
         }

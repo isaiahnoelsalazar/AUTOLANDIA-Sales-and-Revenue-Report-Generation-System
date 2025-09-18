@@ -287,5 +287,460 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             Close();
         }
+
+        private void SearchBarVehicle_TextChanged(object sender, EventArgs e)
+        {
+            if (NewTransactionDialog != null)
+            {
+                VehicleList.Controls.Clear();
+                VehicleList.RowStyles.Clear();
+
+                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                {
+                    if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                    else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                }
+            }
+            else if (EditTransactionDialog != null)
+            {
+                VehicleList.Controls.Clear();
+                VehicleList.RowStyles.Clear();
+
+                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                {
+                    if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                    else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                }
+            }
+            else
+            {
+                VehicleList.Controls.Clear();
+                VehicleList.RowStyles.Clear();
+
+                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                {
+                    if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                    else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
+                    {
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
+                        {
+                            ColumnCount = 1
+                        };
+                        Label Name = new Label();
+
+                        if (DefaultBackgroundColor == null)
+                        {
+                            DefaultBackgroundColor = Panel.BackColor;
+                        }
+
+                        Panel.Dock = DockStyle.Top;
+                        Panel.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Panel.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+                        Panel.Margin = new Padding(0);
+
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Name.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        Panel.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+                        Name.Click += (sndr, evnt) =>
+                        {
+                            if (LinkCustomerVehicleDialog != null)
+                            {
+                                LinkCustomerVehicleDialog.SetUnlinkedVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (NewTransactionDialog != null)
+                            {
+                                NewTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            if (EditTransactionDialog != null)
+                            {
+                                EditTransactionDialog.SetVehicle($"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}");
+                            }
+                            Close();
+                        };
+
+                        VehicleList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        VehicleList.Controls.Add(Panel);
+                    }
+                }
+            }
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
             this.DoneButton = new MaterialSkin.Controls.MaterialButton();
             this.ServiceListCheckBox = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.SearchBarService = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -41,7 +42,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 274);
+            this.CancelButton.Location = new System.Drawing.Point(10, 354);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -62,7 +63,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(406, 274);
+            this.DoneButton.Location = new System.Drawing.Point(406, 354);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -83,20 +84,44 @@
             this.ServiceListCheckBox.AutoScroll = true;
             this.ServiceListCheckBox.BackColor = System.Drawing.SystemColors.Control;
             this.ServiceListCheckBox.Depth = 0;
-            this.ServiceListCheckBox.Location = new System.Drawing.Point(10, 36);
-            this.ServiceListCheckBox.Margin = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.ServiceListCheckBox.Location = new System.Drawing.Point(10, 80);
+            this.ServiceListCheckBox.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
             this.ServiceListCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.ServiceListCheckBox.Name = "ServiceListCheckBox";
-            this.ServiceListCheckBox.Size = new System.Drawing.Size(460, 230);
+            this.ServiceListCheckBox.Size = new System.Drawing.Size(460, 266);
             this.ServiceListCheckBox.Striped = false;
             this.ServiceListCheckBox.StripeDarkColor = System.Drawing.Color.Empty;
             this.ServiceListCheckBox.TabIndex = 18;
+            // 
+            // SearchBarService
+            // 
+            this.SearchBarService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarService.AnimateReadOnly = false;
+            this.SearchBarService.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarService.Depth = 0;
+            this.SearchBarService.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarService.Hint = "Search";
+            this.SearchBarService.LeadingIcon = null;
+            this.SearchBarService.Location = new System.Drawing.Point(10, 36);
+            this.SearchBarService.Margin = new System.Windows.Forms.Padding(0, 16, 0, 0);
+            this.SearchBarService.MaxLength = 50;
+            this.SearchBarService.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarService.Multiline = false;
+            this.SearchBarService.Name = "SearchBarService";
+            this.SearchBarService.Size = new System.Drawing.Size(460, 36);
+            this.SearchBarService.TabIndex = 24;
+            this.SearchBarService.Text = "";
+            this.SearchBarService.TrailingIcon = null;
+            this.SearchBarService.UseTallSize = false;
+            this.SearchBarService.TextChanged += new System.EventHandler(this.SearchBarService_TextChanged);
             // 
             // SelectServicesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 320);
+            this.ClientSize = new System.Drawing.Size(480, 400);
+            this.Controls.Add(this.SearchBarService);
             this.Controls.Add(this.ServiceListCheckBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DoneButton);
@@ -117,5 +142,6 @@
         private MaterialSkin.Controls.MaterialButton CancelButton;
         private MaterialSkin.Controls.MaterialButton DoneButton;
         private MaterialSkin.Controls.MaterialCheckedListBox ServiceListCheckBox;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarService;
     }
 }

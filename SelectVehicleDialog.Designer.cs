@@ -31,6 +31,7 @@
             this.VehicleListContainer = new System.Windows.Forms.Panel();
             this.VehicleList = new System.Windows.Forms.TableLayoutPanel();
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
+            this.SearchBarVehicle = new MaterialSkin.Controls.MaterialTextBox();
             this.VehicleListContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,10 +42,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleListContainer.AutoScroll = true;
             this.VehicleListContainer.Controls.Add(this.VehicleList);
-            this.VehicleListContainer.Location = new System.Drawing.Point(10, 36);
-            this.VehicleListContainer.Margin = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.VehicleListContainer.Location = new System.Drawing.Point(10, 80);
+            this.VehicleListContainer.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
             this.VehicleListContainer.Name = "VehicleListContainer";
-            this.VehicleListContainer.Size = new System.Drawing.Size(380, 310);
+            this.VehicleListContainer.Size = new System.Drawing.Size(380, 266);
             this.VehicleListContainer.TabIndex = 19;
             // 
             // VehicleList
@@ -83,11 +84,35 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // SearchBarVehicle
+            // 
+            this.SearchBarVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarVehicle.AnimateReadOnly = false;
+            this.SearchBarVehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarVehicle.Depth = 0;
+            this.SearchBarVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarVehicle.Hint = "Search";
+            this.SearchBarVehicle.LeadingIcon = null;
+            this.SearchBarVehicle.Location = new System.Drawing.Point(10, 36);
+            this.SearchBarVehicle.Margin = new System.Windows.Forms.Padding(0, 16, 0, 0);
+            this.SearchBarVehicle.MaxLength = 50;
+            this.SearchBarVehicle.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarVehicle.Multiline = false;
+            this.SearchBarVehicle.Name = "SearchBarVehicle";
+            this.SearchBarVehicle.Size = new System.Drawing.Size(380, 36);
+            this.SearchBarVehicle.TabIndex = 25;
+            this.SearchBarVehicle.Text = "";
+            this.SearchBarVehicle.TrailingIcon = null;
+            this.SearchBarVehicle.UseTallSize = false;
+            this.SearchBarVehicle.TextChanged += new System.EventHandler(this.SearchBarVehicle_TextChanged);
+            // 
             // SelectVehicleDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 400);
+            this.Controls.Add(this.SearchBarVehicle);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.VehicleListContainer);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -107,5 +132,6 @@
         private System.Windows.Forms.Panel VehicleListContainer;
         private System.Windows.Forms.TableLayoutPanel VehicleList;
         private MaterialSkin.Controls.MaterialButton CancelButton;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarVehicle;
     }
 }
