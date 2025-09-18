@@ -1,8 +1,10 @@
-﻿using MaterialSkin.Controls;
+﻿using CSSimpleFunctions;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -74,6 +76,52 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
+            DateTime Now = DateTime.Now;
+
+            string ErrorMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(TB_Price.Text) || !Check.IsAllNumbers(TB_Price.Text))
+            {
+                ErrorMessage += "Please enter a valid balance.\n";
+            }
+            if (CB_Progress.SelectedIndex == -1)
+            {
+                ErrorMessage += "Please select a progress level.\n";
+            }
+            if (CB_PaymentMethod.SelectedIndex == -1)
+            {
+                ErrorMessage += "Please select a payment method.\n";
+            }
+
+            if (ErrorMessage.Equals(""))
+            {
+                try
+                {
+                    DoneButton.Enabled = false;
+                    CancelButton.Enabled = false;
+
+                    RecordActivity($"Updated details of billing with reference number [{BillingID}]");
+
+                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={TB_Price.Text}, BillingProgress='{CB_Progress.Text}', PaymentMethodName='{CB_PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{BillingID}'", SQL);
+
+                    Command.ExecuteNonQuery();
+
+                    MaterialMessageBox.Show("Successfully updated billing details!", "Notice");
+                    BillingForm.RefreshBillings();
+                    GlobalActivityRecordForm.RefreshActivities();
+                    Close();
+                }
+                catch (Exception exception)
+                {
+                    MaterialMessageBox.Show(exception.Message, "Alert");
+                    DoneButton.Enabled = true;
+                    CancelButton.Enabled = true;
+                }
+            }
+            else
+            {
+                MaterialMessageBox.Show(ErrorMessage, "Alert");
+            }
         }
     }
 }

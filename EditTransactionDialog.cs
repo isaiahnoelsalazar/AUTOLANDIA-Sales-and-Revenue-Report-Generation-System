@@ -12,12 +12,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         TransactionsForm TransactionsForm;
         public MaterialCheckedListBox.ItemsList ServiceCheckedboxes, EmployeeCheckedboxes;
         Color DefaultBackgroundColor;
+        string OrderID;
 
         public EditTransactionDialog(TransactionsForm TransactionsForm, string OrderID)
         {
             InitializeComponent();
 
             this.TransactionsForm = TransactionsForm;
+            this.OrderID = OrderID;
 
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
@@ -684,10 +686,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DoneButton.Enabled = false;
                         CancelButton.Enabled = false;
 
-                        RecordActivity($"Updated details of order with reference number [{GlobalOrderList.Count + 1}]");
+                        RecordActivity($"Updated details of order with reference number [{OrderID}]");
 
-                        SqlCommand Command = new SqlCommand($"UPDATE SET AUTOLANDIA_OrderList EmployeeIdList='{EmployeeIds}', ServiceIdList='{ServiceIds}', PackageId='', VehicleId='{RealVehicle.ID}', OrderProgress='{CB_Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{GlobalOrderList.Count + 1}'", SQL);
-                        SqlCommand Command1 = new SqlCommand($"UPDATE SET AUTOLANDIA_BillingList OrderBalance={RealPrice}, DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{GlobalOrderList.Count + 1}'", SQL);
+                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_OrderList SET EmployeeIdList='{EmployeeIds}', ServiceIdList='{ServiceIds}', PackageId='', VehicleId='{RealVehicle.ID}', OrderProgress='{CB_Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{OrderID}'", SQL);
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={RealPrice}, DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{OrderID}'", SQL);
 
                         Command.ExecuteNonQuery();
                         Command1.ExecuteNonQuery();
@@ -772,10 +774,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DoneButton.Enabled = false;
                         CancelButton.Enabled = false;
 
-                        RecordActivity($"Updated details of order with reference number [{GlobalOrderList.Count + 1}]");
+                        RecordActivity($"Updated details of order with reference number [{OrderID}]");
 
-                        SqlCommand Command = new SqlCommand($"UPDATE SET AUTOLANDIA_OrderList EmployeeIdList='{EmployeeIds}', ServiceIdList='', PackageId='{PackageId}', VehicleId='{RealVehicle.ID}', OrderProgress='{CB_Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{GlobalOrderList.Count + 1}'", SQL);
-                        SqlCommand Command1 = new SqlCommand($"UPDATE SET AUTOLANDIA_BillingList OrderBalance={RealPrice}, DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{GlobalOrderList.Count + 1}'", SQL);
+                        SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_OrderList SET EmployeeIdList='{EmployeeIds}', ServiceIdList='', PackageId='{PackageId}', VehicleId='{RealVehicle.ID}', OrderProgress='{CB_Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{OrderID}'", SQL);
+                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={RealPrice}, DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{OrderID}'", SQL);
 
                         Command.ExecuteNonQuery();
                         Command1.ExecuteNonQuery();
