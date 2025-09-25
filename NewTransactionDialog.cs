@@ -9,15 +9,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class NewTransactionDialog : MaterialForm
     {
-        TransactionsForm TransactionsForm;
+        AddCustomerVehicleDialog AddCustomerVehicleDialog;
+        NewCustomerDialog NewCustomerDialog;
         public MaterialCheckedListBox.ItemsList ServiceCheckedboxes, EmployeeCheckedboxes;
         Color DefaultBackgroundColor;
+        string VehicleID;
 
-        public NewTransactionDialog(TransactionsForm TransactionsForm)
+        public NewTransactionDialog()
         {
             InitializeComponent();
-
-            this.TransactionsForm = TransactionsForm;
 
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
@@ -29,6 +29,36 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (!CB_Packages.Items.Contains(Package.Name))
                 {
                     CB_Packages.Items.Add(Package.Name);
+                }
+            }
+        }
+
+        public NewTransactionDialog(AddCustomerVehicleDialog AddCustomerVehicleDialog, NewCustomerDialog NewCustomerDialog, string VehicleID)
+        {
+            InitializeComponent();
+
+            this.AddCustomerVehicleDialog = AddCustomerVehicleDialog;
+            this.NewCustomerDialog = NewCustomerDialog;
+            this.VehicleID = VehicleID;
+
+            ServiceList.Controls.Clear();
+            ServiceList.RowStyles.Clear();
+            SelectServicesButton.Visible = true;
+            PackageLabel.Text = "Select services";
+
+            foreach (PackageItem Package in GlobalPackageList)
+            {
+                if (!CB_Packages.Items.Contains(Package.Name))
+                {
+                    CB_Packages.Items.Add(Package.Name);
+                }
+            }
+
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                if (Vehicle.ID.Equals(VehicleID))
+                {
+                    TB_Vehicle.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
                 }
             }
         }
@@ -412,9 +442,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         Command1.ExecuteNonQuery();
 
                         MaterialMessageBox.Show("Successfully added new transaction!", "Notice");
-                        TransactionsForm.RefreshTransactions();
+                        GlobalTransactionsForm.RefreshTransactions();
                         GlobalBillingForm.RefreshBillings();
                         GlobalActivityRecordForm.RefreshActivities();
+                        if (AddCustomerVehicleDialog != null)
+                        {
+                            AddCustomerVehicleDialog.Close();
+                        }
+                        if (NewCustomerDialog != null)
+                        {
+                            NewCustomerDialog.Close();
+                        }
                         Close();
                     }
                     catch (Exception exception)
@@ -500,9 +538,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         Command1.ExecuteNonQuery();
 
                         MaterialMessageBox.Show("Successfully added new transaction!", "Notice");
-                        TransactionsForm.RefreshTransactions();
+                        GlobalTransactionsForm.RefreshTransactions();
                         GlobalBillingForm.RefreshBillings();
                         GlobalActivityRecordForm.RefreshActivities();
+                        if (AddCustomerVehicleDialog != null)
+                        {
+                            AddCustomerVehicleDialog.Close();
+                        }
+                        if (NewCustomerDialog != null)
+                        {
+                            NewCustomerDialog.Close();
+                        }
                         Close();
                     }
                     catch (Exception exception)
@@ -543,6 +589,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            if (AddCustomerVehicleDialog != null)
+            {
+                AddCustomerVehicleDialog.Close();
+            }
+            if (NewCustomerDialog != null)
+            {
+                NewCustomerDialog.Close();
+            }
             Close();
         }
     }

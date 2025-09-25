@@ -44,7 +44,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void AddNewTransactionButton_Click(object sender, EventArgs e)
         {
-            new NewTransactionDialog(this).ShowDialog();
+            new NewTransactionDialog().ShowDialog();
         }
 
         private void SearchBarTransaction_TextChanged(object sender, EventArgs e)

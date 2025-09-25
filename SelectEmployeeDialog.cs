@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -9,6 +10,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class SelectEmployeeDialog : MaterialForm
     {
+        List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
         NewTransactionDialog NewTransactionDialog;
         EditTransactionDialog EditTransactionDialog;
         string EmployeeList;
@@ -19,10 +21,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             this.NewTransactionDialog = NewTransactionDialog;
 
-            List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
             Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
+            int counter = 0;
 
+            while (counter < Temp.Count)
+            {
+                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].Name}";
+                foreach (OrderItem Order in GlobalOrderList)
+                {
+                    string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
+                    if (Split.Contains(Temp[counter].ID))
+                    {
+                        if (!Order.Progress.Equals("Complete"))
+                        {
+                            Temp.Remove(Temp[counter]);
+                            counter = 0;
+                            break;
+                        }
+                    }
+                }
+                counter++;
+            }
             foreach (EmployeeItem Employee in Temp)
             {
                 string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
@@ -52,10 +72,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.EditTransactionDialog = EditTransactionDialog;
             this.EmployeeList = EmployeeList;
 
-            List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
             Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
+            int counter = 0;
 
+            while (counter < Temp.Count)
+            {
+                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].Name}";
+                foreach (OrderItem Order in GlobalOrderList)
+                {
+                    string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
+                    if (Split.Contains(Temp[counter].ID))
+                    {
+                        if (!Order.Progress.Equals("Complete"))
+                        {
+                            Temp.Remove(Temp[counter]);
+                            counter = 0;
+                            break;
+                        }
+                    }
+                }
+                counter++;
+            }
             foreach (EmployeeItem Employee in Temp)
             {
                 string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
@@ -159,7 +197,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             if (NewTransactionDialog != null)
             {
-                List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
                 Temp.Sort(new EmployeeNameComparer());
                 Temp.Reverse();
 
@@ -193,7 +230,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             if (EditTransactionDialog != null)
             {
-                List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
                 Temp.Sort(new EmployeeNameComparer());
                 Temp.Reverse();
 

@@ -2,6 +2,7 @@
 using MaterialSkin.Controls;
 using System;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -40,20 +41,30 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     string Name = TB_Name.Text.ToUpper();
                     string MobileNumber = TB_MobileNumber.Text.ToUpper();
-                    
+                    string CustomerID = (GlobalCustomerList.Count + 1).ToString();
+
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
                     RecordActivity($"Added new customer: {Name} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : MobileNumber)})");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, CustomerName, PlateNumbers, MobileNumber) VALUES ('{GlobalCustomerList.Count + 1}', '{Name}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, CustomerName, PlateNumbers, MobileNumber) VALUES ('{CustomerID}', '{Name}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}')", SQL);
 
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully added new customer!", "Notice");
                     PeopleForm.RefreshCustomers();
                     GlobalActivityRecordForm.RefreshActivities();
-                    Close();
+
+                    DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new vehicle?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
+                    if (NewDialogResult == DialogResult.Yes)
+                    {
+                        new AddCustomerVehicleDialog(this, PeopleForm, CustomerID).ShowDialog();
+                    }
+                    else
+                    {
+                        Close();
+                    }
                 }
                 catch (Exception exception)
                 {

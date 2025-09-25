@@ -10,6 +10,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class AddCustomerVehicleDialog : MaterialForm
     {
         PreviewCustomerDialog PreviewCustomerDialog;
+        NewCustomerDialog NewCustomerDialog;
         PeopleForm PeopleForm;
         string CustomerID;
 
@@ -17,6 +18,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
+            this.PeopleForm = PeopleForm;
+        }
+
+        public AddCustomerVehicleDialog(NewCustomerDialog NewCustomerDialog, PeopleForm PeopleForm, string CustomerID)
+        {
+            InitializeComponent();
+
+            this.NewCustomerDialog = NewCustomerDialog;
+            this.CustomerID = CustomerID;
             this.PeopleForm = PeopleForm;
         }
 
@@ -58,6 +68,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string Model = TB_Model.Text.ToUpper();
                     string Size = GetSize().ToUpper();
                     string PlateNumber = TB_PlateNumber.Text.ToUpper();
+                    string VehicleID = (GlobalVehicleList.Count + 1).ToString();
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
@@ -95,7 +106,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Added new vehicle{(string.IsNullOrEmpty(CustomerID) ? "" : " for [Customer ID " + CustomerID)}{(string.IsNullOrEmpty(CustomerName) ? "" : ": " + CustomerName + "]")} - [{Brand}, {Model}, {Size}, {PlateNumber}]");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_VehicleList(VehicleId, VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerId) VALUES ('{GlobalVehicleList.Count + 1}', '{Brand}', '{Model}', '{Size}', '{PlateNumber}', '{(string.IsNullOrEmpty(CustomerID) ? "(None)" : CustomerID)}')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_VehicleList(VehicleId, VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerId) VALUES ('{VehicleID}', '{Brand}', '{Model}', '{Size}', '{PlateNumber}', '{(string.IsNullOrEmpty(CustomerID) ? "(None)" : CustomerID)}')", SQL);
 
                     Command.ExecuteNonQuery();
 
@@ -114,7 +125,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         PreviewCustomerDialog.RefreshDetails();
                     }
                     GlobalActivityRecordForm.RefreshActivities();
-                    Close();
+
+                    if (NewCustomerDialog != null)
+                    {
+                        DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new order?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
+                        if (NewDialogResult == DialogResult.Yes)
+                        {
+                            new NewTransactionDialog(this, NewCustomerDialog, VehicleID).ShowDialog();
+                        }
+                        else
+                        {
+                            NewCustomerDialog.Close();
+                            Close();
+                        }
+                    }
+                    else
+                    {
+                        Close();
+                    }
                 }
                 catch (Exception exception)
                 {
@@ -144,6 +172,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            if (NewCustomerDialog != null)
+            {
+                NewCustomerDialog.Close();
+            }
             Close();
         }
         private void PickVehicleBrandButton_Click(object sender, EventArgs e)

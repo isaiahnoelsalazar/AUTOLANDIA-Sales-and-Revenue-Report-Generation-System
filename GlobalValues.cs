@@ -28,6 +28,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static HomeForm GlobalHomeForm;
         public static PeopleForm GlobalPeopleForm;
         public static ServicesAndPackagesForm GlobalServicesAndPackagesForm;
+        public static TransactionsForm GlobalTransactionsForm;
         public static BillingForm GlobalBillingForm;
         public static ActivityRecordForm GlobalActivityRecordForm;
 

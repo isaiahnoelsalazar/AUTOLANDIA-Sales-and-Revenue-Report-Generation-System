@@ -46,6 +46,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             GlobalHomeForm = (HomeForm)Forms[0];
             GlobalPeopleForm = (PeopleForm)Forms[1];
             GlobalServicesAndPackagesForm = (ServicesAndPackagesForm)Forms[2];
+            GlobalTransactionsForm = (TransactionsForm)Forms[3];
             GlobalBillingForm = (BillingForm)Forms[4];
             GlobalActivityRecordForm = (ActivityRecordForm)Forms[6];
 
