@@ -72,7 +72,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Employee.ID.Equals(EmployeeId.Trim()))
                             {
-                                EmployeeList1 += Employee.Name + ",";
+                                EmployeeList1 += $"({Employee.LastName}, {Employee.FirstName} {Employee.MiddleName})" + ",";
                             }
                         }
                     }
@@ -135,7 +135,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Employee.ID.Equals(EmployeeId.Trim()))
                             {
-                                EmployeeList1 += Employee.Name + ",";
+                                EmployeeList1 += $"({Employee.LastName}, {Employee.FirstName} {Employee.MiddleName})" + ",";
                             }
                         }
                     }
@@ -185,7 +185,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Employee.ID.Equals(EmployeeId.Trim()))
                     {
-                        EmployeeList += Employee.Name + ",";
+                        EmployeeList += $"({Employee.LastName}, {Employee.FirstName} {Employee.MiddleName})" + ",";
                     }
                 }
             }

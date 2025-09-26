@@ -27,7 +27,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             while (counter < Temp.Count)
             {
-                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].Name}";
+                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].LastName}, {Temp[counter].FirstName} {Temp[counter].MiddleName}";
                 foreach (OrderItem Order in GlobalOrderList)
                 {
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
@@ -45,7 +45,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             foreach (EmployeeItem Employee in Temp)
             {
-                string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                 if (!InCheckedListBox(EmployeeDetail))
                 {
                     EmployeeListCheckBox.Items.Add(EmployeeDetail);
@@ -78,7 +78,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             while (counter < Temp.Count)
             {
-                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].Name}";
+                string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].LastName}, {Temp[counter].FirstName} {Temp[counter].MiddleName}";
                 foreach (OrderItem Order in GlobalOrderList)
                 {
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
@@ -96,7 +96,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             foreach (EmployeeItem Employee in Temp)
             {
-                string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                 if (!InCheckedListBox(EmployeeDetail))
                 {
                     EmployeeListCheckBox.Items.Add(EmployeeDetail);
@@ -202,10 +202,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 foreach (EmployeeItem Employee in Temp)
                 {
-                    string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                    string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                     if (!InCheckedListBox(EmployeeDetail))
                     {
-                        if (Employee.Name.ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
+                        if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
                         {
                             EmployeeListCheckBox.Items.Add(EmployeeDetail);
                         }
@@ -235,10 +235,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 foreach (EmployeeItem Employee in Temp)
                 {
-                    string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                    string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                     if (!InCheckedListBox(EmployeeDetail))
                     {
-                        if (Employee.Name.ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
+                        if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".ToUpper().Contains(SearchBarEmployee.Text.ToUpper()))
                         {
                             EmployeeListCheckBox.Items.Add(EmployeeDetail);
                         }

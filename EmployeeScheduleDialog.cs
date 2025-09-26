@@ -75,7 +75,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.Margin = new Padding(0);
 
                 Name.Dock = DockStyle.Fill;
-                Name.Text = Employee.Name;
+                Name.Text = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                 Name.TextAlign = ContentAlignment.MiddleCenter;
                 Name.MouseEnter += (sndr, evnt) =>
                 {

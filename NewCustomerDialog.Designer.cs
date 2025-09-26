@@ -30,12 +30,15 @@
         {
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
             this.DoneButton = new MaterialSkin.Controls.MaterialButton();
-            this.TB_Name = new MaterialSkin.Controls.MaterialTextBox();
+            this.TB_LName = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.TB_MobileNumber = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.TB_FName = new MaterialSkin.Controls.MaterialTextBox();
+            this.TB_MName = new MaterialSkin.Controls.MaterialTextBox();
+            this.TB_Address = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -80,25 +83,26 @@
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
-            // TB_Name
+            // TB_LName
             // 
-            this.TB_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TB_LName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_Name.AnimateReadOnly = false;
-            this.TB_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TB_Name.Depth = 0;
-            this.TB_Name.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_Name.LeadingIcon = null;
-            this.TB_Name.Location = new System.Drawing.Point(203, 91);
-            this.TB_Name.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
-            this.TB_Name.MaxLength = 50;
-            this.TB_Name.MouseState = MaterialSkin.MouseState.OUT;
-            this.TB_Name.Multiline = false;
-            this.TB_Name.Name = "TB_Name";
-            this.TB_Name.Size = new System.Drawing.Size(427, 50);
-            this.TB_Name.TabIndex = 3;
-            this.TB_Name.Text = "";
-            this.TB_Name.TrailingIcon = null;
+            this.TB_LName.AnimateReadOnly = false;
+            this.TB_LName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_LName.Depth = 0;
+            this.TB_LName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_LName.Hint = "Last name";
+            this.TB_LName.LeadingIcon = null;
+            this.TB_LName.Location = new System.Drawing.Point(10, 91);
+            this.TB_LName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_LName.MaxLength = 50;
+            this.TB_LName.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_LName.Multiline = false;
+            this.TB_LName.Name = "TB_LName";
+            this.TB_LName.Size = new System.Drawing.Size(200, 50);
+            this.TB_LName.TabIndex = 3;
+            this.TB_LName.Text = "";
+            this.TB_LName.TrailingIcon = null;
             // 
             // materialLabel1
             // 
@@ -127,18 +131,6 @@
             this.materialDivider1.Size = new System.Drawing.Size(620, 2);
             this.materialDivider1.TabIndex = 1;
             this.materialDivider1.Text = "materialDivider1";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(12, 105);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(113, 19);
-            this.materialLabel2.TabIndex = 6;
-            this.materialLabel2.Text = "Customer name";
             // 
             // TB_MobileNumber
             // 
@@ -172,17 +164,94 @@
             this.materialLabel3.TabIndex = 8;
             this.materialLabel3.Text = "Mobile number (optional)";
             // 
+            // TB_FName
+            // 
+            this.TB_FName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_FName.AnimateReadOnly = false;
+            this.TB_FName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_FName.Depth = 0;
+            this.TB_FName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_FName.Hint = "First name";
+            this.TB_FName.LeadingIcon = null;
+            this.TB_FName.Location = new System.Drawing.Point(218, 91);
+            this.TB_FName.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.TB_FName.MaxLength = 50;
+            this.TB_FName.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_FName.Multiline = false;
+            this.TB_FName.Name = "TB_FName";
+            this.TB_FName.Size = new System.Drawing.Size(204, 50);
+            this.TB_FName.TabIndex = 9;
+            this.TB_FName.Text = "";
+            this.TB_FName.TrailingIcon = null;
+            // 
+            // TB_MName
+            // 
+            this.TB_MName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_MName.AnimateReadOnly = false;
+            this.TB_MName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_MName.Depth = 0;
+            this.TB_MName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_MName.Hint = "Middle name (optional)";
+            this.TB_MName.LeadingIcon = null;
+            this.TB_MName.Location = new System.Drawing.Point(430, 91);
+            this.TB_MName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_MName.MaxLength = 50;
+            this.TB_MName.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_MName.Multiline = false;
+            this.TB_MName.Name = "TB_MName";
+            this.TB_MName.Size = new System.Drawing.Size(200, 50);
+            this.TB_MName.TabIndex = 10;
+            this.TB_MName.Text = "";
+            this.TB_MName.TrailingIcon = null;
+            // 
+            // TB_Address
+            // 
+            this.TB_Address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_Address.AnimateReadOnly = false;
+            this.TB_Address.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_Address.Depth = 0;
+            this.TB_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Address.LeadingIcon = null;
+            this.TB_Address.Location = new System.Drawing.Point(203, 207);
+            this.TB_Address.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_Address.MaxLength = 50;
+            this.TB_Address.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_Address.Multiline = false;
+            this.TB_Address.Name = "TB_Address";
+            this.TB_Address.Size = new System.Drawing.Size(427, 50);
+            this.TB_Address.TabIndex = 11;
+            this.TB_Address.Text = "";
+            this.TB_Address.TrailingIcon = null;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(12, 222);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(131, 19);
+            this.materialLabel2.TabIndex = 12;
+            this.materialLabel2.Text = "Address (optional)";
+            // 
             // NewCustomerDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.TB_Address);
+            this.Controls.Add(this.TB_MName);
+            this.Controls.Add(this.TB_FName);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.TB_MobileNumber);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DoneButton);
-            this.Controls.Add(this.TB_Name);
+            this.Controls.Add(this.TB_LName);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -199,11 +268,14 @@
         #endregion
         private MaterialSkin.Controls.MaterialButton CancelButton;
         private MaterialSkin.Controls.MaterialButton DoneButton;
-        private MaterialSkin.Controls.MaterialTextBox TB_Name;
+        private MaterialSkin.Controls.MaterialTextBox TB_LName;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialTextBox TB_MobileNumber;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialTextBox TB_FName;
+        private MaterialSkin.Controls.MaterialTextBox TB_MName;
+        private MaterialSkin.Controls.MaterialTextBox TB_Address;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
     }
 }

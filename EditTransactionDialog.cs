@@ -281,7 +281,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         foreach (EmployeeItem Employee in GlobalEmployeeList)
                         {
-                            string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
+                            string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                             if (Employee.ID.Equals(EmployeeId.Trim()))
                             {
                                 TB_Employee.Text += EmployeeDetail + ", ";
@@ -306,8 +306,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     foreach (EmployeeItem Employee in GlobalEmployeeList)
                     {
-                        string EmployeeDetail = $"{Employee.ID}: {Employee.Name}";
-                        if (Employee.ID.Equals(EmployeeCheckedboxes[a].Text.Split(':')[0].Trim()) && Employee.Name.Equals(EmployeeCheckedboxes[a].Text.Split(':')[1].Trim()))
+                        string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                        if (Employee.ID.Equals(EmployeeCheckedboxes[a].Text.Split(':')[0].Trim()) && $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Equals(EmployeeCheckedboxes[a].Text.Split(':')[1].Trim()))
                         {
                             TB_Employee.Text += EmployeeDetail + ", ";
                             break;

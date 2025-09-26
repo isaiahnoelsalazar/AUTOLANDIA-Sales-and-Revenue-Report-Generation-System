@@ -2,6 +2,7 @@
 using MaterialSkin.Controls;
 using System;
 using System.Data.SqlClient;
+using System.Linq;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -21,32 +22,47 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             string ErrorMessage = "";
 
-            if (Check.HasNumbers(TB_Name.Text) || Check.HasSymbols(TB_Name.Text))
+            if (Check.HasNumbers(TB_FName.Text) || Check.HasSymbols(TB_FName.Text))
             {
-                ErrorMessage += "Employee name cannot contain numbers nor symbols." + Environment.NewLine;
+                ErrorMessage += "First name cannot contain numbers nor symbols." + Environment.NewLine;
+            }
+            if (Check.HasNumbers(TB_MName.Text) || Check.HasSymbols(TB_MName.Text))
+            {
+                ErrorMessage += "Middle name cannot contain numbers nor symbols." + Environment.NewLine;
+            }
+            if (Check.HasNumbers(TB_LName.Text) || Check.HasSymbols(TB_LName.Text))
+            {
+                ErrorMessage += "Last name cannot contain numbers nor symbols." + Environment.NewLine;
             }
             if (!Check.IsAValidPhilippineMobileNumber(TB_MobileNumber.Text) && !string.IsNullOrEmpty(TB_MobileNumber.Text))
             {
                 ErrorMessage += "Mobile number is not valid. Use the prefixes \"09\", \"+639\", or \"639\"." + Environment.NewLine;
             }
-            if (string.IsNullOrEmpty(TB_Name.Text))
+            if (string.IsNullOrEmpty(TB_FName.Text))
             {
-                ErrorMessage += "Please enter the employee's name." + Environment.NewLine;
+                ErrorMessage += "Please enter the employee's first name." + Environment.NewLine;
+            }
+            if (string.IsNullOrEmpty(TB_LName.Text))
+            {
+                ErrorMessage += "Please enter the employee's last name." + Environment.NewLine;
             }
 
             if (ErrorMessage.Equals(""))
             {
                 try
                 {
-                    string Name = TB_Name.Text.ToUpper();
+                    string FName = TB_FName.Text.ToUpper();
+                    string MName = TB_MName.Text.ToUpper();
+                    string LName = TB_LName.Text.ToUpper();
+                    string Address = TB_Address.Text.ToUpper();
                     string MobileNumber = TB_MobileNumber.Text.ToUpper();
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new employee: {Name} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : MobileNumber)})");
+                    RecordActivity($"Added new employee: {LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeId, EmployeeName, MobileNumber) VALUES ('{GlobalEmployeeList.Count + 1}', '{Name}', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeId, FirstName, MobileNumber, EmployeeAddress, LastName, MiddleName) VALUES ('{GlobalEmployeeList.Count + 1}', '{FName}', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}')", SQL);
 
                     Command.ExecuteNonQuery();
 
@@ -68,7 +84,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        private void CancelButton_Click(object sender, System.EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }

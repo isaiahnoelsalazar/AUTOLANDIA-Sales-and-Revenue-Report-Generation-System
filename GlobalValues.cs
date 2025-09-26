@@ -44,7 +44,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             public int Compare(EmployeeItem a, EmployeeItem b)
             {
-                return a.Name.CompareTo(b.Name);
+                return $"{a.LastName}, {a.FirstName} {a.MiddleName}".CompareTo($"{b.LastName}, {b.FirstName} {b.MiddleName}");
             }
         }
 
@@ -126,7 +126,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalEmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2)));
+                        GlobalEmployeeList.Add(new EmployeeItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5)));
                     }
                 }
             }
@@ -170,7 +170,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalCustomerList.Add(new CustomerItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3)));
+                        GlobalCustomerList.Add(new CustomerItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5), Reader.GetString(6)));
                     }
                 }
             }

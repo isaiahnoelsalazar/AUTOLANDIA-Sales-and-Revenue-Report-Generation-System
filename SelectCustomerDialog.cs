@@ -65,7 +65,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Panel.Margin = new Padding(0);
 
             Name.Dock = DockStyle.Fill;
-            Name.Text = $"{Customer.ID}: {Customer.Name}";
+            Name.Text = $"{Customer.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
             Name.TextAlign = ContentAlignment.MiddleLeft;
             Name.MouseEnter += (sndr, evnt) =>
             {
@@ -78,12 +78,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             Panel.Click += (sndr, evnt) =>
             {
-                LinkCustomerVehicleDialog.SetCustomerName($"{Customer.ID}: {Customer.Name}");
+                LinkCustomerVehicleDialog.SetCustomerName($"{Customer.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}");
                 Close();
             };
             Name.Click += (sndr, evnt) =>
             {
-                LinkCustomerVehicleDialog.SetCustomerName($"{Customer.ID}: {Customer.Name}");
+                LinkCustomerVehicleDialog.SetCustomerName($"{Customer.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}");
                 Close();
             };
 
@@ -104,7 +104,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (CustomerItem Customer in GlobalCustomerList)
             {
-                if (Customer.Name.ToUpper().Contains(SearchBarCustomer.Text.ToUpper()))
+                if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".ToUpper().Contains(SearchBarCustomer.Text.ToUpper()))
                 {
                     RefreshRows(Customer);
                 }

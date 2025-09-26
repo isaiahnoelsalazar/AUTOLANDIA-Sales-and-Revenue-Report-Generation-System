@@ -23,7 +23,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             PickCustomerButton.Enabled = false;
 
-            TB_Name.Text = $"{Customer.ID}: {Customer.Name}";
+            TB_Name.Text = $"{Customer.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
         }
 
         public LinkCustomerVehicleDialog(PreviewVehicleDialog PreviewVehicleDialog, VehicleItem Vehicle, PeopleForm PeopleForm)
@@ -92,7 +92,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new vehicle for [Customer ID {CustomerDetails.ID}: {CustomerDetails.Name}] - [{VehicleDetails.Brand}, {VehicleDetails.Model}, {VehicleDetails.Size}, {VehicleDetails.PlateNumber}]");
+                    RecordActivity($"Added new vehicle for [Customer ID {CustomerDetails.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}] - [{VehicleDetails.Brand}, {VehicleDetails.Model}, {VehicleDetails.Size}, {VehicleDetails.PlateNumber}]");
 
                     SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerDetails.ID}'", SQL);
                     SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerId='{CustomerDetails.ID}' WHERE VehicleId='{VehicleDetails.ID}'", SQL);

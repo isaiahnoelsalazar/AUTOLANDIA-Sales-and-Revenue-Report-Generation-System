@@ -144,7 +144,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterEmployee.SelectedIndex == 1)
                 {
-                    if (Employee.Name.Contains(SearchBarEmployee.Text.ToUpper()))
+                    if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Contains(SearchBarEmployee.Text.ToUpper()))
                     {
                         RefreshRows(Employee);
                     }
@@ -168,7 +168,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterCustomer.SelectedIndex == 1)
                 {
-                    if (Customer.Name.Contains(SearchBarCustomer.Text.ToUpper()))
+                    if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".Contains(SearchBarCustomer.Text.ToUpper()))
                     {
                         RefreshRows(Customer);
                     }
@@ -224,7 +224,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (Customer.ID.Equals(Vehicle.CustomerID))
                         {
-                            if (Customer.Name.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                            if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                             {
                                 RefreshRows(Vehicle);
                             }
@@ -250,7 +250,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterEmployee.SelectedIndex == 1)
                 {
-                    if (Employee.Name.Contains(SearchBarEmployee.Text.ToUpper()))
+                    if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Contains(SearchBarEmployee.Text.ToUpper()))
                     {
                         RefreshRows(Employee);
                     }
@@ -274,7 +274,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterCustomer.SelectedIndex == 1)
                 {
-                    if (Customer.Name.Contains(SearchBarCustomer.Text.ToUpper()))
+                    if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".Contains(SearchBarCustomer.Text.ToUpper()))
                     {
                         RefreshRows(Customer);
                     }
@@ -330,7 +330,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (Customer.ID.Equals(Vehicle.CustomerID))
                         {
-                            if (Customer.Name.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                            if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                             {
                                 RefreshRows(Vehicle);
                             }
@@ -408,7 +408,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Name.Dock = DockStyle.Fill;
-            Name.Text = Employee.Name;
+            Name.Text = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
             Name.TextAlign = ContentAlignment.MiddleCenter;
             Name.MouseEnter += (sndr, evnt) =>
             {
@@ -453,7 +453,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     Today = DateTime.Now;
 
-                    RecordActivity($"Employee \"{Employee.Name}\" timed in");
+                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed in");
 
                     SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeTimeList (EmployeeId, TimeIn, TimeOut, DateCreated) VALUES " +
                         $"('{Employee.ID}', '{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}', '', '{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}')", SQL);
@@ -479,7 +479,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     Today = DateTime.Now;
 
-                    RecordActivity($"Employee \"{Employee.Name}\" timed out");
+                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed out");
 
                     SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeTimeList SET TimeOut='{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}" +
                         $"' WHERE EmployeeId='{Employee.ID}' AND DateCreated='{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}'", SQL);
@@ -586,7 +586,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Name.Dock = DockStyle.Fill;
-            Name.Text = Customer.Name;
+            Name.Text = $"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
             Name.TextAlign = ContentAlignment.MiddleCenter;
             Name.MouseEnter += (sndr, evnt) =>
             {
@@ -738,7 +738,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Customer1.ID.Equals(Vehicle.CustomerID))
                 {
-                    RealCustomerName = Customer1.Name;
+                    RealCustomerName = $"{Customer1.LastName}, {Customer1.FirstName} {Customer1.MiddleName}";
                 }
             }
 

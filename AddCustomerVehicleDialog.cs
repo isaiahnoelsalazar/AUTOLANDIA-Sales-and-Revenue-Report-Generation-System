@@ -83,7 +83,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Customer.ID.Equals(CustomerID))
                             {
-                                CustomerName = Customer.Name;
+                                CustomerName = $"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
                                 CustomerPlateNumbers = Customer.PlateNumbers;
                             }
                         }

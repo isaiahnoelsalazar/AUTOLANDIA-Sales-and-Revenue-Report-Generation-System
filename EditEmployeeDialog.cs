@@ -10,7 +10,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     {
         PreviewEmployeeDialog PreviewEmployeeDialog;
         PeopleForm PeopleForm;
-        string EmployeeID, PreviousEmployeeName, PreviousMobileNumber;
+        string EmployeeID, PreviousEmployeeFirstName, PreviousEmployeeMiddleName, PreviousEmployeeLastName, PreviousAddress, PreviousMobileNumber;
 
         public EditEmployeeDialog(PreviewEmployeeDialog PreviewEmployeeDialog, string EmployeeID, PeopleForm PeopleForm)
         {
@@ -24,12 +24,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Employee.ID.Equals(EmployeeID))
                 {
-                    TB_Name.Text = Employee.Name;
-                    PreviousEmployeeName = Employee.Name;
+                    TB_FName.Text = Employee.FirstName;
+                    TB_MName.Text = Employee.MiddleName;
+                    TB_LName.Text = Employee.LastName;
+                    PreviousEmployeeFirstName = Employee.FirstName;
+                    PreviousEmployeeMiddleName = Employee.MiddleName;
+                    PreviousEmployeeLastName = Employee.LastName;
                     if (!Employee.MobileNumber.Equals("(Mobile number not set)"))
                     {
                         TB_MobileNumber.Text = Employee.MobileNumber;
                         PreviousMobileNumber = Employee.MobileNumber;
+                    }
+                    if (!Employee.Address.Equals("(Address not set)"))
+                    {
+                        TB_Address.Text = Employee.Address;
+                        PreviousAddress = Employee.Address;
                     }
                 }
             }
@@ -39,32 +48,47 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             string ErrorMessage = "";
 
-            if (Check.HasNumbers(TB_Name.Text) || Check.HasSymbols(TB_Name.Text))
+            if (Check.HasNumbers(TB_FName.Text) || Check.HasSymbols(TB_FName.Text))
             {
-                ErrorMessage += "Employee name cannot contain numbers nor symbols." + Environment.NewLine;
+                ErrorMessage += "First name cannot contain numbers nor symbols." + Environment.NewLine;
+            }
+            if (Check.HasNumbers(TB_MName.Text) || Check.HasSymbols(TB_MName.Text))
+            {
+                ErrorMessage += "Middle name cannot contain numbers nor symbols." + Environment.NewLine;
+            }
+            if (Check.HasNumbers(TB_LName.Text) || Check.HasSymbols(TB_LName.Text))
+            {
+                ErrorMessage += "Last name cannot contain numbers nor symbols." + Environment.NewLine;
             }
             if (!Check.IsAValidPhilippineMobileNumber(TB_MobileNumber.Text) && !string.IsNullOrEmpty(TB_MobileNumber.Text))
             {
                 ErrorMessage += "Mobile number is not valid. Use the prefixes \"09\", \"+639\", or \"639\"." + Environment.NewLine;
             }
-            if (string.IsNullOrEmpty(TB_Name.Text))
+            if (string.IsNullOrEmpty(TB_FName.Text))
             {
-                ErrorMessage += "Please enter the employee's name." + Environment.NewLine;
+                ErrorMessage += "Please enter the employee's first name." + Environment.NewLine;
+            }
+            if (string.IsNullOrEmpty(TB_LName.Text))
+            {
+                ErrorMessage += "Please enter the employee's last name." + Environment.NewLine;
             }
 
             if (ErrorMessage.Equals(""))
             {
                 try
                 {
-                    string Name = TB_Name.Text.ToUpper();
+                    string FName = TB_FName.Text.ToUpper();
+                    string MName = TB_MName.Text.ToUpper();
+                    string LName = TB_LName.Text.ToUpper();
+                    string Address = TB_Address.Text.ToUpper();
                     string MobileNumber = TB_MobileNumber.Text.ToUpper();
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Updated employee details from [{PreviousEmployeeName} ({(string.IsNullOrEmpty(PreviousMobileNumber) ? "Mobile number not set" : PreviousMobileNumber)})] to [{Name} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : MobileNumber)})]");
+                    RecordActivity($"Updated employee details from [{PreviousEmployeeLastName + ", " + PreviousEmployeeFirstName + " " + PreviousEmployeeMiddleName} ({(string.IsNullOrEmpty(PreviousMobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(PreviousAddress) ? "Address not set" : "Address set and hidden")})] to [{LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET EmployeeName='{Name}', MobileNumber='{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}' WHERE EmployeeId='{EmployeeID}'", SQL);
+                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET FirstName='{FName}', MiddleName='{MName}', LastName='{LName}', MobileNumber='{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', EmployeeAddress='{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}' WHERE EmployeeId='{EmployeeID}'", SQL);
 
                     Command.ExecuteNonQuery();
 

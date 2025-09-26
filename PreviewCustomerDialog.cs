@@ -35,7 +35,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Customer.ID.Equals(CustomerID))
                 {
-                    CustomerNameLabel.Text = Customer.Name;
+                    CustomerNameLabel.Text = $"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
                     CustomerMobileNumberLabel.Text = Customer.MobileNumber;
                 }
             }

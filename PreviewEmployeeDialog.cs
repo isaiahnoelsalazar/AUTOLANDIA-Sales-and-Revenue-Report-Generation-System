@@ -25,7 +25,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Employee.ID.Equals(EmployeeID))
                 {
-                    EmployeeNameLabel.Text = Employee.Name;
+                    EmployeeNameLabel.Text = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
                     EmployeeMobileNumberLabel.Text = Employee.MobileNumber;
                 }
             }

@@ -49,7 +49,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (Customer.ID.Equals(Vehicle.CustomerID))
                         {
-                            CustomerNameLabel.Text = Customer.Name;
+                            CustomerNameLabel.Text = $"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
                             LinkCustomerButton.Enabled = false;
                         }
                     }
