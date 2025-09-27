@@ -164,7 +164,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void AddVehicleButton_Click(object sender, EventArgs e)
         {
-            new AddCustomerVehicleDialog(this, CustomerID, PeopleForm).ShowDialog();
+            new AddCustomerVehicleDialog(this, CustomerID).ShowDialog();
         }
 
         private void EditButton_Click(object sender, EventArgs e)

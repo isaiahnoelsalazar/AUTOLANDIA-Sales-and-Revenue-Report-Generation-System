@@ -10,13 +10,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class NewCustomerDialog : MaterialForm
     {
-        PeopleForm PeopleForm;
-
-        public NewCustomerDialog(PeopleForm PeopleForm)
+        public NewCustomerDialog()
         {
             InitializeComponent();
-
-            this.PeopleForm = PeopleForm;
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -69,13 +65,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully added new customer!", "Notice");
-                    PeopleForm.RefreshCustomers();
+                    GlobalPeopleForm.RefreshCustomers();
                     GlobalActivityRecordForm.RefreshActivities();
 
                     DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new vehicle?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
                     if (NewDialogResult == DialogResult.Yes)
                     {
-                        new AddCustomerVehicleDialog(this, PeopleForm, CustomerID).ShowDialog();
+                        new AddCustomerVehicleDialog(this, CustomerID).ShowDialog();
                     }
                     else
                     {

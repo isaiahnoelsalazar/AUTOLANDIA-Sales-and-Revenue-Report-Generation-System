@@ -93,7 +93,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void AddNewCustomerButton_Click(object sender, EventArgs e)
         {
-            new NewCustomerDialog(this).ShowDialog();
+            new NewCustomerDialog().ShowDialog();
         }
 
         private void PeopleForm_Load(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void AddNewEmployeeButton_Click(object sender, EventArgs e)
         {
-            new NewEmployeeDialog(this).ShowDialog();
+            new NewEmployeeDialog().ShowDialog();
         }
 
         private void EmployeesTab_Enter(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void AddNewVehicleButton_Click(object sender, EventArgs e)
         {
-            new AddCustomerVehicleDialog(this).ShowDialog();
+            new AddCustomerVehicleDialog().ShowDialog();
         }
 
         private void VehiclesTab_Enter(object sender, EventArgs e)

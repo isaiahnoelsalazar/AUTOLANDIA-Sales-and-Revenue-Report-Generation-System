@@ -11,32 +11,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     {
         PreviewCustomerDialog PreviewCustomerDialog;
         NewCustomerDialog NewCustomerDialog;
-        PeopleForm PeopleForm;
         string CustomerID;
 
-        public AddCustomerVehicleDialog(PeopleForm PeopleForm)
+        public AddCustomerVehicleDialog()
         {
             InitializeComponent();
-
-            this.PeopleForm = PeopleForm;
         }
 
-        public AddCustomerVehicleDialog(NewCustomerDialog NewCustomerDialog, PeopleForm PeopleForm, string CustomerID)
+        public AddCustomerVehicleDialog(NewCustomerDialog NewCustomerDialog, string CustomerID)
         {
             InitializeComponent();
 
             this.NewCustomerDialog = NewCustomerDialog;
             this.CustomerID = CustomerID;
-            this.PeopleForm = PeopleForm;
         }
 
-        public AddCustomerVehicleDialog(PreviewCustomerDialog PreviewCustomerDialog, string CustomerID, PeopleForm PeopleForm)
+        public AddCustomerVehicleDialog(PreviewCustomerDialog PreviewCustomerDialog, string CustomerID)
         {
             InitializeComponent();
 
             this.PreviewCustomerDialog = PreviewCustomerDialog;
             this.CustomerID = CustomerID;
-            this.PeopleForm = PeopleForm;
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -118,8 +113,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
 
                     MaterialMessageBox.Show($"Successfully added new vehicle{(string.IsNullOrEmpty(CustomerID) ? "" : " for [Customer ID " + CustomerID)}{(string.IsNullOrEmpty(CustomerName) ? "" : ": " + CustomerName + "]")}!", "Notice");
-                    PeopleForm.RefreshCustomers();
-                    PeopleForm.RefreshVehicles();
+                    GlobalPeopleForm.RefreshCustomers();
+                    GlobalPeopleForm.RefreshVehicles();
                     if (PreviewCustomerDialog != null)
                     {
                         PreviewCustomerDialog.RefreshDetails();

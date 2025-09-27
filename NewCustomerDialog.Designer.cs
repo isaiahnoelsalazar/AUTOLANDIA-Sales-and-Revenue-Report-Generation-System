@@ -39,6 +39,8 @@
             this.TB_MName = new MaterialSkin.Controls.MaterialTextBox();
             this.TB_Address = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -93,8 +95,8 @@
             this.TB_LName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_LName.Hint = "Last name";
             this.TB_LName.LeadingIcon = null;
-            this.TB_LName.Location = new System.Drawing.Point(10, 91);
-            this.TB_LName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_LName.Location = new System.Drawing.Point(0, 0);
+            this.TB_LName.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.TB_LName.MaxLength = 50;
             this.TB_LName.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_LName.Multiline = false;
@@ -171,16 +173,16 @@
             this.TB_FName.AnimateReadOnly = false;
             this.TB_FName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_FName.Depth = 0;
-            this.TB_FName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_FName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_FName.Hint = "First name";
             this.TB_FName.LeadingIcon = null;
-            this.TB_FName.Location = new System.Drawing.Point(218, 91);
-            this.TB_FName.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.TB_FName.Location = new System.Drawing.Point(208, 0);
+            this.TB_FName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TB_FName.MaxLength = 50;
             this.TB_FName.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_FName.Multiline = false;
             this.TB_FName.Name = "TB_FName";
-            this.TB_FName.Size = new System.Drawing.Size(204, 50);
+            this.TB_FName.Size = new System.Drawing.Size(202, 50);
             this.TB_FName.TabIndex = 9;
             this.TB_FName.Text = "";
             this.TB_FName.TrailingIcon = null;
@@ -192,16 +194,16 @@
             this.TB_MName.AnimateReadOnly = false;
             this.TB_MName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_MName.Depth = 0;
-            this.TB_MName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_MName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_MName.Hint = "Middle name (optional)";
             this.TB_MName.LeadingIcon = null;
-            this.TB_MName.Location = new System.Drawing.Point(430, 91);
-            this.TB_MName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_MName.Location = new System.Drawing.Point(418, 0);
+            this.TB_MName.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.TB_MName.MaxLength = 50;
             this.TB_MName.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_MName.Multiline = false;
             this.TB_MName.Name = "TB_MName";
-            this.TB_MName.Size = new System.Drawing.Size(200, 50);
+            this.TB_MName.Size = new System.Drawing.Size(202, 50);
             this.TB_MName.TabIndex = 10;
             this.TB_MName.Text = "";
             this.TB_MName.TrailingIcon = null;
@@ -213,7 +215,7 @@
             this.TB_Address.AnimateReadOnly = false;
             this.TB_Address.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Address.Depth = 0;
-            this.TB_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Address.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Address.LeadingIcon = null;
             this.TB_Address.Location = new System.Drawing.Point(203, 207);
             this.TB_Address.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
@@ -238,20 +240,37 @@
             this.materialLabel2.TabIndex = 12;
             this.materialLabel2.Text = "Address (optional)";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel1.Controls.Add(this.TB_MName, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TB_FName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TB_LName, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 91);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(620, 58);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
             // NewCustomerDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.TB_Address);
-            this.Controls.Add(this.TB_MName);
-            this.Controls.Add(this.TB_FName);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.TB_MobileNumber);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DoneButton);
-            this.Controls.Add(this.TB_LName);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -260,6 +279,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewCustomerDialog";
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +297,6 @@
         private MaterialSkin.Controls.MaterialTextBox TB_MName;
         private MaterialSkin.Controls.MaterialTextBox TB_Address;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

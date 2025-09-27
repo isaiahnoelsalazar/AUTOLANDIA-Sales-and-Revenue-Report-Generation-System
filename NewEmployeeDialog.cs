@@ -2,20 +2,15 @@
 using MaterialSkin.Controls;
 using System;
 using System.Data.SqlClient;
-using System.Linq;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class NewEmployeeDialog : MaterialForm
     {
-        PeopleForm PeopleForm;
-
-        public NewEmployeeDialog(PeopleForm PeopleForm)
+        public NewEmployeeDialog()
         {
             InitializeComponent();
-
-            this.PeopleForm = PeopleForm;
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -67,7 +62,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully added new employee!", "Notice");
-                    PeopleForm.RefreshEmployees();
+                    GlobalPeopleForm.RefreshEmployees();
                     GlobalActivityRecordForm.RefreshActivities();
                     Close();
                 }

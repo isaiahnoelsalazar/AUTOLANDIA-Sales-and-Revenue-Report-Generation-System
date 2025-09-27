@@ -40,5 +40,35 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             TimeThread.Abort();
         }
+
+        private void QuickReports_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QuickCustomer_Click(object sender, EventArgs e)
+        {
+            new NewCustomerDialog().ShowDialog();
+        }
+
+        private void QuickVehicle_Click(object sender, EventArgs e)
+        {
+            new AddCustomerVehicleDialog().ShowDialog();
+        }
+
+        private void QuickOrder_Click(object sender, EventArgs e)
+        {
+            new NewTransactionDialog().ShowDialog();
+        }
+
+        private void QuickSalary_Click(object sender, EventArgs e)
+        {
+            new EmployeeSalariesDialog().ShowDialog();
+        }
+
+        private void QuickTimeSchedule_Click(object sender, EventArgs e)
+        {
+            new EmployeeScheduleDialog().ShowDialog();
+        }
     }
 }

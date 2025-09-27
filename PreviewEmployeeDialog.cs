@@ -33,7 +33,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            new EditEmployeeDialog(this, EmployeeID, PeopleForm).ShowDialog();
+            new EditEmployeeDialog(this, EmployeeID).ShowDialog();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

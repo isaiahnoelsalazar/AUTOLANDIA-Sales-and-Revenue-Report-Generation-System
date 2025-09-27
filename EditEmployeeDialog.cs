@@ -9,16 +9,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class EditEmployeeDialog : MaterialForm
     {
         PreviewEmployeeDialog PreviewEmployeeDialog;
-        PeopleForm PeopleForm;
         string EmployeeID, PreviousEmployeeFirstName, PreviousEmployeeMiddleName, PreviousEmployeeLastName, PreviousAddress, PreviousMobileNumber;
 
-        public EditEmployeeDialog(PreviewEmployeeDialog PreviewEmployeeDialog, string EmployeeID, PeopleForm PeopleForm)
+        public EditEmployeeDialog(PreviewEmployeeDialog PreviewEmployeeDialog, string EmployeeID)
         {
             InitializeComponent();
 
             this.PreviewEmployeeDialog = PreviewEmployeeDialog;
             this.EmployeeID = EmployeeID;
-            this.PeopleForm = PeopleForm;
 
             foreach (EmployeeItem Employee in GlobalEmployeeList)
             {
@@ -93,7 +91,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     Command.ExecuteNonQuery();
 
                     MaterialMessageBox.Show("Successfully updated employee details!", "Notice");
-                    PeopleForm.RefreshEmployees();
+                    GlobalPeopleForm.RefreshEmployees();
                     PreviewEmployeeDialog.RefreshDetails();
                     GlobalActivityRecordForm.RefreshActivities();
                     Close();
