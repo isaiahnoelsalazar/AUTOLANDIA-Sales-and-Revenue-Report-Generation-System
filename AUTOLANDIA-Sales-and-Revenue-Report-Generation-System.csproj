@@ -225,11 +225,23 @@
     <Compile Include="SelectServicesDialog.Designer.cs">
       <DependentUpon>SelectServicesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectVehicleBrandDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectVehicleBrandDialog.Designer.cs">
+      <DependentUpon>SelectVehicleBrandDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectVehicleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SelectVehicleDialog.Designer.cs">
       <DependentUpon>SelectVehicleDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectVehicleModelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectVehicleModelDialog.Designer.cs">
+      <DependentUpon>SelectVehicleModelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceItem.cs" />
     <Compile Include="ServicesAndPackagesForm.cs">
@@ -251,6 +263,7 @@
       <DependentUpon>TransactionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="VehicleItem.cs" />
+    <Compile Include="VehicleModelItem.cs" />
     <EmbeddedResource Include="ActivityRecordForm.resx">
       <DependentUpon>ActivityRecordForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,8 +352,14 @@
     <EmbeddedResource Include="SelectServicesDialog.resx">
       <DependentUpon>SelectServicesDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SelectVehicleBrandDialog.resx">
+      <DependentUpon>SelectVehicleBrandDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectVehicleDialog.resx">
       <DependentUpon>SelectVehicleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectVehicleModelDialog.resx">
+      <DependentUpon>SelectVehicleModelDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServicesAndPackagesForm.resx">
       <DependentUpon>ServicesAndPackagesForm.cs</DependentUpon>

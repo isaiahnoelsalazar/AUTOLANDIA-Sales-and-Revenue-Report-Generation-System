@@ -41,11 +41,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TimeThread.Abort();
         }
 
-        private void QuickReports_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void QuickCustomer_Click(object sender, EventArgs e)
         {
             new NewCustomerDialog().ShowDialog();

@@ -21,7 +21,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             EmployeeList.HorizontalScroll.Enabled = false;
             EmployeeList.HorizontalScroll.Visible = false;
 
-            EmployeeCalendar.MaxDate = DateTime.Now.Date;
+            EmployeeCalendar.MaxDate = DateTime.Now.Date.AddDays(1);
             EmployeeCalendar.MinDate = DateTime.Now.Date.AddMonths(-2);
 
             RefreshEmployees(EmployeeCalendar.MaxDate, EmployeeCalendar.MaxDate);

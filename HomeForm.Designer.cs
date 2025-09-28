@@ -31,7 +31,6 @@
             this.GreetingLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.QuickReports = new MaterialSkin.Controls.MaterialButton();
             this.QuickSalary = new MaterialSkin.Controls.MaterialButton();
             this.QuickOrder = new MaterialSkin.Controls.MaterialButton();
             this.QuickTimeSchedule = new MaterialSkin.Controls.MaterialButton();
@@ -76,7 +75,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.QuickReports, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.QuickSalary, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.QuickOrder, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.QuickTimeSchedule, 2, 0);
@@ -90,28 +88,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 160);
             this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // QuickReports
-            // 
-            this.QuickReports.AutoSize = false;
-            this.QuickReports.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.QuickReports.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.QuickReports.Depth = 0;
-            this.QuickReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.QuickReports.HighEmphasis = true;
-            this.QuickReports.Icon = null;
-            this.QuickReports.Location = new System.Drawing.Point(406, 84);
-            this.QuickReports.Margin = new System.Windows.Forms.Padding(4, 4, 0, 0);
-            this.QuickReports.MouseState = MaterialSkin.MouseState.HOVER;
-            this.QuickReports.Name = "QuickReports";
-            this.QuickReports.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.QuickReports.Size = new System.Drawing.Size(200, 76);
-            this.QuickReports.TabIndex = 5;
-            this.QuickReports.Text = "Total Orders Today: 0";
-            this.QuickReports.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.QuickReports.UseAccentColor = false;
-            this.QuickReports.UseVisualStyleBackColor = true;
-            this.QuickReports.Click += new System.EventHandler(this.QuickReports_Click);
             // 
             // QuickSalary
             // 
@@ -252,6 +228,5 @@
         private MaterialSkin.Controls.MaterialButton QuickCustomer;
         private MaterialSkin.Controls.MaterialButton QuickSalary;
         private MaterialSkin.Controls.MaterialButton QuickOrder;
-        private MaterialSkin.Controls.MaterialButton QuickReports;
     }
 }

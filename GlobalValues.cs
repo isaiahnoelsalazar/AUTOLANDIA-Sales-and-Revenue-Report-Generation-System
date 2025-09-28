@@ -19,6 +19,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static List<OrderItem> GlobalOrderList = new List<OrderItem>();
         public static List<BillingItem> GlobalBillingList = new List<BillingItem>();
         public static List<VehicleItem> GlobalVehicleList = new List<VehicleItem>();
+        public static List<VehicleModelItem> GlobalVehicleModelList = new List<VehicleModelItem>();
         public static List<CustomerItem> GlobalCustomerList = new List<CustomerItem>();
         public static List<EmployeeItem> GlobalEmployeeList = new List<EmployeeItem>();
         public static List<EmployeeTimeItem> GlobalEmployeeTimeList = new List<EmployeeTimeItem>();
@@ -45,6 +46,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             public int Compare(EmployeeItem a, EmployeeItem b)
             {
                 return $"{a.LastName}, {a.FirstName} {a.MiddleName}".CompareTo($"{b.LastName}, {b.FirstName} {b.MiddleName}");
+            }
+        }
+
+        public class VehicleBrandComparer : IComparer<VehicleModelItem>
+        {
+            public int Compare(VehicleModelItem a, VehicleModelItem b)
+            {
+                return a.Brand.CompareTo(b.Brand);
             }
         }
 
@@ -237,6 +246,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     while (Reader.Read())
                     {
                         GlobalVehicleList.Add(new VehicleItem(Reader.GetString(0), Reader.GetString(1), Reader.GetString(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5)));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
+        public static void RecreateGlobalVehicleModelList()
+        {
+            GlobalVehicleModelList.Clear();
+
+            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);
+
+            try
+            {
+                using (SqlDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        GlobalVehicleModelList.Add(new VehicleModelItem(Reader.GetString(0), Reader.GetString(1)));
                     }
                 }
             }

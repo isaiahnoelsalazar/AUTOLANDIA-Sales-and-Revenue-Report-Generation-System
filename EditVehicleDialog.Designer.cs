@@ -68,6 +68,7 @@
             this.PickVehicleModelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.PickVehicleModelButton.UseAccentColor = false;
             this.PickVehicleModelButton.UseVisualStyleBackColor = true;
+            this.PickVehicleModelButton.Click += new System.EventHandler(this.PickVehicleModelButton_Click);
             // 
             // PickVehicleBrandButton
             // 
@@ -89,6 +90,7 @@
             this.PickVehicleBrandButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.PickVehicleBrandButton.UseAccentColor = false;
             this.PickVehicleBrandButton.UseVisualStyleBackColor = true;
+            this.PickVehicleBrandButton.Click += new System.EventHandler(this.PickVehicleBrandButton_Click);
             // 
             // materialLabel5
             // 
@@ -271,7 +273,7 @@
             this.TB_PlateNumber.AnimateReadOnly = false;
             this.TB_PlateNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_PlateNumber.Depth = 0;
-            this.TB_PlateNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_PlateNumber.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_PlateNumber.LeadingIcon = null;
             this.TB_PlateNumber.Location = new System.Drawing.Point(163, 268);
             this.TB_PlateNumber.Margin = new System.Windows.Forms.Padding(8);
@@ -291,7 +293,7 @@
             this.TB_Model.AnimateReadOnly = false;
             this.TB_Model.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Model.Depth = 0;
-            this.TB_Model.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Model.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Model.LeadingIcon = null;
             this.TB_Model.Location = new System.Drawing.Point(163, 165);
             this.TB_Model.Margin = new System.Windows.Forms.Padding(8);
@@ -311,7 +313,7 @@
             this.TB_Brand.AnimateReadOnly = false;
             this.TB_Brand.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Brand.Depth = 0;
-            this.TB_Brand.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Brand.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Brand.LeadingIcon = null;
             this.TB_Brand.Location = new System.Drawing.Point(163, 99);
             this.TB_Brand.Margin = new System.Windows.Forms.Padding(8);
@@ -352,7 +354,7 @@
             this.materialDivider1.TabIndex = 40;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // EditCustomerVehicleDialog
+            // EditVehicleDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -376,7 +378,7 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Name = "EditCustomerVehicleDialog";
+            this.Name = "EditVehicleDialog";
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditCustomerVehicleDialog";

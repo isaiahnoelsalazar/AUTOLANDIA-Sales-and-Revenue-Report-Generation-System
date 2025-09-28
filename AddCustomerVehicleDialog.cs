@@ -50,6 +50,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ErrorMessage += "Please select a vehicle size." + Environment.NewLine;
             }
+            if (string.IsNullOrEmpty(TB_Brand.Text))
+            {
+                ErrorMessage += "Please enter the vehicle's brand." + Environment.NewLine;
+            }
+            if (string.IsNullOrEmpty(TB_Model.Text))
+            {
+                ErrorMessage += "Please enter the vehicle's model." + Environment.NewLine;
+            }
             if (string.IsNullOrEmpty(TB_PlateNumber.Text))
             {
                 ErrorMessage += "Please enter the vehicle's plate number." + Environment.NewLine;
@@ -173,14 +181,32 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             Close();
         }
+
+        public void SetVehicleBrand(string Brand)
+        {
+            TB_Brand.Text = Brand;
+        }
+
+        public void SetVehicleModel(string Model)
+        {
+            TB_Model.Text = Model;
+        }
+
         private void PickVehicleBrandButton_Click(object sender, EventArgs e)
         {
-
+            new SelectVehicleBrandDialog(this).ShowDialog();
         }
 
         private void PickVehicleModelButton_Click(object sender, EventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(TB_Brand.Text))
+            {
+                new SelectVehicleModelDialog(this, TB_Brand.Text.ToUpper()).ShowDialog();
+            }
+            else
+            {
+                MaterialMessageBox.Show("Please select a vehicle brand to auto-filter.", "Alert");
+            }
         }
     }
 }
