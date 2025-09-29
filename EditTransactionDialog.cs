@@ -300,14 +300,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             EmployeeCheckedboxes = EmployeeCheckboxes;
 
-            for (int a = EmployeeCheckedboxes.Count - 1; a > 0; a--)
+            for (int a = EmployeeCheckedboxes.Count - 1; a > -1; a--)
             {
                 if (EmployeeCheckedboxes[a].Checked)
                 {
                     foreach (EmployeeItem Employee in GlobalEmployeeList)
                     {
                         string EmployeeDetail = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
-                        if (Employee.ID.Equals(EmployeeCheckedboxes[a].Text.Split(':')[0].Trim()) && $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Equals(EmployeeCheckedboxes[a].Text.Split(':')[1].Trim()))
+                        if (Employee.ID.Equals(EmployeeCheckedboxes[a].Text.Split(':')[0].Trim()))
                         {
                             TB_Employee.Text += EmployeeDetail + ", ";
                             break;
