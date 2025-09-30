@@ -2,9 +2,9 @@
 {
     public class EmployeeItem
     {
-        string id, fname, mobileNumber, address, lname, mname;
+        string id, fname, mobileNumber, address, lname, mname, documents;
 
-        public EmployeeItem(string id, string fname, string mobileNumber, string address, string lname, string mname)
+        public EmployeeItem(string id, string fname, string mobileNumber, string address, string lname, string mname, string documents)
         {
             this.id = id;
             this.fname = fname;
@@ -12,6 +12,7 @@
             this.address = address;
             this.lname = lname;
             this.mname = mname;
+            this.documents = documents;
         }
 
         public string ID
@@ -48,6 +49,12 @@
         {
             get { return mname; }
             set { mname = value; }
+        }
+
+        public string Documents
+        {
+            get { return documents; }
+            set { documents = value; }
         }
     }
 }

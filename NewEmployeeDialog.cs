@@ -2,6 +2,8 @@
 using MaterialSkin.Controls;
 using System;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -11,6 +13,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public NewEmployeeDialog()
         {
             InitializeComponent();
+
+            DocumentListCheckBox.Items.Add("Tax Identification Number (TIN)");
+            DocumentListCheckBox.Items.Add("Department of Labor and Employment (DOLE)");
+            DocumentListCheckBox.Items.Add("Home Development Mutual Fund (HDMF)");
+            DocumentListCheckBox.Items.Add("PhilHealth");
+            DocumentListCheckBox.Items.Add("Social Security System (SSS)");
+            DocumentListCheckBox.Items.Add("Valid ID");
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -51,13 +60,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string LName = TB_LName.Text.ToUpper();
                     string Address = TB_Address.Text.ToUpper();
                     string MobileNumber = TB_MobileNumber.Text.ToUpper();
+                    string Documents = string.Empty;
+
+                    foreach (CheckBox Item in DocumentListCheckBox.Items)
+                    {
+                        if (Item.Checked)
+                        {
+                            Documents += Item.Text.First();
+                        }
+                    }
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
                     RecordActivity($"Added new employee: {LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeId, FirstName, MobileNumber, EmployeeAddress, LastName, MiddleName) VALUES ('{GlobalEmployeeList.Count + 1}', '{FName}', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}')", SQL);
+                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeList(EmployeeId, FirstName, MobileNumber, EmployeeAddress, LastName, MiddleName, EmployeeDocuments) VALUES ('{GlobalEmployeeList.Count + 1}', '{FName}', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}', '{CSSimpleFunctions.Convert.Reverse(Documents)}')", SQL);
 
                     Command.ExecuteNonQuery();
 

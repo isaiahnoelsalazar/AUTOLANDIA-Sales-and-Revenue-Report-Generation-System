@@ -40,6 +40,8 @@
             this.TB_MName = new MaterialSkin.Controls.MaterialTextBox();
             this.TB_FName = new MaterialSkin.Controls.MaterialTextBox();
             this.TB_LName = new MaterialSkin.Controls.MaterialTextBox();
+            this.DocumentListCheckBox = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 314);
+            this.CancelButton.Location = new System.Drawing.Point(10, 434);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -72,7 +74,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(566, 314);
+            this.DoneButton.Location = new System.Drawing.Point(566, 434);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -203,7 +205,7 @@
             this.TB_MName.AnimateReadOnly = false;
             this.TB_MName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_MName.Depth = 0;
-            this.TB_MName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_MName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_MName.Hint = "Middle name (optional)";
             this.TB_MName.LeadingIcon = null;
             this.TB_MName.Location = new System.Drawing.Point(418, 0);
@@ -224,7 +226,7 @@
             this.TB_FName.AnimateReadOnly = false;
             this.TB_FName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_FName.Depth = 0;
-            this.TB_FName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_FName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_FName.Hint = "First name";
             this.TB_FName.LeadingIcon = null;
             this.TB_FName.Location = new System.Drawing.Point(208, 0);
@@ -245,7 +247,7 @@
             this.TB_LName.AnimateReadOnly = false;
             this.TB_LName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_LName.Depth = 0;
-            this.TB_LName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_LName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_LName.Hint = "Last name";
             this.TB_LName.LeadingIcon = null;
             this.TB_LName.Location = new System.Drawing.Point(0, 0);
@@ -259,11 +261,42 @@
             this.TB_LName.Text = "";
             this.TB_LName.TrailingIcon = null;
             // 
+            // DocumentListCheckBox
+            // 
+            this.DocumentListCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DocumentListCheckBox.AutoScroll = true;
+            this.DocumentListCheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.DocumentListCheckBox.Depth = 0;
+            this.DocumentListCheckBox.Location = new System.Drawing.Point(203, 265);
+            this.DocumentListCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.DocumentListCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DocumentListCheckBox.Name = "DocumentListCheckBox";
+            this.DocumentListCheckBox.Size = new System.Drawing.Size(427, 161);
+            this.DocumentListCheckBox.Striped = false;
+            this.DocumentListCheckBox.StripeDarkColor = System.Drawing.Color.Empty;
+            this.DocumentListCheckBox.TabIndex = 22;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.Location = new System.Drawing.Point(12, 275);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(123, 19);
+            this.materialLabel4.TabIndex = 23;
+            this.materialLabel4.Text = "Legal documents";
+            // 
             // NewEmployeeDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(640, 480);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.DocumentListCheckBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.TB_Address);
@@ -297,5 +330,7 @@
         private MaterialSkin.Controls.MaterialTextBox TB_MName;
         private MaterialSkin.Controls.MaterialTextBox TB_FName;
         private MaterialSkin.Controls.MaterialTextBox TB_LName;
+        private MaterialSkin.Controls.MaterialCheckedListBox DocumentListCheckBox;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
     }
 }
