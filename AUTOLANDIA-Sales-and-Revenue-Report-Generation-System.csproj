@@ -79,6 +79,7 @@
       <DependentUpon>BillingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BillingItem.cs" />
+    <Compile Include="ConstantVehicleModelList.cs" />
     <Compile Include="EditBillingDialog.cs">
       <SubType>Form</SubType>
     </Compile>

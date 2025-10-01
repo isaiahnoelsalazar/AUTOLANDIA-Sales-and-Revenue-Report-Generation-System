@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -259,22 +260,36 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalVehicleModelList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);
+            string[] AllVehicleModels = ConstantVehicleModelList.VehicleModelList.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            try
+            foreach (string VehicleModel in AllVehicleModels)
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
-                {
-                    while (Reader.Read())
-                    {
-                        GlobalVehicleModelList.Add(new VehicleModelItem(Reader.GetString(0), Reader.GetString(1)));
-                    }
-                }
+                string[] Split = VehicleModel.Split(':');
+                GlobalVehicleModelList.Add(new VehicleModelItem(Split[0].Trim(), Split[1].Trim()));
             }
-            catch (Exception exception)
-            {
-                MaterialMessageBox.Show(exception.Message, "Alert");
-            }
+
+            //
+            // This feature is currently disabled.
+            // Regularly getting data from the database for vehicle models is causing performance issues.
+            //
+            //GlobalVehicleModelList.Clear();
+
+            //SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);
+
+            //try
+            //{
+            //    using (SqlDataReader Reader = Command.ExecuteReader())
+            //    {
+            //        while (Reader.Read())
+            //        {
+            //            GlobalVehicleModelList.Add(new VehicleModelItem(Reader.GetString(0), Reader.GetString(1)));
+            //        }
+            //    }
+            //}
+            //catch (Exception exception)
+            //{
+            //    MaterialMessageBox.Show(exception.Message, "Alert");
+            //}
         }
 
         public static void RecreateGlobalActivityList()
