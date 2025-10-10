@@ -100,5 +100,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             new EmployeeSalariesDialog().ShowDialog();
         }
+
+        private void DailySummaryButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MonthlySummaryButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

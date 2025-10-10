@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DailyButton = new MaterialSkin.Controls.MaterialButton();
             this.MonthlyButton = new MaterialSkin.Controls.MaterialButton();
             this.EmployeeSalariesButton = new MaterialSkin.Controls.MaterialButton();
+            this.DailySummaryButton = new MaterialSkin.Controls.MaterialButton();
+            this.MonthlySummaryButton = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,8 +43,8 @@
             this.SalesChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.SalesChart.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.SalesChart.ChartAreas.Add(chartArea3);
             this.SalesChart.Location = new System.Drawing.Point(169, 8);
             this.SalesChart.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.SalesChart.Name = "SalesChart";
@@ -116,11 +118,55 @@
             this.EmployeeSalariesButton.UseVisualStyleBackColor = true;
             this.EmployeeSalariesButton.Click += new System.EventHandler(this.EmployeeSalariesButton_Click);
             // 
+            // DailySummaryButton
+            // 
+            this.DailySummaryButton.AutoSize = false;
+            this.DailySummaryButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DailySummaryButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.DailySummaryButton.Depth = 0;
+            this.DailySummaryButton.HighEmphasis = true;
+            this.DailySummaryButton.Icon = null;
+            this.DailySummaryButton.Location = new System.Drawing.Point(11, 96);
+            this.DailySummaryButton.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.DailySummaryButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DailySummaryButton.Name = "DailySummaryButton";
+            this.DailySummaryButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.DailySummaryButton.Size = new System.Drawing.Size(150, 50);
+            this.DailySummaryButton.TabIndex = 32;
+            this.DailySummaryButton.Text = "Daily Sales Summary";
+            this.DailySummaryButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.DailySummaryButton.UseAccentColor = false;
+            this.DailySummaryButton.UseVisualStyleBackColor = true;
+            this.DailySummaryButton.Click += new System.EventHandler(this.DailySummaryButton_Click);
+            // 
+            // MonthlySummaryButton
+            // 
+            this.MonthlySummaryButton.AutoSize = false;
+            this.MonthlySummaryButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MonthlySummaryButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.MonthlySummaryButton.Depth = 0;
+            this.MonthlySummaryButton.HighEmphasis = true;
+            this.MonthlySummaryButton.Icon = null;
+            this.MonthlySummaryButton.Location = new System.Drawing.Point(11, 154);
+            this.MonthlySummaryButton.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.MonthlySummaryButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MonthlySummaryButton.Name = "MonthlySummaryButton";
+            this.MonthlySummaryButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.MonthlySummaryButton.Size = new System.Drawing.Size(150, 50);
+            this.MonthlySummaryButton.TabIndex = 33;
+            this.MonthlySummaryButton.Text = "Monthly Sales Summary";
+            this.MonthlySummaryButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MonthlySummaryButton.UseAccentColor = false;
+            this.MonthlySummaryButton.UseVisualStyleBackColor = true;
+            this.MonthlySummaryButton.Click += new System.EventHandler(this.MonthlySummaryButton_Click);
+            // 
             // ReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.MonthlySummaryButton);
+            this.Controls.Add(this.DailySummaryButton);
             this.Controls.Add(this.EmployeeSalariesButton);
             this.Controls.Add(this.MonthlyButton);
             this.Controls.Add(this.DailyButton);
@@ -141,5 +187,7 @@
         private MaterialSkin.Controls.MaterialButton DailyButton;
         private MaterialSkin.Controls.MaterialButton MonthlyButton;
         private MaterialSkin.Controls.MaterialButton EmployeeSalariesButton;
+        private MaterialSkin.Controls.MaterialButton DailySummaryButton;
+        private MaterialSkin.Controls.MaterialButton MonthlySummaryButton;
     }
 }
