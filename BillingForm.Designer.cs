@@ -48,6 +48,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 6;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -72,10 +73,10 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(318, 8);
+            this.label2.Location = new System.Drawing.Point(318, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 32);
+            this.label2.Size = new System.Drawing.Size(107, 30);
             this.label2.TabIndex = 5;
             this.label2.Text = "Payment Method";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,10 +84,10 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(535, 8);
+            this.label1.Location = new System.Drawing.Point(535, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 32);
+            this.label1.Size = new System.Drawing.Size(78, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "Date Created";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,10 +95,10 @@
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(442, 8);
+            this.label7.Location = new System.Drawing.Point(442, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 32);
+            this.label7.Size = new System.Drawing.Size(76, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "Last Updated";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -105,10 +106,10 @@
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(163, 8);
+            this.label4.Location = new System.Drawing.Point(164, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 32);
+            this.label4.Size = new System.Drawing.Size(137, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "Progress";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,10 +117,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(70, 8);
+            this.label5.Location = new System.Drawing.Point(71, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 32);
+            this.label5.Size = new System.Drawing.Size(76, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Order Balance";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,10 +128,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 32);
+            this.label6.Size = new System.Drawing.Size(45, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "ID";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,7 +171,7 @@
             this.SearchBarBilling.AnimateReadOnly = false;
             this.SearchBarBilling.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarBilling.Depth = 0;
-            this.SearchBarBilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarBilling.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarBilling.Hint = "Search";
             this.SearchBarBilling.LeadingIcon = null;
             this.SearchBarBilling.Location = new System.Drawing.Point(9, 9);
@@ -238,6 +239,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BillingForm";
             this.Text = "BillingForm";
+            this.Load += new System.EventHandler(this.BillingForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.BillingListContainer.ResumeLayout(false);
             this.BillingListContainer.PerformLayout();

@@ -42,7 +42,7 @@
             this.SearchBarVehicle.AnimateReadOnly = false;
             this.SearchBarVehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarVehicle.Depth = 0;
-            this.SearchBarVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarVehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarVehicle.Hint = "Search";
             this.SearchBarVehicle.LeadingIcon = null;
             this.SearchBarVehicle.Location = new System.Drawing.Point(10, 36);
@@ -85,6 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleListContainer.AutoScroll = true;
+            this.VehicleListContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VehicleListContainer.Controls.Add(this.VehicleList);
             this.VehicleListContainer.Location = new System.Drawing.Point(10, 80);
             this.VehicleListContainer.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
@@ -104,7 +105,7 @@
             this.VehicleList.Name = "VehicleList";
             this.VehicleList.RowCount = 1;
             this.VehicleList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.VehicleList.Size = new System.Drawing.Size(380, 0);
+            this.VehicleList.Size = new System.Drawing.Size(378, 0);
             this.VehicleList.TabIndex = 0;
             // 
             // SelectVehicleBrandDialog

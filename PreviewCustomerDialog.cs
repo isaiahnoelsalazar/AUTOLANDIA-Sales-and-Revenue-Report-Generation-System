@@ -25,8 +25,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             VehicleList.VerticalScroll.Visible = true;
             VehicleList.HorizontalScroll.Enabled = false;
             VehicleList.HorizontalScroll.Visible = false;
-
-            RefreshDetails();
         }
 
         public void RefreshDetails()
@@ -183,6 +181,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     new LinkCustomerVehicleDialog(this, Temp[a], PeopleForm).ShowDialog();
                 }
             }
+        }
+
+        private void PreviewCustomerDialog_Load(object sender, EventArgs e)
+        {
+            RefreshDetails();
         }
     }
 }

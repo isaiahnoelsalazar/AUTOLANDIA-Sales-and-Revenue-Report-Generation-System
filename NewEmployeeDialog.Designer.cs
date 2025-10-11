@@ -268,6 +268,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DocumentListCheckBox.AutoScroll = true;
             this.DocumentListCheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.DocumentListCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DocumentListCheckBox.Depth = 0;
             this.DocumentListCheckBox.Location = new System.Drawing.Point(203, 265);
             this.DocumentListCheckBox.Margin = new System.Windows.Forms.Padding(0);

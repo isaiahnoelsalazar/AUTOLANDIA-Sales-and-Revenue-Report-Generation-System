@@ -23,8 +23,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             FilterBilling.Items.Add("ID");
             FilterBilling.Items.Add("Progress");
-
-            RefreshBillings();
         }
 
         public void RefreshBillings()
@@ -279,6 +277,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.Controls.Add(Panel);
 
             tableLayoutPanel2.Width = BillingList.Width;
+        }
+
+        private void BillingForm_Load(object sender, EventArgs e)
+        {
+            RefreshBillings();
         }
     }
 }

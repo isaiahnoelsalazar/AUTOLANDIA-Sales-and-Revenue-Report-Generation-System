@@ -25,8 +25,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterTransaction.Items.Add("Employee(s)");
             FilterTransaction.Items.Add("Plate Number");
             FilterTransaction.Items.Add("Progress");
-
-            RefreshTransactions();
         }
 
         public void RefreshTransactions()
@@ -387,6 +385,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Add(Panel);
 
             tableLayoutPanel2.Width = TransactionList.Width;
+        }
+
+        private void TransactionsForm_Load(object sender, EventArgs e)
+        {
+            RefreshTransactions();
         }
     }
 }

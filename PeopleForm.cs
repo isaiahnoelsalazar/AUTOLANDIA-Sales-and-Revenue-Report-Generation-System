@@ -45,10 +45,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterVehicle.Items.Add("Size");
             FilterVehicle.Items.Add("Plate Number");
             FilterVehicle.Items.Add("Owner Name");
-
-            RefreshEmployees();
-            RefreshCustomers();
-            RefreshVehicles();
         }
 
         public void RefreshEmployees()
@@ -101,6 +97,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             tableLayoutPanel2.Width = EmployeeList.Width;
             tableLayoutPanel1.Width = CustomerList.Width;
             tableLayoutPanel3.Width = VehicleList.Width;
+            RefreshEmployees();
+            RefreshCustomers();
+            RefreshVehicles();
         }
 
         private void AddNewEmployeeButton_Click(object sender, EventArgs e)
@@ -497,23 +496,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             Panel.Click += (sndr, evnt) =>
             {
-                new PreviewEmployeeDialog(this, Employee.ID).ShowDialog();
+                new PreviewEmployeeDialog(Employee.ID).ShowDialog();
             };
             Id.Click += (sndr, evnt) =>
             {
-                new PreviewEmployeeDialog(this, Employee.ID).ShowDialog();
+                new PreviewEmployeeDialog(Employee.ID).ShowDialog();
             };
             Name.Click += (sndr, evnt) =>
             {
-                new PreviewEmployeeDialog(this, Employee.ID).ShowDialog();
+                new PreviewEmployeeDialog(Employee.ID).ShowDialog();
             };
             TimeIn.Click += (sndr, evnt) =>
             {
-                new PreviewEmployeeDialog(this, Employee.ID).ShowDialog();
+                new PreviewEmployeeDialog(Employee.ID).ShowDialog();
             };
             TimeOut.Click += (sndr, evnt) =>
             {
-                new PreviewEmployeeDialog(this, Employee.ID).ShowDialog();
+                new PreviewEmployeeDialog(Employee.ID).ShowDialog();
             };
 
             EmployeeList.RowStyles.Add(Row);

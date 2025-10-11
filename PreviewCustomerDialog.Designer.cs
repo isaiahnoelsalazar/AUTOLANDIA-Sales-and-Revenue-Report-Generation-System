@@ -55,7 +55,7 @@
             this.CloseButton.Depth = 0;
             this.CloseButton.HighEmphasis = true;
             this.CloseButton.Icon = null;
-            this.CloseButton.Location = new System.Drawing.Point(10, 594);
+            this.CloseButton.Location = new System.Drawing.Point(10, 434);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(8);
             this.CloseButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CloseButton.Name = "CloseButton";
@@ -75,11 +75,11 @@
             this.CustomerNameLabel.Depth = 0;
             this.CustomerNameLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.CustomerNameLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.CustomerNameLabel.Location = new System.Drawing.Point(9, 36);
+            this.CustomerNameLabel.Location = new System.Drawing.Point(10, 36);
             this.CustomerNameLabel.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
             this.CustomerNameLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.CustomerNameLabel.Name = "CustomerNameLabel";
-            this.CustomerNameLabel.Size = new System.Drawing.Size(620, 29);
+            this.CustomerNameLabel.Size = new System.Drawing.Size(620, 58);
             this.CustomerNameLabel.TabIndex = 9;
             this.CustomerNameLabel.Text = "Name";
             this.CustomerNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -90,7 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(10, 126);
+            this.materialDivider1.Location = new System.Drawing.Point(10, 155);
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
@@ -105,7 +105,7 @@
             this.CustomerMobileNumberLabel.Depth = 0;
             this.CustomerMobileNumberLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.CustomerMobileNumberLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.CustomerMobileNumberLabel.Location = new System.Drawing.Point(10, 81);
+            this.CustomerMobileNumberLabel.Location = new System.Drawing.Point(10, 110);
             this.CustomerMobileNumberLabel.Margin = new System.Windows.Forms.Padding(8);
             this.CustomerMobileNumberLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.CustomerMobileNumberLabel.Name = "CustomerMobileNumberLabel";
@@ -120,7 +120,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.materialLabel1.Location = new System.Drawing.Point(11, 144);
+            this.materialLabel1.Location = new System.Drawing.Point(11, 173);
             this.materialLabel1.Margin = new System.Windows.Forms.Padding(8);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -132,6 +132,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -141,7 +142,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 171);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 200);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -152,10 +153,10 @@
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(442, 8);
+            this.label7.Location = new System.Drawing.Point(441, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(170, 32);
+            this.label7.Size = new System.Drawing.Size(170, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "Plate Number";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -163,10 +164,10 @@
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(380, 8);
+            this.label4.Location = new System.Drawing.Point(379, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 32);
+            this.label4.Size = new System.Drawing.Size(45, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "Size";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -174,10 +175,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(194, 8);
+            this.label5.Location = new System.Drawing.Point(194, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(170, 32);
+            this.label5.Size = new System.Drawing.Size(168, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Model";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,10 +186,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(170, 32);
+            this.label6.Size = new System.Drawing.Size(168, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Brand";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,10 +201,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleListContainer.AutoScroll = true;
             this.VehicleListContainer.Controls.Add(this.VehicleList);
-            this.VehicleListContainer.Location = new System.Drawing.Point(10, 219);
+            this.VehicleListContainer.Location = new System.Drawing.Point(10, 248);
             this.VehicleListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.VehicleListContainer.Name = "VehicleListContainer";
-            this.VehicleListContainer.Size = new System.Drawing.Size(620, 367);
+            this.VehicleListContainer.Size = new System.Drawing.Size(620, 178);
             this.VehicleListContainer.TabIndex = 16;
             // 
             // VehicleList
@@ -229,7 +230,7 @@
             this.AddVehicleButton.Depth = 0;
             this.AddVehicleButton.HighEmphasis = true;
             this.AddVehicleButton.Icon = null;
-            this.AddVehicleButton.Location = new System.Drawing.Point(517, 594);
+            this.AddVehicleButton.Location = new System.Drawing.Point(517, 434);
             this.AddVehicleButton.Margin = new System.Windows.Forms.Padding(8);
             this.AddVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AddVehicleButton.Name = "AddVehicleButton";
@@ -250,7 +251,7 @@
             this.EditButton.Depth = 0;
             this.EditButton.HighEmphasis = true;
             this.EditButton.Icon = null;
-            this.EditButton.Location = new System.Drawing.Point(213, 594);
+            this.EditButton.Location = new System.Drawing.Point(213, 434);
             this.EditButton.Margin = new System.Windows.Forms.Padding(8);
             this.EditButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.EditButton.Name = "EditButton";
@@ -271,7 +272,7 @@
             this.LinkVehicleButton.Depth = 0;
             this.LinkVehicleButton.HighEmphasis = true;
             this.LinkVehicleButton.Icon = null;
-            this.LinkVehicleButton.Location = new System.Drawing.Point(293, 594);
+            this.LinkVehicleButton.Location = new System.Drawing.Point(293, 434);
             this.LinkVehicleButton.Margin = new System.Windows.Forms.Padding(8);
             this.LinkVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.LinkVehicleButton.Name = "LinkVehicleButton";
@@ -288,7 +289,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 640);
+            this.ClientSize = new System.Drawing.Size(640, 480);
             this.Controls.Add(this.LinkVehicleButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.AddVehicleButton);
@@ -304,6 +305,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditCustomerDialog";
+            this.Load += new System.EventHandler(this.PreviewCustomerDialog_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.VehicleListContainer.ResumeLayout(false);
             this.VehicleListContainer.PerformLayout();

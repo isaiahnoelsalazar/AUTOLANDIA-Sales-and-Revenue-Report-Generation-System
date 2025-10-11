@@ -31,11 +31,11 @@
             this.EmployeeCalendar = new System.Windows.Forms.MonthCalendar();
             this.SearchBarEmployee = new MaterialSkin.Controls.MaterialTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.EmployeeListContainer = new System.Windows.Forms.Panel();
             this.EmployeeList = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.EmployeeListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.SearchBarEmployee.AnimateReadOnly = false;
             this.SearchBarEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarEmployee.Depth = 0;
-            this.SearchBarEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarEmployee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarEmployee.Hint = "Search";
             this.SearchBarEmployee.LeadingIcon = null;
             this.SearchBarEmployee.Location = new System.Drawing.Point(245, 36);
@@ -75,6 +75,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -90,13 +91,24 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(385, 48);
             this.tableLayoutPanel2.TabIndex = 96;
             // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(277, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 30);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Time Out";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(162, 8);
+            this.label5.Location = new System.Drawing.Point(162, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 32);
+            this.label5.Size = new System.Drawing.Size(98, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Time In";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,10 +116,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 32);
+            this.label6.Size = new System.Drawing.Size(136, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Employee Name";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,17 +152,6 @@
             this.EmployeeList.Size = new System.Drawing.Size(385, 0);
             this.EmployeeList.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(277, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 32);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Time Out";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // EmployeeScheduleDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +166,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeScheduleDialog";
+            this.Load += new System.EventHandler(this.EmployeeScheduleDialog_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.EmployeeListContainer.ResumeLayout(false);
             this.EmployeeListContainer.PerformLayout();

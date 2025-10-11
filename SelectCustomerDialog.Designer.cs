@@ -41,6 +41,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomerListContainer.AutoScroll = true;
+            this.CustomerListContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CustomerListContainer.Controls.Add(this.CustomerList);
             this.CustomerListContainer.Location = new System.Drawing.Point(10, 80);
             this.CustomerListContainer.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
@@ -60,7 +61,7 @@
             this.CustomerList.Name = "CustomerList";
             this.CustomerList.RowCount = 1;
             this.CustomerList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CustomerList.Size = new System.Drawing.Size(380, 0);
+            this.CustomerList.Size = new System.Drawing.Size(378, 0);
             this.CustomerList.TabIndex = 0;
             // 
             // CancelButton
@@ -91,7 +92,7 @@
             this.SearchBarCustomer.AnimateReadOnly = false;
             this.SearchBarCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarCustomer.Depth = 0;
-            this.SearchBarCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarCustomer.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarCustomer.Hint = "Search";
             this.SearchBarCustomer.LeadingIcon = null;
             this.SearchBarCustomer.Location = new System.Drawing.Point(10, 36);

@@ -32,6 +32,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.EmployeesTab = new System.Windows.Forms.TabPage();
+            this.EmployeeScheduleButton = new MaterialSkin.Controls.MaterialButton();
             this.FilterEmployee = new MaterialSkin.Controls.MaterialComboBox();
             this.SearchBarEmployee = new MaterialSkin.Controls.MaterialTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -68,7 +69,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.VehicleList = new System.Windows.Forms.TableLayoutPanel();
             this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             this.AddNewVehicleButton = new MaterialSkin.Controls.MaterialButton();
-            this.EmployeeScheduleButton = new MaterialSkin.Controls.MaterialButton();
             this.tabControl1.SuspendLayout();
             this.EmployeesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -113,6 +113,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.EmployeesTab.TabIndex = 0;
             this.EmployeesTab.Text = "Employees";
             this.EmployeesTab.Enter += new System.EventHandler(this.EmployeesTab_Enter);
+            // 
+            // EmployeeScheduleButton
+            // 
+            this.EmployeeScheduleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EmployeeScheduleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EmployeeScheduleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.EmployeeScheduleButton.Depth = 0;
+            this.EmployeeScheduleButton.HighEmphasis = true;
+            this.EmployeeScheduleButton.Icon = null;
+            this.EmployeeScheduleButton.Location = new System.Drawing.Point(598, 8);
+            this.EmployeeScheduleButton.Margin = new System.Windows.Forms.Padding(8, 8, 0, 8);
+            this.EmployeeScheduleButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.EmployeeScheduleButton.Name = "EmployeeScheduleButton";
+            this.EmployeeScheduleButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.EmployeeScheduleButton.Size = new System.Drawing.Size(173, 36);
+            this.EmployeeScheduleButton.TabIndex = 27;
+            this.EmployeeScheduleButton.Text = "Employee schedule";
+            this.EmployeeScheduleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.EmployeeScheduleButton.UseAccentColor = false;
+            this.EmployeeScheduleButton.UseVisualStyleBackColor = true;
+            this.EmployeeScheduleButton.Click += new System.EventHandler(this.EmployeeScheduleButton_Click);
             // 
             // FilterEmployee
             // 
@@ -165,6 +186,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -186,10 +208,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(709, 8);
+            this.label7.Location = new System.Drawing.Point(709, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(219, 32);
+            this.label7.Size = new System.Drawing.Size(218, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "Time Out";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -197,10 +219,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(475, 8);
+            this.label4.Location = new System.Drawing.Point(476, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(218, 32);
+            this.label4.Size = new System.Drawing.Size(216, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "Time In";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,10 +230,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(195, 8);
+            this.label5.Location = new System.Drawing.Point(196, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(264, 32);
+            this.label5.Size = new System.Drawing.Size(263, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Name";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,10 +241,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 32);
+            this.label6.Size = new System.Drawing.Size(170, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "ID";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -358,6 +380,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
@@ -376,10 +399,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(550, 8);
+            this.label3.Location = new System.Drawing.Point(551, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(378, 32);
+            this.label3.Size = new System.Drawing.Size(376, 30);
             this.label3.TabIndex = 2;
             this.label3.Text = "Owned Vehicle Plate Numbers";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -387,10 +410,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(242, 8);
+            this.label2.Location = new System.Drawing.Point(243, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(292, 32);
+            this.label2.Size = new System.Drawing.Size(291, 30);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -398,10 +421,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 32);
+            this.label1.Size = new System.Drawing.Size(217, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -537,6 +560,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 6;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -561,10 +585,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label13
             // 
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(755, 8);
+            this.label13.Location = new System.Drawing.Point(753, 9);
             this.label13.Margin = new System.Windows.Forms.Padding(8);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(173, 32);
+            this.label13.Size = new System.Drawing.Size(174, 30);
             this.label13.TabIndex = 5;
             this.label13.Text = "Owner Name";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -572,10 +596,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(8, 8);
+            this.label12.Location = new System.Drawing.Point(9, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(8);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 32);
+            this.label12.Size = new System.Drawing.Size(76, 30);
             this.label12.TabIndex = 4;
             this.label12.Text = "ID";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -583,10 +607,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label8
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(568, 8);
+            this.label8.Location = new System.Drawing.Point(567, 9);
             this.label8.Margin = new System.Windows.Forms.Padding(8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(171, 32);
+            this.label8.Size = new System.Drawing.Size(169, 30);
             this.label8.TabIndex = 3;
             this.label8.Text = "Plate Number";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -594,10 +618,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label9
             // 
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(475, 8);
+            this.label9.Location = new System.Drawing.Point(474, 9);
             this.label9.Margin = new System.Windows.Forms.Padding(8);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 32);
+            this.label9.Size = new System.Drawing.Size(76, 30);
             this.label9.TabIndex = 2;
             this.label9.Text = "Size";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -605,10 +629,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label10
             // 
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(288, 8);
+            this.label10.Location = new System.Drawing.Point(288, 9);
             this.label10.Margin = new System.Windows.Forms.Padding(8);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(171, 32);
+            this.label10.Size = new System.Drawing.Size(169, 30);
             this.label10.TabIndex = 1;
             this.label10.Text = "Model";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -616,10 +640,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             // label11
             // 
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(101, 8);
+            this.label11.Location = new System.Drawing.Point(102, 9);
             this.label11.Margin = new System.Windows.Forms.Padding(8);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(171, 32);
+            this.label11.Size = new System.Drawing.Size(169, 30);
             this.label11.TabIndex = 0;
             this.label11.Text = "Brand";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -686,27 +710,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.AddNewVehicleButton.UseAccentColor = false;
             this.AddNewVehicleButton.UseVisualStyleBackColor = true;
             this.AddNewVehicleButton.Click += new System.EventHandler(this.AddNewVehicleButton_Click);
-            // 
-            // EmployeeScheduleButton
-            // 
-            this.EmployeeScheduleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmployeeScheduleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EmployeeScheduleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EmployeeScheduleButton.Depth = 0;
-            this.EmployeeScheduleButton.HighEmphasis = true;
-            this.EmployeeScheduleButton.Icon = null;
-            this.EmployeeScheduleButton.Location = new System.Drawing.Point(598, 8);
-            this.EmployeeScheduleButton.Margin = new System.Windows.Forms.Padding(8, 8, 0, 8);
-            this.EmployeeScheduleButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EmployeeScheduleButton.Name = "EmployeeScheduleButton";
-            this.EmployeeScheduleButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EmployeeScheduleButton.Size = new System.Drawing.Size(173, 36);
-            this.EmployeeScheduleButton.TabIndex = 27;
-            this.EmployeeScheduleButton.Text = "Employee schedule";
-            this.EmployeeScheduleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EmployeeScheduleButton.UseAccentColor = false;
-            this.EmployeeScheduleButton.UseVisualStyleBackColor = true;
-            this.EmployeeScheduleButton.Click += new System.EventHandler(this.EmployeeScheduleButton_Click);
             // 
             // PeopleForm
             // 

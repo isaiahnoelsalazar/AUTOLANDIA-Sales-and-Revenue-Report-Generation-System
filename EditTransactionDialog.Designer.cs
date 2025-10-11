@@ -157,7 +157,7 @@
             this.TB_Employee.AnimateReadOnly = false;
             this.TB_Employee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Employee.Depth = 0;
-            this.TB_Employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Employee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Employee.LeadingIcon = null;
             this.TB_Employee.Location = new System.Drawing.Point(163, 165);
             this.TB_Employee.Margin = new System.Windows.Forms.Padding(8);
@@ -276,7 +276,7 @@
             this.TB_Vehicle.AnimateReadOnly = false;
             this.TB_Vehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Vehicle.Depth = 0;
-            this.TB_Vehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Vehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Vehicle.LeadingIcon = null;
             this.TB_Vehicle.Location = new System.Drawing.Point(163, 296);
             this.TB_Vehicle.Margin = new System.Windows.Forms.Padding(8);
@@ -312,7 +312,7 @@
             this.CB_Progress.DropDownHeight = 174;
             this.CB_Progress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Progress.DropDownWidth = 121;
-            this.CB_Progress.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.CB_Progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.CB_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.CB_Progress.FormattingEnabled = true;
             this.CB_Progress.IntegralHeight = false;
@@ -395,6 +395,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
@@ -411,10 +412,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(182, 8);
+            this.label5.Location = new System.Drawing.Point(182, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 32);
+            this.label5.Size = new System.Drawing.Size(77, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Price";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -422,10 +423,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(158, 32);
+            this.label6.Size = new System.Drawing.Size(156, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Service Name";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -550,6 +551,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditTransactionDialog";
+            this.Load += new System.EventHandler(this.EditTransactionDialog_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ServiceListContainer.ResumeLayout(false);
             this.ServiceListContainer.PerformLayout();

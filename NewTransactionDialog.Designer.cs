@@ -272,7 +272,7 @@
             this.TB_Vehicle.AnimateReadOnly = false;
             this.TB_Vehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Vehicle.Depth = 0;
-            this.TB_Vehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Vehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Vehicle.LeadingIcon = null;
             this.TB_Vehicle.Location = new System.Drawing.Point(140, 165);
             this.TB_Vehicle.Margin = new System.Windows.Forms.Padding(8);
@@ -293,7 +293,7 @@
             this.TB_Employee.AnimateReadOnly = false;
             this.TB_Employee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Employee.Depth = 0;
-            this.TB_Employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Employee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Employee.LeadingIcon = null;
             this.TB_Employee.Location = new System.Drawing.Point(140, 99);
             this.TB_Employee.Margin = new System.Windows.Forms.Padding(8);
@@ -332,6 +332,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
@@ -348,10 +349,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(167, 8);
+            this.label5.Location = new System.Drawing.Point(167, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 32);
+            this.label5.Size = new System.Drawing.Size(70, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Price";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -359,10 +360,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 32);
+            this.label6.Size = new System.Drawing.Size(141, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Service Name";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

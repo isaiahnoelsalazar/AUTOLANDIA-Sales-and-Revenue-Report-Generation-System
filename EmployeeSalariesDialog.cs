@@ -23,8 +23,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             EmployeeCalendar.MaxDate = DateTime.Now.Date.AddDays(1);
             EmployeeCalendar.MinDate = DateTime.Now.Date.AddMonths(-2);
-
-            RefreshEmployees(EmployeeCalendar.MaxDate, EmployeeCalendar.MaxDate);
         }
 
         void RefreshEmployees(DateTime DateTimeStart, DateTime DateTimeEnd)
@@ -128,6 +126,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void EmployeeCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
             RefreshEmployees(e.Start.Date, e.End.Date);
+        }
+
+        private void EmployeeSalariesDialog_Load(object sender, EventArgs e)
+        {
+            RefreshEmployees(EmployeeCalendar.MaxDate, EmployeeCalendar.MaxDate);
         }
     }
 }

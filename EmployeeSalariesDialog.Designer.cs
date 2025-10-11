@@ -44,6 +44,7 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -61,10 +62,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(239, 8);
+            this.label5.Location = new System.Drawing.Point(239, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 32);
+            this.label5.Size = new System.Drawing.Size(137, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Salary";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,10 +73,10 @@
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(215, 32);
+            this.label6.Size = new System.Drawing.Size(213, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Employee Name";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,6 +170,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeSalariesDialog";
+            this.Load += new System.EventHandler(this.EmployeeSalariesDialog_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.EmployeeListContainer.ResumeLayout(false);
             this.EmployeeListContainer.PerformLayout();

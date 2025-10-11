@@ -83,6 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ServiceListCheckBox.AutoScroll = true;
             this.ServiceListCheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.ServiceListCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ServiceListCheckBox.Depth = 0;
             this.ServiceListCheckBox.Location = new System.Drawing.Point(10, 80);
             this.ServiceListCheckBox.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
@@ -100,7 +101,7 @@
             this.SearchBarService.AnimateReadOnly = false;
             this.SearchBarService.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarService.Depth = 0;
-            this.SearchBarService.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarService.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarService.Hint = "Search";
             this.SearchBarService.LeadingIcon = null;
             this.SearchBarService.Location = new System.Drawing.Point(10, 36);

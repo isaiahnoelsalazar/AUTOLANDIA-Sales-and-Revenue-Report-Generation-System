@@ -41,12 +41,12 @@
             // 
             // ModelLabel
             // 
-            this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelLabel.Depth = 0;
             this.ModelLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ModelLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.ModelLabel.Location = new System.Drawing.Point(10, 81);
+            this.ModelLabel.Location = new System.Drawing.Point(10, 110);
             this.ModelLabel.Margin = new System.Windows.Forms.Padding(8);
             this.ModelLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.ModelLabel.Name = "ModelLabel";
@@ -78,7 +78,7 @@
             // 
             // BrandLabel
             // 
-            this.BrandLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BrandLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BrandLabel.Depth = 0;
             this.BrandLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -87,18 +87,18 @@
             this.BrandLabel.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
             this.BrandLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.BrandLabel.Name = "BrandLabel";
-            this.BrandLabel.Size = new System.Drawing.Size(620, 29);
+            this.BrandLabel.Size = new System.Drawing.Size(620, 58);
             this.BrandLabel.TabIndex = 21;
             this.BrandLabel.Text = "Name";
             this.BrandLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // materialDivider1
             // 
-            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(10, 216);
+            this.materialDivider1.Location = new System.Drawing.Point(10, 245);
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
@@ -150,12 +150,12 @@
             // 
             // PlateNumberLabel
             // 
-            this.PlateNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PlateNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PlateNumberLabel.Depth = 0;
             this.PlateNumberLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PlateNumberLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.PlateNumberLabel.Location = new System.Drawing.Point(10, 126);
+            this.PlateNumberLabel.Location = new System.Drawing.Point(10, 155);
             this.PlateNumberLabel.Margin = new System.Windows.Forms.Padding(8);
             this.PlateNumberLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.PlateNumberLabel.Name = "PlateNumberLabel";
@@ -166,12 +166,12 @@
             // 
             // SizeLabel
             // 
-            this.SizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SizeLabel.Depth = 0;
             this.SizeLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SizeLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.SizeLabel.Location = new System.Drawing.Point(10, 171);
+            this.SizeLabel.Location = new System.Drawing.Point(10, 200);
             this.SizeLabel.Margin = new System.Windows.Forms.Padding(8);
             this.SizeLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.SizeLabel.Name = "SizeLabel";
@@ -182,12 +182,12 @@
             // 
             // CustomerNameLabel
             // 
-            this.CustomerNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CustomerNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomerNameLabel.Depth = 0;
             this.CustomerNameLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.CustomerNameLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.CustomerNameLabel.Location = new System.Drawing.Point(10, 234);
+            this.CustomerNameLabel.Location = new System.Drawing.Point(10, 263);
             this.CustomerNameLabel.Margin = new System.Windows.Forms.Padding(8);
             this.CustomerNameLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.CustomerNameLabel.Name = "CustomerNameLabel";

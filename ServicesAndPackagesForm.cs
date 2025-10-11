@@ -31,9 +31,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterPackage.Items.Add("ID");
             FilterPackage.Items.Add("Name");
             FilterPackage.Items.Add("Services Included");
-
-            RefreshServices();
-            RefreshPackages();
         }
 
         public void RefreshServices()
@@ -66,6 +63,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             tableLayoutPanel2.Width = ServiceList.Width;
             tableLayoutPanel1.Width = PackageList.Width;
+            RefreshServices();
+            RefreshPackages();
         }
 
         private void ServicesTab_Enter(object sender, EventArgs e)

@@ -41,6 +41,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EmployeeListCheckBox.AutoScroll = true;
             this.EmployeeListCheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.EmployeeListCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmployeeListCheckBox.Depth = 0;
             this.EmployeeListCheckBox.Location = new System.Drawing.Point(10, 80);
             this.EmployeeListCheckBox.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
@@ -100,7 +101,7 @@
             this.SearchBarEmployee.AnimateReadOnly = false;
             this.SearchBarEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarEmployee.Depth = 0;
-            this.SearchBarEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarEmployee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarEmployee.Hint = "Search";
             this.SearchBarEmployee.LeadingIcon = null;
             this.SearchBarEmployee.Location = new System.Drawing.Point(10, 36);

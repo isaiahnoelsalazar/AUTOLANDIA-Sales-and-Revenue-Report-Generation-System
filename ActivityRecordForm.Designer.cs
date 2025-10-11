@@ -54,7 +54,7 @@
             this.SearchBarActivity.AnimateReadOnly = false;
             this.SearchBarActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBarActivity.Depth = 0;
-            this.SearchBarActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarActivity.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarActivity.Hint = "Search";
             this.SearchBarActivity.LeadingIcon = null;
             this.SearchBarActivity.Location = new System.Drawing.Point(9, 9);
@@ -62,7 +62,7 @@
             this.SearchBarActivity.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarActivity.Multiline = false;
             this.SearchBarActivity.Name = "SearchBarActivity";
-            this.SearchBarActivity.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarActivity.Size = new System.Drawing.Size(622, 36);
             this.SearchBarActivity.TabIndex = 24;
             this.SearchBarActivity.Text = "";
             this.SearchBarActivity.TrailingIcon = null;
