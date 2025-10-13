@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -109,6 +112,47 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void MonthlySummaryButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ExportDataButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FileStream export_to_pdf = File.Create("export_to_pdf.py");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.export_to_pdf.py").CopyTo(export_to_pdf);
+                export_to_pdf.Close();
+
+                FileStream charset_normalizer = File.Create("charset_normalizer-3.4.3-cp312-cp312-win32.whl");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.charset_normalizer-3.4.3-cp312-cp312-win32.whl").CopyTo(charset_normalizer);
+                charset_normalizer.Close();
+
+                FileStream pillow = File.Create("pillow-11.3.0-cp312-cp312-win32.whl");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.pillow-11.3.0-cp312-cp312-win32.whl").CopyTo(pillow);
+                pillow.Close();
+
+                FileStream reportlab = File.Create("reportlab-4.4.4-py3-none-any.whl");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.reportlab-4.4.4-py3-none-any.whl").CopyTo(reportlab);
+                reportlab.Close();
+            }
+            catch
+            {
+                MaterialMessageBox.Show("Failed to create resources required for export.", "Notice");
+            }
+            try
+            {
+                CSSimpleFunctions.PyCS pyCS = new CSSimpleFunctions.PyCS(false);
+                pyCS.PipLocal(new string[]
+                {
+                    "charset_normalizer-3.4.3-cp312-cp312-win32.whl",
+                    "pillow-11.3.0-cp312-cp312-win32.whl",
+                    "reportlab-4.4.4-py3-none-any.whl"
+                });
+                pyCS.RunFile("export_to_pdf.py");
+            }
+            catch
+            {
+                MaterialMessageBox.Show("Failed to download resources required for export.", "Notice");
+            }
         }
     }
 }
