@@ -23,10 +23,3 @@ def export_data_to_pdf(data, filename="output.pdf"):
     
     doc.build(elements)
 
-
-data = [
-    ['name', 'age'],
-    ['name1', '15'],
-    ['name2', '37']
-]
-export_data_to_pdf(data, "output.pdf")

@@ -58,6 +58,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static void RecreateAllGlobalData()
+        {
+            try
+            {
+                RecreateGlobalPaymentMethodList();
+                RecreateGlobalServiceList();
+                RecreateGlobalPackageList();
+                RecreateGlobalVehicleModelList();
+                RecreateGlobalCustomerList();
+                RecreateGlobalVehicleList();
+                RecreateGlobalEmployeeList();
+                RecreateGlobalEmployeeTimeList();
+                RecreateGlobalBillingList();
+                RecreateGlobalActivityList();
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+        }
+
         public static void RecreateGlobalPaymentMethodList()
         {
             GlobalPaymentMethodList.Clear();

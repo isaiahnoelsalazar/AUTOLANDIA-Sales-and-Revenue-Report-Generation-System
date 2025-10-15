@@ -27,6 +27,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
+                    Timer.Stop();
                     SQL.Open();
 
                     RecreateGlobalPaymentMethodList();
@@ -59,7 +60,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecreateGlobalActivityList();
                     ProgressBar.Increment(10);
 
-                    Timer.Stop();
                     new MainForm(this).Show();
                 }
                 catch (Exception exception)
