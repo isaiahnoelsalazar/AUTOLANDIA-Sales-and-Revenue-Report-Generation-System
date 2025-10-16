@@ -13,8 +13,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public ReportsForm()
         {
             InitializeComponent();
-
-            RefreshHome(0);
         }
 
         public void RefreshHome(int PickedTimeframe)
@@ -103,16 +101,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             new EmployeeSalariesDialog().ShowDialog();
         }
 
-        private void DailySummaryButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MonthlySummaryButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ExportDataButton_Click(object sender, EventArgs e)
         {
             ExportDataButton.Enabled = false;
@@ -126,6 +114,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     try
                     {
                         CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
+                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "notify.py");
                         CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "charset_normalizer-3.4.3-cp312-cp312-win32.whl");
                         CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "pillow-11.3.0-cp312-cp312-win32.whl");
                         CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "reportlab-4.4.4-py3-none-any.whl");
@@ -137,7 +126,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                         ActivityData += "]";
                         CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", ActivityData);
-                        CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", "\nexport_data_to_pdf(data, \"output.pdf\")");
+                        CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", "\nexport_data_to_pdf(data, \"AUTOLANDIA_ActivityList.pdf\")");
                     }
                     catch
                     {
@@ -149,17 +138,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     try
                     {
                         CSSimpleFunctions.PyCS pyCS = new CSSimpleFunctions.PyCS(false);
+                        pyCS.InstallPip();
                         pyCS.PipLocal(new string[]
                         {
                             "charset_normalizer-3.4.3-cp312-cp312-win32.whl",
                             "pillow-11.3.0-cp312-cp312-win32.whl",
                             "reportlab-4.4.4-py3-none-any.whl"
                         });
+                        pyCS.Pip(new string[]
+                        {
+                            "plyer"
+                        });
                         pyCS.RunFile("export_to_pdf.py");
+                        pyCS.RunFile("notify.py");
                         Invoke(new MethodInvoker(() =>
                         {
                             ExportDataButton.Enabled = true;
-                            MaterialMessageBox.Show("Finished exporting data to PDF!", "Notice");
                         }));
                     }
                     catch
@@ -172,6 +166,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 })).Start();
             };
             Timer.Start();
+        }
+
+        private void ReportsForm_Load(object sender, EventArgs e)
+        {
+            RefreshHome(0);
+        }
+
+        private void SummaryButton_Click(object sender, EventArgs e)
+        {
+            new SummaryDialog().ShowDialog();
         }
     }
 }

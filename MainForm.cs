@@ -48,6 +48,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             GlobalServicesAndPackagesForm = (ServicesAndPackagesForm)Forms[2];
             GlobalTransactionsForm = (TransactionsForm)Forms[3];
             GlobalBillingForm = (BillingForm)Forms[4];
+            GlobalReportsForm = (ReportsForm)Forms[5];
             GlobalActivityRecordForm = (ActivityRecordForm)Forms[6];
 
             SelectTab(0);
@@ -145,6 +146,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void ReportsTab_Click(object sender, EventArgs e)
         {
+            try
+            {
+                GlobalReportsForm.RefreshHome(0);
+            }
+            catch { }
             SelectTab(5);
         }
 

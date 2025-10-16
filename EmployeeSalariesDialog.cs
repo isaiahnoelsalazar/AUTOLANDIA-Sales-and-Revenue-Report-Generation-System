@@ -10,6 +10,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class EmployeeSalariesDialog : MaterialForm
     {
         Color DefaultBackgroundColor;
+        bool FirstDateSelected = false;
+        DateTime FirstDate;
 
         public EmployeeSalariesDialog()
         {
@@ -21,7 +23,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             EmployeeList.HorizontalScroll.Enabled = false;
             EmployeeList.HorizontalScroll.Visible = false;
 
-            EmployeeCalendar.MaxDate = DateTime.Now.Date.AddDays(1);
+            EmployeeCalendar.MaxDate = DateTime.Now.Date;
             EmployeeCalendar.MinDate = DateTime.Now.Date.AddMonths(-2);
         }
 
@@ -125,7 +127,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void EmployeeCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            RefreshEmployees(e.Start.Date, e.End.Date);
+            if (!FirstDateSelected)
+            {
+                EmployeeList.Controls.Clear();
+                EmployeeList.RowStyles.Clear();
+                FirstDate = e.Start.Date;
+                FirstDateSelected = true;
+                DateRange.Text = $"{FirstDate.Date} - (Select end date)";
+            }
+            else
+            {
+                FirstDateSelected = false;
+                DateRange.Text = $"{FirstDate.Date} - {e.Start.Date}";
+                RefreshEmployees(FirstDate.Date, e.Start.Date);
+            }
         }
 
         private void EmployeeSalariesDialog_Load(object sender, EventArgs e)

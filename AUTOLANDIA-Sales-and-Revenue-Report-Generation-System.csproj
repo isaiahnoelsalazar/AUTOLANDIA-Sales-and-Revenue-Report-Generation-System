@@ -51,8 +51,8 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="CSSimpleFunctions, Version=0.1.30.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\CSSimpleFunctions.0.1.30\lib\net45\CSSimpleFunctions.dll</HintPath>
+    <Reference Include="CSSimpleFunctions, Version=0.1.32.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\CSSimpleFunctions.0.1.32\lib\net45\CSSimpleFunctions.dll</HintPath>
     </Reference>
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
@@ -272,6 +272,12 @@
     <Compile Include="Startup.Designer.cs">
       <DependentUpon>Startup.cs</DependentUpon>
     </Compile>
+    <Compile Include="SummaryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SummaryDialog.Designer.cs">
+      <DependentUpon>SummaryDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,6 +389,9 @@
     <EmbeddedResource Include="Startup.resx">
       <DependentUpon>Startup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SummaryDialog.resx">
+      <DependentUpon>SummaryDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransactionsForm.resx">
       <DependentUpon>TransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,6 +429,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="notify.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

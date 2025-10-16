@@ -55,7 +55,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(385, 48);
             this.tableLayoutPanel2.TabIndex = 100;
             // 
@@ -108,9 +108,8 @@
             this.EmployeeCalendar.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.EmployeeCalendar.Location = new System.Drawing.Point(10, 36);
             this.EmployeeCalendar.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
+            this.EmployeeCalendar.MaxSelectionCount = 1;
             this.EmployeeCalendar.Name = "EmployeeCalendar";
-            this.EmployeeCalendar.ShowToday = false;
-            this.EmployeeCalendar.ShowTodayCircle = false;
             this.EmployeeCalendar.TabIndex = 97;
             this.EmployeeCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.EmployeeCalendar_DateSelected);
             // 

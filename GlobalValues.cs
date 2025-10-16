@@ -32,6 +32,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static ServicesAndPackagesForm GlobalServicesAndPackagesForm;
         public static TransactionsForm GlobalTransactionsForm;
         public static BillingForm GlobalBillingForm;
+        public static ReportsForm GlobalReportsForm;
         public static ActivityRecordForm GlobalActivityRecordForm;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
@@ -70,6 +71,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 RecreateGlobalVehicleList();
                 RecreateGlobalEmployeeList();
                 RecreateGlobalEmployeeTimeList();
+                RecreateGlobalOrderList();
                 RecreateGlobalBillingList();
                 RecreateGlobalActivityList();
             }
