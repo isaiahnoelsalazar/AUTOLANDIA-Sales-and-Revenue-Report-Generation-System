@@ -40,6 +40,7 @@
             this.SearchBarBilling = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.FilterBilling = new MaterialSkin.Controls.MaterialComboBox();
+            this.DatePickerButton = new MaterialSkin.Controls.MaterialButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.BillingListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -67,16 +68,16 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(622, 48);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(832, 48);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(318, 9);
+            this.label2.Location = new System.Drawing.Point(423, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 30);
+            this.label2.Size = new System.Drawing.Size(149, 30);
             this.label2.TabIndex = 5;
             this.label2.Text = "Payment Method";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,10 +85,10 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(535, 9);
+            this.label1.Location = new System.Drawing.Point(713, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 30);
+            this.label1.Size = new System.Drawing.Size(110, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "Date Created";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,10 +96,10 @@
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(442, 9);
+            this.label7.Location = new System.Drawing.Point(589, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 30);
+            this.label7.Size = new System.Drawing.Size(107, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "Last Updated";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,10 +107,10 @@
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(164, 9);
+            this.label4.Location = new System.Drawing.Point(216, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 30);
+            this.label4.Size = new System.Drawing.Size(190, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "Progress";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,10 +118,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(71, 9);
+            this.label5.Location = new System.Drawing.Point(92, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 30);
+            this.label5.Size = new System.Drawing.Size(107, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Order Balance";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,7 +132,7 @@
             this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 30);
+            this.label6.Size = new System.Drawing.Size(66, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "ID";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +147,7 @@
             this.BillingListContainer.Location = new System.Drawing.Point(9, 111);
             this.BillingListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.BillingListContainer.Name = "BillingListContainer";
-            this.BillingListContainer.Size = new System.Drawing.Size(622, 240);
+            this.BillingListContainer.Size = new System.Drawing.Size(832, 240);
             this.BillingListContainer.TabIndex = 20;
             // 
             // BillingList
@@ -161,7 +162,7 @@
             this.BillingList.Name = "BillingList";
             this.BillingList.RowCount = 1;
             this.BillingList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.BillingList.Size = new System.Drawing.Size(622, 0);
+            this.BillingList.Size = new System.Drawing.Size(832, 0);
             this.BillingList.TabIndex = 0;
             // 
             // SearchBarBilling
@@ -175,11 +176,12 @@
             this.SearchBarBilling.Hint = "Search";
             this.SearchBarBilling.LeadingIcon = null;
             this.SearchBarBilling.Location = new System.Drawing.Point(9, 9);
+            this.SearchBarBilling.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.SearchBarBilling.MaxLength = 50;
             this.SearchBarBilling.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarBilling.Multiline = false;
             this.SearchBarBilling.Name = "SearchBarBilling";
-            this.SearchBarBilling.Size = new System.Drawing.Size(360, 36);
+            this.SearchBarBilling.Size = new System.Drawing.Size(559, 36);
             this.SearchBarBilling.TabIndex = 24;
             this.SearchBarBilling.Text = "";
             this.SearchBarBilling.TrailingIcon = null;
@@ -196,7 +198,7 @@
             this.materialDivider2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(622, 2);
+            this.materialDivider2.Size = new System.Drawing.Size(832, 2);
             this.materialDivider2.TabIndex = 23;
             this.materialDivider2.Text = "materialDivider2";
             // 
@@ -215,7 +217,7 @@
             this.FilterBilling.FormattingEnabled = true;
             this.FilterBilling.IntegralHeight = false;
             this.FilterBilling.ItemHeight = 29;
-            this.FilterBilling.Location = new System.Drawing.Point(481, 9);
+            this.FilterBilling.Location = new System.Drawing.Point(579, 9);
             this.FilterBilling.MaxDropDownItems = 4;
             this.FilterBilling.MouseState = MaterialSkin.MouseState.OUT;
             this.FilterBilling.Name = "FilterBilling";
@@ -225,11 +227,33 @@
             this.FilterBilling.UseTallSize = false;
             this.FilterBilling.TextChanged += new System.EventHandler(this.FilterBilling_TextChanged);
             // 
+            // DatePickerButton
+            // 
+            this.DatePickerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DatePickerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DatePickerButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.DatePickerButton.Depth = 0;
+            this.DatePickerButton.HighEmphasis = true;
+            this.DatePickerButton.Icon = null;
+            this.DatePickerButton.Location = new System.Drawing.Point(740, 9);
+            this.DatePickerButton.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.DatePickerButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DatePickerButton.Name = "DatePickerButton";
+            this.DatePickerButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.DatePickerButton.Size = new System.Drawing.Size(101, 36);
+            this.DatePickerButton.TabIndex = 30;
+            this.DatePickerButton.Text = "2025/10/17";
+            this.DatePickerButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.DatePickerButton.UseAccentColor = false;
+            this.DatePickerButton.UseVisualStyleBackColor = true;
+            this.DatePickerButton.Click += new System.EventHandler(this.DatePickerButton_Click);
+            // 
             // BillingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(850, 360);
+            this.Controls.Add(this.DatePickerButton);
             this.Controls.Add(this.FilterBilling);
             this.Controls.Add(this.SearchBarBilling);
             this.Controls.Add(this.materialDivider2);
@@ -244,6 +268,7 @@
             this.BillingListContainer.ResumeLayout(false);
             this.BillingListContainer.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,5 +286,6 @@
         private MaterialSkin.Controls.MaterialTextBox SearchBarBilling;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
         private MaterialSkin.Controls.MaterialComboBox FilterBilling;
+        private MaterialSkin.Controls.MaterialButton DatePickerButton;
     }
 }

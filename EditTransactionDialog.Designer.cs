@@ -53,8 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ServiceListContainer = new System.Windows.Forms.Panel();
             this.ServiceList = new System.Windows.Forms.TableLayoutPanel();
-            this.RB_Package = new MaterialSkin.Controls.MaterialRadioButton();
-            this.RB_Service = new MaterialSkin.Controls.MaterialRadioButton();
             this.CB_Packages = new MaterialSkin.Controls.MaterialComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.ServiceListContainer.SuspendLayout();
@@ -159,13 +157,13 @@
             this.TB_Employee.Depth = 0;
             this.TB_Employee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Employee.LeadingIcon = null;
-            this.TB_Employee.Location = new System.Drawing.Point(163, 165);
+            this.TB_Employee.Location = new System.Drawing.Point(176, 165);
             this.TB_Employee.Margin = new System.Windows.Forms.Padding(8);
             this.TB_Employee.MaxLength = 50;
             this.TB_Employee.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Employee.Multiline = false;
             this.TB_Employee.Name = "TB_Employee";
-            this.TB_Employee.Size = new System.Drawing.Size(267, 50);
+            this.TB_Employee.Size = new System.Drawing.Size(254, 50);
             this.TB_Employee.TabIndex = 61;
             this.TB_Employee.Text = "";
             this.TB_Employee.TrailingIcon = null;
@@ -208,7 +206,7 @@
             this.SelectServicesButton.Depth = 0;
             this.SelectServicesButton.HighEmphasis = true;
             this.SelectServicesButton.Icon = null;
-            this.SelectServicesButton.Location = new System.Drawing.Point(355, 231);
+            this.SelectServicesButton.Location = new System.Drawing.Point(176, 231);
             this.SelectServicesButton.Margin = new System.Windows.Forms.Padding(8);
             this.SelectServicesButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SelectServicesButton.Name = "SelectServicesButton";
@@ -230,9 +228,9 @@
             this.PackageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PackageLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.PackageLabel.Name = "PackageLabel";
-            this.PackageLabel.Size = new System.Drawing.Size(96, 19);
+            this.PackageLabel.Size = new System.Drawing.Size(154, 19);
             this.PackageLabel.TabIndex = 77;
-            this.PackageLabel.Text = "Pick Package";
+            this.PackageLabel.Text = "Pick Service/Package";
             // 
             // PickVehicleButton
             // 
@@ -278,13 +276,13 @@
             this.TB_Vehicle.Depth = 0;
             this.TB_Vehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Vehicle.LeadingIcon = null;
-            this.TB_Vehicle.Location = new System.Drawing.Point(163, 296);
+            this.TB_Vehicle.Location = new System.Drawing.Point(176, 296);
             this.TB_Vehicle.Margin = new System.Windows.Forms.Padding(8);
             this.TB_Vehicle.MaxLength = 50;
             this.TB_Vehicle.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Vehicle.Multiline = false;
             this.TB_Vehicle.Name = "TB_Vehicle";
-            this.TB_Vehicle.Size = new System.Drawing.Size(267, 50);
+            this.TB_Vehicle.Size = new System.Drawing.Size(254, 50);
             this.TB_Vehicle.TabIndex = 79;
             this.TB_Vehicle.Text = "";
             this.TB_Vehicle.TrailingIcon = null;
@@ -295,7 +293,7 @@
             this.TB_ID.AutoSize = true;
             this.TB_ID.Depth = 0;
             this.TB_ID.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_ID.Location = new System.Drawing.Point(160, 114);
+            this.TB_ID.Location = new System.Drawing.Point(173, 114);
             this.TB_ID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TB_ID.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_ID.Name = "TB_ID";
@@ -317,12 +315,12 @@
             this.CB_Progress.FormattingEnabled = true;
             this.CB_Progress.IntegralHeight = false;
             this.CB_Progress.ItemHeight = 43;
-            this.CB_Progress.Location = new System.Drawing.Point(163, 362);
+            this.CB_Progress.Location = new System.Drawing.Point(176, 362);
             this.CB_Progress.Margin = new System.Windows.Forms.Padding(8);
             this.CB_Progress.MaxDropDownItems = 4;
             this.CB_Progress.MouseState = MaterialSkin.MouseState.OUT;
             this.CB_Progress.Name = "CB_Progress";
-            this.CB_Progress.Size = new System.Drawing.Size(319, 49);
+            this.CB_Progress.Size = new System.Drawing.Size(306, 49);
             this.CB_Progress.StartIndex = 0;
             this.CB_Progress.TabIndex = 83;
             // 
@@ -370,7 +368,7 @@
             this.TB_LastUpdated.AutoSize = true;
             this.TB_LastUpdated.Depth = 0;
             this.TB_LastUpdated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_LastUpdated.Location = new System.Drawing.Point(160, 442);
+            this.TB_LastUpdated.Location = new System.Drawing.Point(173, 442);
             this.TB_LastUpdated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TB_LastUpdated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_LastUpdated.Name = "TB_LastUpdated";
@@ -383,7 +381,7 @@
             this.TB_DateCreated.AutoSize = true;
             this.TB_DateCreated.Depth = 0;
             this.TB_DateCreated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_DateCreated.Location = new System.Drawing.Point(160, 508);
+            this.TB_DateCreated.Location = new System.Drawing.Point(173, 508);
             this.TB_DateCreated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TB_DateCreated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_DateCreated.Name = "TB_DateCreated";
@@ -459,40 +457,6 @@
             this.ServiceList.Size = new System.Drawing.Size(268, 0);
             this.ServiceList.TabIndex = 0;
             // 
-            // RB_Package
-            // 
-            this.RB_Package.AutoSize = true;
-            this.RB_Package.Depth = 0;
-            this.RB_Package.Location = new System.Drawing.Point(251, 236);
-            this.RB_Package.Margin = new System.Windows.Forms.Padding(0);
-            this.RB_Package.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.RB_Package.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RB_Package.Name = "RB_Package";
-            this.RB_Package.Ripple = true;
-            this.RB_Package.Size = new System.Drawing.Size(96, 37);
-            this.RB_Package.TabIndex = 96;
-            this.RB_Package.TabStop = true;
-            this.RB_Package.Text = "Package";
-            this.RB_Package.UseVisualStyleBackColor = true;
-            this.RB_Package.Click += new System.EventHandler(this.RB_Package_Click);
-            // 
-            // RB_Service
-            // 
-            this.RB_Service.AutoSize = true;
-            this.RB_Service.Depth = 0;
-            this.RB_Service.Location = new System.Drawing.Point(163, 236);
-            this.RB_Service.Margin = new System.Windows.Forms.Padding(0);
-            this.RB_Service.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.RB_Service.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RB_Service.Name = "RB_Service";
-            this.RB_Service.Ripple = true;
-            this.RB_Service.Size = new System.Drawing.Size(86, 37);
-            this.RB_Service.TabIndex = 95;
-            this.RB_Service.TabStop = true;
-            this.RB_Service.Text = "Service";
-            this.RB_Service.UseVisualStyleBackColor = true;
-            this.RB_Service.Click += new System.EventHandler(this.RB_Service_Click);
-            // 
             // CB_Packages
             // 
             this.CB_Packages.AutoResize = false;
@@ -507,12 +471,12 @@
             this.CB_Packages.FormattingEnabled = true;
             this.CB_Packages.IntegralHeight = false;
             this.CB_Packages.ItemHeight = 43;
-            this.CB_Packages.Location = new System.Drawing.Point(355, 231);
+            this.CB_Packages.Location = new System.Drawing.Point(319, 231);
             this.CB_Packages.Margin = new System.Windows.Forms.Padding(8);
             this.CB_Packages.MaxDropDownItems = 4;
             this.CB_Packages.MouseState = MaterialSkin.MouseState.OUT;
             this.CB_Packages.Name = "CB_Packages";
-            this.CB_Packages.Size = new System.Drawing.Size(127, 49);
+            this.CB_Packages.Size = new System.Drawing.Size(163, 49);
             this.CB_Packages.StartIndex = 0;
             this.CB_Packages.TabIndex = 98;
             // 
@@ -522,8 +486,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 640);
             this.Controls.Add(this.SelectServicesButton);
-            this.Controls.Add(this.RB_Package);
-            this.Controls.Add(this.RB_Service);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.ServiceListContainer);
             this.Controls.Add(this.TB_DateCreated);
@@ -587,8 +549,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel ServiceListContainer;
         private System.Windows.Forms.TableLayoutPanel ServiceList;
-        private MaterialSkin.Controls.MaterialRadioButton RB_Package;
-        private MaterialSkin.Controls.MaterialRadioButton RB_Service;
         private MaterialSkin.Controls.MaterialComboBox CB_Packages;
     }
 }

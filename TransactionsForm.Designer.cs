@@ -42,6 +42,7 @@
             this.AddNewTransactionButton = new MaterialSkin.Controls.MaterialButton();
             this.SearchBarTransaction = new MaterialSkin.Controls.MaterialTextBox();
             this.FilterTransaction = new MaterialSkin.Controls.MaterialComboBox();
+            this.DatePickerButton = new MaterialSkin.Controls.MaterialButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.TransactionListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -71,16 +72,16 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(622, 48);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(955, 48);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(536, 9);
+            this.label3.Location = new System.Drawing.Point(819, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 30);
+            this.label3.Size = new System.Drawing.Size(127, 30);
             this.label3.TabIndex = 6;
             this.label3.Text = "Date Created";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,10 +89,10 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(443, 9);
+            this.label2.Location = new System.Drawing.Point(676, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 30);
+            this.label2.Size = new System.Drawing.Size(126, 30);
             this.label2.TabIndex = 5;
             this.label2.Text = "Last Updated";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,10 +100,10 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(350, 9);
+            this.label1.Location = new System.Drawing.Point(533, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 30);
+            this.label1.Size = new System.Drawing.Size(126, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "Progress";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,10 +111,10 @@
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(257, 9);
+            this.label7.Location = new System.Drawing.Point(390, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 30);
+            this.label7.Size = new System.Drawing.Size(126, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "Plate Number";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,10 +122,10 @@
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(164, 9);
+            this.label4.Location = new System.Drawing.Point(247, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 30);
+            this.label4.Size = new System.Drawing.Size(126, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "Service/Package";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,10 +133,10 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(71, 9);
+            this.label5.Location = new System.Drawing.Point(104, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 30);
+            this.label5.Size = new System.Drawing.Size(126, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Employee(s)";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +147,7 @@
             this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 30);
+            this.label6.Size = new System.Drawing.Size(78, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "ID";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,7 +162,7 @@
             this.TransactionListContainer.Location = new System.Drawing.Point(9, 111);
             this.TransactionListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.TransactionListContainer.Name = "TransactionListContainer";
-            this.TransactionListContainer.Size = new System.Drawing.Size(622, 240);
+            this.TransactionListContainer.Size = new System.Drawing.Size(955, 240);
             this.TransactionListContainer.TabIndex = 16;
             // 
             // TransactionList
@@ -176,7 +177,7 @@
             this.TransactionList.Name = "TransactionList";
             this.TransactionList.RowCount = 1;
             this.TransactionList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TransactionList.Size = new System.Drawing.Size(622, 0);
+            this.TransactionList.Size = new System.Drawing.Size(955, 0);
             this.TransactionList.TabIndex = 0;
             // 
             // materialDivider2
@@ -189,7 +190,7 @@
             this.materialDivider2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(622, 2);
+            this.materialDivider2.Size = new System.Drawing.Size(955, 2);
             this.materialDivider2.TabIndex = 15;
             this.materialDivider2.Text = "materialDivider2";
             // 
@@ -201,7 +202,7 @@
             this.AddNewTransactionButton.Depth = 0;
             this.AddNewTransactionButton.HighEmphasis = true;
             this.AddNewTransactionButton.Icon = null;
-            this.AddNewTransactionButton.Location = new System.Drawing.Point(441, 9);
+            this.AddNewTransactionButton.Location = new System.Drawing.Point(774, 9);
             this.AddNewTransactionButton.Margin = new System.Windows.Forms.Padding(0);
             this.AddNewTransactionButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.AddNewTransactionButton.Name = "AddNewTransactionButton";
@@ -229,7 +230,7 @@
             this.SearchBarTransaction.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarTransaction.Multiline = false;
             this.SearchBarTransaction.Name = "SearchBarTransaction";
-            this.SearchBarTransaction.Size = new System.Drawing.Size(250, 36);
+            this.SearchBarTransaction.Size = new System.Drawing.Size(487, 36);
             this.SearchBarTransaction.TabIndex = 21;
             this.SearchBarTransaction.Text = "";
             this.SearchBarTransaction.TrailingIcon = null;
@@ -251,7 +252,7 @@
             this.FilterTransaction.FormattingEnabled = true;
             this.FilterTransaction.IntegralHeight = false;
             this.FilterTransaction.ItemHeight = 29;
-            this.FilterTransaction.Location = new System.Drawing.Point(283, 10);
+            this.FilterTransaction.Location = new System.Drawing.Point(507, 9);
             this.FilterTransaction.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.FilterTransaction.MaxDropDownItems = 4;
             this.FilterTransaction.MouseState = MaterialSkin.MouseState.OUT;
@@ -262,11 +263,33 @@
             this.FilterTransaction.UseTallSize = false;
             this.FilterTransaction.TextChanged += new System.EventHandler(this.FilterTransaction_TextChanged);
             // 
+            // DatePickerButton
+            // 
+            this.DatePickerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DatePickerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DatePickerButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.DatePickerButton.Depth = 0;
+            this.DatePickerButton.HighEmphasis = true;
+            this.DatePickerButton.Icon = null;
+            this.DatePickerButton.Location = new System.Drawing.Point(665, 9);
+            this.DatePickerButton.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.DatePickerButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DatePickerButton.Name = "DatePickerButton";
+            this.DatePickerButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.DatePickerButton.Size = new System.Drawing.Size(101, 36);
+            this.DatePickerButton.TabIndex = 29;
+            this.DatePickerButton.Text = "2025/10/17";
+            this.DatePickerButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.DatePickerButton.UseAccentColor = false;
+            this.DatePickerButton.UseVisualStyleBackColor = true;
+            this.DatePickerButton.Click += new System.EventHandler(this.DatePickerButton_Click);
+            // 
             // TransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(973, 360);
+            this.Controls.Add(this.DatePickerButton);
             this.Controls.Add(this.FilterTransaction);
             this.Controls.Add(this.SearchBarTransaction);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -302,5 +325,6 @@
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialTextBox SearchBarTransaction;
         private MaterialSkin.Controls.MaterialComboBox FilterTransaction;
+        private MaterialSkin.Controls.MaterialButton DatePickerButton;
     }
 }

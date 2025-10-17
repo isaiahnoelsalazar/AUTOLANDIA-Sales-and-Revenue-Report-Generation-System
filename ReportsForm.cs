@@ -141,9 +141,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                         RecreateAllGlobalData();
                         string ActivityData = "data = [['Message']";
-                        foreach (string Activity in GlobalActivityList)
+                        foreach (ServiceItem Item in GlobalServiceList)
                         {
-                            ActivityData += $"\n,['{Activity}']";
+                            ActivityData += $"\n,['{Item.ID}']";
                         }
                         ActivityData += "]";
                         CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", ActivityData);

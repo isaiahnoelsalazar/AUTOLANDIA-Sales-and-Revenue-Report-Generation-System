@@ -1,6 +1,8 @@
 ﻿using MaterialSkin.Controls;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -8,6 +10,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class SelectVehicleDialog : MaterialForm
     {
+        List<VehicleItem> Temp = new List<VehicleItem>();
         Color DefaultBackgroundColor;
         LinkCustomerVehicleDialog LinkCustomerVehicleDialog;
         NewTransactionDialog NewTransactionDialog;
@@ -16,6 +19,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public SelectVehicleDialog(LinkCustomerVehicleDialog LinkCustomerVehicleDialog)
         {
             InitializeComponent();
+
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                Temp.Add(Vehicle);
+            }
+
+            for (int counter = 0; counter < Temp.Count; counter++)
+            {
+                foreach (OrderItem Order in GlobalOrderList)
+                {
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    {
+                        Temp.Remove(Temp[counter]);
+                        counter = 0;
+                        break;
+                    }
+                }
+            }
 
             this.LinkCustomerVehicleDialog = LinkCustomerVehicleDialog;
 
@@ -32,6 +53,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                Temp.Add(Vehicle);
+            }
+
+            for (int counter = 0; counter < Temp.Count; counter++)
+            {
+                foreach (OrderItem Order in GlobalOrderList)
+                {
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    {
+                        Temp.Remove(Temp[counter]);
+                        counter = 0;
+                        break;
+                    }
+                }
+            }
+
             this.NewTransactionDialog = NewTransactionDialog;
 
             VehicleList.Controls.Clear();
@@ -46,6 +85,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public SelectVehicleDialog(EditTransactionDialog EditTransactionDialog)
         {
             InitializeComponent();
+
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                Temp.Add(Vehicle);
+            }
+
+            for (int counter = 0; counter < Temp.Count; counter++)
+            {
+                foreach (OrderItem Order in GlobalOrderList)
+                {
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    {
+                        Temp.Remove(Temp[counter]);
+                        counter = 0;
+                        break;
+                    }
+                }
+            }
 
             this.EditTransactionDialog = EditTransactionDialog;
 
@@ -63,7 +120,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             VehicleList.Controls.Clear();
             VehicleList.RowStyles.Clear();
 
-            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            foreach (VehicleItem Vehicle in Temp)
             {
                 if (NewTransactionDialog != null)
                 {
@@ -295,7 +352,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 VehicleList.Controls.Clear();
                 VehicleList.RowStyles.Clear();
 
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                foreach (VehicleItem Vehicle in Temp)
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {
@@ -440,7 +497,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 VehicleList.Controls.Clear();
                 VehicleList.RowStyles.Clear();
 
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                foreach (VehicleItem Vehicle in Temp)
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {
@@ -585,7 +642,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 VehicleList.Controls.Clear();
                 VehicleList.RowStyles.Clear();
 
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                foreach (VehicleItem Vehicle in Temp)
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {

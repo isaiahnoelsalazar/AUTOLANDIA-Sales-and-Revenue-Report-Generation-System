@@ -127,6 +127,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void EmployeeCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
+            if (e.Start.Date.CompareTo(FirstDate) < 0)
+            {
+                FirstDateSelected = false;
+            }
             if (!FirstDateSelected)
             {
                 EmployeeList.Controls.Clear();

@@ -161,6 +161,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                     string ServicePackageDetail = string.Empty;
+                    foreach (PackageItem Package in GlobalPackageList)
+                    {
+                        if (Package.ID.Equals(Order.PackageID))
+                        {
+                            ServicePackageDetail += $"[{Package.Name}, {Package.Size}] - {Package.Details} ";
+                            break;
+                        }
+                    }
                     if (!string.IsNullOrEmpty(Order.ServiceIDList))
                     {
                         string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
@@ -168,24 +176,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (ServiceSplit.Contains(Service.ID))
                             {
+                                ServicePackageDetail += "[Services] - ";
                                 ServicePackageDetail += Service.Name + ", ";
                             }
                         }
-                        ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 1);
-                    }
-                    else
-                    {
-                        foreach (PackageItem Package in GlobalPackageList)
-                        {
-                            if (Package.ID.Equals(Order.PackageID))
-                            {
-                                ServicePackageDetail = $"[{Package.Name}, {Package.Size}] - {Package.Details}";
-                                break;
-                            }
-                        }
+                        ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
                     }
 
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
+                    RowStyle Row = new RowStyle(SizeType.Absolute, 75f);
                     TableLayoutPanel Panel = new TableLayoutPanel
                     {
                         ColumnCount = 7
@@ -309,6 +307,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void SummaryCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
+            if (e.Start.Date.CompareTo(FirstDate) < 0)
+            {
+                FirstDateSelected = false;
+            }
             if (!FirstDateSelected)
             {
                 SummaryText.Text = string.Empty;

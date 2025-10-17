@@ -1,6 +1,7 @@
 ﻿using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -10,6 +11,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class BillingForm : Form
     {
         Color DefaultBackgroundColor;
+        List<BillingItem> Temp = new List<BillingItem>(GlobalBillingList);
+        DateTime Global;
 
         public BillingForm()
         {
@@ -23,6 +26,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             FilterBilling.Items.Add("ID");
             FilterBilling.Items.Add("Progress");
+
+            Global = DateTime.Now;
+            DatePickerButton.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         public void RefreshBillings()
@@ -32,7 +38,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
 
-            foreach (BillingItem Billing in GlobalBillingList)
+            for (int a = 0; a < Temp.Count;)
+            {
+                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
+                {
+                    Temp.Remove(Temp[a]);
+                    a = 0;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            foreach (BillingItem Billing in Temp)
             {
                 RefreshRows(Billing);
             }
@@ -43,7 +62,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
 
-            foreach (BillingItem Billing in GlobalBillingList)
+            foreach (BillingItem Billing in Temp)
             {
                 if (FilterBilling.SelectedIndex == 0 || FilterBilling.SelectedIndex == -1)
                 {
@@ -67,7 +86,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
 
-            foreach (BillingItem Billing in GlobalBillingList)
+            foreach (BillingItem Billing in Temp)
             {
                 if (FilterBilling.SelectedIndex == 0 || FilterBilling.SelectedIndex == -1)
                 {
@@ -282,6 +301,40 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void BillingForm_Load(object sender, EventArgs e)
         {
             RefreshBillings();
+        }
+
+        public void SetDate(DateTime DateTime)
+        {
+            Global = DateTime;
+            DatePickerButton.Text = DateTime.Date.ToString("yyyy/MM/dd");
+
+            BillingList.Controls.Clear();
+            BillingList.RowStyles.Clear();
+
+            Temp = new List<BillingItem>(GlobalBillingList);
+
+            for (int a = 0; a < Temp.Count;)
+            {
+                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
+                {
+                    Temp.Remove(Temp[a]);
+                    a = 0;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            foreach (BillingItem Billing in Temp)
+            {
+                RefreshRows(Billing);
+            }
+        }
+
+        private void DatePickerButton_Click(object sender, EventArgs e)
+        {
+            new DatePickerDialog(this).ShowDialog();
         }
     }
 }

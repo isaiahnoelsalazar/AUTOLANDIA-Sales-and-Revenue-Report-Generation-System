@@ -1,7 +1,9 @@
 ﻿using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -10,6 +12,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class TransactionsForm : Form
     {
         Color DefaultBackgroundColor;
+        List<OrderItem> Temp = new List<OrderItem>(GlobalOrderList);
+        DateTime Global;
 
         public TransactionsForm()
         {
@@ -25,6 +29,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterTransaction.Items.Add("Employee(s)");
             FilterTransaction.Items.Add("Plate Number");
             FilterTransaction.Items.Add("Progress");
+
+            Global = DateTime.Now;
+            DatePickerButton.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         public void RefreshTransactions()
@@ -34,7 +41,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            foreach (OrderItem Order in GlobalOrderList)
+            for (int a = 0; a < Temp.Count;)
+            {
+                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
+                {
+                    Temp.Remove(Temp[a]);
+                    a = 0;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            foreach (OrderItem Order in Temp)
             {
                 RefreshRows(Order);
             }
@@ -50,7 +70,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            foreach (OrderItem Order in GlobalOrderList)
+            foreach (OrderItem Order in Temp)
             {
                 if (FilterTransaction.SelectedIndex == 0 || FilterTransaction.SelectedIndex == -1)
                 {
@@ -113,7 +133,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            foreach (OrderItem Order in GlobalOrderList)
+            foreach (OrderItem Order in Temp)
             {
                 if (FilterTransaction.SelectedIndex == 0 || FilterTransaction.SelectedIndex == -1)
                 {
@@ -195,8 +215,30 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RealPlateNumber = Vehicle.PlateNumber;
                 }
             }
+            string ServicePackageDetail = string.Empty;
+            foreach (PackageItem Package in GlobalPackageList)
+            {
+                if (Package.ID.Equals(Order.PackageID))
+                {
+                    ServicePackageDetail += $"[Package] - {Package.Name}, {Package.Size} ";
+                    break;
+                }
+            }
+            if (!string.IsNullOrEmpty(Order.ServiceIDList))
+            {
+                string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
+                foreach (ServiceItem Service in GlobalServiceList)
+                {
+                    if (ServiceSplit.Contains(Service.ID))
+                    {
+                        ServicePackageDetail += "[Services] - ";
+                        ServicePackageDetail += Service.ID + ", ";
+                    }
+                }
+                ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
+            }
 
-            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, 75f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 7
@@ -258,7 +300,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Service_Package.Dock = DockStyle.Fill;
-            Service_Package.Text = !string.IsNullOrEmpty(Order.ServiceIDList) ? Order.ServiceIDList : Order.PackageID;
+            Service_Package.Text = ServicePackageDetail;
             Service_Package.TextAlign = ContentAlignment.MiddleCenter;
             Service_Package.MouseEnter += (sndr, evnt) =>
             {
@@ -390,6 +432,40 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void TransactionsForm_Load(object sender, EventArgs e)
         {
             RefreshTransactions();
+        }
+
+        public void SetDate(DateTime DateTime)
+        {
+            Global = DateTime;
+            DatePickerButton.Text = DateTime.Date.ToString("yyyy/MM/dd");
+
+            TransactionList.Controls.Clear();
+            TransactionList.RowStyles.Clear();
+
+            Temp = new List<OrderItem>(GlobalOrderList);
+
+            for (int a = 0; a < Temp.Count;)
+            {
+                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
+                {
+                    Temp.Remove(Temp[a]);
+                    a = 0;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            foreach (OrderItem Order in Temp)
+            {
+                RefreshRows(Order);
+            }
+        }
+
+        private void DatePickerButton_Click(object sender, EventArgs e)
+        {
+            new DatePickerDialog(this).ShowDialog();
         }
     }
 }

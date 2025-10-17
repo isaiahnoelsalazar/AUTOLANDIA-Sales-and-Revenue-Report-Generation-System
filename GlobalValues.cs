@@ -153,7 +153,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalEmployeeList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeList ORDER BY EmployeeId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeList", SQL);
 
             try
             {
@@ -175,7 +175,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalEmployeeTimeList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeTimeList ORDER BY EmployeeId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeTimeList", SQL);
 
             try
             {
@@ -197,7 +197,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalCustomerList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_CustomerList ORDER BY CustomerId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_CustomerList", SQL);
 
             try
             {
@@ -219,7 +219,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalOrderList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_OrderList ORDER BY OrderId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_OrderList", SQL);
 
             try
             {
@@ -241,7 +241,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalBillingList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_BillingList ORDER BY BillingId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_BillingList", SQL);
 
             try
             {
@@ -263,7 +263,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalVehicleList.Clear();
 
-            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_VehicleList ORDER BY VehicleId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_VehicleList", SQL);
 
             try
             {

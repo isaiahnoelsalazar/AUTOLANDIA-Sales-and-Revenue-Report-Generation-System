@@ -10,7 +10,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class SelectEmployeeDialog : MaterialForm
     {
-        List<EmployeeItem> Temp = new List<EmployeeItem>(GlobalEmployeeList);
+        List<EmployeeItem> Temp = new List<EmployeeItem>();
+        List<string> TempTime = new List<string>();
         NewTransactionDialog NewTransactionDialog;
         EditTransactionDialog EditTransactionDialog;
         string EmployeeList;
@@ -21,11 +22,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             this.NewTransactionDialog = NewTransactionDialog;
 
+            foreach (EmployeeItem Employee in GlobalEmployeeList)
+            {
+                Temp.Add(Employee);
+            }
+            foreach (EmployeeTimeItem EmployeeTime in GlobalEmployeeTimeList)
+            {
+                TempTime.Add(EmployeeTime.ID);
+            }
             Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
-            int counter = 0;
 
-            while (counter < Temp.Count)
+            if (GlobalEmployeeTimeList.Count < 1)
+            {
+                Temp.Clear();
+            }
+            for (int counter = 0; counter < Temp.Count; counter++)
             {
                 string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].LastName}, {Temp[counter].FirstName} {Temp[counter].MiddleName}";
                 foreach (OrderItem Order in GlobalOrderList)
@@ -41,7 +53,23 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                 }
-                counter++;
+                foreach (EmployeeTimeItem EmployeeTime in GlobalEmployeeTimeList)
+                {
+                    if (EmployeeTime.ID.Equals(Temp[counter].ID))
+                    {
+                        if (!string.IsNullOrEmpty(EmployeeTime.TimeOut))
+                        {
+                            Temp.Remove(Temp[counter]);
+                            counter = 0;
+                            break;
+                        }
+                    }
+                }
+                if (!TempTime.Contains(Temp[counter].ID))
+                {
+                    Temp.Remove(Temp[counter]);
+                    counter--;
+                }
             }
             foreach (EmployeeItem Employee in Temp)
             {

@@ -127,6 +127,12 @@
     </Compile>
     <Compile Include="BillingItem.cs" />
     <Compile Include="ConstantVehicleModelList.cs" />
+    <Compile Include="DatePickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatePickerDialog.Designer.cs">
+      <DependentUpon>DatePickerDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditBillingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BillingForm.resx">
       <DependentUpon>BillingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatePickerDialog.resx">
+      <DependentUpon>DatePickerDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditBillingDialog.resx">
       <DependentUpon>EditBillingDialog.cs</DependentUpon>
