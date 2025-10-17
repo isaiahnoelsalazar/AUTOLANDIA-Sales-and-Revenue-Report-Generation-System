@@ -1,6 +1,6 @@
 ﻿using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -41,7 +41,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 RecordActivity($"Updated service [{ServiceID}] price from [{PreviousPrice}] to [{Price}]");
 
-                SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_ServiceList SET ServicePrice={Price} WHERE ServiceId='{ServiceID}'", SQL);
+                SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_ServiceList SET ServicePrice={Price} WHERE ServiceId='{ServiceID}'", SQL);
 
                 Command.ExecuteNonQuery();
 

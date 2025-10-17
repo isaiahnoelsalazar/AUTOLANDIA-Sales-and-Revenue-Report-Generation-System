@@ -1,8 +1,7 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -60,7 +59,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Added new customer: {LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, FirstName, PlateNumbers, MobileNumber, CustomerAddress, LastName, MiddleName) VALUES ('{CustomerID}', '{FName}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}')", SQL);
+                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, FirstName, PlateNumbers, MobileNumber, CustomerAddress, LastName, MiddleName) VALUES ('{CustomerID}', '{FName}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}')", SQL);
 
                     Command.ExecuteNonQuery();
 

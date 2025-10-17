@@ -1,7 +1,7 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -109,13 +109,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Added new vehicle{(string.IsNullOrEmpty(CustomerID) ? "" : " for [Customer ID " + CustomerID)}{(string.IsNullOrEmpty(CustomerName) ? "" : ": " + CustomerName + "]")} - [{Brand}, {Model}, {Size}, {PlateNumber}]");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_VehicleList(VehicleId, VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerId) VALUES ('{VehicleID}', '{Brand}', '{Model}', '{Size}', '{PlateNumber}', '{(string.IsNullOrEmpty(CustomerID) ? "(None)" : CustomerID)}')", SQL);
+                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_VehicleList(VehicleId, VehicleBrand, VehicleModel, VehicleSize, PlateNumber, CustomerId) VALUES ('{VehicleID}', '{Brand}', '{Model}', '{Size}', '{PlateNumber}', '{(string.IsNullOrEmpty(CustomerID) ? "(None)" : CustomerID)}')", SQL);
 
                     Command.ExecuteNonQuery();
 
                     if (!string.IsNullOrEmpty(CustomerID))
                     {
-                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerID}'", SQL);
+                        SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerID}'", SQL);
 
                         Command1.ExecuteNonQuery();
                     }

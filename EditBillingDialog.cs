@@ -1,16 +1,7 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -102,7 +93,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Updated details of billing with reference number [{BillingID}]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={TB_Price.Text}, BillingProgress='{CB_Progress.Text}', PaymentMethodName='{CB_PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{BillingID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={TB_Price.Text}, BillingProgress='{CB_Progress.Text}', PaymentMethodName='{CB_PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{BillingID}'", SQL);
 
                     Command.ExecuteNonQuery();
 

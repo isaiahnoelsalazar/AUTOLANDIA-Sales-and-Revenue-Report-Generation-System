@@ -1,6 +1,6 @@
 ﻿using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -94,8 +94,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Added new vehicle for [Customer ID {CustomerDetails.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}] - [{VehicleDetails.Brand}, {VehicleDetails.Model}, {VehicleDetails.Size}, {VehicleDetails.PlateNumber}]");
 
-                    SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerDetails.ID}'", SQL);
-                    SqlCommand Command2 = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerId='{CustomerDetails.ID}' WHERE VehicleId='{VehicleDetails.ID}'", SQL);
+                    SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerDetails.ID}'", SQL);
+                    SqliteCommand Command2 = new SqliteCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerId='{CustomerDetails.ID}' WHERE VehicleId='{VehicleDetails.ID}'", SQL);
 
                     Command1.ExecuteNonQuery();
                     Command2.ExecuteNonQuery();

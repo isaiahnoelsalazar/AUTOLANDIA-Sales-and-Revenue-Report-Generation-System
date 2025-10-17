@@ -1,10 +1,9 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -115,7 +114,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Updated employee details from [{PreviousEmployeeLastName + ", " + PreviousEmployeeFirstName + " " + PreviousEmployeeMiddleName} ({(string.IsNullOrEmpty(PreviousMobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(PreviousAddress) ? "Address not set" : "Address set and hidden")})] to [{LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeList SET FirstName='{FName}', MiddleName='{MName}', LastName='{LName}', MobileNumber='{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', EmployeeAddress='{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', EmployeeDocuments='{CSSimpleFunctions.Convert.Reverse(Documents)}' WHERE EmployeeId='{EmployeeID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_EmployeeList SET FirstName='{FName}', MiddleName='{MName}', LastName='{LName}', MobileNumber='{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', EmployeeAddress='{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', EmployeeDocuments='{CSSimpleFunctions.Convert.Reverse(Documents)}' WHERE EmployeeId='{EmployeeID}'", SQL);
 
                     Command.ExecuteNonQuery();
 

@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,11 +10,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public class GlobalValues
     {
-        public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
-        public static string database = "Initial Catalog=saiasamazingaspsite_SampleDB;";
-        public static string username = "User ID=saiasamazingaspsite_SampleDB;";
-        public static string password = "Password=DBSamplePW;";
-        public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
+        //public static string hostname = "Data Source=sql.bsite.net\\MSSQL2016;";
+        //public static string database = "Initial Catalog=saiasamazingaspsite_SampleDB;";
+        //public static string username = "User ID=saiasamazingaspsite_SampleDB;";
+        //public static string password = "Password=DBSamplePW;";
+        //public static SqlConnection SQL = new SqlConnection(hostname + database + username + password);
+        public static SqliteConnection SQL = new SqliteConnection("Data Source=AUTOLANDIA.db;");
 
         public static List<ServiceItem> GlobalServiceList = new List<ServiceItem>();
         public static List<PackageItem> GlobalPackageList = new List<PackageItem>();
@@ -37,7 +39,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public static void SET_SKIN(MaterialForm MaterialForm)
         {
-            var SkinManager = MaterialSkinManager.Instance;
+            MaterialSkinManager SkinManager = MaterialSkinManager.Instance;
             SkinManager.AddFormToManage(MaterialForm);
             SkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(0, 0, Primary.Grey500, 0, TextShade.WHITE);
@@ -85,11 +87,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalPaymentMethodList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList ORDER BY PaymentMethodName ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_PaymentMethodList ORDER BY PaymentMethodName ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -107,11 +109,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalPackageList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_PackageList", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_PackageList", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -129,11 +131,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalServiceList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ServiceList", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_ServiceList", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -151,11 +153,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalEmployeeList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeList ORDER BY EmployeeId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeList ORDER BY EmployeeId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -173,11 +175,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalEmployeeTimeList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_EmployeeTimeList ORDER BY EmployeeId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_EmployeeTimeList ORDER BY EmployeeId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -195,11 +197,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalCustomerList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_CustomerList ORDER BY CustomerId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_CustomerList ORDER BY CustomerId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -217,11 +219,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalOrderList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_OrderList ORDER BY OrderId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_OrderList ORDER BY OrderId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -239,11 +241,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalBillingList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_BillingList ORDER BY BillingId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_BillingList ORDER BY BillingId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -261,11 +263,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalVehicleList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleList ORDER BY VehicleId ASC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_VehicleList ORDER BY VehicleId ASC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -297,7 +299,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             //
             //GlobalVehicleModelList.Clear();
 
-            //SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);
+            //SqliteCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);
 
             //try
             //{
@@ -319,11 +321,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             GlobalActivityList.Clear();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_ActivityList ORDER BY Message DESC", SQL);
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_ActivityList ORDER BY Message DESC", SQL);
 
             try
             {
-                using (SqlDataReader Reader = Command.ExecuteReader())
+                using (SqliteDataReader Reader = Command.ExecuteReader())
                 {
                     while (Reader.Read())
                     {
@@ -340,7 +342,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static void RecordActivity(string Message)
         {
             DateTime Now = DateTime.Now;
-            SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}" + " - " + Message}')", SQL);
+            SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_ActivityList(Message) VALUES ('{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}" + " - " + Message}')", SQL);
 
             try
             {

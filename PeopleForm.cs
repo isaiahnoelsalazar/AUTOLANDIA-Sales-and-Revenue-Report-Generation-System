@@ -1,6 +1,6 @@
 ﻿using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -454,7 +454,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed in");
 
-                    SqlCommand Command = new SqlCommand($"INSERT INTO AUTOLANDIA_EmployeeTimeList (EmployeeId, TimeIn, TimeOut, DateCreated) VALUES " +
+                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_EmployeeTimeList (EmployeeId, TimeIn, TimeOut, DateCreated) VALUES " +
                         $"('{Employee.ID}', '{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}', '', '{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}')", SQL);
 
                     Command.ExecuteNonQuery();
@@ -480,7 +480,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed out");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_EmployeeTimeList SET TimeOut='{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}" +
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_EmployeeTimeList SET TimeOut='{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}" +
                         $"' WHERE EmployeeId='{Employee.ID}' AND DateCreated='{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}'", SQL);
 
                     Command.ExecuteNonQuery();

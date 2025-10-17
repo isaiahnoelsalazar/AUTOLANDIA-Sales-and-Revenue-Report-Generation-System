@@ -1,7 +1,7 @@
 ﻿using CSSimpleFunctions;
 using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -182,13 +182,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Updated vehicle from [{PreviousBrand}, {PreviousModel}, {PreviousSize}, {PreviousPlateNumber}] to [{Brand}, {Model}, {Size}, {PlateNumber}]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_VehicleList SET VehicleBrand='{Brand}', VehicleModel='{Model}', VehicleSize='{Size}', PlateNumber='{PlateNumber}' WHERE VehicleId='{VehicleID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_VehicleList SET VehicleBrand='{Brand}', VehicleModel='{Model}', VehicleSize='{Size}', PlateNumber='{PlateNumber}' WHERE VehicleId='{VehicleID}'", SQL);
 
                     Command.ExecuteNonQuery();
 
                     if (!CustomerID.Equals("(None)"))
                     {
-                        SqlCommand Command1 = new SqlCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerID}'", SQL);
+                        SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerID}'", SQL);
 
                         Command1.ExecuteNonQuery();
                     }

@@ -29,7 +29,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         void RefreshEmployees(DateTime DateTimeStart, DateTime DateTimeEnd)
         {
-            DateRange.Text = $"{DateTimeStart.Date} - {DateTimeEnd.Date}";
+            DateRange.Text = $"{DateTimeStart.Date.ToString("d")} - {DateTimeEnd.Date.ToString("d")}";
 
             TimeSpan DateRangeTimeSpan = DateTimeEnd - DateTimeStart;
             DateTime[] DateTimeRange = new DateTime[DateRangeTimeSpan.Days + 1];
@@ -133,12 +133,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 EmployeeList.RowStyles.Clear();
                 FirstDate = e.Start.Date;
                 FirstDateSelected = true;
-                DateRange.Text = $"{FirstDate.Date} - (Select end date)";
+                DateRange.Text = $"{FirstDate.Date.ToString("d")} - (Select end date)";
             }
             else
             {
                 FirstDateSelected = false;
-                DateRange.Text = $"{FirstDate.Date} - {e.Start.Date}";
+                DateRange.Text = $"{FirstDate.Date.ToString("d")} - {e.Start.Date.ToString("d")}";
                 RefreshEmployees(FirstDate.Date, e.Start.Date);
             }
         }

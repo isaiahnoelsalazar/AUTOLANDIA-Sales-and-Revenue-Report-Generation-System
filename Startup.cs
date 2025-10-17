@@ -1,7 +1,10 @@
 ﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
+using CSSimpleFunctions;
 using MaterialSkin.Controls;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -28,6 +31,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 try
                 {
                     Timer.Stop();
+
+                    if (!File.Exists("easy_sql.py"))
+                    {
+                        SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "easy_sql.py");
+                    }
+                    if (!File.Exists("autolandia.py"))
+                    {
+                        SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "autolandia.py");
+                    }
+
+                    PyCS pyCS = new PyCS();
+                    pyCS.RunFile("autolandia.py");
+
                     SQL.Open();
 
                     RecreateGlobalPaymentMethodList();

@@ -1,6 +1,6 @@
 ﻿using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -173,7 +173,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Changed billing reference number [{Billing.ID}] progress from [{Billing.Progress}] to [{Progress.Text}]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET BillingProgress='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET BillingProgress='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
 
                     Command.ExecuteNonQuery();
 
@@ -208,7 +208,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Changed billing reference number [{Billing.ID}] payment method from [{Billing.PaymentMethod}] to [{PaymentMethod.Text}]");
 
-                    SqlCommand Command = new SqlCommand($"UPDATE AUTOLANDIA_BillingList SET PaymentMethodName='{PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET PaymentMethodName='{PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
 
                     Command.ExecuteNonQuery();
 

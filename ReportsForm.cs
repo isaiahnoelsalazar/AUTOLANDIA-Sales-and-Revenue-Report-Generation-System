@@ -1,6 +1,7 @@
 ﻿using MaterialSkin.Controls;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -113,11 +114,31 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     try
                     {
-                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
-                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "notify.py");
-                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "charset_normalizer-3.4.3-cp312-cp312-win32.whl");
-                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "pillow-11.3.0-cp312-cp312-win32.whl");
-                        CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "reportlab-4.4.4-py3-none-any.whl");
+                        if (!File.Exists("export_to_pdf.py"))
+                        {
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
+                        }
+                        else
+                        {
+                            File.Delete("export_to_pdf.py");
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
+                        }
+                        if (!File.Exists("notify.py"))
+                        {
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "notify.py");
+                        }
+                        if (!File.Exists("charset_normalizer-3.4.3-cp312-cp312-win32.whl"))
+                        {
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "charset_normalizer-3.4.3-cp312-cp312-win32.whl");
+                        }
+                        if (!File.Exists("pillow-11.3.0-cp312-cp312-win32.whl"))
+                        {
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "pillow-11.3.0-cp312-cp312-win32.whl");
+                        }
+                        if (!File.Exists("reportlab-4.4.4-py3-none-any.whl"))
+                        {
+                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "reportlab-4.4.4-py3-none-any.whl");
+                        }
                         RecreateAllGlobalData();
                         string ActivityData = "data = [['Message']";
                         foreach (string Activity in GlobalActivityList)

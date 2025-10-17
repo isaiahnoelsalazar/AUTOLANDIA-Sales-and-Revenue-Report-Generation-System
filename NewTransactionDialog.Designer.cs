@@ -32,8 +32,6 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
             this.DoneButton = new MaterialSkin.Controls.MaterialButton();
-            this.RB_Package = new MaterialSkin.Controls.MaterialRadioButton();
-            this.RB_Service = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.CB_Packages = new MaterialSkin.Controls.MaterialComboBox();
             this.PickVehicleButton = new MaterialSkin.Controls.MaterialButton();
@@ -77,7 +75,7 @@
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(8);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(620, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(700, 2);
             this.materialDivider1.TabIndex = 78;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -89,7 +87,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 354);
+            this.CancelButton.Location = new System.Drawing.Point(10, 362);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -110,7 +108,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(566, 354);
+            this.DoneButton.Location = new System.Drawing.Point(646, 362);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -123,40 +121,6 @@
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
-            // RB_Package
-            // 
-            this.RB_Package.AutoSize = true;
-            this.RB_Package.Depth = 0;
-            this.RB_Package.Location = new System.Drawing.Point(228, 229);
-            this.RB_Package.Margin = new System.Windows.Forms.Padding(0);
-            this.RB_Package.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.RB_Package.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RB_Package.Name = "RB_Package";
-            this.RB_Package.Ripple = true;
-            this.RB_Package.Size = new System.Drawing.Size(96, 37);
-            this.RB_Package.TabIndex = 64;
-            this.RB_Package.TabStop = true;
-            this.RB_Package.Text = "Package";
-            this.RB_Package.UseVisualStyleBackColor = true;
-            this.RB_Package.Click += new System.EventHandler(this.RB_Package_Click);
-            // 
-            // RB_Service
-            // 
-            this.RB_Service.AutoSize = true;
-            this.RB_Service.Depth = 0;
-            this.RB_Service.Location = new System.Drawing.Point(140, 229);
-            this.RB_Service.Margin = new System.Windows.Forms.Padding(0);
-            this.RB_Service.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.RB_Service.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RB_Service.Name = "RB_Service";
-            this.RB_Service.Ripple = true;
-            this.RB_Service.Size = new System.Drawing.Size(86, 37);
-            this.RB_Service.TabIndex = 63;
-            this.RB_Service.TabStop = true;
-            this.RB_Service.Text = "Service";
-            this.RB_Service.UseVisualStyleBackColor = true;
-            this.RB_Service.Click += new System.EventHandler(this.RB_Service_Click);
-            // 
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
@@ -166,9 +130,9 @@
             this.materialLabel4.Margin = new System.Windows.Forms.Padding(8);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(36, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(107, 19);
             this.materialLabel4.TabIndex = 62;
-            this.materialLabel4.Text = "Type";
+            this.materialLabel4.Text = "Select Services";
             // 
             // CB_Packages
             // 
@@ -186,7 +150,7 @@
             this.CB_Packages.FormattingEnabled = true;
             this.CB_Packages.IntegralHeight = false;
             this.CB_Packages.ItemHeight = 43;
-            this.CB_Packages.Location = new System.Drawing.Point(140, 274);
+            this.CB_Packages.Location = new System.Drawing.Point(140, 283);
             this.CB_Packages.MaxDropDownItems = 4;
             this.CB_Packages.MouseState = MaterialSkin.MouseState.OUT;
             this.CB_Packages.Name = "CB_Packages";
@@ -204,7 +168,7 @@
             this.PickVehicleButton.Depth = 0;
             this.PickVehicleButton.HighEmphasis = true;
             this.PickVehicleButton.Icon = null;
-            this.PickVehicleButton.Location = new System.Drawing.Point(340, 165);
+            this.PickVehicleButton.Location = new System.Drawing.Point(420, 165);
             this.PickVehicleButton.Margin = new System.Windows.Forms.Padding(8);
             this.PickVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.PickVehicleButton.Name = "PickVehicleButton";
@@ -226,7 +190,7 @@
             this.PickEmployeeButton.Depth = 0;
             this.PickEmployeeButton.HighEmphasis = true;
             this.PickEmployeeButton.Icon = null;
-            this.PickEmployeeButton.Location = new System.Drawing.Point(340, 99);
+            this.PickEmployeeButton.Location = new System.Drawing.Point(420, 99);
             this.PickEmployeeButton.Margin = new System.Windows.Forms.Padding(8);
             this.PickEmployeeButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.PickEmployeeButton.Name = "PickEmployeeButton";
@@ -280,7 +244,7 @@
             this.TB_Vehicle.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Vehicle.Multiline = false;
             this.TB_Vehicle.Name = "TB_Vehicle";
-            this.TB_Vehicle.Size = new System.Drawing.Size(184, 50);
+            this.TB_Vehicle.Size = new System.Drawing.Size(236, 50);
             this.TB_Vehicle.TabIndex = 80;
             this.TB_Vehicle.Text = "";
             this.TB_Vehicle.TrailingIcon = null;
@@ -301,7 +265,7 @@
             this.TB_Employee.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Employee.Multiline = false;
             this.TB_Employee.Name = "TB_Employee";
-            this.TB_Employee.Size = new System.Drawing.Size(184, 50);
+            this.TB_Employee.Size = new System.Drawing.Size(236, 50);
             this.TB_Employee.TabIndex = 79;
             this.TB_Employee.Text = "";
             this.TB_Employee.TrailingIcon = null;
@@ -315,8 +279,8 @@
             this.SelectServicesButton.Depth = 0;
             this.SelectServicesButton.HighEmphasis = true;
             this.SelectServicesButton.Icon = null;
-            this.SelectServicesButton.Location = new System.Drawing.Point(140, 274);
-            this.SelectServicesButton.Margin = new System.Windows.Forms.Padding(8);
+            this.SelectServicesButton.Location = new System.Drawing.Point(140, 223);
+            this.SelectServicesButton.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.SelectServicesButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SelectServicesButton.Name = "SelectServicesButton";
             this.SelectServicesButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -343,16 +307,16 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 48);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(326, 48);
             this.tableLayoutPanel2.TabIndex = 86;
             // 
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(167, 9);
+            this.label5.Location = new System.Drawing.Point(219, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 30);
+            this.label5.Size = new System.Drawing.Size(98, 30);
             this.label5.TabIndex = 1;
             this.label5.Text = "Price";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -363,7 +327,7 @@
             this.label6.Location = new System.Drawing.Point(9, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(141, 30);
+            this.label6.Size = new System.Drawing.Size(193, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Service Name";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -378,7 +342,7 @@
             this.ServiceListContainer.Location = new System.Drawing.Point(384, 147);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(246, 176);
+            this.ServiceListContainer.Size = new System.Drawing.Size(326, 185);
             this.ServiceListContainer.TabIndex = 85;
             // 
             // ServiceList
@@ -393,7 +357,7 @@
             this.ServiceList.Name = "ServiceList";
             this.ServiceList.RowCount = 1;
             this.ServiceList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ServiceList.Size = new System.Drawing.Size(246, 0);
+            this.ServiceList.Size = new System.Drawing.Size(326, 0);
             this.ServiceList.TabIndex = 0;
             // 
             // PackageLabel
@@ -401,7 +365,7 @@
             this.PackageLabel.AutoSize = true;
             this.PackageLabel.Depth = 0;
             this.PackageLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.PackageLabel.Location = new System.Drawing.Point(12, 290);
+            this.PackageLabel.Location = new System.Drawing.Point(12, 297);
             this.PackageLabel.Margin = new System.Windows.Forms.Padding(8);
             this.PackageLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.PackageLabel.Name = "PackageLabel";
@@ -413,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 400);
+            this.ClientSize = new System.Drawing.Size(720, 408);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.ServiceListContainer);
             this.Controls.Add(this.PickVehicleButton);
@@ -426,8 +390,6 @@
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DoneButton);
-            this.Controls.Add(this.RB_Package);
-            this.Controls.Add(this.RB_Service);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.SelectServicesButton);
             this.Controls.Add(this.CB_Packages);
@@ -450,8 +412,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialButton CancelButton;
         private MaterialSkin.Controls.MaterialButton DoneButton;
-        private MaterialSkin.Controls.MaterialRadioButton RB_Package;
-        private MaterialSkin.Controls.MaterialRadioButton RB_Service;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialComboBox CB_Packages;
         private MaterialSkin.Controls.MaterialButton PickVehicleButton;
