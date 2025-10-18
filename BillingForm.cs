@@ -35,6 +35,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             RecreateGlobalBillingList();
 
+            Temp = new List<BillingItem>(GlobalBillingList);
+
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
 
@@ -311,25 +313,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
 
-            Temp = new List<BillingItem>(GlobalBillingList);
-
-            for (int a = 0; a < Temp.Count;)
-            {
-                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
-                {
-                    Temp.Remove(Temp[a]);
-                    a = 0;
-                }
-                else
-                {
-                    a++;
-                }
-            }
-
-            foreach (BillingItem Billing in Temp)
-            {
-                RefreshRows(Billing);
-            }
+            RefreshBillings();
         }
 
         private void DatePickerButton_Click(object sender, EventArgs e)

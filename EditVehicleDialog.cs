@@ -118,10 +118,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ErrorMessage += "Brand cannot contain numbers nor symbols." + Environment.NewLine;
             }
-            if (Check.HasNumbers(TB_Model.Text) || Check.HasSymbols(TB_Model.Text))
-            {
-                ErrorMessage += "Model cannot contain numbers nor symbols." + Environment.NewLine;
-            }
             if (GetSize().Equals(""))
             {
                 ErrorMessage += "Please select a vehicle size." + Environment.NewLine;
