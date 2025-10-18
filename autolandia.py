@@ -1,7 +1,7 @@
 ﻿from easy_sql import EasySQL
 
 import os.path
-if not os.path.isfile("AUTOLANDIA.db"):    
+if not os.path.isfile("AUTOLANDIA.db"):
     a = EasySQL()
 
     AUTOLANDIA_ServiceList_columns = [
@@ -60,6 +60,7 @@ if not os.path.isfile("AUTOLANDIA.db"):
         {"EmployeeIdList": "varchar"},
         {"ServiceIdList": "varchar"},
         {"PackageId": "varchar"},
+        {"Extras": "varchar"},
         {"VehicleId": "varchar"},
         {"OrderProgress": "varchar"},
         {"DateUpdated": "varchar"},

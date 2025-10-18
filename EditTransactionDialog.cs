@@ -12,7 +12,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class EditTransactionDialog : MaterialForm
     {
         TransactionsForm TransactionsForm;
-        public MaterialCheckedListBox.ItemsList ServiceCheckedboxes, EmployeeCheckedboxes;
+        public MaterialCheckedListBox.ItemsList ServiceCheckedboxes, EmployeeCheckedboxes, ExtraCheckedboxes;
         Color DefaultBackgroundColor;
         string OrderID;
         double ServicePrice = 0;

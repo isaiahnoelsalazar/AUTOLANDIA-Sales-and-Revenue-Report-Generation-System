@@ -43,6 +43,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     PyCS pyCS = new PyCS();
                     pyCS.RunFile("autolandia.py");
+                    if (!File.Exists("mock_data.py"))
+                    {
+                        SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "mock_data.py");
+                        pyCS.RunFile("mock_data.py");
+                    }
 
                     SQL.Open();
 

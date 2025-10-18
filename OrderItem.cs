@@ -2,14 +2,15 @@
 {
     public class OrderItem
     {
-        string id, employeeIDList, serviceIDList, packageID, vehicleId, progress, lastUpdated, dateCreated;
+        string id, employeeIDList, serviceIDList, packageID, extras, vehicleId, progress, lastUpdated, dateCreated;
 
-        public OrderItem(string id, string employeeIDList, string serviceIDList, string packageID, string vehicleId, string progress, string lastUpdated, string dateCreated)
+        public OrderItem(string id, string employeeIDList, string serviceIDList, string packageID, string extras, string vehicleId, string progress, string lastUpdated, string dateCreated)
         {
             this.id = id;
             this.employeeIDList = employeeIDList;
             this.serviceIDList = serviceIDList;
             this.packageID = packageID;
+            this.extras = extras;
             this.vehicleId = vehicleId;
             this.progress = progress;
             this.lastUpdated = lastUpdated;
@@ -38,6 +39,12 @@
         {
             get { return packageID; }
             set { packageID = value; }
+        }
+
+        public string Extras
+        {
+            get { return extras; }
+            set { extras = value; }
         }
 
         public string VehicleId

@@ -481,6 +481,9 @@
   <ItemGroup>
     <EmbeddedResource Include="e_sqlite3.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mock_data.py" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

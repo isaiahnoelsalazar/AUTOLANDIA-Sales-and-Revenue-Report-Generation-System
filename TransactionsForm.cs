@@ -38,6 +38,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             RecreateGlobalOrderList();
 
+            Temp = new List<OrderItem>(GlobalOrderList);
+
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
@@ -442,25 +444,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            Temp = new List<OrderItem>(GlobalOrderList);
-
-            for (int a = 0; a < Temp.Count;)
-            {
-                if (!DateTime.Parse(Temp[a].DateCreated).Date.ToString("d").Equals(Global.Date.ToString("d")))
-                {
-                    Temp.Remove(Temp[a]);
-                    a = 0;
-                }
-                else
-                {
-                    a++;
-                }
-            }
-
-            foreach (OrderItem Order in Temp)
-            {
-                RefreshRows(Order);
-            }
+            RefreshTransactions();
         }
 
         private void DatePickerButton_Click(object sender, EventArgs e)

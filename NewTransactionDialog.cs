@@ -17,6 +17,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         Color DefaultBackgroundColor;
         string VehicleID;
         double ServicePrice = 0;
+        List<string> ExtraList = new List<string>();
 
         public NewTransactionDialog()
         {
@@ -33,6 +34,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     CB_Packages.Items.Add(Package.Name);
                 }
+            }
+
+            ExtraList.Add("Perfume (150)");
+            ExtraList.Add("Car w/ Carrier (20)");
+
+            foreach (string Item in ExtraList)
+            {
+                ExtraListCheckBox.Items.Add(Item);
             }
         }
 
@@ -63,6 +72,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     TB_Vehicle.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
                 }
+            }
+
+            ExtraList.Add("Perfume (150)");
+            ExtraList.Add("Car w/ Carrier (20)");
+
+            foreach (string Item in ExtraList)
+            {
+                ExtraListCheckBox.Items.Add(Item);
             }
         }
 
@@ -664,6 +681,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 }
 
+                string Extras = string.Empty;
+                for (int a = 0; a < ExtraListCheckBox.Controls.Count; a++)
+                {
+                    foreach (string Item in ExtraList)
+                    {
+                        if (ExtraListCheckBox.Controls[a].Text.Equals(Item))
+                        {
+                            Extras += Item.ToCharArray()[0];
+                            break;
+                        }
+                    }
+                }
+
+                RealPrice += Extras.Count(c => c == 'P') * 150;
+                RealPrice += Extras.Count(c => c == 'C') * 20;
+
                 string ServiceIds = "[";
                 for (int a = 0; a < ServiceList.Controls.Count; a++)
                 {
@@ -716,7 +749,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Added new order with reference number: {GlobalOrderList.Count + 1}");
 
-                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '{PackageId}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
+                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, Extras, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '{PackageId}', '{Extras}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
                     SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, BillingProgress, PaymentMethodName, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, 'Unpaid', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
 
                     Command.ExecuteNonQuery();
@@ -747,6 +780,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 MaterialMessageBox.Show(ErrorMessage, "Alert");
             }
+        }
+
+        private void ExtrasButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void RB_Service_Click(object sender, EventArgs e)
