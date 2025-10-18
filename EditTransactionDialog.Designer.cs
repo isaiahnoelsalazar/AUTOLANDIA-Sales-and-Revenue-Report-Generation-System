@@ -54,6 +54,8 @@
             this.ServiceListContainer = new System.Windows.Forms.Panel();
             this.ServiceList = new System.Windows.Forms.TableLayoutPanel();
             this.CB_Packages = new MaterialSkin.Controls.MaterialComboBox();
+            this.ExtraListCheckBox = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel2.SuspendLayout();
             this.ServiceListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +116,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 594);
+            this.CancelButton.Location = new System.Drawing.Point(10, 696);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -135,7 +137,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(694, 594);
+            this.DoneButton.Location = new System.Drawing.Point(694, 696);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -439,7 +441,7 @@
             this.ServiceListContainer.Location = new System.Drawing.Point(490, 139);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(268, 404);
+            this.ServiceListContainer.Size = new System.Drawing.Size(268, 537);
             this.ServiceListContainer.TabIndex = 93;
             // 
             // ServiceList
@@ -480,11 +482,44 @@
             this.CB_Packages.StartIndex = 0;
             this.CB_Packages.TabIndex = 98;
             // 
+            // ExtraListCheckBox
+            // 
+            this.ExtraListCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExtraListCheckBox.AutoScroll = true;
+            this.ExtraListCheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.ExtraListCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ExtraListCheckBox.Depth = 0;
+            this.ExtraListCheckBox.Location = new System.Drawing.Point(176, 554);
+            this.ExtraListCheckBox.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.ExtraListCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ExtraListCheckBox.Name = "ExtraListCheckBox";
+            this.ExtraListCheckBox.Size = new System.Drawing.Size(306, 122);
+            this.ExtraListCheckBox.Striped = false;
+            this.ExtraListCheckBox.StripeDarkColor = System.Drawing.Color.Empty;
+            this.ExtraListCheckBox.TabIndex = 100;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.Location = new System.Drawing.Point(12, 567);
+            this.materialLabel4.Margin = new System.Windows.Forms.Padding(8);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel4.TabIndex = 99;
+            this.materialLabel4.Text = "Select Extras";
+            // 
             // EditTransactionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 640);
+            this.ClientSize = new System.Drawing.Size(768, 742);
+            this.Controls.Add(this.ExtraListCheckBox);
+            this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.SelectServicesButton);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.ServiceListContainer);
@@ -550,5 +585,7 @@
         private System.Windows.Forms.Panel ServiceListContainer;
         private System.Windows.Forms.TableLayoutPanel ServiceList;
         private MaterialSkin.Controls.MaterialComboBox CB_Packages;
+        private MaterialSkin.Controls.MaterialCheckedListBox ExtraListCheckBox;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
     }
 }

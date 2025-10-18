@@ -16,6 +16,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         Color DefaultBackgroundColor;
         string OrderID;
         double ServicePrice = 0;
+        List<string> ExtraList = new List<string>();
 
         public EditTransactionDialog(TransactionsForm TransactionsForm, string OrderID)
         {
@@ -35,6 +36,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     CB_Packages.Items.Add(Package.Name);
                 }
+            }
+
+            ExtraList.Add("Perfume (150)");
+            ExtraList.Add("Car w/ Carrier (20)");
+
+            foreach (string Item in ExtraList)
+            {
+                ExtraListCheckBox.Items.Add(Item);
             }
         }
 
@@ -734,7 +743,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
-                    if (string.IsNullOrEmpty(Order.PackageID))
+                    if (!string.IsNullOrEmpty(Order.ServiceIDList))
                     {
                         string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
                         foreach (string ServiceID in ServiceSplit)
@@ -805,7 +814,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             }
                         }
                     }
-                    if (string.IsNullOrEmpty(Order.ServiceIDList))
+                    if (!string.IsNullOrEmpty(Order.PackageID))
                     {
                         foreach (PackageItem Package in GlobalPackageList)
                         {
@@ -949,6 +958,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     if (Order.Progress.Equals("Complete"))
                     {
                         CB_Progress.SelectedIndex = 2;
+                    }
+
+                    foreach (char Item in Order.Extras)
+                    {
+                        for (int a = 0; a < ExtraListCheckBox.Items.Count; a++)
+                        {
+                            if (ExtraListCheckBox.Items[a].Text.First().Equals(Item))
+                            {
+                                ExtraListCheckBox.Items[a].Checked = true;
+                            }
+                        }
                     }
 
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
