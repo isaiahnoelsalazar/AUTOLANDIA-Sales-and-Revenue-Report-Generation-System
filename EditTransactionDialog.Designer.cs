@@ -481,6 +481,7 @@
             this.CB_Packages.Size = new System.Drawing.Size(163, 49);
             this.CB_Packages.StartIndex = 0;
             this.CB_Packages.TabIndex = 98;
+            this.CB_Packages.TextChanged += new System.EventHandler(this.CB_Packages_TextChanged);
             // 
             // ExtraListCheckBox
             // 

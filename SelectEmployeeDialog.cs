@@ -30,7 +30,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 TempTime.Add(EmployeeTime.ID);
             }
-            Temp.Sort(new EmployeeNameComparer());
+            //Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
 
             if (GlobalEmployeeTimeList.Count < 1)
@@ -100,7 +100,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.EditTransactionDialog = EditTransactionDialog;
             this.EmployeeList = EmployeeList;
 
-            Temp.Sort(new EmployeeNameComparer());
+            //Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
             int counter = 0;
 

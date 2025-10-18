@@ -58,7 +58,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void QuickSalary_Click(object sender, EventArgs e)
         {
-            new EmployeeSalariesDialog().ShowDialog();
+            new SummaryDialog().ShowDialog();
         }
 
         private void QuickTimeSchedule_Click(object sender, EventArgs e)

@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DailyButton = new MaterialSkin.Controls.MaterialButton();
             this.MonthlyButton = new MaterialSkin.Controls.MaterialButton();
-            this.EmployeeSalariesButton = new MaterialSkin.Controls.MaterialButton();
             this.ExportDataButton = new MaterialSkin.Controls.MaterialButton();
             this.SummaryButton = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).BeginInit();
@@ -43,8 +42,8 @@
             this.SalesChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.SalesChart.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.SalesChart.ChartAreas.Add(chartArea3);
             this.SalesChart.Location = new System.Drawing.Point(169, 8);
             this.SalesChart.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.SalesChart.Name = "SalesChart";
@@ -96,38 +95,17 @@
             this.MonthlyButton.UseVisualStyleBackColor = true;
             this.MonthlyButton.Click += new System.EventHandler(this.MonthlyButton_Click);
             // 
-            // EmployeeSalariesButton
-            // 
-            this.EmployeeSalariesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EmployeeSalariesButton.AutoSize = false;
-            this.EmployeeSalariesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EmployeeSalariesButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EmployeeSalariesButton.Depth = 0;
-            this.EmployeeSalariesButton.HighEmphasis = true;
-            this.EmployeeSalariesButton.Icon = null;
-            this.EmployeeSalariesButton.Location = new System.Drawing.Point(11, 433);
-            this.EmployeeSalariesButton.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
-            this.EmployeeSalariesButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EmployeeSalariesButton.Name = "EmployeeSalariesButton";
-            this.EmployeeSalariesButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EmployeeSalariesButton.Size = new System.Drawing.Size(150, 36);
-            this.EmployeeSalariesButton.TabIndex = 31;
-            this.EmployeeSalariesButton.Text = "Employee Salaries";
-            this.EmployeeSalariesButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EmployeeSalariesButton.UseAccentColor = false;
-            this.EmployeeSalariesButton.UseVisualStyleBackColor = true;
-            this.EmployeeSalariesButton.Click += new System.EventHandler(this.EmployeeSalariesButton_Click);
-            // 
             // ExportDataButton
             // 
+            this.ExportDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ExportDataButton.AutoSize = false;
             this.ExportDataButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ExportDataButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.ExportDataButton.Depth = 0;
             this.ExportDataButton.HighEmphasis = true;
             this.ExportDataButton.Icon = null;
-            this.ExportDataButton.Location = new System.Drawing.Point(11, 140);
-            this.ExportDataButton.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.ExportDataButton.Location = new System.Drawing.Point(11, 433);
+            this.ExportDataButton.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.ExportDataButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.ExportDataButton.Name = "ExportDataButton";
             this.ExportDataButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -167,7 +145,6 @@
             this.ClientSize = new System.Drawing.Size(640, 480);
             this.Controls.Add(this.SummaryButton);
             this.Controls.Add(this.ExportDataButton);
-            this.Controls.Add(this.EmployeeSalariesButton);
             this.Controls.Add(this.MonthlyButton);
             this.Controls.Add(this.DailyButton);
             this.Controls.Add(this.SalesChart);
@@ -187,7 +164,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart SalesChart;
         private MaterialSkin.Controls.MaterialButton DailyButton;
         private MaterialSkin.Controls.MaterialButton MonthlyButton;
-        private MaterialSkin.Controls.MaterialButton EmployeeSalariesButton;
         private MaterialSkin.Controls.MaterialButton ExportDataButton;
         private MaterialSkin.Controls.MaterialButton SummaryButton;
     }
