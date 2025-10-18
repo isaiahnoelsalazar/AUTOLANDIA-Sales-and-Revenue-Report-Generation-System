@@ -292,11 +292,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 string[] Split = VehicleModel.Split(':');
                 GlobalVehicleModelList.Add(new VehicleModelItem(Split[0].Trim(), Split[1].Trim()));
             }
+            GlobalVehicleModelList.Add(new VehicleModelItem("GENERAL", "EBIKE"));
+            GlobalVehicleModelList.Add(new VehicleModelItem("GENERAL", "MOTOR"));
+            GlobalVehicleModelList.Add(new VehicleModelItem("GENERAL", "PUV"));
+            GlobalVehicleModelList.Add(new VehicleModelItem("GENERAL", "TRICYCLE"));
+            GlobalVehicleModelList.Add(new VehicleModelItem("GENERAL", "TRUCK"));
 
             //
-            // This feature is currently disabled.
+            // The feature below is currently disabled.
             // Regularly getting data from the database for vehicle models is causing performance issues.
             //
+
             //GlobalVehicleModelList.Clear();
 
             //SqliteCommand Command = new SqlCommand("SELECT * FROM AUTOLANDIA_VehicleModelList ORDER BY VehicleBrand ASC", SQL);

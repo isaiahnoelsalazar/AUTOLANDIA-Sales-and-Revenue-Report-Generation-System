@@ -55,6 +55,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             VehicleList.Controls.Clear();
             VehicleList.RowStyles.Clear();
 
+            Temp.Add("GENERAL");
             foreach (VehicleModelItem Vehicle in GlobalVehicleModelList)
             {
                 if (!Temp.Contains(Vehicle.Brand))
