@@ -3,12 +3,13 @@
     public class BillingItem
     {
         string id, progress, paymentMethod, lastUpdated, dateCreated;
-        double orderBalance;
+        double orderBalance, discount;
 
-        public BillingItem(string id, double orderBalance, string progress, string paymentMethod, string lastUpdated, string dateCreated)
+        public BillingItem(string id, double orderBalance, double discount, string progress, string paymentMethod, string lastUpdated, string dateCreated)
         {
             this.id = id;
             this.orderBalance = orderBalance;
+            this.discount = discount;
             this.progress = progress;
             this.paymentMethod = paymentMethod;
             this.lastUpdated = lastUpdated;
@@ -25,6 +26,12 @@
         {
             get { return orderBalance; }
             set { orderBalance = value; }
+        }
+
+        public double Discount
+        {
+            get { return discount; }
+            set { discount = value; }
         }
 
         public string Progress

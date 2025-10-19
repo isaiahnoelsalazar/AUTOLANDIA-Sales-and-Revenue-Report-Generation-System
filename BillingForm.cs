@@ -157,7 +157,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Balance.Dock = DockStyle.Fill;
-            Balance.Text = Billing.Balance.ToString();
+            Balance.Text = Billing.Discount > 0 ? $"{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100)))} ({Billing.Discount}% | {Billing.Balance})" : $"{Billing.Balance}";
             Balance.TextAlign = ContentAlignment.MiddleCenter;
             Balance.MouseEnter += (sndr, evnt) =>
             {

@@ -33,6 +33,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     TB_ID.Text = Billing.ID;
                     TB_Price.Text = Billing.Balance.ToString();
+                    DiscountSlider.Value = (int)Billing.Discount;
                     TB_LastUpdated.Text = Billing.LastUpdated;
                     TB_DateCreated.Text = Billing.DateCreated;
 
@@ -93,7 +94,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Updated details of billing with reference number [{BillingID}]");
 
-                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={TB_Price.Text}, BillingProgress='{CB_Progress.Text}', PaymentMethodName='{CB_PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{BillingID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET OrderBalance={TB_Price.Text}, OrderDiscount={DiscountSlider.Value}, BillingProgress='{CB_Progress.Text}', PaymentMethodName='{CB_PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{BillingID}'", SQL);
 
                     Command.ExecuteNonQuery();
 

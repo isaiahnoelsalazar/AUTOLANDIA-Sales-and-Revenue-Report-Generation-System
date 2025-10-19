@@ -1173,8 +1173,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
-                    
-
                     CB_Progress.Items.Add("Ready");
                     CB_Progress.Items.Add("In progress");
                     CB_Progress.Items.Add("Complete");

@@ -49,6 +49,8 @@
             this.PackageLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.ExtraListCheckBox = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.DiscountSlider = new MaterialSkin.Controls.MaterialSlider();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel2.SuspendLayout();
             this.ServiceListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 495);
+            this.CancelButton.Location = new System.Drawing.Point(10, 532);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -110,7 +112,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(646, 495);
+            this.DoneButton.Location = new System.Drawing.Point(646, 532);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -344,7 +346,7 @@
             this.ServiceListContainer.Location = new System.Drawing.Point(384, 147);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(326, 318);
+            this.ServiceListContainer.Size = new System.Drawing.Size(326, 361);
             this.ServiceListContainer.TabIndex = 85;
             // 
             // ServiceList
@@ -401,16 +403,44 @@
             this.ExtraListCheckBox.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.ExtraListCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.ExtraListCheckBox.Name = "ExtraListCheckBox";
-            this.ExtraListCheckBox.Size = new System.Drawing.Size(236, 122);
+            this.ExtraListCheckBox.Size = new System.Drawing.Size(236, 117);
             this.ExtraListCheckBox.Striped = false;
             this.ExtraListCheckBox.StripeDarkColor = System.Drawing.Color.Empty;
             this.ExtraListCheckBox.TabIndex = 88;
+            // 
+            // DiscountSlider
+            // 
+            this.DiscountSlider.Depth = 0;
+            this.DiscountSlider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DiscountSlider.Location = new System.Drawing.Point(140, 468);
+            this.DiscountSlider.Margin = new System.Windows.Forms.Padding(8);
+            this.DiscountSlider.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DiscountSlider.Name = "DiscountSlider";
+            this.DiscountSlider.Size = new System.Drawing.Size(236, 40);
+            this.DiscountSlider.TabIndex = 89;
+            this.DiscountSlider.Text = "";
+            this.DiscountSlider.Value = 0;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.Location = new System.Drawing.Point(12, 478);
+            this.materialLabel6.Margin = new System.Windows.Forms.Padding(8);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(64, 19);
+            this.materialLabel6.TabIndex = 90;
+            this.materialLabel6.Text = "Discount";
             // 
             // NewTransactionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 541);
+            this.ClientSize = new System.Drawing.Size(720, 578);
+            this.Controls.Add(this.materialLabel6);
+            this.Controls.Add(this.DiscountSlider);
             this.Controls.Add(this.ExtraListCheckBox);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -464,5 +494,7 @@
         private MaterialSkin.Controls.MaterialLabel PackageLabel;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialCheckedListBox ExtraListCheckBox;
+        private MaterialSkin.Controls.MaterialSlider DiscountSlider;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }

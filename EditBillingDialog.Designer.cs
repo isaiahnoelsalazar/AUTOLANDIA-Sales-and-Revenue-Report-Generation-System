@@ -44,6 +44,8 @@
             this.CB_PaymentMethod = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.DiscountSlider = new MaterialSkin.Controls.MaterialSlider();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // TB_ID
@@ -63,7 +65,7 @@
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.Location = new System.Drawing.Point(12, 221);
+            this.materialLabel5.Location = new System.Drawing.Point(12, 269);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(63, 19);
@@ -102,7 +104,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 454);
+            this.CancelButton.Location = new System.Drawing.Point(10, 505);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -123,7 +125,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(566, 454);
+            this.DoneButton.Location = new System.Drawing.Point(566, 505);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -171,7 +173,7 @@
             this.TB_Price.AnimateReadOnly = false;
             this.TB_Price.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Price.Depth = 0;
-            this.TB_Price.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Price.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Price.LeadingIcon = null;
             this.TB_Price.Location = new System.Drawing.Point(203, 149);
             this.TB_Price.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
@@ -198,7 +200,7 @@
             this.CB_Progress.FormattingEnabled = true;
             this.CB_Progress.IntegralHeight = false;
             this.CB_Progress.ItemHeight = 43;
-            this.CB_Progress.Location = new System.Drawing.Point(203, 207);
+            this.CB_Progress.Location = new System.Drawing.Point(203, 255);
             this.CB_Progress.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.CB_Progress.MaxDropDownItems = 4;
             this.CB_Progress.MouseState = MaterialSkin.MouseState.OUT;
@@ -212,7 +214,7 @@
             this.TB_DateCreated.AutoSize = true;
             this.TB_DateCreated.Depth = 0;
             this.TB_DateCreated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_DateCreated.Location = new System.Drawing.Point(200, 394);
+            this.TB_DateCreated.Location = new System.Drawing.Point(200, 442);
             this.TB_DateCreated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_DateCreated.Name = "TB_DateCreated";
             this.TB_DateCreated.Size = new System.Drawing.Size(92, 19);
@@ -224,7 +226,7 @@
             this.TB_LastUpdated.AutoSize = true;
             this.TB_LastUpdated.Depth = 0;
             this.TB_LastUpdated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_LastUpdated.Location = new System.Drawing.Point(200, 337);
+            this.TB_LastUpdated.Location = new System.Drawing.Point(200, 385);
             this.TB_LastUpdated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_LastUpdated.Name = "TB_LastUpdated";
             this.TB_LastUpdated.Size = new System.Drawing.Size(95, 19);
@@ -236,7 +238,7 @@
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(12, 394);
+            this.materialLabel6.Location = new System.Drawing.Point(12, 442);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(92, 19);
@@ -257,7 +259,7 @@
             this.CB_PaymentMethod.FormattingEnabled = true;
             this.CB_PaymentMethod.IntegralHeight = false;
             this.CB_PaymentMethod.ItemHeight = 43;
-            this.CB_PaymentMethod.Location = new System.Drawing.Point(203, 264);
+            this.CB_PaymentMethod.Location = new System.Drawing.Point(203, 312);
             this.CB_PaymentMethod.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.CB_PaymentMethod.MaxDropDownItems = 4;
             this.CB_PaymentMethod.MouseState = MaterialSkin.MouseState.OUT;
@@ -271,7 +273,7 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.Location = new System.Drawing.Point(12, 337);
+            this.materialLabel4.Location = new System.Drawing.Point(12, 385);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(95, 19);
@@ -283,18 +285,45 @@
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.Location = new System.Drawing.Point(12, 278);
+            this.materialLabel7.Location = new System.Drawing.Point(12, 326);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(122, 19);
             this.materialLabel7.TabIndex = 90;
             this.materialLabel7.Text = "Payment Method";
             // 
+            // DiscountSlider
+            // 
+            this.DiscountSlider.Depth = 0;
+            this.DiscountSlider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DiscountSlider.Location = new System.Drawing.Point(203, 207);
+            this.DiscountSlider.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.DiscountSlider.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DiscountSlider.Name = "DiscountSlider";
+            this.DiscountSlider.Size = new System.Drawing.Size(427, 40);
+            this.DiscountSlider.TabIndex = 96;
+            this.DiscountSlider.Text = "";
+            this.DiscountSlider.Value = 0;
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel8.Location = new System.Drawing.Point(12, 217);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(64, 19);
+            this.materialLabel8.TabIndex = 97;
+            this.materialLabel8.Text = "Discount";
+            // 
             // EditBillingDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 500);
+            this.ClientSize = new System.Drawing.Size(640, 551);
+            this.Controls.Add(this.materialLabel8);
+            this.Controls.Add(this.DiscountSlider);
             this.Controls.Add(this.TB_DateCreated);
             this.Controls.Add(this.TB_LastUpdated);
             this.Controls.Add(this.materialLabel6);
@@ -338,5 +367,7 @@
         private MaterialSkin.Controls.MaterialComboBox CB_PaymentMethod;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialSlider DiscountSlider;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
     }
 }

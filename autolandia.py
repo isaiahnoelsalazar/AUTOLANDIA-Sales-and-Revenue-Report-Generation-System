@@ -69,6 +69,7 @@ if not os.path.isfile("AUTOLANDIA.db"):
     AUTOLANDIA_BillingList_columns = [
         {"BillingId": "varchar"},
         {"OrderBalance": "float"},
+        {"OrderDiscount": "float"},
         {"BillingProgress": "varchar"},
         {"PaymentMethodName": "varchar"},
         {"DateUpdated": "varchar"},
