@@ -45,7 +45,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     if (Split.Contains(Temp[counter].ID))
                     {
-                        if (!Order.Progress.Equals("Complete"))
+                        if (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled"))
                         {
                             Temp.Remove(Temp[counter]);
                             counter = 0;
@@ -112,7 +112,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     if (Split.Contains(Temp[counter].ID))
                     {
-                        if (!Order.Progress.Equals("Complete"))
+                        if (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled"))
                         {
                             Temp.Remove(Temp[counter]);
                             counter = 0;

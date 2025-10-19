@@ -229,7 +229,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (!string.IsNullOrEmpty(Order.ServiceIDList))
             {
                 string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
-                foreach (ServiceItem Service in GlobalServiceList)
+                List<ServiceItem> ServiceTemp = new List<ServiceItem>(GlobalServiceList);
+                ServiceTemp.Add(new ServiceItem("S_VCBW1", "Body Wash", "S", 120));
+                ServiceTemp.Add(new ServiceItem("S_VCBW2", "Body Wash", "M", 150));
+                ServiceTemp.Add(new ServiceItem("S_VCBW3", "Body Wash", "L", 200));
+                ServiceTemp.Add(new ServiceItem("S_VCBWT", "Body Wash", "M", 220));
+                ServiceTemp.Add(new ServiceItem("S_VCBWP", "Body Wash", "M", 400));
+                ServiceTemp.Add(new ServiceItem("S_VCA1", "Armor", "S", 100));
+                ServiceTemp.Add(new ServiceItem("S_VCA2", "Armor", "M", 100));
+                ServiceTemp.Add(new ServiceItem("S_VCA3", "Armor", "L", 100));
+                ServiceTemp.Add(new ServiceItem("S_VCW1", "Wax (Manual)", "S", 150));
+                ServiceTemp.Add(new ServiceItem("S_VCW2", "Wax (Manual)", "M", 150));
+                ServiceTemp.Add(new ServiceItem("S_VCW3", "Wax (Manual)", "L", 150));
+                foreach (ServiceItem Service in ServiceTemp)
                 {
                     if (ServiceSplit.Contains(Service.ID))
                     {
@@ -329,6 +341,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Progress.Items.Add("Ready");
             Progress.Items.Add("In progress");
             Progress.Items.Add("Complete");
+            Progress.Items.Add("Cancelled");
 
             if (Order.Progress.Equals("Ready"))
             {
@@ -341,6 +354,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (Order.Progress.Equals("Complete"))
             {
                 Progress.SelectedIndex = 2;
+            }
+            if (Order.Progress.Equals("Cancelled"))
+            {
+                Progress.SelectedIndex = 3;
             }
 
             Progress.SelectedIndexChanged += (sndr, evnt) =>

@@ -181,11 +181,50 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public void SetVehicleBrand(string Brand)
         {
             TB_Brand.Text = Brand;
+            if (Brand.Equals("GENERAL"))
+            {
+                RB_S.Checked = true;
+                RB_XL.Visible = false;
+                RB_XXL.Visible = false;
+            }
+            else
+            {
+                RB_XL.Visible = true;
+                RB_XXL.Visible = true;
+            }
         }
 
         public void SetVehicleModel(string Model)
         {
             TB_Model.Text = Model;
+            if (TB_Brand.Text.Equals("GENERAL"))
+            {
+                if (Model.Equals("TRUCK"))
+                {
+                    RB_S.Checked = true;
+                    RB_S.Text = "Per negotiation";
+                    RB_M.Visible = false;
+                    RB_L.Visible = false;
+                }
+                else
+                {
+                    if (Model.Equals("PUV") || Model.Equals("TRICYCLE"))
+                    {
+                        RB_S.Text = "M";
+                        RB_S.Checked = true;
+                        RB_S.Visible = true;
+                        RB_M.Visible = false;
+                        RB_L.Visible = false;
+                    }
+                    else
+                    {
+                        RB_S.Text = "S";
+                        RB_S.Visible = true;
+                        RB_M.Visible = true;
+                        RB_L.Visible = true;
+                    }
+                }
+            }
         }
 
         private void PickVehicleBrandButton_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 foreach (OrderItem Order in GlobalOrderList)
                 {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
                         counter = 0;
@@ -62,7 +62,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 foreach (OrderItem Order in GlobalOrderList)
                 {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
                         counter = 0;
@@ -95,7 +95,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 foreach (OrderItem Order in GlobalOrderList)
                 {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && !Order.Progress.Equals("Complete"))
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
                         counter = 0;
