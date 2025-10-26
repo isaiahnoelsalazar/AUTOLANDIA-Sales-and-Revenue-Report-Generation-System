@@ -301,6 +301,26 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                                         ServicePackageDetail += Service.Name + ", ";
                                                     }
                                                 }
+                                                List<ServiceItem> TempServiceForGeneral = new List<ServiceItem>();
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW1", "Body Wash", "S", 120));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW2", "Body Wash", "M", 150));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW3", "Body Wash", "L", 200));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBWT", "Body Wash", "M", 220));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBWP", "Body Wash", "M", 400));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA1", "Armor", "S", 100));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA2", "Armor", "M", 100));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA3", "Armor", "L", 100));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW1", "Wax (Manual)", "S", 150));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW2", "Wax (Manual)", "M", 150));
+                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW3", "Wax (Manual)", "L", 150));
+                                                foreach (ServiceItem Service in TempServiceForGeneral)
+                                                {
+                                                    if (ServiceSplit.Contains(Service.ID))
+                                                    {
+                                                        ServicePackageDetail += "[Services] - ";
+                                                        ServicePackageDetail += Service.Name + ", ";
+                                                    }
+                                                }
                                                 ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
                                             }
                                         }
