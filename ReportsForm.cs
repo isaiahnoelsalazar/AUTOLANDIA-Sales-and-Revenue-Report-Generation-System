@@ -1,10 +1,12 @@
 ﻿using MaterialSkin.Controls;
+using PdfSharp.Pdf;
 using System;
 using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using TheArtOfDev.HtmlRenderer.Adapters;
+using TheArtOfDev.HtmlRenderer.Core;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
@@ -100,88 +102,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void ExportDataButton_Click(object sender, EventArgs e)
         {
             ExportDataButton.Enabled = false;
-            Timer Timer = new Timer();
-            Timer.Interval = 1000;
-            Timer.Tick += (s, ev) =>
-            {
-                Timer.Stop();
-                new System.Threading.Thread(new System.Threading.ThreadStart(() =>
-                {
-                    try
-                    {
-                        if (!File.Exists("export_to_pdf.py"))
-                        {
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
-                        }
-                        else
-                        {
-                            File.Delete("export_to_pdf.py");
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "export_to_pdf.py");
-                        }
-                        if (!File.Exists("notify.py"))
-                        {
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "notify.py");
-                        }
-                        if (!File.Exists("charset_normalizer-3.4.3-cp312-cp312-win32.whl"))
-                        {
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "charset_normalizer-3.4.3-cp312-cp312-win32.whl");
-                        }
-                        if (!File.Exists("pillow-11.3.0-cp312-cp312-win32.whl"))
-                        {
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "pillow-11.3.0-cp312-cp312-win32.whl");
-                        }
-                        if (!File.Exists("reportlab-4.4.4-py3-none-any.whl"))
-                        {
-                            CSSimpleFunctions.SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "reportlab-4.4.4-py3-none-any.whl");
-                        }
-                        RecreateAllGlobalData();
-                        string ActivityData = "data = [['Message']";
-                        foreach (ServiceItem Item in GlobalServiceList)
-                        {
-                            ActivityData += $"\n,['{Item.ID}']";
-                        }
-                        ActivityData += "]";
-                        CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", ActivityData);
-                        CSSimpleFunctions.SimpleFileHandler.Append("export_to_pdf.py", "\nexport_data_to_pdf(data, \"AUTOLANDIA_ActivityList.pdf\")");
-                    }
-                    catch
-                    {
-                        Invoke(new MethodInvoker(() =>
-                        {
-                            MaterialMessageBox.Show("Failed to create resources required for export.", "Notice");
-                        }));
-                    }
-                    try
-                    {
-                        CSSimpleFunctions.PyCS pyCS = new CSSimpleFunctions.PyCS(false);
-                        pyCS.InstallPip();
-                        pyCS.PipLocal(new string[]
-                        {
-                            "charset_normalizer-3.4.3-cp312-cp312-win32.whl",
-                            "pillow-11.3.0-cp312-cp312-win32.whl",
-                            "reportlab-4.4.4-py3-none-any.whl"
-                        });
-                        pyCS.Pip(new string[]
-                        {
-                            "plyer"
-                        });
-                        pyCS.RunFile("export_to_pdf.py");
-                        pyCS.RunFile("notify.py");
-                        Invoke(new MethodInvoker(() =>
-                        {
-                            ExportDataButton.Enabled = true;
-                        }));
-                    }
-                    catch
-                    {
-                        Invoke(new MethodInvoker(() =>
-                        {
-                            MaterialMessageBox.Show("Failed to download resources required for export.", "Notice");
-                        }));
-                    }
-                })).Start();
-            };
-            Timer.Start();
+            new SelectExportItemDialog().ShowDialog();
+            ExportDataButton.Enabled = true;
         }
 
         private void ReportsForm_Load(object sender, EventArgs e)

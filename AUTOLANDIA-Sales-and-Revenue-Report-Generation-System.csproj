@@ -59,11 +59,23 @@
     <Reference Include="CSSimpleFunctions, Version=0.1.32.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\CSSimpleFunctions.0.1.32\lib\net45\CSSimpleFunctions.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Sqlite, Version=9.0.10.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Data.Sqlite.Core.9.0.10\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=3.0.2.2801, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>packages\SQLitePCLRaw.config.e_sqlite3.3.0.2\lib\net471\SQLitePCLRaw.batteries_v2.dll</HintPath>
@@ -273,6 +285,12 @@
     <Compile Include="SelectEmployeeDialog.Designer.cs">
       <DependentUpon>SelectEmployeeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectExportItemDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectExportItemDialog.Designer.cs">
+      <DependentUpon>SelectExportItemDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectServicesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectEmployeeDialog.resx">
       <DependentUpon>SelectEmployeeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectExportItemDialog.resx">
+      <DependentUpon>SelectExportItemDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectServicesDialog.resx">
       <DependentUpon>SelectServicesDialog.cs</DependentUpon>

@@ -76,7 +76,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             {
                                 RefreshEmployeeWork(FirstDate.Date, EndDate.Date);
                             };
-                            EmployeeListCheckBox.Items.Add(CheckBox);
+                            if (!InCheckedListBox(CheckBox.Text))
+                            {
+                                EmployeeListCheckBox.Items.Add(CheckBox);
+                            }
                         }
                     }
                 }
@@ -106,6 +109,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RefreshEmployeeWork(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
             //RefreshBilling(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
             RefreshEmployees(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
+        }
+
+        bool InCheckedListBox(string text)
+        {
+            foreach (MaterialCheckbox Item in EmployeeListCheckBox.Items)
+            {
+                if (Item.Text == text)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         void RefreshEmployees(DateTime DateTimeStart, DateTime DateTimeEnd)
@@ -313,11 +328,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                                 TempServiceForGeneral.Add(new ServiceItem("S_VCW1", "Wax (Manual)", "S", 150));
                                                 TempServiceForGeneral.Add(new ServiceItem("S_VCW2", "Wax (Manual)", "M", 150));
                                                 TempServiceForGeneral.Add(new ServiceItem("S_VCW3", "Wax (Manual)", "L", 150));
+
+                                                if (string.IsNullOrEmpty(ServicePackageDetail))
+                                                {
+                                                    ServicePackageDetail += "[Services] - ";
+                                                }
+
                                                 foreach (ServiceItem Service in TempServiceForGeneral)
                                                 {
                                                     if (ServiceSplit.Contains(Service.ID))
                                                     {
-                                                        ServicePackageDetail += "[Services] - ";
                                                         ServicePackageDetail += Service.Name + ", ";
                                                     }
                                                 }
