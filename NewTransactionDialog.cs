@@ -1116,8 +1116,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                         RecordActivity($"Added new order with reference number: {GlobalOrderList.Count + 1}");
 
-                        SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, Extras, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '{PackageId}', '{Extras}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
-                        SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, BillingProgress, PaymentMethodName, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, 'Unpaid', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
+                        SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, Extras, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '', '{Extras}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
+                        SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, OrderDiscount, BillingProgress, PaymentMethodName, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, {DiscountSlider.Value}, 'Unpaid', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
 
                         Command.ExecuteNonQuery();
                         Command1.ExecuteNonQuery();
@@ -1149,28 +1149,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 MaterialMessageBox.Show(ErrorMessage, "Alert");
             }
         }
-
-        //private void RB_Service_Click(object sender, EventArgs e)
-        //{
-        //    if (RB_Service.Checked)
-        //    {
-        //        ServiceList.Controls.Clear();
-        //        ServiceList.RowStyles.Clear();
-        //        SelectServicesButton.Visible = true;
-        //        PackageLabel.Text = "Select services";
-        //    }
-        //}
-
-        //private void RB_Package_Click(object sender, EventArgs e)
-        //{
-        //    if (RB_Package.Checked)
-        //    {
-        //        ServiceList.Controls.Clear();
-        //        ServiceList.RowStyles.Clear();
-        //        SelectServicesButton.Visible = false;
-        //        PackageLabel.Text = "Pick package";
-        //    }
-        //}
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
