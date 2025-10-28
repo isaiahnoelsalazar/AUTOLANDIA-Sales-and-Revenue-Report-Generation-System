@@ -30,7 +30,7 @@
         {
             this.TabPanel = new System.Windows.Forms.Panel();
             this.ReportsTab = new MaterialSkin.Controls.MaterialButton();
-            this.AccountButton = new MaterialSkin.Controls.MaterialButton();
+            this.SettingsButton = new MaterialSkin.Controls.MaterialButton();
             this.ServicesAndPackagesTab = new MaterialSkin.Controls.MaterialButton();
             this.ActivityRecordTab = new MaterialSkin.Controls.MaterialButton();
             this.PeopleTab = new MaterialSkin.Controls.MaterialButton();
@@ -47,7 +47,7 @@
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TabPanel.Controls.Add(this.ReportsTab);
-            this.TabPanel.Controls.Add(this.AccountButton);
+            this.TabPanel.Controls.Add(this.SettingsButton);
             this.TabPanel.Controls.Add(this.ServicesAndPackagesTab);
             this.TabPanel.Controls.Add(this.ActivityRecordTab);
             this.TabPanel.Controls.Add(this.PeopleTab);
@@ -84,28 +84,28 @@
             this.ReportsTab.UseVisualStyleBackColor = true;
             this.ReportsTab.Click += new System.EventHandler(this.ReportsTab_Click);
             // 
-            // AccountButton
+            // SettingsButton
             // 
-            this.AccountButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AccountButton.AutoSize = false;
-            this.AccountButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AccountButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.AccountButton.Depth = 0;
-            this.AccountButton.HighEmphasis = true;
-            this.AccountButton.Icon = null;
-            this.AccountButton.Location = new System.Drawing.Point(8, 662);
-            this.AccountButton.Margin = new System.Windows.Forms.Padding(8);
-            this.AccountButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.AccountButton.Name = "AccountButton";
-            this.AccountButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.AccountButton.Size = new System.Drawing.Size(184, 50);
-            this.AccountButton.TabIndex = 8;
-            this.AccountButton.Text = "Account";
-            this.AccountButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.AccountButton.UseAccentColor = false;
-            this.AccountButton.UseVisualStyleBackColor = true;
-            this.AccountButton.Click += new System.EventHandler(this.AccountButton_Click);
+            this.SettingsButton.AutoSize = false;
+            this.SettingsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SettingsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SettingsButton.Depth = 0;
+            this.SettingsButton.HighEmphasis = true;
+            this.SettingsButton.Icon = null;
+            this.SettingsButton.Location = new System.Drawing.Point(8, 662);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(8);
+            this.SettingsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SettingsButton.Size = new System.Drawing.Size(184, 50);
+            this.SettingsButton.TabIndex = 8;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SettingsButton.UseAccentColor = false;
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // ServicesAndPackagesTab
             // 
@@ -273,6 +273,7 @@
             this.Padding = new System.Windows.Forms.Padding(200, 20, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
@@ -288,7 +289,7 @@
         private MaterialSkin.Controls.MaterialButton BillingTab;
         private MaterialSkin.Controls.MaterialButton ActivityRecordTab;
         private MaterialSkin.Controls.MaterialButton ServicesAndPackagesTab;
-        private MaterialSkin.Controls.MaterialButton AccountButton;
+        private MaterialSkin.Controls.MaterialButton SettingsButton;
         private MaterialSkin.Controls.MaterialButton ReportsTab;
     }
 }

@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -24,6 +25,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         };
         List<MaterialButton> TabButtons = new List<MaterialButton>();
+        Thread TimeThread;
 
         public MainForm(Startup Startup)
         {
@@ -53,7 +55,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             SelectTab(0);
 
-            Timer FocusTimer = new Timer();
+            System.Windows.Forms.Timer FocusTimer = new System.Windows.Forms.Timer();
             FocusTimer.Tick += (s, e) =>
             {
                 HomeTab.Focus();
@@ -122,6 +124,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            TimeThread.Abort();
             Application.Exit();
         }
 
@@ -140,8 +143,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        private void AccountButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
+            new SettingsDialog().ShowDialog();
         }
 
         private void ReportsTab_Click(object sender, EventArgs e)
@@ -152,6 +156,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             catch { }
             SelectTab(5);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            TimeThread = new Thread(new ThreadStart(() =>
+            {
+                while (true)
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        SettingsButton.Text = $"Settings\n{DateTime.Now.ToString("hh:mm:ss tt")}";
+                    }));
+                    Thread.Sleep(1000);
+                }
+            }));
+            TimeThread.Start();
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)
