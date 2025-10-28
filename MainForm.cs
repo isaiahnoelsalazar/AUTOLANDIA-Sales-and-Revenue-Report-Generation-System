@@ -27,11 +27,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         List<MaterialButton> TabButtons = new List<MaterialButton>();
         Thread TimeThread;
 
-        public MainForm(Startup Startup)
+        public MainForm(LoginForm LoginForm)
         {
             InitializeComponent();
 
-            Startup.Hide();
+            LoginForm.Hide();
 
             Logo.Image = Resources.autolandia_logo;
             Logo.BackColor = Color.Black;

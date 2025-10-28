@@ -84,7 +84,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecreateGlobalActivityList();
                     ProgressBar.Increment(10);
 
-                    new MainForm(this).Show();
+                    new LoginForm(this).Show();
                 }
                 catch (Exception exception)
                 {
