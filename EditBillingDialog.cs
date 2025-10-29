@@ -1,5 +1,4 @@
-﻿using CSSimpleFunctions;
-using MaterialSkin.Controls;
+﻿using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;

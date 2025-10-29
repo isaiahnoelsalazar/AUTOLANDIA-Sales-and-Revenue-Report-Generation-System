@@ -57,7 +57,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new customer: {LName + ", " + FName + " " + MName} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
+                    RecordActivity($"Added new customer: {LName}, {FName}{(!string.IsNullOrEmpty(MName) ? $" {MName}" : string.Empty)} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
                     SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_CustomerList(CustomerId, FirstName, PlateNumbers, MobileNumber, CustomerAddress, LastName, MiddleName) VALUES ('{CustomerID}', '{FName}', '(None)', '{(string.IsNullOrEmpty(MobileNumber) ? "(Mobile number not set)" : MobileNumber)}', '{(string.IsNullOrEmpty(Address) ? "(Address not set)" : Address)}', '{LName}', '{MName}')", SQL);
 

@@ -44,6 +44,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             Temp.Reverse();
 
+            MaterialCheckbox CheckBoxAll = new MaterialCheckbox();
+
             if (EndDate != null && FirstDate != null)
             {
                 TimeSpan DateRangeTimeSpan = EndDate - FirstDate;
@@ -76,6 +78,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             {
                                 RefreshEmployeeWork(FirstDate.Date, EndDate.Date);
                             };
+                            CheckBox.Click += (s, ev) =>
+                            {
+                                CheckBoxAll.Checked = false;
+                            };
                             if (!InCheckedListBox(CheckBox.Text))
                             {
                                 EmployeeListCheckBox.Items.Add(CheckBox);
@@ -84,10 +90,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 }
             }
-            
-            MaterialCheckbox CheckBoxAll = new MaterialCheckbox();
+
             CheckBoxAll.Text = $"Select All";
-            CheckBoxAll.CheckedChanged += (s, ev) =>
+            CheckBoxAll.Click += (s, ev) =>
             {
                 foreach (MaterialCheckbox CB in EmployeeListCheckBox.Items)
                 {

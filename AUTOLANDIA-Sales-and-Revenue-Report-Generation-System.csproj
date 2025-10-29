@@ -175,12 +175,6 @@
     <Compile Include="EmployeeScheduleDialog.Designer.cs">
       <DependentUpon>EmployeeScheduleDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="LinkCustomerVehicleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -381,9 +375,6 @@
     <EmbeddedResource Include="EmployeeScheduleDialog.resx">
       <DependentUpon>EmployeeScheduleDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LinkCustomerVehicleDialog.resx">
       <DependentUpon>LinkCustomerVehicleDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -507,9 +498,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="notify.py" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="autolandia.py" />
