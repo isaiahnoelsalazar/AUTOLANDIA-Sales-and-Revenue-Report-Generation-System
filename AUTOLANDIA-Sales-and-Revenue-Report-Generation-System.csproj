@@ -475,6 +475,7 @@
     <EmbeddedResource Include="TransactionsForm.resx">
       <DependentUpon>TransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LICENSE" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
