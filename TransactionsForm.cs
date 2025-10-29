@@ -29,9 +29,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterTransaction.Items.Add("Employee(s)");
             FilterTransaction.Items.Add("Plate Number");
             FilterTransaction.Items.Add("Progress");
+            FilterTransaction.SelectedIndex = 2;
 
             Global = DateTime.Now;
-            DatePickerButton.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            DatePickerButton.Text = Global.ToString("yyyy/MM/dd");
         }
 
         public void RefreshTransactions()
@@ -197,6 +198,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             string RealPlateNumber = string.Empty;
             string EmployeeList = string.Empty;
+            int ServiceCount = 0;
 
             string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
             foreach (string EmployeeId in Split)
@@ -205,7 +207,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Employee.ID.Equals(EmployeeId.Trim()))
                     {
-                        EmployeeList += $"({Employee.LastName}, {Employee.FirstName} {Employee.MiddleName})" + ",";
+                        EmployeeList += $"({Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)})" + ",";
                     }
                 }
             }
@@ -229,30 +231,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (!string.IsNullOrEmpty(Order.ServiceIDList))
             {
                 string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
-                List<ServiceItem> ServiceTemp = new List<ServiceItem>(GlobalServiceList);
-                ServiceTemp.Add(new ServiceItem("S_VCBW1", "Body Wash", "S", 120));
-                ServiceTemp.Add(new ServiceItem("S_VCBW2", "Body Wash", "M", 150));
-                ServiceTemp.Add(new ServiceItem("S_VCBW3", "Body Wash", "L", 200));
-                ServiceTemp.Add(new ServiceItem("S_VCBWT", "Body Wash", "M", 220));
-                ServiceTemp.Add(new ServiceItem("S_VCBWP", "Body Wash", "M", 400));
-                ServiceTemp.Add(new ServiceItem("S_VCA1", "Armor", "S", 100));
-                ServiceTemp.Add(new ServiceItem("S_VCA2", "Armor", "M", 100));
-                ServiceTemp.Add(new ServiceItem("S_VCA3", "Armor", "L", 100));
-                ServiceTemp.Add(new ServiceItem("S_VCW1", "Wax (Manual)", "S", 150));
-                ServiceTemp.Add(new ServiceItem("S_VCW2", "Wax (Manual)", "M", 150));
-                ServiceTemp.Add(new ServiceItem("S_VCW3", "Wax (Manual)", "L", 150));
-                foreach (ServiceItem Service in ServiceTemp)
+                ServiceCount = ServiceSplit.Length;
+                ServicePackageDetail += "[Services] - ";
+                foreach (ServiceItem Service in GlobalServiceList)
                 {
                     if (ServiceSplit.Contains(Service.ID))
                     {
-                        ServicePackageDetail += "[Services] - ";
                         ServicePackageDetail += Service.ID + ", ";
                     }
                 }
                 ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
             }
 
-            RowStyle Row = new RowStyle(SizeType.Absolute, 75f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, (50f + (5f * ServiceCount)));
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 7
@@ -270,7 +261,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -337,7 +328,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
 
-            Progress.Dock = DockStyle.Fill;
+            Progress.Dock = DockStyle.Top;
             Progress.Items.Add("Ready");
             Progress.Items.Add("In progress");
             Progress.Items.Add("Complete");
@@ -444,7 +435,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Panel.Controls.Add(LastUpdated, 5, 0);
             Panel.Controls.Add(DateCreated, 6, 0);
             TransactionList.Controls.Add(Panel);
-
+            
             tableLayoutPanel2.Width = TransactionList.Width;
         }
 

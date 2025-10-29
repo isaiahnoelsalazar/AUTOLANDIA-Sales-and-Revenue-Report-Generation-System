@@ -53,22 +53,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                 }
-                foreach (EmployeeTimeItem EmployeeTime in GlobalEmployeeTimeList)
+                if (Temp.Count > 0)
                 {
-                    if (EmployeeTime.ID.Equals(Temp[counter].ID))
+                    foreach (EmployeeTimeItem EmployeeTime in GlobalEmployeeTimeList)
                     {
-                        if (!string.IsNullOrEmpty(EmployeeTime.TimeOut))
+                        if (EmployeeTime.ID.Equals(Temp[counter].ID))
                         {
-                            Temp.Remove(Temp[counter]);
-                            counter = 0;
-                            break;
+                            if (!string.IsNullOrEmpty(EmployeeTime.TimeOut))
+                            {
+                                Temp.Remove(Temp[counter]);
+                                counter = 0;
+                                break;
+                            }
                         }
                     }
-                }
-                if (!TempTime.Contains(Temp[counter].ID))
-                {
-                    Temp.Remove(Temp[counter]);
-                    counter--;
+                    if (!TempTime.Contains(Temp[counter].ID))
+                    {
+                        Temp.Remove(Temp[counter]);
+                        counter--;
+                    }
                 }
             }
             foreach (EmployeeItem Employee in Temp)

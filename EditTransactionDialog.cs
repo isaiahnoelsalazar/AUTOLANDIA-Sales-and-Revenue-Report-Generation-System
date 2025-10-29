@@ -17,6 +17,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         string OrderID;
         double ServicePrice = 0;
         List<string> ExtraList = new List<string>();
+        VehicleItem RealVehicle = null;
+        bool IsOnLoad;
 
         public EditTransactionDialog(TransactionsForm TransactionsForm, string OrderID)
         {
@@ -143,7 +145,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 DefaultBackgroundColor = Panel.BackColor;
                             }
 
-                            Panel.Dock = DockStyle.Top;
+                            Panel.Dock = DockStyle.Fill;
                             Panel.MouseEnter += (sndr, evnt) =>
                             {
                                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -213,7 +215,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -346,262 +348,269 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void SelectServicesButton_Click(object sender, EventArgs e)
         {
-            new SelectServicesDialog(this, ServiceList.Controls).ShowDialog();
+            new SelectServicesDialog(this, ServiceList.Controls, RealVehicle.Brand).ShowDialog();
         }
 
         private void CB_Packages_TextChanged(object sender, EventArgs e)
         {
-            ServiceList.Controls.Clear();
-            ServiceList.RowStyles.Clear();
-
-            ServicePrice = 0;
-
-            VehicleItem RealVehicle = null;
-
-            try
+            if (IsOnLoad)
             {
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
+                IsOnLoad = false;
+            }
+            else
+            {
+                ServiceList.Controls.Clear();
+                ServiceList.RowStyles.Clear();
+
+                ServicePrice = 0;
+
+                VehicleItem RealVehicle = null;
+
+                try
                 {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
+                    foreach (VehicleItem Vehicle in GlobalVehicleList)
                     {
-                        RealVehicle = Vehicle;
+                        if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
+                        {
+                            RealVehicle = Vehicle;
+                        }
                     }
                 }
-            }
-            catch { }
+                catch { }
 
-            PackageItem RealPackage = null;
+                PackageItem RealPackage = null;
 
-            if (!string.IsNullOrEmpty(CB_Packages.Text))
-            {
+                if (!string.IsNullOrEmpty(CB_Packages.Text))
+                {
+                    foreach (PackageItem Package in GlobalPackageList)
+                    {
+                        if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                        {
+                            RealPackage = Package;
+                            break;
+                        }
+                    }
+                }
+
+                if (RealPackage != null)
+                {
+                    if (ServiceCheckedboxes != null)
+                    {
+                        for (int a = ServiceCheckedboxes.Count - 1; a > -1; a--)
+                        {
+                            foreach (string Item in RealPackage.Details.Split(','))
+                            {
+                                if (ServiceCheckedboxes[a].Text.Contains(Item))
+                                {
+                                    ServiceCheckedboxes[a].Checked = false;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (ServiceCheckedboxes != null)
+                {
+                    List<MaterialCheckbox> Temp = ServiceCheckedboxes.ToList();
+                    Temp.Reverse();
+
+                    for (int a = Temp.Count - 1; a > -1; a--)
+                    {
+                        if (Temp[a].Checked)
+                        {
+                            foreach (ServiceItem Service in GlobalServiceList)
+                            {
+                                if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                                {
+                                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                                    TableLayoutPanel Panel = new TableLayoutPanel
+                                    {
+                                        ColumnCount = 2
+                                    };
+                                    Label Name = new Label();
+                                    Label Price = new Label();
+
+                                    if (DefaultBackgroundColor == null)
+                                    {
+                                        DefaultBackgroundColor = Panel.BackColor;
+                                    }
+
+                                    Panel.Dock = DockStyle.Fill;
+                                    Panel.MouseEnter += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = Color.FromArgb(200, 200, 200);
+                                    };
+                                    Panel.MouseLeave += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = DefaultBackgroundColor;
+                                    };
+                                    Panel.ColumnStyles.Clear();
+                                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                                    Panel.Margin = new Padding(0);
+
+                                    Name.Dock = DockStyle.Fill;
+                                    Name.Text = Service.Name;
+                                    Name.TextAlign = ContentAlignment.MiddleLeft;
+                                    Name.MouseEnter += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = Color.FromArgb(200, 200, 200);
+                                    };
+                                    Name.MouseLeave += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = DefaultBackgroundColor;
+                                    };
+
+                                    Price.Dock = DockStyle.Fill;
+                                    Price.Text = Service.Price.ToString();
+                                    ServicePrice += Service.Price;
+                                    Price.TextAlign = ContentAlignment.MiddleCenter;
+                                    Price.MouseEnter += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = Color.FromArgb(200, 200, 200);
+                                    };
+                                    Price.MouseLeave += (sndr, evnt) =>
+                                    {
+                                        Panel.BackColor = DefaultBackgroundColor;
+                                    };
+
+                                    ServiceList.RowStyles.Add(Row);
+                                    Panel.Controls.Add(Name, 0, 0);
+                                    Panel.Controls.Add(Price, 1, 0);
+                                    ServiceList.Controls.Add(Panel);
+
+                                    tableLayoutPanel2.Width = ServiceList.Width;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 foreach (PackageItem Package in GlobalPackageList)
                 {
                     if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
                     {
-                        RealPackage = Package;
-                        break;
-                    }
-                }
-            }
-
-            if (RealPackage != null)
-            {
-                if (ServiceCheckedboxes != null)
-                {
-                    for (int a = ServiceCheckedboxes.Count - 1; a > -1; a--)
-                    {
-                        foreach (string Item in RealPackage.Details.Split(','))
-                        {
-                            if (ServiceCheckedboxes[a].Text.Contains(Item))
-                            {
-                                ServiceCheckedboxes[a].Checked = false;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (ServiceCheckedboxes != null)
-            {
-                List<MaterialCheckbox> Temp = ServiceCheckedboxes.ToList();
-                Temp.Reverse();
-
-                for (int a = Temp.Count - 1; a > -1; a--)
-                {
-                    if (Temp[a].Checked)
-                    {
-                        foreach (ServiceItem Service in GlobalServiceList)
-                        {
-                            if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
-                            {
-                                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                                TableLayoutPanel Panel = new TableLayoutPanel
-                                {
-                                    ColumnCount = 2
-                                };
-                                Label Name = new Label();
-                                Label Price = new Label();
-
-                                if (DefaultBackgroundColor == null)
-                                {
-                                    DefaultBackgroundColor = Panel.BackColor;
-                                }
-
-                                Panel.Dock = DockStyle.Top;
-                                Panel.MouseEnter += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                                };
-                                Panel.MouseLeave += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = DefaultBackgroundColor;
-                                };
-                                Panel.ColumnStyles.Clear();
-                                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                                Panel.Margin = new Padding(0);
-
-                                Name.Dock = DockStyle.Fill;
-                                Name.Text = Service.Name;
-                                Name.TextAlign = ContentAlignment.MiddleLeft;
-                                Name.MouseEnter += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                                };
-                                Name.MouseLeave += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = DefaultBackgroundColor;
-                                };
-
-                                Price.Dock = DockStyle.Fill;
-                                Price.Text = Service.Price.ToString();
-                                ServicePrice += Service.Price;
-                                Price.TextAlign = ContentAlignment.MiddleCenter;
-                                Price.MouseEnter += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = Color.FromArgb(200, 200, 200);
-                                };
-                                Price.MouseLeave += (sndr, evnt) =>
-                                {
-                                    Panel.BackColor = DefaultBackgroundColor;
-                                };
-
-                                ServiceList.RowStyles.Add(Row);
-                                Panel.Controls.Add(Name, 0, 0);
-                                Panel.Controls.Add(Price, 1, 0);
-                                ServiceList.Controls.Add(Panel);
-
-                                tableLayoutPanel2.Width = ServiceList.Width;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-
-            foreach (PackageItem Package in GlobalPackageList)
-            {
-                if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
-                {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                    TableLayoutPanel Panel = new TableLayoutPanel
-                    {
-                        ColumnCount = 2
-                    };
-                    Label Name = new Label();
-                    Label Price = new Label();
-
-                    if (DefaultBackgroundColor == null)
-                    {
-                        DefaultBackgroundColor = Panel.BackColor;
-                    }
-
-                    Panel.Dock = DockStyle.Top;
-                    Panel.MouseEnter += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
-                    };
-                    Panel.MouseLeave += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = DefaultBackgroundColor;
-                    };
-                    Panel.ColumnStyles.Clear();
-                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                    Panel.Margin = new Padding(0);
-
-                    Name.Dock = DockStyle.Fill;
-                    Name.Text = Package.Name;
-                    Name.TextAlign = ContentAlignment.MiddleLeft;
-                    Name.MouseEnter += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
-                    };
-                    Name.MouseLeave += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = DefaultBackgroundColor;
-                    };
-
-                    Price.Dock = DockStyle.Fill;
-                    Price.Text = Package.Price.ToString();
-                    Price.TextAlign = ContentAlignment.MiddleCenter;
-                    Price.MouseEnter += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
-                    };
-                    Price.MouseLeave += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = DefaultBackgroundColor;
-                    };
-
-                    ServiceList.RowStyles.Add(Row);
-                    Panel.Controls.Add(Name, 0, 0);
-                    Panel.Controls.Add(Price, 1, 0);
-                    ServiceList.Controls.Add(Panel);
-
-                    tableLayoutPanel2.Width = ServiceList.Width;
-
-                    foreach (string Item in Package.Details.Split(','))
-                    {
-                        RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel1 = new TableLayoutPanel
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 2
                         };
-                        Label Name1 = new Label();
-                        Label Price1 = new Label();
+                        Label Name = new Label();
+                        Label Price = new Label();
 
                         if (DefaultBackgroundColor == null)
                         {
-                            DefaultBackgroundColor = Panel1.BackColor;
+                            DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel1.Dock = DockStyle.Top;
-                        Panel1.MouseEnter += (sndr, evnt) =>
+                        Panel.Dock = DockStyle.Fill;
+                        Panel.MouseEnter += (sndr, evnt) =>
                         {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
                         };
-                        Panel1.MouseLeave += (sndr, evnt) =>
+                        Panel.MouseLeave += (sndr, evnt) =>
                         {
-                            Panel1.BackColor = DefaultBackgroundColor;
+                            Panel.BackColor = DefaultBackgroundColor;
                         };
-                        Panel1.ColumnStyles.Clear();
-                        Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                        Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                        Panel1.Margin = new Padding(0);
+                        Panel.ColumnStyles.Clear();
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                        Panel.Margin = new Padding(0);
 
-                        Name1.Dock = DockStyle.Fill;
-                        Name1.Text = Item;
-                        Name1.TextAlign = ContentAlignment.MiddleLeft;
-                        Name1.MouseEnter += (sndr, evnt) =>
+                        Name.Dock = DockStyle.Fill;
+                        Name.Text = Package.Name;
+                        Name.TextAlign = ContentAlignment.MiddleLeft;
+                        Name.MouseEnter += (sndr, evnt) =>
                         {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
                         };
-                        Name1.MouseLeave += (sndr, evnt) =>
+                        Name.MouseLeave += (sndr, evnt) =>
                         {
-                            Panel1.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price1.Dock = DockStyle.Fill;
-                        Price1.Text = "";
-                        Price1.TextAlign = ContentAlignment.MiddleCenter;
-                        Price1.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price1.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = DefaultBackgroundColor;
+                            Panel.BackColor = DefaultBackgroundColor;
                         };
 
-                        ServiceList.RowStyles.Add(Row1);
-                        Panel1.Controls.Add(Name1, 0, 0);
-                        Panel1.Controls.Add(Price1, 1, 0);
-                        ServiceList.Controls.Add(Panel1);
+                        Price.Dock = DockStyle.Fill;
+                        Price.Text = Package.Price.ToString();
+                        Price.TextAlign = ContentAlignment.MiddleCenter;
+                        Price.MouseEnter += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        };
+                        Price.MouseLeave += (sndr, evnt) =>
+                        {
+                            Panel.BackColor = DefaultBackgroundColor;
+                        };
+
+                        ServiceList.RowStyles.Add(Row);
+                        Panel.Controls.Add(Name, 0, 0);
+                        Panel.Controls.Add(Price, 1, 0);
+                        ServiceList.Controls.Add(Panel);
 
                         tableLayoutPanel2.Width = ServiceList.Width;
+
+                        foreach (string Item in Package.Details.Split(','))
+                        {
+                            RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
+                            TableLayoutPanel Panel1 = new TableLayoutPanel
+                            {
+                                ColumnCount = 2
+                            };
+                            Label Name1 = new Label();
+                            Label Price1 = new Label();
+
+                            if (DefaultBackgroundColor == null)
+                            {
+                                DefaultBackgroundColor = Panel1.BackColor;
+                            }
+
+                            Panel1.Dock = DockStyle.Top;
+                            Panel1.MouseEnter += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                            };
+                            Panel1.MouseLeave += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = DefaultBackgroundColor;
+                            };
+                            Panel1.ColumnStyles.Clear();
+                            Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                            Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                            Panel1.Margin = new Padding(0);
+
+                            Name1.Dock = DockStyle.Fill;
+                            Name1.Text = Item;
+                            Name1.TextAlign = ContentAlignment.MiddleLeft;
+                            Name1.MouseEnter += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                            };
+                            Name1.MouseLeave += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = DefaultBackgroundColor;
+                            };
+
+                            Price1.Dock = DockStyle.Fill;
+                            Price1.Text = "";
+                            Price1.TextAlign = ContentAlignment.MiddleCenter;
+                            Price1.MouseEnter += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                            };
+                            Price1.MouseLeave += (sndr, evnt) =>
+                            {
+                                Panel1.BackColor = DefaultBackgroundColor;
+                            };
+
+                            ServiceList.RowStyles.Add(Row1);
+                            Panel1.Controls.Add(Name1, 0, 0);
+                            Panel1.Controls.Add(Price1, 1, 0);
+                            ServiceList.Controls.Add(Panel1);
+
+                            tableLayoutPanel2.Width = ServiceList.Width;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }
@@ -731,8 +740,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     TB_LastUpdated.Text = Order.LastUpdated;
                     TB_DateCreated.Text = Order.DateCreated;
 
-                    VehicleItem RealVehicle = null;
-
                     foreach (VehicleItem Vehicle in GlobalVehicleList)
                     {
                         if (Vehicle.ID.Equals(Order.VehicleId))
@@ -792,7 +799,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             DefaultBackgroundColor = Panel.BackColor;
                                         }
 
-                                        Panel.Dock = DockStyle.Top;
+                                        Panel.Dock = DockStyle.Fill;
                                         Panel.MouseEnter += (sndr, evnt) =>
                                         {
                                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -847,6 +854,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             {
                                 if (Package.ID.Equals(Order.PackageID) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
                                 {
+                                    for (int a = 0; a < CB_Packages.Items.Count; a++)
+                                    {
+                                        if (CB_Packages.Items[a].Equals(Package.Name))
+                                        {
+                                            IsOnLoad = true;
+                                            CB_Packages.SelectedIndex = a;
+                                            break;
+                                        }
+                                    }
+
                                     RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
                                     TableLayoutPanel Panel = new TableLayoutPanel
                                     {
@@ -860,7 +877,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                         DefaultBackgroundColor = Panel.BackColor;
                                     }
 
-                                    Panel.Dock = DockStyle.Top;
+                                    Panel.Dock = DockStyle.Fill;
                                     Panel.MouseEnter += (sndr, evnt) =>
                                     {
                                         Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -994,7 +1011,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             DefaultBackgroundColor = Panel.BackColor;
                                         }
 
-                                        Panel.Dock = DockStyle.Top;
+                                        Panel.Dock = DockStyle.Fill;
                                         Panel.MouseEnter += (sndr, evnt) =>
                                         {
                                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -1049,6 +1066,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             {
                                 if (Package.ID.Equals(Order.PackageID) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
                                 {
+                                    for (int a = 0; a < CB_Packages.Items.Count; a++)
+                                    {
+                                        if (CB_Packages.Items[a].Equals(Package.Name))
+                                        {
+                                            IsOnLoad = true;
+                                            CB_Packages.SelectedIndex = a;
+                                            break;
+                                        }
+                                    }
+
                                     RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
                                     TableLayoutPanel Panel = new TableLayoutPanel
                                     {
@@ -1062,7 +1089,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                         DefaultBackgroundColor = Panel.BackColor;
                                     }
 
-                                    Panel.Dock = DockStyle.Top;
+                                    Panel.Dock = DockStyle.Fill;
                                     Panel.MouseEnter += (sndr, evnt) =>
                                     {
                                         Panel.BackColor = Color.FromArgb(200, 200, 200);

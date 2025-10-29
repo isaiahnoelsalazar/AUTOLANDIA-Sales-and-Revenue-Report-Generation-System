@@ -25,19 +25,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Temp.Add(Vehicle);
             }
 
-            for (int counter = 0; counter < Temp.Count; counter++)
-            {
-                foreach (OrderItem Order in GlobalOrderList)
-                {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
-                    {
-                        Temp.Remove(Temp[counter]);
-                        counter = 0;
-                        break;
-                    }
-                }
-            }
-
             this.LinkCustomerVehicleDialog = LinkCustomerVehicleDialog;
 
             VehicleList.Controls.Clear();
@@ -65,7 +52,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
-                        counter = 0;
+                        counter--;
                         break;
                     }
                 }
@@ -98,7 +85,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
-                        counter = 0;
+                        counter--;
                         break;
                     }
                 }
@@ -136,7 +123,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DefaultBackgroundColor = Panel.BackColor;
                     }
 
-                    Panel.Dock = DockStyle.Top;
+                    Panel.Dock = DockStyle.Fill;
                     Panel.MouseEnter += (sndr, evnt) =>
                     {
                         Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -204,7 +191,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DefaultBackgroundColor = Panel.BackColor;
                     }
 
-                    Panel.Dock = DockStyle.Top;
+                    Panel.Dock = DockStyle.Fill;
                     Panel.MouseEnter += (sndr, evnt) =>
                     {
                         Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -274,7 +261,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -368,7 +355,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -436,7 +423,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -513,7 +500,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -581,7 +568,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -658,7 +645,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -734,7 +721,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);

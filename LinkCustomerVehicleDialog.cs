@@ -92,7 +92,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;
 
-                    RecordActivity($"Added new vehicle for [Customer ID {CustomerDetails.ID}: {Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}] - [{VehicleDetails.Brand}, {VehicleDetails.Model}, {VehicleDetails.Size}, {VehicleDetails.PlateNumber}]");
+                    RecordActivity($"Added new vehicle for [Customer ID {CustomerDetails.ID}: {CustomerDetails.LastName}, {CustomerDetails.FirstName} {CustomerDetails.MiddleName}] - [{VehicleDetails.Brand}, {VehicleDetails.Model}, {VehicleDetails.Size}, {VehicleDetails.PlateNumber}]");
 
                     SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_CustomerList SET PlateNumbers='{FinalCustomerPlateNumbers}' WHERE CustomerId='{CustomerDetails.ID}'", SQL);
                     SqliteCommand Command2 = new SqliteCommand($"UPDATE AUTOLANDIA_VehicleList SET CustomerId='{CustomerDetails.ID}' WHERE VehicleId='{VehicleDetails.ID}'", SQL);

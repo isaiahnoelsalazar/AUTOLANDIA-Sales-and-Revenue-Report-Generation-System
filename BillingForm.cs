@@ -126,7 +126,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -157,7 +157,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Balance.Dock = DockStyle.Fill;
-            Balance.Text = Billing.Discount > 0 ? $"{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100)))} ({Billing.Discount}% | {Billing.Balance})" : $"{Billing.Balance}";
+            Balance.Text = Billing.Discount > 0 ? $"₱{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100))).ToString("0.00")} ({Billing.Discount}% | ₱{Billing.Balance.ToString("0.00")})" : $"₱{Billing.Balance.ToString("0.00")}";
             Balance.TextAlign = ContentAlignment.MiddleCenter;
             Balance.MouseEnter += (sndr, evnt) =>
             {

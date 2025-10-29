@@ -41,7 +41,7 @@
             this.TB_Username.AnimateReadOnly = false;
             this.TB_Username.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Username.Depth = 0;
-            this.TB_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Username.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Username.Hint = "Username";
             this.TB_Username.LeadingIcon = null;
             this.TB_Username.Location = new System.Drawing.Point(11, 149);
@@ -78,7 +78,7 @@
             this.TB_Password.AnimateReadOnly = false;
             this.TB_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Password.Depth = 0;
-            this.TB_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Password.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Password.Hint = "Password";
             this.TB_Password.LeadingIcon = null;
             this.TB_Password.Location = new System.Drawing.Point(11, 215);
@@ -129,6 +129,7 @@
             this.Padding = new System.Windows.Forms.Padding(3, 24, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.ResumeLayout(false);
 
         }

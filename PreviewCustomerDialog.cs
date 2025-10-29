@@ -58,7 +58,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         DefaultBackgroundColor = Panel.BackColor;
                     }
 
-                    Panel.Dock = DockStyle.Top;
+                    Panel.Dock = DockStyle.Fill;
                     Panel.MouseEnter += (sndr, evnt) =>
                     {
                         Panel.BackColor = Color.FromArgb(200, 200, 200);

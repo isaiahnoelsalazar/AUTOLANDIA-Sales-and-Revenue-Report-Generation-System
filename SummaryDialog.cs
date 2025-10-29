@@ -71,7 +71,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         if (DateTimeRange.Contains(DateTime.Parse(Order.DateCreated).Date) && Split.Contains(Employee.ID.Trim()))
                         {
                             MaterialCheckbox CheckBox = new MaterialCheckbox();
-                            CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                            CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
                             CheckBox.CheckedChanged += (s, ev) =>
                             {
                                 RefreshEmployeeWork(FirstDate.Date, EndDate.Date);
@@ -159,9 +159,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         foreach (BillingItem Billing in GlobalBillingList)
                         {
-                            if (Billing.ID.Equals(Order.ID))
+                            if (Billing.ID.Equals(Order.ID) && Billing.Progress.Equals("Paid"))
                             {
-                                TotalSalary += ((Billing.Balance * 0.3) / Split.Count);
+                                TotalSalary += (((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count);
                             }
                         }
                     }
@@ -180,7 +180,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     DefaultBackgroundColor = Panel.BackColor;
                 }
 
-                Panel.Dock = DockStyle.Top;
+                Panel.Dock = DockStyle.Fill;
                 Panel.MouseEnter += (sndr, evnt) =>
                 {
                     Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -195,7 +195,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.Margin = new Padding(0);
 
                 Name.Dock = DockStyle.Fill;
-                Name.Text = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                Name.Text = $"{Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
                 Name.TextAlign = ContentAlignment.MiddleCenter;
                 Name.MouseEnter += (sndr, evnt) =>
                 {
@@ -207,7 +207,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 };
 
                 Salary.Dock = DockStyle.Fill;
-                Salary.Text = TotalSalary.ToString();
+                Salary.Text = $"₱{TotalSalary.ToString("0.00")}";
                 Salary.TextAlign = ContentAlignment.MiddleCenter;
                 Salary.MouseEnter += (sndr, evnt) =>
                 {
@@ -257,6 +257,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         string AllVehiclePlateNumbers = string.Empty;
                         string AllAmount = string.Empty;
                         string ServicePackageDetail = string.Empty;
+                        int Vehicles = 0;
 
                         foreach (OrderItem Order in GlobalOrderList)
                         {
@@ -277,15 +278,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                     {
                                         if (Employee.ID.Equals(CheckedID))
                                         {
-                                            EmployeeName = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                                            EmployeeName = $"{Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
 
                                             foreach (VehicleItem Vehicle in GlobalVehicleList)
                                             {
                                                 if (Vehicle.ID.Equals(Order.VehicleId))
                                                 {
                                                     RealVehicle = Vehicle;
-                                                    AllVehiclePlateNumbers += $"{Vehicle.PlateNumber}\n";
-                                                    AllVehiclesWorkedOn += $"{Vehicle.Brand} {Vehicle.Model}\n";
+                                                    AllVehiclePlateNumbers += $"{Vehicle.PlateNumber}\n\n";
+                                                    AllVehiclesWorkedOn += $"{Vehicle.Brand} {Vehicle.Model}\n\n";
+                                                    Vehicles++;
                                                 }
                                             }
 
@@ -293,7 +295,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             {
                                                 if (Billing.ID.Equals(Order.ID))
                                                 {
-                                                    AllAmount += $"{((Billing.Balance * 0.3) / Split.Count)}\n";
+                                                    AllAmount += $"{(Billing.Progress.Equals("Paid") ? $"₱{(((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count).ToString("0.00")}" : "Bill still unpaid")}\n\n";
                                                 }
                                             }
 
@@ -308,33 +310,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             if (!string.IsNullOrEmpty(Order.ServiceIDList))
                                             {
                                                 string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
+                                                ServicePackageDetail += "[Services] - ";
                                                 foreach (ServiceItem Service in GlobalServiceList)
-                                                {
-                                                    if (ServiceSplit.Contains(Service.ID))
-                                                    {
-                                                        ServicePackageDetail += "[Services] - ";
-                                                        ServicePackageDetail += Service.Name + ", ";
-                                                    }
-                                                }
-                                                List<ServiceItem> TempServiceForGeneral = new List<ServiceItem>();
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW1", "Body Wash", "S", 120));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW2", "Body Wash", "M", 150));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBW3", "Body Wash", "L", 200));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBWT", "Body Wash", "M", 220));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCBWP", "Body Wash", "M", 400));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA1", "Armor", "S", 100));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA2", "Armor", "M", 100));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCA3", "Armor", "L", 100));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW1", "Wax (Manual)", "S", 150));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW2", "Wax (Manual)", "M", 150));
-                                                TempServiceForGeneral.Add(new ServiceItem("S_VCW3", "Wax (Manual)", "L", 150));
-
-                                                if (string.IsNullOrEmpty(ServicePackageDetail))
-                                                {
-                                                    ServicePackageDetail += "[Services] - ";
-                                                }
-
-                                                foreach (ServiceItem Service in TempServiceForGeneral)
                                                 {
                                                     if (ServiceSplit.Contains(Service.ID))
                                                     {
@@ -342,6 +319,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                                     }
                                                 }
                                                 ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
+                                                ServicePackageDetail += "\n\n";
                                             }
                                         }
                                     }
@@ -349,7 +327,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             }
                         }
 
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 75f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, (100f + (25f * Vehicles)));
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 5
@@ -365,7 +343,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             DefaultBackgroundColor = Panel.BackColor;
                         }
 
-                        Panel.Dock = DockStyle.Top;
+                        Panel.Dock = DockStyle.Fill;
                         Panel.MouseEnter += (sndr, evnt) =>
                         {
                             Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -383,7 +361,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         Panel.Margin = new Padding(0);
 
                         Employees.Dock = DockStyle.Fill;
-                        Employees.Text = EmployeeName;
+                        Employees.Text = EmployeeName.Trim();
                         Employees.TextAlign = ContentAlignment.MiddleCenter;
                         Employees.MouseEnter += (sndr, evnt) =>
                         {
@@ -395,7 +373,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         };
 
                         PlateNumber.Dock = DockStyle.Fill;
-                        PlateNumber.Text = AllVehiclePlateNumbers.Substring(0, AllVehiclePlateNumbers.Length - 1);
+                        PlateNumber.Text = AllVehiclePlateNumbers.Substring(0, AllVehiclePlateNumbers.Length - 1).Trim();
                         PlateNumber.TextAlign = ContentAlignment.MiddleCenter;
                         PlateNumber.MouseEnter += (sndr, evnt) =>
                         {
@@ -407,7 +385,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         };
 
                         VehicleName.Dock = DockStyle.Fill;
-                        VehicleName.Text = AllVehiclesWorkedOn.Substring(0, AllVehiclesWorkedOn.Length - 1);
+                        VehicleName.Text = AllVehiclesWorkedOn.Substring(0, AllVehiclesWorkedOn.Length - 1).Trim();
                         VehicleName.TextAlign = ContentAlignment.MiddleCenter;
                         VehicleName.MouseEnter += (sndr, evnt) =>
                         {
@@ -419,7 +397,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         };
 
                         Service_Package.Dock = DockStyle.Fill;
-                        Service_Package.Text = ServicePackageDetail;
+                        Service_Package.Text = ServicePackageDetail.Trim();
                         Service_Package.TextAlign = ContentAlignment.MiddleCenter;
                         Service_Package.MouseEnter += (sndr, evnt) =>
                         {
@@ -431,7 +409,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         };
 
                         Amount.Dock = DockStyle.Fill;
-                        Amount.Text = AllAmount.Substring(0, AllAmount.Length - 1);
+                        Amount.Text = AllAmount.Substring(0, AllAmount.Length - 1).Trim();
                         Amount.TextAlign = ContentAlignment.MiddleCenter;
                         Amount.MouseEnter += (sndr, evnt) =>
                         {
@@ -471,225 +449,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
         }
-
-        //void RefreshBilling(DateTime DateTimeStart, DateTime DateTimeEnd)
-        //{
-        //    DateRange.Text = $"{DateTimeStart.Date.ToString("d")} - {DateTimeEnd.Date.ToString("d")}";
-
-        //    TimeSpan DateRangeTimeSpan = DateTimeEnd - DateTimeStart;
-        //    DateTime[] DateTimeRange = new DateTime[DateRangeTimeSpan.Days + 1];
-
-        //    for (int a = 0; a < DateTimeRange.Length; a++)
-        //    {
-        //        if (DateTimeRange[DateTimeRange.Length - 1].CompareTo(DateTimeEnd) != 0)
-        //        {
-        //            DateTimeRange[a] = DateTimeStart.AddDays(a);
-        //        }
-        //    }
-
-        //    double TotalSales = 0;
-        //    double TotalTransactions = 0;
-
-        //    foreach (BillingItem Billing in GlobalBillingList)
-        //    {
-        //        if (DateTimeRange.Contains(DateTime.Parse(Billing.DateCreated).Date) && Billing.Progress.Equals("Paid"))
-        //        {
-        //            TotalSales += Convert.ToDouble(Billing.Balance);
-        //            TotalTransactions++;
-        //        }
-        //    }
-
-        //    SummaryText.Text = $"Total sales: {TotalSales}\n\nTotal transactions: {TotalTransactions}";
-
-        //    TransactionList.Controls.Clear();
-        //    TransactionList.RowStyles.Clear();
-
-        //    foreach (OrderItem Order in GlobalOrderList)
-        //    {
-        //        if (DateTimeRange.Contains(DateTime.Parse(Order.DateCreated).Date))
-        //        {
-        //            VehicleItem RealVehicle = null;
-        //            string EmployeeList = string.Empty;
-
-        //            string[] Temp = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
-        //            List<string> Split = new List<string>();
-
-        //            foreach (string S in Temp)
-        //            {
-        //                Split.Add(S.Trim());
-        //            }
-
-        //            foreach (string EmployeeId in Split)
-        //            {
-        //                foreach (EmployeeItem Employee in GlobalEmployeeList)
-        //                {
-        //                    if (Employee.ID.Equals(EmployeeId.Trim()))
-        //                    {
-        //                        EmployeeList += $"({Employee.LastName}, {Employee.FirstName} {Employee.MiddleName})" + ",";
-        //                    }
-        //                }
-        //            }
-        //            EmployeeList = EmployeeList.Substring(0, EmployeeList.Length - 1);
-        //            foreach (VehicleItem Vehicle in GlobalVehicleList)
-        //            {
-        //                if (Vehicle.ID.Equals(Order.VehicleId))
-        //                {
-        //                    RealVehicle = Vehicle;
-        //                }
-        //            }
-        //            double RealAmount = 0;
-        //            foreach (BillingItem Billing in GlobalBillingList)
-        //            {
-        //                if (Billing.ID.Equals(Order.ID))
-        //                {
-        //                    RealAmount = Billing.Balance;
-        //                }
-        //            }
-        //            string ServicePackageDetail = string.Empty;
-        //            foreach (PackageItem Package in GlobalPackageList)
-        //            {
-        //                if (Package.ID.Equals(Order.PackageID))
-        //                {
-        //                    ServicePackageDetail += $"[{Package.Name}, {Package.Size}] - {Package.Details} ";
-        //                    break;
-        //                }
-        //            }
-        //            if (!string.IsNullOrEmpty(Order.ServiceIDList))
-        //            {
-        //                string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
-        //                foreach (ServiceItem Service in GlobalServiceList)
-        //                {
-        //                    if (ServiceSplit.Contains(Service.ID))
-        //                    {
-        //                        ServicePackageDetail += "[Services] - ";
-        //                        ServicePackageDetail += Service.Name + ", ";
-        //                    }
-        //                }
-        //                ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
-        //            }
-
-        //            RowStyle Row = new RowStyle(SizeType.Absolute, 75f);
-        //            TableLayoutPanel Panel = new TableLayoutPanel
-        //            {
-        //                ColumnCount = 5
-        //            };
-        //            Label Employees = new Label();
-        //            Label PlateNumber = new Label();
-        //            Label VehicleName = new Label();
-        //            Label Service_Package = new Label();
-        //            Label Amount = new Label();
-
-        //            if (DefaultBackgroundColor == null)
-        //            {
-        //                DefaultBackgroundColor = Panel.BackColor;
-        //            }
-
-        //            Panel.Dock = DockStyle.Top;
-        //            Panel.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            Panel.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-        //            Panel.ColumnStyles.Clear();
-        //            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-        //            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-        //            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-        //            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-        //            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-        //            Panel.Margin = new Padding(0);
-
-        //            Employees.Dock = DockStyle.Fill;
-        //            Employees.Text = EmployeeList;
-        //            Employees.TextAlign = ContentAlignment.MiddleCenter;
-        //            Employees.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            Employees.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-
-        //            PlateNumber.Dock = DockStyle.Fill;
-        //            PlateNumber.Text = RealVehicle.PlateNumber;
-        //            PlateNumber.TextAlign = ContentAlignment.MiddleCenter;
-        //            PlateNumber.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            PlateNumber.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-
-        //            VehicleName.Dock = DockStyle.Fill;
-        //            VehicleName.Text = $"{RealVehicle.Brand}, {RealVehicle.Model}";
-        //            VehicleName.TextAlign = ContentAlignment.MiddleCenter;
-        //            VehicleName.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            VehicleName.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-
-        //            Service_Package.Dock = DockStyle.Fill;
-        //            Service_Package.Text = ServicePackageDetail;
-        //            Service_Package.TextAlign = ContentAlignment.MiddleCenter;
-        //            Service_Package.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            Service_Package.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-
-        //            Amount.Dock = DockStyle.Fill;
-        //            Amount.Text = RealAmount.ToString();
-        //            Amount.TextAlign = ContentAlignment.MiddleCenter;
-        //            Amount.MouseEnter += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = Color.FromArgb(200, 200, 200);
-        //            };
-        //            Amount.MouseLeave += (sndr, evnt) =>
-        //            {
-        //                Panel.BackColor = DefaultBackgroundColor;
-        //            };
-
-        //            Panel.Click += (sndr, evnt) =>
-        //            {
-        //            };
-        //            Employees.Click += (sndr, evnt) =>
-        //            {
-        //            };
-        //            PlateNumber.Click += (sndr, evnt) =>
-        //            {
-        //            };
-        //            VehicleName.Click += (sndr, evnt) =>
-        //            {
-        //            };
-        //            Service_Package.Click += (sndr, evnt) =>
-        //            {
-        //            };
-
-        //            TransactionList.RowStyles.Add(Row);
-        //            Panel.Controls.Add(Employees, 0, 0);
-        //            Panel.Controls.Add(PlateNumber, 1, 0);
-        //            Panel.Controls.Add(VehicleName, 2, 0);
-        //            Panel.Controls.Add(Service_Package, 3, 0);
-        //            Panel.Controls.Add(Amount, 4, 0);
-        //            TransactionList.Controls.Add(Panel);
-
-        //            tableLayoutPanel2.Width = TransactionList.Width;
-        //        }
-        //    }
-        //}
-
         private void SummaryCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
             if (e.Start.Date.CompareTo(FirstDate) < 0)
@@ -737,7 +496,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             if (DateTimeRange.Contains(DateTime.Parse(Order.DateCreated).Date) && Split.Contains(Employee.ID.Trim()))
                             {
                                 MaterialCheckbox CheckBox = new MaterialCheckbox();
-                                CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                                CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
                                 CheckBox.CheckedChanged += (s, ev) =>
                                 {
                                     RefreshEmployeeWork(FirstDate.Date, EndDate.Date);
@@ -763,7 +522,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             if (DateTimeRange.Contains(DateTime.Parse(Order.DateCreated).Date) && Split.Contains(Employee.ID.Trim()))
                             {
                                 MaterialCheckbox CheckBox = new MaterialCheckbox();
-                                CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+                                CheckBox.Text = $"{Employee.ID}: {Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
                                 CheckBox.CheckedChanged += (s, ev) =>
                                 {
                                     RefreshEmployeeWork(FirstDate.Date, EndDate.Date);

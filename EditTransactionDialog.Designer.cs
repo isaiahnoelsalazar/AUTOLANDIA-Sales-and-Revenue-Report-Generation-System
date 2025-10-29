@@ -38,7 +38,6 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.SelectServicesButton = new MaterialSkin.Controls.MaterialButton();
             this.PackageLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.PickVehicleButton = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.TB_Vehicle = new MaterialSkin.Controls.MaterialTextBox();
             this.TB_ID = new MaterialSkin.Controls.MaterialLabel();
@@ -234,28 +233,6 @@
             this.PackageLabel.TabIndex = 77;
             this.PackageLabel.Text = "Pick Service/Package";
             // 
-            // PickVehicleButton
-            // 
-            this.PickVehicleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PickVehicleButton.AutoSize = false;
-            this.PickVehicleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PickVehicleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.PickVehicleButton.Depth = 0;
-            this.PickVehicleButton.HighEmphasis = true;
-            this.PickVehicleButton.Icon = null;
-            this.PickVehicleButton.Location = new System.Drawing.Point(446, 296);
-            this.PickVehicleButton.Margin = new System.Windows.Forms.Padding(8);
-            this.PickVehicleButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.PickVehicleButton.Name = "PickVehicleButton";
-            this.PickVehicleButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.PickVehicleButton.Size = new System.Drawing.Size(36, 50);
-            this.PickVehicleButton.TabIndex = 81;
-            this.PickVehicleButton.Text = ">";
-            this.PickVehicleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.PickVehicleButton.UseAccentColor = false;
-            this.PickVehicleButton.UseVisualStyleBackColor = true;
-            this.PickVehicleButton.Click += new System.EventHandler(this.PickVehicleButton_Click);
-            // 
             // materialLabel5
             // 
             this.materialLabel5.AutoSize = true;
@@ -276,6 +253,7 @@
             this.TB_Vehicle.AnimateReadOnly = false;
             this.TB_Vehicle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Vehicle.Depth = 0;
+            this.TB_Vehicle.Enabled = false;
             this.TB_Vehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Vehicle.LeadingIcon = null;
             this.TB_Vehicle.Location = new System.Drawing.Point(176, 296);
@@ -284,7 +262,7 @@
             this.TB_Vehicle.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Vehicle.Multiline = false;
             this.TB_Vehicle.Name = "TB_Vehicle";
-            this.TB_Vehicle.Size = new System.Drawing.Size(254, 50);
+            this.TB_Vehicle.Size = new System.Drawing.Size(306, 50);
             this.TB_Vehicle.TabIndex = 79;
             this.TB_Vehicle.Text = "";
             this.TB_Vehicle.TrailingIcon = null;
@@ -531,7 +509,6 @@
             this.Controls.Add(this.materialLabel7);
             this.Controls.Add(this.CB_Progress);
             this.Controls.Add(this.TB_ID);
-            this.Controls.Add(this.PickVehicleButton);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.TB_Vehicle);
             this.Controls.Add(this.PackageLabel);
@@ -570,7 +547,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialButton SelectServicesButton;
         private MaterialSkin.Controls.MaterialLabel PackageLabel;
-        private MaterialSkin.Controls.MaterialButton PickVehicleButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialTextBox TB_Vehicle;
         private MaterialSkin.Controls.MaterialLabel TB_ID;

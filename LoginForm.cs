@@ -25,5 +25,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             new MainForm(this).ShowDialog();
         }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

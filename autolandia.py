@@ -87,6 +87,17 @@ if not os.path.isfile("AUTOLANDIA.db"):
     a.createTable("AUTOLANDIA", "AUTOLANDIA_OrderList", AUTOLANDIA_OrderList_columns)
     a.createTable("AUTOLANDIA", "AUTOLANDIA_BillingList", AUTOLANDIA_BillingList_columns)
 
+    '''employee_value_0 = [
+    {"EmployeeId": "1"},
+    {"FirstName": "FIRSTNAME"},
+    {"MobileNumber": "09123456789"},
+    {"EmployeeAddress": "SAMPLE ADDRESS"},
+    {"LastName": "LASTNAME"},
+    {"MiddleName": "MIDDLENAME"},
+    {"EmployeeDocuments": "V"}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_0)'''
+
     package_value_0 = [
     {"PackageId": "P_B1"},
     {"PackageName": "Basic"},
@@ -1267,6 +1278,85 @@ if not os.path.isfile("AUTOLANDIA.db"):
     {"ServicePrice": 8000}
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_139)
+
+    service_value_140 = [
+    {"ServiceId": "S_VCBW1"},
+    {"ServiceName": "Body Wash"},
+    {"ServiceSize": "S"},
+    {"ServicePrice": 120}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_140)
+    service_value_141 = [
+    {"ServiceId": "S_VCBW2"},
+    {"ServiceName": "Body Wash"},
+    {"ServiceSize": "M"},
+    {"ServicePrice": 150}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_141)
+    service_value_142 = [
+    {"ServiceId": "S_VCBW3"},
+    {"ServiceName": "Body Wash"},
+    {"ServiceSize": "L"},
+    {"ServicePrice": 200}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_142)
+    service_value_143 = [
+    {"ServiceId": "S_VCBWT"},
+    {"ServiceName": "Body Wash"},
+    {"ServiceSize": "M"},
+    {"ServicePrice": 220}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_143)
+    service_value_144 = [
+    {"ServiceId": "S_VCBWP"},
+    {"ServiceName": "Body Wash"},
+    {"ServiceSize": "M"},
+    {"ServicePrice": 400}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_144)
+    service_value_145 = [
+    {"ServiceId": "S_VCA1"},
+    {"ServiceName": "Armor"},
+    {"ServiceSize": "S"},
+    {"ServicePrice": 100}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_145)
+    service_value_146 = [
+    {"ServiceId": "S_VCA2"},
+    {"ServiceName": "Armor"},
+    {"ServiceSize": "M"},
+    {"ServicePrice": 100}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_146)
+    service_value_147 = [
+    {"ServiceId": "S_VCA3"},
+    {"ServiceName": "Armor"},
+    {"ServiceSize": "L"},
+    {"ServicePrice": 100}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_147)
+    service_value_148 = [
+    {"ServiceId": "S_VCW1"},
+    {"ServiceName": "Wax (Manual)"},
+    {"ServiceSize": "S"},
+    {"ServicePrice": 150}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_148)
+    service_value_149 = [
+    {"ServiceId": "S_VCW2"},
+    {"ServiceName": "Wax (Manual)"},
+    {"ServiceSize": "M"},
+    {"ServicePrice": 150}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_149)
+    service_value_150 = [
+    {"ServiceId": "S_VCW3"},
+    {"ServiceName": "Wax (Manual)"},
+    {"ServiceSize": "L"},
+    {"ServicePrice": 150}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_150)
+
     payment_value_0 = [
     {"PaymentMethodName": "Cash"}
     ]

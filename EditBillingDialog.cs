@@ -32,7 +32,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 if (Billing.ID.Equals(BillingID))
                 {
                     TB_ID.Text = Billing.ID;
-                    TB_Price.Text = Billing.Balance.ToString();
+                    TB_Price.Text = Billing.Balance.ToString("0.00");
                     DiscountSlider.Value = (int)Billing.Discount;
                     TB_LastUpdated.Text = Billing.LastUpdated;
                     TB_DateCreated.Text = Billing.DateCreated;
@@ -72,9 +72,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             string ErrorMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(TB_Price.Text) || !Check.IsAllNumbers(TB_Price.Text))
+            if (string.IsNullOrEmpty(TB_Price.Text))
             {
                 ErrorMessage += "Please enter a valid balance.\n";
+            }
+            else
+            {
+                try
+                {
+                    double.Parse(TB_Price.Text);
+                }
+                catch
+                {
+                    ErrorMessage += "Please enter a valid balance.\n";
+                }
             }
             if (CB_Progress.SelectedIndex == -1)
             {

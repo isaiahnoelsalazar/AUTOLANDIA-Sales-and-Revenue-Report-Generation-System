@@ -27,10 +27,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             FilterService.Items.Add("ID");
             FilterService.Items.Add("Name");
+            FilterService.SelectedIndex = 1;
 
             FilterPackage.Items.Add("ID");
             FilterPackage.Items.Add("Name");
             FilterPackage.Items.Add("Services Included");
+            FilterPackage.SelectedIndex = 1;
         }
 
         public void RefreshServices()
@@ -205,7 +207,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -271,7 +273,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Price.Dock = DockStyle.Fill;
-            Price.Text = Package.Price.ToString();
+            Price.Text = $"₱{Package.Price.ToString("0.00")}";
             Price.TextAlign = ContentAlignment.MiddleCenter;
             Price.MouseEnter += (sndr, evnt) =>
             {
@@ -335,7 +337,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -388,7 +390,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Price.Dock = DockStyle.Fill;
-            Price.Text = Service.Price.ToString();
+            Price.Text = $"₱{Service.Price.ToString("0.00")}";
             Price.TextAlign = ContentAlignment.MiddleCenter;
             Price.MouseEnter += (sndr, evnt) =>
             {

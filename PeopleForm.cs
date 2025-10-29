@@ -35,9 +35,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             FilterEmployee.Items.Add("ID");
             FilterEmployee.Items.Add("Name");
+            FilterEmployee.SelectedIndex = 1;
 
             FilterCustomer.Items.Add("ID");
             FilterCustomer.Items.Add("Name");
+            FilterCustomer.SelectedIndex = 1;
 
             FilterVehicle.Items.Add("ID");
             FilterVehicle.Items.Add("Brand");
@@ -45,6 +47,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterVehicle.Items.Add("Size");
             FilterVehicle.Items.Add("Plate Number");
             FilterVehicle.Items.Add("Owner Name");
+            FilterVehicle.SelectedIndex = 4;
         }
 
         public void RefreshEmployees()
@@ -143,7 +146,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterEmployee.SelectedIndex == 1)
                 {
-                    if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Contains(SearchBarEmployee.Text.ToUpper()))
+                    if ($"{Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}".Contains(SearchBarEmployee.Text.ToUpper()))
                     {
                         RefreshRows(Employee);
                     }
@@ -167,7 +170,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterCustomer.SelectedIndex == 1)
                 {
-                    if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".Contains(SearchBarCustomer.Text.ToUpper()))
+                    if ($"{Customer.LastName}, {Customer.FirstName}{(!string.IsNullOrEmpty(Customer.MiddleName) ? $" {Customer.MiddleName}" : string.Empty)}".Contains(SearchBarCustomer.Text.ToUpper()))
                     {
                         RefreshRows(Customer);
                     }
@@ -223,7 +226,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (Customer.ID.Equals(Vehicle.CustomerID))
                         {
-                            if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                            if ($"{Customer.LastName}, {Customer.FirstName}{(!string.IsNullOrEmpty(Customer.MiddleName) ? $" {Customer.MiddleName}" : string.Empty)}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                             {
                                 RefreshRows(Vehicle);
                             }
@@ -249,7 +252,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterEmployee.SelectedIndex == 1)
                 {
-                    if ($"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}".Contains(SearchBarEmployee.Text.ToUpper()))
+                    if ($"{Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}".Contains(SearchBarEmployee.Text.ToUpper()))
                     {
                         RefreshRows(Employee);
                     }
@@ -273,7 +276,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterCustomer.SelectedIndex == 1)
                 {
-                    if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".Contains(SearchBarCustomer.Text.ToUpper()))
+                    if ($"{Customer.LastName}, {Customer.FirstName}{(!string.IsNullOrEmpty(Customer.MiddleName) ? $" {Customer.MiddleName}" : string.Empty)}".Contains(SearchBarCustomer.Text.ToUpper()))
                     {
                         RefreshRows(Customer);
                     }
@@ -329,7 +332,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (Customer.ID.Equals(Vehicle.CustomerID))
                         {
-                            if ($"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
+                            if ($"{Customer.LastName}, {Customer.FirstName}{(!string.IsNullOrEmpty(Customer.MiddleName) ? $" {Customer.MiddleName}" : string.Empty)}".ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                             {
                                 RefreshRows(Vehicle);
                             }
@@ -378,7 +381,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -407,7 +410,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Name.Dock = DockStyle.Fill;
-            Name.Text = $"{Employee.LastName}, {Employee.FirstName} {Employee.MiddleName}";
+            Name.Text = $"{Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)}";
             Name.TextAlign = ContentAlignment.MiddleCenter;
             Name.MouseEnter += (sndr, evnt) =>
             {
@@ -452,7 +455,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     Today = DateTime.Now;
 
-                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed in");
+                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)} timed in");
 
                     SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_EmployeeTimeList (EmployeeId, TimeIn, TimeOut, DateCreated) VALUES " +
                         $"('{Employee.ID}', '{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}', '', '{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}')", SQL);
@@ -478,7 +481,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     Today = DateTime.Now;
 
-                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName} {Employee.MiddleName} timed out");
+                    RecordActivity($"Employee {Employee.LastName}, {Employee.FirstName}{(!string.IsNullOrEmpty(Employee.MiddleName) ? $" {Employee.MiddleName}" : string.Empty)} timed out");
 
                     SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_EmployeeTimeList SET TimeOut='{$"{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}" + $" {Today.ToString("HH")}:{Today.ToString("mm")}:{Today.ToString("ss")} {Today.ToString("tt")}"}" +
                         $"' WHERE EmployeeId='{Employee.ID}' AND DateCreated='{Today.ToString("yyyy")}/{Today.ToString("MM")}/{Today.ToString("dd")}'", SQL);
@@ -557,7 +560,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -585,7 +588,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Name.Dock = DockStyle.Fill;
-            Name.Text = $"{Customer.LastName}, {Customer.FirstName} {Customer.MiddleName}";
+            Name.Text = $"{Customer.LastName}, {Customer.FirstName}{(!string.IsNullOrEmpty(Customer.MiddleName) ? $" {Customer.MiddleName}" : string.Empty)}";
             Name.TextAlign = ContentAlignment.MiddleCenter;
             Name.MouseEnter += (sndr, evnt) =>
             {
@@ -653,7 +656,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 DefaultBackgroundColor = Panel.BackColor;
             }
 
-            Panel.Dock = DockStyle.Top;
+            Panel.Dock = DockStyle.Fill;
             Panel.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
@@ -737,7 +740,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Customer1.ID.Equals(Vehicle.CustomerID))
                 {
-                    RealCustomerName = $"{Customer1.LastName}, {Customer1.FirstName} {Customer1.MiddleName}";
+                    RealCustomerName = $"{Customer1.LastName}, {Customer1.FirstName}{(!string.IsNullOrEmpty(Customer1.MiddleName) ? $" {Customer1.MiddleName}" : string.Empty)}";
                 }
             }
 
