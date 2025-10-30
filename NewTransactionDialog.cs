@@ -37,8 +37,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            ExtraList.Add("Perfume (150)");
-            ExtraList.Add("Car w/ Carrier (20)");
+            ExtraList.Add("Perfume (₱150.00)");
+            ExtraList.Add("Car w/ Carrier (₱20.00)");
 
             foreach (string Item in ExtraList)
             {
