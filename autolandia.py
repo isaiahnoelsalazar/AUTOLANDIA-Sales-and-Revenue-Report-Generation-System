@@ -73,7 +73,8 @@ if not os.path.isfile("AUTOLANDIA.db"):
         {"BillingProgress": "varchar"},
         {"PaymentMethodName": "varchar"},
         {"DateUpdated": "varchar"},
-        {"DateCreated": "varchar"}
+        {"DateCreated": "varchar"},
+        {"IncompletePaymentAmount": "float"}
     ]
 
     a.createTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", AUTOLANDIA_ServiceList_columns)
@@ -1302,14 +1303,14 @@ if not os.path.isfile("AUTOLANDIA.db"):
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_142)
     service_value_143 = [
     {"ServiceId": "S_VCBWT"},
-    {"ServiceName": "Body Wash"},
+    {"ServiceName": "Body Wash - Tricycle"},
     {"ServiceSize": "M"},
     {"ServicePrice": 220}
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", service_value_143)
     service_value_144 = [
     {"ServiceId": "S_VCBWP"},
-    {"ServiceName": "Body Wash"},
+    {"ServiceName": "Body Wash - PUV"},
     {"ServiceSize": "M"},
     {"ServicePrice": 400}
     ]

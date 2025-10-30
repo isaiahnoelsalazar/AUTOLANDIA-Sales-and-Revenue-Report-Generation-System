@@ -230,6 +230,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             if (!string.IsNullOrEmpty(Order.ServiceIDList))
             {
+                Console.WriteLine(Order.ServiceIDList);
                 string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
                 ServiceCount = ServiceSplit.Length;
                 ServicePackageDetail += "[Services] - ";

@@ -3,8 +3,6 @@ using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -18,7 +16,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static SqliteConnection SQL = new SqliteConnection("Data Source=AUTOLANDIA.db;");
 
         public static List<ServiceItem> GlobalServiceList = new List<ServiceItem>();
+        public static List<ServiceItemDisplay> GlobalServiceDisplayList = new List<ServiceItemDisplay>();
         public static List<PackageItem> GlobalPackageList = new List<PackageItem>();
+        public static List<PackageItemDisplay> GlobalPackageDisplayList = new List<PackageItemDisplay>();
         public static List<OrderItem> GlobalOrderList = new List<OrderItem>();
         public static List<BillingItem> GlobalBillingList = new List<BillingItem>();
         public static List<VehicleItem> GlobalVehicleList = new List<VehicleItem>();
@@ -149,6 +149,78 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static void RecreateGlobalServiceDisplayList()
+        {
+            GlobalServiceDisplayList.Clear();
+
+            SqliteCommand Command = new SqliteCommand("SELECT\r\n  ServiceName AS Name,\r\n  COALESCE(MAX(CASE WHEN ServiceSize = 'S'   THEN ServicePrice END), -1) AS S,\r\n  COALESCE(MAX(CASE WHEN ServiceSize = 'M'   THEN ServicePrice END), -1) AS M,\r\n  COALESCE(MAX(CASE WHEN ServiceSize = 'L'   THEN ServicePrice END), -1) AS L,\r\n  COALESCE(MAX(CASE WHEN ServiceSize = 'XL'  THEN ServicePrice END), -1) AS XL,\r\n  COALESCE(MAX(CASE WHEN ServiceSize = 'XXL' THEN ServicePrice END), -1) AS XXL\r\nFROM\r\n  AUTOLANDIA_ServiceList\r\nGROUP BY\r\n  ServiceName;", SQL);
+
+            try
+            {
+                using (SqliteDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        GlobalServiceDisplayList.Add(new ServiceItemDisplay(Reader.GetString(0), Reader.GetDouble(1), Reader.GetDouble(2), Reader.GetDouble(3), Reader.GetDouble(4), Reader.GetDouble(5)));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+
+            List<ServiceItemDisplay> UpdatedServiceDisplayList = new List<ServiceItemDisplay>();
+
+            foreach (ServiceItem Service in GlobalServiceList)
+            {
+                foreach (ServiceItemDisplay ServiceDisplay in GlobalServiceDisplayList)
+                {
+                    if (Service.Name.Equals(ServiceDisplay.Name) && !UpdatedServiceDisplayList.Contains(ServiceDisplay))
+                    {
+                        UpdatedServiceDisplayList.Add(ServiceDisplay);
+                    }
+                }
+            }
+            GlobalServiceDisplayList = UpdatedServiceDisplayList;
+        }
+
+        public static void RecreateGlobalPackageDisplayList()
+        {
+            GlobalPackageDisplayList.Clear();
+
+            SqliteCommand Command = new SqliteCommand("SELECT\r\n  PackageName AS Name,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'S'   THEN PackageDetails END), '') AS Details,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'S'   THEN PackagePrice END), -1) AS S,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'M'   THEN PackagePrice END), -1) AS M,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'L'   THEN PackagePrice END), -1) AS L,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'XL'  THEN PackagePrice END), -1) AS XL,\r\n  COALESCE(MAX(CASE WHEN PackageSize = 'XXL' THEN PackagePrice END), -1) AS XXL\r\nFROM\r\n  AUTOLANDIA_PackageList\r\nGROUP BY\r\n  PackageName;", SQL);
+
+            try
+            {
+                using (SqliteDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        GlobalPackageDisplayList.Add(new PackageItemDisplay(Reader.GetString(0), Reader.GetString(1), Reader.GetDouble(2), Reader.GetDouble(3), Reader.GetDouble(4), Reader.GetDouble(5), Reader.GetDouble(6)));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Alert");
+            }
+
+            List<PackageItemDisplay> UpdatedPackageDisplayList = new List<PackageItemDisplay>();
+
+            foreach (PackageItem Package in GlobalPackageList)
+            {
+                foreach (PackageItemDisplay PackageDisplay in GlobalPackageDisplayList)
+                {
+                    if (Package.Name.Equals(PackageDisplay.Name) && !UpdatedPackageDisplayList.Contains(PackageDisplay))
+                    {
+                        UpdatedPackageDisplayList.Add(PackageDisplay);
+                    }
+                }
+            }
+            GlobalPackageDisplayList = UpdatedPackageDisplayList;
+        }
+
         public static void RecreateGlobalEmployeeList()
         {
             GlobalEmployeeList.Clear();
@@ -249,7 +321,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     while (Reader.Read())
                     {
-                        GlobalBillingList.Add(new BillingItem(Reader.GetString(0), Reader.GetDouble(1), Reader.GetDouble(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5), Reader.GetString(6)));
+                        GlobalBillingList.Add(new BillingItem(Reader.GetString(0), Reader.GetDouble(1), Reader.GetDouble(2), Reader.GetString(3), Reader.GetString(4), Reader.GetString(5), Reader.GetString(6), Reader.GetDouble(7)));
                     }
                 }
             }

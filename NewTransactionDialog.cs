@@ -18,6 +18,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         string VehicleID;
         double ServicePrice = 0;
         List<string> ExtraList = new List<string>();
+        List<ServiceItem> SERVICES = new List<ServiceItem>();
+        int PerfumeCount = 0;
 
         public NewTransactionDialog()
         {
@@ -131,6 +133,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServicePrice = 0;
 
             ServiceCheckedboxes = ServiceCheckboxes;
+            SERVICES.Clear();
 
             VehicleItem RealVehicle = null;
 
@@ -190,6 +193,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
                             {
+                                SERVICES.Add(Service);
                                 RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
                                 TableLayoutPanel Panel = new TableLayoutPanel
                                 {
@@ -489,6 +493,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
 
+            SERVICES.Clear();
+
             ServicePrice = 0;
 
             VehicleItem RealVehicle = null;
@@ -549,6 +555,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
                             {
+                                SERVICES.Add(Service);
                                 RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
                                 TableLayoutPanel Panel = new TableLayoutPanel
                                 {
@@ -741,6 +748,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public void PickPerfumeCount(int Count)
+        {
+            PerfumeCount = Count;
+        }
+
         private void DoneButton_Click(object sender, EventArgs e)
         {
             DateTime Now = DateTime.Now;
@@ -758,6 +770,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (ServiceList.Controls.Count == 0)
             {
                 ErrorMessage += "Please select at least one service or a package.\n";
+            }
+            if (PaymentCheck.Checked)
+            {
+                try
+                {
+                    double.Parse(TB_Payment.Text);
+                }
+                catch
+                {
+                    ErrorMessage += "Please enter a valid payment amount.\n";
+                }
             }
 
             if (ErrorMessage.Equals(""))
@@ -787,10 +810,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 }
 
-                RealPrice += Extras.Count(c => c == 'P') * 150;
+                if (Extras.Count(c => c == 'P') > 0)
+                {
+                    new PickPerfumeCountDialog(this).ShowDialog();
+                }
+
+                RealPrice += PerfumeCount * 150;
                 RealPrice += Extras.Count(c => c == 'C') * 20;
 
-                string ServiceIds = "[";
+                string ServiceIds = string.Empty;
                 for (int a = 0; a < ServiceList.Controls.Count; a++)
                 {
                     foreach (ServiceItem Service in GlobalServiceList)
@@ -802,18 +830,26 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                 }
-                ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 1);
-                ServiceIds += "]";
+                if (ServiceIds.Length > 0)
+                {
+                    ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 1);
+                    if (ServiceIds.Length > 0)
+                    {
+                        ServiceIds += "[" + ServiceIds + "]";
+                    }
+                }
 
                 RealPrice += ServicePrice;
 
                 string PackageId = string.Empty;
+                string PACKAGESIZE = string.Empty;
 
                 foreach (PackageItem Package in GlobalPackageList)
                 {
                     if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle.Size))
                     {
                         PackageId = Package.ID;
+                        PACKAGESIZE = Package.Size;
                         RealPrice += Package.Price;
                         break;
                     }
@@ -843,7 +879,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecordActivity($"Added new order with reference number: {GlobalOrderList.Count + 1}");
 
                     SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, Extras, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '{PackageId}', '{Extras}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
-                    SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, OrderDiscount, BillingProgress, PaymentMethodName, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, {DiscountSlider.Value}, 'Unpaid', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
+                    SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, OrderDiscount, BillingProgress, PaymentMethodName, DateUpdated, DateCreated, IncompletePaymentAmount) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, {DiscountSlider.Value}, '{(PaymentCheck.Checked ? ((RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) > 0 ? "Incomplete" : "Paid") : "Unpaid")}', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', {((RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) > 0 ? (RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) : 0)})", SQL);
 
                     Command.ExecuteNonQuery();
                     Command1.ExecuteNonQuery();
@@ -860,6 +896,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         NewCustomerDialog.Close();
                     }
+                    new ResultDialog(SERVICES, $"[{CB_Packages.Text} - {PACKAGESIZE}]", Extras, PerfumeCount, RealPrice, DiscountSlider.Value, RealPrice - (RealPrice * (DiscountSlider.Value / 100)), double.Parse(TB_Payment.Text), double.Parse(TB_Payment.Text) - (RealPrice - (RealPrice * (DiscountSlider.Value / 100)))).ShowDialog();
                     Close();
                 }
                 catch (Exception exception)
@@ -873,6 +910,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 MaterialMessageBox.Show(ErrorMessage, "Alert");
             }
+        }
+
+        private void PaymentCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            TB_Payment.Visible = PaymentCheck.Checked;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

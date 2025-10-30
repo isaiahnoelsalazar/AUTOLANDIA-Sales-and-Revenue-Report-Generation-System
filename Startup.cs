@@ -55,10 +55,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     ProgressBar.Increment(10);
                     
                     RecreateGlobalServiceList();
-                    ProgressBar.Increment(10);
+                    ProgressBar.Increment(5);
+
+                    RecreateGlobalServiceDisplayList();
+                    ProgressBar.Increment(5);
 
                     RecreateGlobalPackageList();
-                    ProgressBar.Increment(10);
+                    ProgressBar.Increment(5);
+
+                    RecreateGlobalPackageDisplayList();
+                    ProgressBar.Increment(5);
 
                     RecreateGlobalVehicleModelList();
                     ProgressBar.Increment(10);

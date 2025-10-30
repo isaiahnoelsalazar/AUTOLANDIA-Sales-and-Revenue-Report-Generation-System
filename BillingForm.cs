@@ -26,6 +26,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             FilterBilling.Items.Add("ID");
             FilterBilling.Items.Add("Progress");
+            FilterBilling.SelectedIndex = 0;
 
             Global = DateTime.Now;
             DatePickerButton.Text = DateTime.Now.ToString("yyyy/MM/dd");
@@ -157,7 +158,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Balance.Dock = DockStyle.Fill;
-            Balance.Text = Billing.Discount > 0 ? $"₱{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100))).ToString("0.00")} ({Billing.Discount}% | ₱{Billing.Balance.ToString("0.00")})" : $"₱{Billing.Balance.ToString("0.00")}";
+            Balance.Text = (Billing.Discount > 0 ? $"₱{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100))).ToString("0.00")} ({Billing.Discount}% | ₱{Billing.Balance.ToString("0.00")})" : $"₱{Billing.Balance.ToString("0.00")}") + (Billing.IncompletePaymentAmount > 0 ? $" (Unpaid: ₱{Billing.IncompletePaymentAmount.ToString("0.00")})" : string.Empty);
             Balance.TextAlign = ContentAlignment.MiddleCenter;
             Balance.MouseEnter += (sndr, evnt) =>
             {
@@ -236,6 +237,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     MaterialMessageBox.Show("Successfully changed billing payment method!", "Notice");
                     RefreshBillings();
                     GlobalActivityRecordForm.RefreshActivities();
+
+                    //if (PaymentMethod.Text.Equals("GCash"))
+                    //{
+                    //    DialogResult NewDialogResult = MaterialMessageBox.Show("Show GCash QR code?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
+                    //    if (NewDialogResult == DialogResult.Yes)
+                    //    {
+                    //        new ShowGCashQRDialog().ShowDialog();
+                    //    }
+                    //}
                 }
                 catch (Exception exception)
                 {

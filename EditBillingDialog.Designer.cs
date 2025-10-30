@@ -46,6 +46,8 @@
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.DiscountSlider = new MaterialSkin.Controls.MaterialSlider();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            this.TB_Unpaid = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // TB_ID
@@ -65,7 +67,7 @@
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.Location = new System.Drawing.Point(12, 269);
+            this.materialLabel5.Location = new System.Drawing.Point(12, 326);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(63, 19);
@@ -104,7 +106,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 505);
+            this.CancelButton.Location = new System.Drawing.Point(10, 548);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -125,7 +127,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(566, 505);
+            this.DoneButton.Location = new System.Drawing.Point(566, 548);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -200,7 +202,7 @@
             this.CB_Progress.FormattingEnabled = true;
             this.CB_Progress.IntegralHeight = false;
             this.CB_Progress.ItemHeight = 43;
-            this.CB_Progress.Location = new System.Drawing.Point(203, 255);
+            this.CB_Progress.Location = new System.Drawing.Point(203, 312);
             this.CB_Progress.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.CB_Progress.MaxDropDownItems = 4;
             this.CB_Progress.MouseState = MaterialSkin.MouseState.OUT;
@@ -214,7 +216,7 @@
             this.TB_DateCreated.AutoSize = true;
             this.TB_DateCreated.Depth = 0;
             this.TB_DateCreated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_DateCreated.Location = new System.Drawing.Point(200, 442);
+            this.TB_DateCreated.Location = new System.Drawing.Point(200, 499);
             this.TB_DateCreated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_DateCreated.Name = "TB_DateCreated";
             this.TB_DateCreated.Size = new System.Drawing.Size(92, 19);
@@ -226,7 +228,7 @@
             this.TB_LastUpdated.AutoSize = true;
             this.TB_LastUpdated.Depth = 0;
             this.TB_LastUpdated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_LastUpdated.Location = new System.Drawing.Point(200, 385);
+            this.TB_LastUpdated.Location = new System.Drawing.Point(200, 442);
             this.TB_LastUpdated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_LastUpdated.Name = "TB_LastUpdated";
             this.TB_LastUpdated.Size = new System.Drawing.Size(95, 19);
@@ -238,7 +240,7 @@
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(12, 442);
+            this.materialLabel6.Location = new System.Drawing.Point(12, 499);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(92, 19);
@@ -259,7 +261,7 @@
             this.CB_PaymentMethod.FormattingEnabled = true;
             this.CB_PaymentMethod.IntegralHeight = false;
             this.CB_PaymentMethod.ItemHeight = 43;
-            this.CB_PaymentMethod.Location = new System.Drawing.Point(203, 312);
+            this.CB_PaymentMethod.Location = new System.Drawing.Point(203, 369);
             this.CB_PaymentMethod.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
             this.CB_PaymentMethod.MaxDropDownItems = 4;
             this.CB_PaymentMethod.MouseState = MaterialSkin.MouseState.OUT;
@@ -273,7 +275,7 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.Location = new System.Drawing.Point(12, 385);
+            this.materialLabel4.Location = new System.Drawing.Point(12, 442);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(95, 19);
@@ -285,7 +287,7 @@
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.Location = new System.Drawing.Point(12, 326);
+            this.materialLabel7.Location = new System.Drawing.Point(12, 383);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(122, 19);
@@ -317,11 +319,45 @@
             this.materialLabel8.TabIndex = 97;
             this.materialLabel8.Text = "Discount";
             // 
+            // materialLabel9
+            // 
+            this.materialLabel9.AutoSize = true;
+            this.materialLabel9.Depth = 0;
+            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel9.Location = new System.Drawing.Point(12, 269);
+            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel9.Name = "materialLabel9";
+            this.materialLabel9.Size = new System.Drawing.Size(51, 19);
+            this.materialLabel9.TabIndex = 98;
+            this.materialLabel9.Text = "Unpaid";
+            // 
+            // TB_Unpaid
+            // 
+            this.TB_Unpaid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_Unpaid.AnimateReadOnly = false;
+            this.TB_Unpaid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_Unpaid.Depth = 0;
+            this.TB_Unpaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Unpaid.LeadingIcon = null;
+            this.TB_Unpaid.Location = new System.Drawing.Point(203, 254);
+            this.TB_Unpaid.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.TB_Unpaid.MaxLength = 50;
+            this.TB_Unpaid.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_Unpaid.Multiline = false;
+            this.TB_Unpaid.Name = "TB_Unpaid";
+            this.TB_Unpaid.Size = new System.Drawing.Size(427, 50);
+            this.TB_Unpaid.TabIndex = 100;
+            this.TB_Unpaid.Text = "";
+            this.TB_Unpaid.TrailingIcon = null;
+            // 
             // EditBillingDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 551);
+            this.ClientSize = new System.Drawing.Size(640, 594);
+            this.Controls.Add(this.TB_Unpaid);
+            this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
             this.Controls.Add(this.DiscountSlider);
             this.Controls.Add(this.TB_DateCreated);
@@ -369,5 +405,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialSlider DiscountSlider;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        private MaterialSkin.Controls.MaterialTextBox TB_Unpaid;
     }
 }

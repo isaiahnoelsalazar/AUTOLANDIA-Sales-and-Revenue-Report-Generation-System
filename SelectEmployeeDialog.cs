@@ -28,9 +28,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             foreach (EmployeeTimeItem EmployeeTime in GlobalEmployeeTimeList)
             {
-                TempTime.Add(EmployeeTime.ID);
+                if (DateTime.Parse(EmployeeTime.TimeIn).Date.Equals(DateTime.Now.Date))
+                {
+                    TempTime.Add(EmployeeTime.ID);
+                }
             }
-            //Temp.Sort(new EmployeeNameComparer());
             Temp.Reverse();
 
             if (GlobalEmployeeTimeList.Count < 1)
@@ -67,6 +69,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             }
                         }
                     }
+                }
+                if (Temp.Count > 0)
+                {
                     if (!TempTime.Contains(Temp[counter].ID))
                     {
                         Temp.Remove(Temp[counter]);

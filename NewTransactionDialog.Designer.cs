@@ -51,6 +51,8 @@
             this.ExtraListCheckBox = new MaterialSkin.Controls.MaterialCheckedListBox();
             this.DiscountSlider = new MaterialSkin.Controls.MaterialSlider();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.TB_Payment = new MaterialSkin.Controls.MaterialTextBox();
+            this.PaymentCheck = new MaterialSkin.Controls.MaterialCheckbox();
             this.tableLayoutPanel2.SuspendLayout();
             this.ServiceListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +93,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 532);
+            this.CancelButton.Location = new System.Drawing.Point(10, 587);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -112,7 +114,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(646, 532);
+            this.DoneButton.Location = new System.Drawing.Point(646, 587);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -346,7 +348,7 @@
             this.ServiceListContainer.Location = new System.Drawing.Point(384, 147);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(326, 361);
+            this.ServiceListContainer.Size = new System.Drawing.Size(326, 416);
             this.ServiceListContainer.TabIndex = 85;
             // 
             // ServiceList
@@ -434,11 +436,52 @@
             this.materialLabel6.TabIndex = 90;
             this.materialLabel6.Text = "Discount";
             // 
+            // TB_Payment
+            // 
+            this.TB_Payment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_Payment.AnimateReadOnly = false;
+            this.TB_Payment.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_Payment.Depth = 0;
+            this.TB_Payment.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Payment.Hint = "Amount";
+            this.TB_Payment.LeadingIcon = null;
+            this.TB_Payment.Location = new System.Drawing.Point(182, 513);
+            this.TB_Payment.Margin = new System.Windows.Forms.Padding(8);
+            this.TB_Payment.MaxLength = 50;
+            this.TB_Payment.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_Payment.Multiline = false;
+            this.TB_Payment.Name = "TB_Payment";
+            this.TB_Payment.Size = new System.Drawing.Size(194, 50);
+            this.TB_Payment.TabIndex = 91;
+            this.TB_Payment.Text = "";
+            this.TB_Payment.TrailingIcon = null;
+            this.TB_Payment.Visible = false;
+            // 
+            // PaymentCheck
+            // 
+            this.PaymentCheck.AutoSize = true;
+            this.PaymentCheck.Depth = 0;
+            this.PaymentCheck.Location = new System.Drawing.Point(10, 519);
+            this.PaymentCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.PaymentCheck.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.PaymentCheck.MouseState = MaterialSkin.MouseState.HOVER;
+            this.PaymentCheck.Name = "PaymentCheck";
+            this.PaymentCheck.ReadOnly = false;
+            this.PaymentCheck.Ripple = true;
+            this.PaymentCheck.Size = new System.Drawing.Size(164, 37);
+            this.PaymentCheck.TabIndex = 94;
+            this.PaymentCheck.Text = "Is payment ready?";
+            this.PaymentCheck.UseVisualStyleBackColor = true;
+            this.PaymentCheck.CheckedChanged += new System.EventHandler(this.PaymentCheck_CheckedChanged);
+            // 
             // NewTransactionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 578);
+            this.ClientSize = new System.Drawing.Size(720, 633);
+            this.Controls.Add(this.PaymentCheck);
+            this.Controls.Add(this.TB_Payment);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.DiscountSlider);
             this.Controls.Add(this.ExtraListCheckBox);
@@ -496,5 +539,7 @@
         private MaterialSkin.Controls.MaterialCheckedListBox ExtraListCheckBox;
         private MaterialSkin.Controls.MaterialSlider DiscountSlider;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialTextBox TB_Payment;
+        private MaterialSkin.Controls.MaterialCheckbox PaymentCheck;
     }
 }
