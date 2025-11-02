@@ -331,6 +331,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static VehicleItem GetVehicleFromID(string VehicleID)
+        {
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                if (Vehicle.ID.Equals(VehicleID))
+                {
+                    return Vehicle;
+                }
+            }
+            return null;
+        }
+
         public static void RecreateGlobalVehicleList()
         {
             GlobalVehicleList.Clear();

@@ -82,19 +82,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             ServiceCheckedboxes = ServiceCheckboxes;
 
-            VehicleItem RealVehicle = null;
-
-            try
-            {
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                    }
-                }
-            }
-            catch { }
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
             PackageItem RealPackage = null;
 
@@ -364,19 +352,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 ServicePrice = 0;
 
-                VehicleItem RealVehicle = null;
-
-                try
-                {
-                    foreach (VehicleItem Vehicle in GlobalVehicleList)
-                    {
-                        if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                        {
-                            RealVehicle = Vehicle;
-                        }
-                    }
-                }
-                catch { }
+                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
                 PackageItem RealPackage = null;
 
@@ -643,15 +619,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 double RealPrice = 0;
 
-                VehicleItem RealVehicle = null;
-
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                    }
-                }
+                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
                 string ServiceIds = "[";
                 for (int a = 0; a < ServiceList.Controls.Count; a++)
@@ -740,14 +708,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     TB_LastUpdated.Text = Order.LastUpdated;
                     TB_DateCreated.Text = Order.DateCreated;
 
-                    foreach (VehicleItem Vehicle in GlobalVehicleList)
-                    {
-                        if (Vehicle.ID.Equals(Order.VehicleId))
-                        {
-                            RealVehicle = Vehicle;
-                            TB_Vehicle.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
-                        }
-                    }
+                    VehicleItem RealVehicle = GetVehicleFromID(Order.VehicleId);
+                    TB_Vehicle.Text = $"{RealVehicle.ID}: {RealVehicle.Brand}, {RealVehicle.Model}, {RealVehicle.PlateNumber}";
 
                     if (RealVehicle != null)
                     {

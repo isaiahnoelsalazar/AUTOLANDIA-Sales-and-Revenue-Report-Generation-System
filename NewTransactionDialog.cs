@@ -66,16 +66,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            VehicleItem RealVehicle = null;
+            VehicleItem RealVehicle = GetVehicleFromID(VehicleID);
 
-            foreach (VehicleItem Vehicle in GlobalVehicleList)
-            {
-                if (Vehicle.ID.Equals(VehicleID))
-                {
-                    RealVehicle = Vehicle;
-                    TB_Vehicle.Text = $"{Vehicle.ID}: {Vehicle.Brand}, {Vehicle.Model}, {Vehicle.PlateNumber}";
-                }
-            }
+            TB_Vehicle.Text = $"{RealVehicle.ID}: {RealVehicle.Brand}, {RealVehicle.Model}, {RealVehicle.PlateNumber}";
 
             if (RealVehicle != null)
             {
@@ -135,19 +128,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceCheckedboxes = ServiceCheckboxes;
             SERVICES.Clear();
 
-            VehicleItem RealVehicle = null;
-
-            try
-            {
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                    }
-                }
-            }
-            catch { }
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
             PackageItem RealPackage = null;
 
@@ -392,18 +373,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public void SetVehicle(string Vehicle)
         {
             TB_Vehicle.Text = Vehicle;
-            VehicleItem RealVehicle = null;
-            try
-            {
-                foreach (VehicleItem VehicleItem in GlobalVehicleList)
-                {
-                    if (VehicleItem.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = VehicleItem;
-                    }
-                }
-            }
-            catch { }
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
+            
             if (RealVehicle != null)
             {
                 if (RealVehicle.Brand.Equals("GENERAL"))
@@ -457,15 +428,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             try
             {
-                VehicleItem RealVehicle = null;
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                        break;
-                    }
-                }
+                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
                 if (RealVehicle != null)
                 {
                     if (RealVehicle.Brand.Equals("GENERAL"))
@@ -497,19 +460,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             ServicePrice = 0;
 
-            VehicleItem RealVehicle = null;
-
-            try
-            {
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                    }
-                }
-            }
-            catch { }
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
             PackageItem RealPackage = null;
 
@@ -787,15 +738,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 double RealPrice = 0;
 
-                VehicleItem RealVehicle = null;
-
-                foreach (VehicleItem Vehicle in GlobalVehicleList)
-                {
-                    if (Vehicle.ID.Equals(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim()))
-                    {
-                        RealVehicle = Vehicle;
-                    }
-                }
+                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
 
                 string Extras = string.Empty;
                 for (int a = 0; a < ExtraListCheckBox.Items.Count; a++)

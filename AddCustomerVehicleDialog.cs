@@ -140,7 +140,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     else
                     {
-                        Close();
+                        DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new customer for this vehicle?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
+                        if (NewDialogResult == DialogResult.Yes)
+                        {
+                            new NewCustomerDialog(this, VehicleID).ShowDialog();
+                        }
+                        else
+                        {
+                            Close();
+                        }
                     }
                 }
                 catch (Exception exception)
