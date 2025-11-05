@@ -34,8 +34,6 @@
             this.SearchBarService = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ServiceListContainer = new System.Windows.Forms.Panel();
             this.ServiceList = new System.Windows.Forms.TableLayoutPanel();
@@ -44,18 +42,24 @@
             this.SearchBarPackage = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.PackageListContainer = new System.Windows.Forms.Panel();
+            this.PackageList = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.PackageListContainer = new System.Windows.Forms.Panel();
-            this.PackageList = new System.Windows.Forms.TableLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.ServicesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -161,19 +165,22 @@
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.label12, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label11, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label10, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label7, 2, 0);
+            this.tableLayoutPanel2.ColumnCount = 8;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.Controls.Add(this.label15, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label7, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label11, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label12, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label14, 6, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 62);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -183,37 +190,15 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(616, 48);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(327, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 30);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "M";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(253, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 30);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "S";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(9, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(227, 30);
+            this.label5.Size = new System.Drawing.Size(44, 30);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Name";
+            this.label5.Text = "ID";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ServiceListContainer
@@ -326,21 +311,25 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.Controls.Add(this.label13, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.Controls.Add(this.label17, 8, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 7, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 62);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -348,61 +337,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 48);
             this.tableLayoutPanel1.TabIndex = 9;
-            // 
-            // label9
-            // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(473, 9);
-            this.label9.Margin = new System.Windows.Forms.Padding(8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 30);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "L";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(424, 9);
-            this.label8.Margin = new System.Windows.Forms.Padding(8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 30);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "M";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(375, 9);
-            this.label3.Margin = new System.Windows.Forms.Padding(8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 30);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "S";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(131, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 30);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Services Included";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PackageListContainer
             // 
@@ -432,60 +366,181 @@
             this.PackageList.Size = new System.Drawing.Size(616, 0);
             this.PackageList.TabIndex = 0;
             // 
-            // label10
+            // label14
             // 
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(401, 9);
-            this.label10.Margin = new System.Windows.Forms.Padding(8);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 30);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "L";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(475, 9);
-            this.label11.Margin = new System.Windows.Forms.Padding(8);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 30);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "XL";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Location = new System.Drawing.Point(466, 9);
+            this.label14.Margin = new System.Windows.Forms.Padding(8);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 30);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "XXL";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(549, 9);
+            this.label12.Location = new System.Drawing.Point(405, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(8);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 30);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "XXL";
+            this.label12.Size = new System.Drawing.Size(44, 30);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "XL";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // label11
             // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(522, 9);
-            this.label6.Margin = new System.Windows.Forms.Padding(8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 30);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "XL";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(344, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(8);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 30);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "L";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(283, 9);
+            this.label10.Margin = new System.Windows.Forms.Padding(8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 30);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "M";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(222, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 30);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "S";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(70, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 30);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Name";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(527, 9);
+            this.label15.Margin = new System.Windows.Forms.Padding(8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 30);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Status";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Location = new System.Drawing.Point(479, 9);
+            this.label16.Margin = new System.Windows.Forms.Padding(8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 30);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "XXL";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(571, 9);
+            this.label13.Location = new System.Drawing.Point(430, 9);
             this.label13.Margin = new System.Windows.Forms.Padding(8);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 30);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "XXL";
+            this.label13.Size = new System.Drawing.Size(32, 30);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "XL";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(381, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 30);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "L";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(332, 9);
+            this.label9.Margin = new System.Windows.Forms.Padding(8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 30);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "M";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(283, 9);
+            this.label8.Margin = new System.Windows.Forms.Padding(8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 30);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "S";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(161, 9);
+            this.label3.Margin = new System.Windows.Forms.Padding(8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 30);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Services Included";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(70, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 30);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Name";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 30);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "ID";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Location = new System.Drawing.Point(528, 9);
+            this.label17.Margin = new System.Windows.Forms.Padding(8);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 30);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Status";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ServicesAndPackagesForm
             // 
@@ -517,29 +572,33 @@
         private System.Windows.Forms.TabPage ServicesTab;
         private System.Windows.Forms.TabPage PackagesTab;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel PackageListContainer;
         private System.Windows.Forms.TableLayoutPanel PackageList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel ServiceListContainer;
         private System.Windows.Forms.TableLayoutPanel ServiceList;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private MaterialSkin.Controls.MaterialTextBox SearchBarService;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private MaterialSkin.Controls.MaterialTextBox SearchBarPackage;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialComboBox FilterPackage;
         private MaterialSkin.Controls.MaterialComboBox FilterService;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
     }
 }

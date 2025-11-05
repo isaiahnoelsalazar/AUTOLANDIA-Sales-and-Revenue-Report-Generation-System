@@ -1,10 +1,10 @@
 ﻿namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    public class OrderItem
+    public class TransactionItem
     {
-        string id, employeeIDList, serviceIDList, packageID, extras, vehicleId, progress, lastUpdated, dateCreated;
+        string id, employeeIDList, serviceIDList, packageID, extras, vehicleId, status, lastUpdated, dateCreated;
 
-        public OrderItem(string id, string employeeIDList, string serviceIDList, string packageID, string extras, string vehicleId, string progress, string lastUpdated, string dateCreated)
+        public TransactionItem(string id, string employeeIDList, string serviceIDList, string packageID, string extras, string vehicleId, string status, string lastUpdated, string dateCreated)
         {
             this.id = id;
             this.employeeIDList = employeeIDList;
@@ -12,7 +12,7 @@
             this.packageID = packageID;
             this.extras = extras;
             this.vehicleId = vehicleId;
-            this.progress = progress;
+            this.status = status;
             this.lastUpdated = lastUpdated;
             this.dateCreated = dateCreated;
         }
@@ -53,10 +53,10 @@
             set { vehicleId = value; }
         }
 
-        public string Progress
+        public string Status
         {
-            get { return progress; }
-            set { progress = value; }
+            get { return status; }
+            set { status = value; }
         }
 
         public string LastUpdated

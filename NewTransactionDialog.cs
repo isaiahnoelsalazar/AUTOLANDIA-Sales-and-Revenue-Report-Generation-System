@@ -19,6 +19,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         double ServicePrice = 0;
         List<string> ExtraList = new List<string>();
         List<ServiceItem> SERVICES = new List<ServiceItem>();
+        MaterialCheckbox Perfume;
         int PerfumeCount = 0;
 
         public NewTransactionDialog()
@@ -29,6 +30,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.RowStyles.Clear();
             SelectServicesButton.Visible = true;
 
+            CB_Packages.Items.Add("None");
             foreach (PackageItem Package in GlobalPackageList)
             {
                 if (!CB_Packages.Items.Contains(Package.Name))
@@ -36,10 +38,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     CB_Packages.Items.Add(Package.Name);
                 }
             }
+            CB_Packages.SelectedIndex = 0;
 
-            ExtraList.Add("Perfume (₱150.00)");
+            Perfume = new MaterialCheckbox()
+            {
+                Text = "Perfume (₱150.00)"
+            };
+            Perfume.CheckedChanged += (s, e) =>
+            {
+                if (Perfume.Checked)
+                {
+                    new PickPerfumeCountDialog(this).ShowDialog();
+                }
+                else
+                {
+                    Perfume.Text = "Perfume (₱150.00)";
+                    PerfumeCount = 0;
+                }
+            };
             ExtraList.Add("Car w/ Carrier (₱20.00)");
 
+            ExtraListCheckBox.Items.Add(Perfume);
             foreach (string Item in ExtraList)
             {
                 ExtraListCheckBox.Items.Add(Item);
@@ -58,6 +77,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.RowStyles.Clear();
             SelectServicesButton.Visible = true;
 
+            CB_Packages.Items.Add("None");
             foreach (PackageItem Package in GlobalPackageList)
             {
                 if (!CB_Packages.Items.Contains(Package.Name))
@@ -65,10 +85,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     CB_Packages.Items.Add(Package.Name);
                 }
             }
+            CB_Packages.SelectedIndex = 0;
 
             VehicleItem RealVehicle = GetVehicleFromID(VehicleID);
 
             TB_Vehicle.Text = $"{RealVehicle.ID}: {RealVehicle.Brand}, {RealVehicle.Model}, {RealVehicle.PlateNumber}";
+            TB_Vehicle.ReadOnly = true;
 
             if (RealVehicle != null)
             {
@@ -84,9 +106,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            ExtraList.Add("Perfume (150)");
-            ExtraList.Add("Car w/ Carrier (20)");
+            Perfume = new MaterialCheckbox()
+            {
+                Text = "Perfume (₱150.00)"
+            };
+            Perfume.CheckedChanged += (s, e) =>
+            {
+                if (Perfume.Checked)
+                {
+                    new PickPerfumeCountDialog(this).ShowDialog();
+                }
+                else
+                {
+                    Perfume.Text = "Perfume (₱150.00)";
+                    PerfumeCount = 0;
+                }
+            };
+            ExtraList.Add("Car w/ Carrier (₱20.00)");
 
+            ExtraListCheckBox.Items.Add(Perfume);
             foreach (string Item in ExtraList)
             {
                 ExtraListCheckBox.Items.Add(Item);
@@ -123,25 +161,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
 
-            ServicePrice = 0;
-
             ServiceCheckedboxes = ServiceCheckboxes;
+
+            ServicePrice = 0;
             SERVICES.Clear();
 
-            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
             PackageItem RealPackage = null;
 
             if (!string.IsNullOrEmpty(CB_Packages.Text))
             {
-                foreach (PackageItem Package in GlobalPackageList)
-                {
-                    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
-                    {
-                        RealPackage = Package;
-                        break;
-                    }
-                }
+                RealPackage = GetPackageFromName(CB_Packages.Text);
             }
 
             if (RealPackage != null)
@@ -172,10 +203,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         foreach (ServiceItem Service in GlobalServiceList)
                         {
-                            if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                            if (Service.Name.Equals(Temp[a].Text))
                             {
                                 SERVICES.Add(Service);
-                                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                                 TableLayoutPanel Panel = new TableLayoutPanel
                                 {
                                     ColumnCount = 2
@@ -215,8 +246,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 };
 
                                 Price.Dock = DockStyle.Fill;
-                                Price.Text = $"₱{Service.Price.ToString("0.00")}";
-                                ServicePrice += Service.Price;
+                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size)}";
+                                ServicePrice += GetServicePrice(Service.Name, RealVehicle.Size);
                                 Price.TextAlign = ContentAlignment.MiddleCenter;
                                 Price.MouseEnter += (sndr, evnt) =>
                                 {
@@ -240,132 +271,125 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            if (!string.IsNullOrEmpty(CB_Packages.Text))
+            if (RealPackage != null)
             {
-                foreach (PackageItem Package in GlobalPackageList)
+                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
+                TableLayoutPanel Panel = new TableLayoutPanel
                 {
-                    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                    ColumnCount = 2
+                };
+                Label Name = new Label();
+                Label Price = new Label();
+
+                if (DefaultBackgroundColor == null)
+                {
+                    DefaultBackgroundColor = Panel.BackColor;
+                }
+
+                Panel.Dock = DockStyle.Fill;
+                Panel.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Panel.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+                Panel.ColumnStyles.Clear();
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                Panel.Margin = new Padding(0);
+
+                Name.Dock = DockStyle.Fill;
+                Name.Text = RealPackage.Name;
+                Name.TextAlign = ContentAlignment.MiddleLeft;
+                Name.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Name.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                Price.Dock = DockStyle.Fill;
+                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle.Size)}";
+                Price.TextAlign = ContentAlignment.MiddleCenter;
+                Price.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Price.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                ServiceList.RowStyles.Add(Row);
+                Panel.Controls.Add(Name, 0, 0);
+                Panel.Controls.Add(Price, 1, 0);
+                ServiceList.Controls.Add(Panel);
+
+                tableLayoutPanel2.Width = ServiceList.Width;
+
+                foreach (string Item in RealPackage.Details.Split(','))
+                {
+                    RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
+                    TableLayoutPanel Panel1 = new TableLayoutPanel
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel = new TableLayoutPanel
-                        {
-                            ColumnCount = 2
-                        };
-                        Label Name = new Label();
-                        Label Price = new Label();
+                        ColumnCount = 2
+                    };
+                    Label Name1 = new Label();
+                    Label Price1 = new Label();
 
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel.BackColor;
-                        }
-
-                        Panel.Dock = DockStyle.Fill;
-                        Panel.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel.ColumnStyles.Clear();
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                        Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                        Panel.Margin = new Padding(0);
-
-                        Name.Dock = DockStyle.Fill;
-                        Name.Text = Package.Name;
-                        Name.TextAlign = ContentAlignment.MiddleLeft;
-                        Name.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price.Dock = DockStyle.Fill;
-                        Price.Text = $"₱{Package.Price.ToString("0.00")}";
-                        Price.TextAlign = ContentAlignment.MiddleCenter;
-                        Price.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel.BackColor = DefaultBackgroundColor;
-                        };
-
-                        ServiceList.RowStyles.Add(Row);
-                        Panel.Controls.Add(Name, 0, 0);
-                        Panel.Controls.Add(Price, 1, 0);
-                        ServiceList.Controls.Add(Panel);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
-
-                        foreach (string Item in Package.Details.Split(','))
-                        {
-                            RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
-                            TableLayoutPanel Panel1 = new TableLayoutPanel
-                            {
-                                ColumnCount = 2
-                            };
-                            Label Name1 = new Label();
-                            Label Price1 = new Label();
-
-                            if (DefaultBackgroundColor == null)
-                            {
-                                DefaultBackgroundColor = Panel1.BackColor;
-                            }
-
-                            Panel1.Dock = DockStyle.Top;
-                            Panel1.MouseEnter += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                            };
-                            Panel1.MouseLeave += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = DefaultBackgroundColor;
-                            };
-                            Panel1.ColumnStyles.Clear();
-                            Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                            Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                            Panel1.Margin = new Padding(0);
-
-                            Name1.Dock = DockStyle.Fill;
-                            Name1.Text = Item;
-                            Name1.TextAlign = ContentAlignment.MiddleLeft;
-                            Name1.MouseEnter += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                            };
-                            Name1.MouseLeave += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = DefaultBackgroundColor;
-                            };
-
-                            Price1.Dock = DockStyle.Fill;
-                            Price1.Text = "";
-                            Price1.TextAlign = ContentAlignment.MiddleCenter;
-                            Price1.MouseEnter += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                            };
-                            Price1.MouseLeave += (sndr, evnt) =>
-                            {
-                                Panel1.BackColor = DefaultBackgroundColor;
-                            };
-
-                            ServiceList.RowStyles.Add(Row1);
-                            Panel1.Controls.Add(Name1, 0, 0);
-                            Panel1.Controls.Add(Price1, 1, 0);
-                            ServiceList.Controls.Add(Panel1);
-
-                            tableLayoutPanel2.Width = ServiceList.Width;
-                        }
-                        break;
+                    if (DefaultBackgroundColor == null)
+                    {
+                        DefaultBackgroundColor = Panel1.BackColor;
                     }
+
+                    Panel1.Dock = DockStyle.Top;
+                    Panel1.MouseEnter += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                    };
+                    Panel1.MouseLeave += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = DefaultBackgroundColor;
+                    };
+                    Panel1.ColumnStyles.Clear();
+                    Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                    Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                    Panel1.Margin = new Padding(0);
+
+                    Name1.Dock = DockStyle.Fill;
+                    Name1.Text = Item;
+                    Name1.TextAlign = ContentAlignment.MiddleLeft;
+                    Name1.MouseEnter += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                    };
+                    Name1.MouseLeave += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = DefaultBackgroundColor;
+                    };
+
+                    Price1.Dock = DockStyle.Fill;
+                    Price1.Text = "";
+                    Price1.TextAlign = ContentAlignment.MiddleCenter;
+                    Price1.MouseEnter += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                    };
+                    Price1.MouseLeave += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = DefaultBackgroundColor;
+                    };
+
+                    ServiceList.RowStyles.Add(Row1);
+                    Panel1.Controls.Add(Name1, 0, 0);
+                    Panel1.Controls.Add(Price1, 1, 0);
+                    ServiceList.Controls.Add(Panel1);
+
+                    tableLayoutPanel2.Width = ServiceList.Width;
                 }
             }
         }
@@ -373,7 +397,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public void SetVehicle(string Vehicle)
         {
             TB_Vehicle.Text = Vehicle;
-            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
             
             if (RealVehicle != null)
             {
@@ -456,24 +480,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
 
+            ServicePrice = 0;
             SERVICES.Clear();
 
-            ServicePrice = 0;
-
-            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
+            VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
             PackageItem RealPackage = null;
 
             if (!string.IsNullOrEmpty(CB_Packages.Text))
             {
-                foreach (PackageItem Package in GlobalPackageList)
-                {
-                    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
-                    {
-                        RealPackage = Package;
-                        break;
-                    }
-                }
+                RealPackage = GetPackageFromName(CB_Packages.Text);
             }
 
             if (RealPackage != null)
@@ -504,10 +520,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         foreach (ServiceItem Service in GlobalServiceList)
                         {
-                            if (Service.Name.Equals(Temp[a].Text) && Service.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                            if (Service.Name.Equals(Temp[a].Text))
                             {
                                 SERVICES.Add(Service);
-                                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                                 TableLayoutPanel Panel = new TableLayoutPanel
                                 {
                                     ColumnCount = 2
@@ -547,8 +563,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 };
 
                                 Price.Dock = DockStyle.Fill;
-                                Price.Text = $"₱{Service.Price.ToString("0.00")}";
-                                ServicePrice += Service.Price;
+                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size)}";
+                                ServicePrice += GetServicePrice(Service.Name, RealVehicle.Size);
                                 Price.TextAlign = ContentAlignment.MiddleCenter;
                                 Price.MouseEnter += (sndr, evnt) =>
                                 {
@@ -572,129 +588,125 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            foreach (PackageItem Package in GlobalPackageList)
+            if (RealPackage != null)
             {
-                if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle != null ? RealVehicle.Size : "S"))
+                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
+                TableLayoutPanel Panel = new TableLayoutPanel
                 {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-                    TableLayoutPanel Panel = new TableLayoutPanel
+                    ColumnCount = 2
+                };
+                Label Name = new Label();
+                Label Price = new Label();
+
+                if (DefaultBackgroundColor == null)
+                {
+                    DefaultBackgroundColor = Panel.BackColor;
+                }
+
+                Panel.Dock = DockStyle.Fill;
+                Panel.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Panel.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+                Panel.ColumnStyles.Clear();
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                Panel.Margin = new Padding(0);
+
+                Name.Dock = DockStyle.Fill;
+                Name.Text = RealPackage.Name;
+                Name.TextAlign = ContentAlignment.MiddleLeft;
+                Name.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Name.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                Price.Dock = DockStyle.Fill;
+                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle.Size)}";
+                Price.TextAlign = ContentAlignment.MiddleCenter;
+                Price.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Price.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                ServiceList.RowStyles.Add(Row);
+                Panel.Controls.Add(Name, 0, 0);
+                Panel.Controls.Add(Price, 1, 0);
+                ServiceList.Controls.Add(Panel);
+
+                tableLayoutPanel2.Width = ServiceList.Width;
+
+                foreach (string Item in RealPackage.Details.Split(','))
+                {
+                    RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
+                    TableLayoutPanel Panel1 = new TableLayoutPanel
                     {
                         ColumnCount = 2
                     };
-                    Label Name = new Label();
-                    Label Price = new Label();
+                    Label Name1 = new Label();
+                    Label Price1 = new Label();
 
                     if (DefaultBackgroundColor == null)
                     {
-                        DefaultBackgroundColor = Panel.BackColor;
+                        DefaultBackgroundColor = Panel1.BackColor;
                     }
 
-                    Panel.Dock = DockStyle.Fill;
-                    Panel.MouseEnter += (sndr, evnt) =>
+                    Panel1.Dock = DockStyle.Top;
+                    Panel1.MouseEnter += (sndr, evnt) =>
                     {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
                     };
-                    Panel.MouseLeave += (sndr, evnt) =>
+                    Panel1.MouseLeave += (sndr, evnt) =>
                     {
-                        Panel.BackColor = DefaultBackgroundColor;
+                        Panel1.BackColor = DefaultBackgroundColor;
                     };
-                    Panel.ColumnStyles.Clear();
-                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                    Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                    Panel.Margin = new Padding(0);
+                    Panel1.ColumnStyles.Clear();
+                    Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
+                    Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
+                    Panel1.Margin = new Padding(0);
 
-                    Name.Dock = DockStyle.Fill;
-                    Name.Text = Package.Name;
-                    Name.TextAlign = ContentAlignment.MiddleLeft;
-                    Name.MouseEnter += (sndr, evnt) =>
+                    Name1.Dock = DockStyle.Fill;
+                    Name1.Text = Item;
+                    Name1.TextAlign = ContentAlignment.MiddleLeft;
+                    Name1.MouseEnter += (sndr, evnt) =>
                     {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
                     };
-                    Name.MouseLeave += (sndr, evnt) =>
+                    Name1.MouseLeave += (sndr, evnt) =>
                     {
-                        Panel.BackColor = DefaultBackgroundColor;
-                    };
-
-                    Price.Dock = DockStyle.Fill;
-                    Price.Text = $"₱{Package.Price.ToString("0.00")}";
-                    Price.TextAlign = ContentAlignment.MiddleCenter;
-                    Price.MouseEnter += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = Color.FromArgb(200, 200, 200);
-                    };
-                    Price.MouseLeave += (sndr, evnt) =>
-                    {
-                        Panel.BackColor = DefaultBackgroundColor;
+                        Panel1.BackColor = DefaultBackgroundColor;
                     };
 
-                    ServiceList.RowStyles.Add(Row);
-                    Panel.Controls.Add(Name, 0, 0);
-                    Panel.Controls.Add(Price, 1, 0);
-                    ServiceList.Controls.Add(Panel);
+                    Price1.Dock = DockStyle.Fill;
+                    Price1.Text = "";
+                    Price1.TextAlign = ContentAlignment.MiddleCenter;
+                    Price1.MouseEnter += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = Color.FromArgb(200, 200, 200);
+                    };
+                    Price1.MouseLeave += (sndr, evnt) =>
+                    {
+                        Panel1.BackColor = DefaultBackgroundColor;
+                    };
+
+                    ServiceList.RowStyles.Add(Row1);
+                    Panel1.Controls.Add(Name1, 0, 0);
+                    Panel1.Controls.Add(Price1, 1, 0);
+                    ServiceList.Controls.Add(Panel1);
 
                     tableLayoutPanel2.Width = ServiceList.Width;
-
-                    foreach (string Item in Package.Details.Split(','))
-                    {
-                        RowStyle Row1 = new RowStyle(SizeType.Absolute, 48f);
-                        TableLayoutPanel Panel1 = new TableLayoutPanel
-                        {
-                            ColumnCount = 2
-                        };
-                        Label Name1 = new Label();
-                        Label Price1 = new Label();
-
-                        if (DefaultBackgroundColor == null)
-                        {
-                            DefaultBackgroundColor = Panel1.BackColor;
-                        }
-
-                        Panel1.Dock = DockStyle.Top;
-                        Panel1.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Panel1.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = DefaultBackgroundColor;
-                        };
-                        Panel1.ColumnStyles.Clear();
-                        Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65f));
-                        Panel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35f));
-                        Panel1.Margin = new Padding(0);
-
-                        Name1.Dock = DockStyle.Fill;
-                        Name1.Text = Item;
-                        Name1.TextAlign = ContentAlignment.MiddleLeft;
-                        Name1.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Name1.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = DefaultBackgroundColor;
-                        };
-
-                        Price1.Dock = DockStyle.Fill;
-                        Price1.Text = "";
-                        Price1.TextAlign = ContentAlignment.MiddleCenter;
-                        Price1.MouseEnter += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = Color.FromArgb(200, 200, 200);
-                        };
-                        Price1.MouseLeave += (sndr, evnt) =>
-                        {
-                            Panel1.BackColor = DefaultBackgroundColor;
-                        };
-
-                        ServiceList.RowStyles.Add(Row1);
-                        Panel1.Controls.Add(Name1, 0, 0);
-                        Panel1.Controls.Add(Price1, 1, 0);
-                        ServiceList.Controls.Add(Panel1);
-
-                        tableLayoutPanel2.Width = ServiceList.Width;
-                    }
-                    break;
                 }
             }
         }
@@ -702,6 +714,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public void PickPerfumeCount(int Count)
         {
             PerfumeCount = Count;
+            Perfume.Text = $"Perfume (₱150.00) x {PerfumeCount}";
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -722,23 +735,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ErrorMessage += "Please select at least one service or a package.\n";
             }
-            if (PaymentCheck.Checked)
-            {
-                try
-                {
-                    double.Parse(TB_Payment.Text);
-                }
-                catch
-                {
-                    ErrorMessage += "Please enter a valid payment amount.\n";
-                }
-            }
 
             if (ErrorMessage.Equals(""))
             {
                 double RealPrice = 0;
 
-                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(',')[0].Split(':')[0].Trim());
+                VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
                 string Extras = string.Empty;
                 for (int a = 0; a < ExtraListCheckBox.Items.Count; a++)
@@ -747,15 +749,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (ExtraListCheckBox.Items[a].Text.Equals(Item) && ExtraListCheckBox.Items[a].Checked)
                         {
-                            Extras += Item.ToCharArray()[0];
+                            Extras += Item.ToCharArray()[0] == 'P' ? $"{PerfumeCount}{Item.ToCharArray()[0]}" : Item.ToCharArray()[0].ToString();
                             break;
                         }
                     }
-                }
-
-                if (Extras.Count(c => c == 'P') > 0)
-                {
-                    new PickPerfumeCountDialog(this).ShowDialog();
                 }
 
                 RealPrice += PerfumeCount * 150;
@@ -766,7 +763,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     foreach (ServiceItem Service in GlobalServiceList)
                     {
-                        if (Service.Name.Equals(ServiceList.Controls[a].Controls[0].Text) && !string.IsNullOrEmpty(ServiceList.Controls[a].Controls[1].Text) && Service.Size.Equals(RealVehicle.Size))
+                        if (Service.Name.Equals(ServiceList.Controls[a].Controls[0].Text) && !string.IsNullOrEmpty(ServiceList.Controls[a].Controls[1].Text))
                         {
                             ServiceIds += Service.ID + ",";
                             break;
@@ -778,7 +775,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 1);
                     if (ServiceIds.Length > 0)
                     {
-                        ServiceIds += "[" + ServiceIds + "]";
+                        ServiceIds = "[" + ServiceIds + "]";
                     }
                 }
 
@@ -789,11 +786,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 foreach (PackageItem Package in GlobalPackageList)
                 {
-                    if (Package.Name.Equals(CB_Packages.Text) && Package.Size.Equals(RealVehicle.Size))
+                    if (Package.Name.Equals(CB_Packages.Text))
                     {
                         PackageId = Package.ID;
-                        PACKAGESIZE = Package.Size;
-                        RealPrice += Package.Price;
+                        PACKAGESIZE = RealVehicle.Size;
+                        RealPrice += GetPackagePrice(Package.Name, PACKAGESIZE);
                         break;
                     }
                 }
@@ -814,20 +811,94 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 EmployeeIds = EmployeeIds.Substring(0, EmployeeIds.Length - 1);
                 EmployeeIds += "]";
 
+                object[] args = new object[]
+                {
+                    EmployeeIds,
+                    ServiceIds,
+                    PackageId,
+                    Extras,
+                    RealVehicle,
+                    Now,
+                    RealPrice - (RealPrice * ((double)DiscountSlider.Value / 100)),
+                    RealPrice,
+                    DiscountSlider.Value
+                };
+
+                new ResultDialog(this, SERVICES, $"[{CB_Packages.Text} - {PACKAGESIZE}]", Extras, args).ShowDialog();
+            }
+            else
+            {
+                AlertMessageBox(ErrorMessage);
+            }
+        }
+
+        public void FromResultDialog(string EmployeeIds, string ServiceIds, string PackageId, string Extras, VehicleItem RealVehicle, DateTime Now, double RealPrice)
+        {
+            if (NoticeMessageBox("Proceed to payment?") == DialogResult.Yes)
+            {
                 try
                 {
-                    DoneButton.Enabled = false;
-                    CancelButton.Enabled = false;
+                    int refnum = GlobalTransactionList.Count + 1;
+                    RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
 
-                    RecordActivity($"Added new order with reference number: {GlobalOrderList.Count + 1}");
+                    InsertToTransactionList(
+                        EmployeeIds,
+                        ServiceIds,
+                        PackageId,
+                        Extras,
+                        RealVehicle.ID,
+                        "Ready",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                    ).ExecuteNonQuery();
 
-                    SqliteCommand Command = new SqliteCommand($"INSERT INTO AUTOLANDIA_OrderList(OrderId, EmployeeIdList, ServiceIdList, PackageId, Extras, VehicleId, OrderProgress, DateUpdated, DateCreated) VALUES ('{GlobalOrderList.Count + 1}', '{EmployeeIds}', '{ServiceIds}', '{PackageId}', '{Extras}', '{RealVehicle.ID}', 'Ready', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}')", SQL);
-                    SqliteCommand Command1 = new SqliteCommand($"INSERT INTO AUTOLANDIA_BillingList(BillingId, OrderBalance, OrderDiscount, BillingProgress, PaymentMethodName, DateUpdated, DateCreated, IncompletePaymentAmount) VALUES ('{GlobalOrderList.Count + 1}', {RealPrice}, {DiscountSlider.Value}, '{(PaymentCheck.Checked ? ((RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) > 0 ? "Incomplete" : "Paid") : "Unpaid")}', 'Cash', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', '{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}', {((RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) > 0 ? (RealPrice - (RealPrice * (DiscountSlider.Value / 100)) - double.Parse(TB_Payment.Text)) : 0)})", SQL);
+                    InsertToBillingList(
+                        RealPrice,
+                        DiscountSlider.Value,
+                        0,
+                        "Pending",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                    ).ExecuteNonQuery();
 
-                    Command.ExecuteNonQuery();
-                    Command1.ExecuteNonQuery();
+                    GlobalTransactionsForm.RefreshTransactions();
+                    GlobalBillingForm.RefreshBillings();
+                    GlobalActivityRecordForm.RefreshActivities();
 
-                    MaterialMessageBox.Show("Successfully added new transaction!", "Notice");
+                    new PaymentDialog(this, AddCustomerVehicleDialog, NewCustomerDialog, refnum.ToString()).ShowDialog();
+                }
+                catch (Exception Exception)
+                {
+                    AlertMessageBox(Exception.Message);
+                }
+            }
+            else
+            {
+                try
+                {
+                    RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
+
+                    InsertToTransactionList(
+                        EmployeeIds,
+                        ServiceIds,
+                        PackageId,
+                        Extras,
+                        RealVehicle.ID,
+                        "Ready",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                    ).ExecuteNonQuery();
+
+                    InsertToBillingList(
+                        RealPrice,
+                        DiscountSlider.Value,
+                        0,
+                        "Pending",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                    ).ExecuteNonQuery();
+
+                    OkMessageBox("Successfully added new transaction!");
                     GlobalTransactionsForm.RefreshTransactions();
                     GlobalBillingForm.RefreshBillings();
                     GlobalActivityRecordForm.RefreshActivities();
@@ -839,25 +910,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         NewCustomerDialog.Close();
                     }
-                    new ResultDialog(SERVICES, $"[{CB_Packages.Text} - {PACKAGESIZE}]", Extras, PerfumeCount, RealPrice, DiscountSlider.Value, RealPrice - (RealPrice * (DiscountSlider.Value / 100)), double.Parse(TB_Payment.Text), double.Parse(TB_Payment.Text) - (RealPrice - (RealPrice * (DiscountSlider.Value / 100)))).ShowDialog();
                     Close();
                 }
-                catch (Exception exception)
+                catch (Exception Exception)
                 {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                    DoneButton.Enabled = true;
-                    CancelButton.Enabled = true;
+                    AlertMessageBox(Exception.Message);
                 }
             }
-            else
-            {
-                MaterialMessageBox.Show(ErrorMessage, "Alert");
-            }
-        }
-
-        private void PaymentCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            TB_Payment.Visible = PaymentCheck.Checked;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

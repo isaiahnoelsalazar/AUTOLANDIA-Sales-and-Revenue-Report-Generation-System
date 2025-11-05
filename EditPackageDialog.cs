@@ -8,7 +8,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class EditPackageDialog : MaterialForm
     {
         ServicesAndPackagesForm ServicesAndPackagesForm;
-        string PackageID, PreviousPrice;
+        string PackageID;
 
         public EditPackageDialog(ServicesAndPackagesForm ServicesAndPackagesForm, string PackageID)
         {
@@ -24,9 +24,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     TB_ID.Text = Package.ID;
                     TB_Name.Text = Package.Name;
                     TB_Services.Text = Package.Details;
-                    TB_Size.Text = Package.Size;
-                    TB_Price.Text = Package.Price.ToString();
-                    PreviousPrice = Package.Price.ToString();
+                    TB_PriceS.Text = Package.S.ToString();
+                    TB_PriceM.Text = Package.M.ToString();
+                    TB_PriceL.Text = Package.L.ToString();
+                    TB_PriceXL.Text = Package.XL.ToString();
+                    TB_PriceXXL.Text = Package.XXL.ToString();
                 }
             }
         }
@@ -35,25 +37,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             try
             {
-                string Price = TB_Price.Text.ToUpper();
+                string PriceS = TB_PriceS.Text.ToUpper();
+                string PriceM = TB_PriceM.Text.ToUpper();
+                string PriceL = TB_PriceL.Text.ToUpper();
+                string PriceXL = TB_PriceXL.Text.ToUpper();
+                string PriceXXL = TB_PriceXXL.Text.ToUpper();
 
                 DoneButton.Enabled = false;
                 CancelButton.Enabled = false;
 
-                RecordActivity($"Updated package [{PackageID}] price from [{PreviousPrice}] to [{Price}]");
+                RecordActivity($"Updated package [{PackageID}] details");
 
-                SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_PackageList SET PackagePrice={Price} WHERE PackageId='{PackageID}'", SQL);
+                SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_PackageList SET PackagePriceSizeS={PriceS}, PackagePriceSizeM={PriceM}, PackagePriceSizeL={PriceL}, PackagePriceSizeXL={PriceXL}, PackagePriceSizeXXL={PriceXXL} WHERE PackageId='{PackageID}'", SQL);
 
                 Command.ExecuteNonQuery();
 
-                MaterialMessageBox.Show("Successfully updated package details!", "Notice");
+                OkMessageBox("Successfully updated package details!");
                 ServicesAndPackagesForm.RefreshPackages();
                 GlobalActivityRecordForm.RefreshActivities();
                 Close();
             }
-            catch (Exception exception)
+            catch (Exception Exception)
             {
-                MaterialMessageBox.Show(exception.Message, "Alert");
+                AlertMessageBox(Exception.Message);
                 DoneButton.Enabled = true;
                 CancelButton.Enabled = true;
             }

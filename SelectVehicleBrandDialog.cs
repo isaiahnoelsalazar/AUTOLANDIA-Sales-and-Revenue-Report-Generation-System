@@ -66,7 +66,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (string Brand in Temp)
             {
-                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                 TableLayoutPanel Panel = new TableLayoutPanel
                 {
                     ColumnCount = 1
@@ -143,7 +143,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Brand.Contains(SearchBarVehicle.Text.ToUpper()))
                 {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                    RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                     TableLayoutPanel Panel = new TableLayoutPanel
                     {
                         ColumnCount = 1
@@ -211,7 +211,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 else if (string.IsNullOrEmpty(SearchBarVehicle.Text))
                 {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                    RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                     TableLayoutPanel Panel = new TableLayoutPanel
                     {
                         ColumnCount = 1

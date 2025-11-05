@@ -8,7 +8,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class EditServiceDialog : MaterialForm
     {
         ServicesAndPackagesForm ServicesAndPackagesForm;
-        string ServiceID, PreviousPrice;
+        string ServiceID;
 
         public EditServiceDialog(ServicesAndPackagesForm ServicesAndPackagesForm, string ServiceID)
         {
@@ -23,9 +23,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     TB_ID.Text = Service.ID;
                     TB_Name.Text = Service.Name;
-                    TB_Size.Text = Service.Size;
-                    TB_Price.Text = Service.Price.ToString();
-                    PreviousPrice = Service.Price.ToString();
+                    TB_PriceS.Text = Service.S.ToString();
+                    TB_PriceM.Text = Service.M.ToString();
+                    TB_PriceL.Text = Service.L.ToString();
+                    TB_PriceXL.Text = Service.XL.ToString();
+                    TB_PriceXXL.Text = Service.XXL.ToString();
                 }
             }
         }
@@ -34,25 +36,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             try
             {
-                string Price = TB_Price.Text.ToUpper();
+                string PriceS = TB_PriceS.Text.ToUpper();
+                string PriceM = TB_PriceM.Text.ToUpper();
+                string PriceL = TB_PriceL.Text.ToUpper();
+                string PriceXL = TB_PriceXL.Text.ToUpper();
+                string PriceXXL = TB_PriceXXL.Text.ToUpper();
 
                 DoneButton.Enabled = false;
                 CancelButton.Enabled = false;
 
-                RecordActivity($"Updated service [{ServiceID}] price from [{PreviousPrice}] to [{Price}]");
+                RecordActivity($"Updated service [{ServiceID}] details");
 
-                SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_ServiceList SET ServicePrice={Price} WHERE ServiceId='{ServiceID}'", SQL);
+                SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_ServiceList SET ServicePriceSizeS={PriceS}, ServicePriceSizeM={PriceM}, ServicePriceSizeL={PriceL}, ServicePriceSizeXL={PriceXL}, ServicePriceSizeXXL={PriceXXL} WHERE ServiceId='{ServiceID}'", SQL);
 
                 Command.ExecuteNonQuery();
 
-                MaterialMessageBox.Show("Successfully updated service details!", "Notice");
+                OkMessageBox("Successfully updated service details!");
                 ServicesAndPackagesForm.RefreshServices();
                 GlobalActivityRecordForm.RefreshActivities();
                 Close();
             }
-            catch (Exception exception)
+            catch (Exception Exception)
             {
-                MaterialMessageBox.Show(exception.Message, "Alert");
+                AlertMessageBox(Exception.Message);
                 DoneButton.Enabled = true;
                 CancelButton.Enabled = true;
             }

@@ -39,7 +39,7 @@
             this.TB_PC.AnimateReadOnly = false;
             this.TB_PC.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_PC.Depth = 0;
-            this.TB_PC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_PC.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_PC.Hint = "Perfume amount";
             this.TB_PC.LeadingIcon = null;
             this.TB_PC.Location = new System.Drawing.Point(11, 32);
@@ -50,7 +50,7 @@
             this.TB_PC.Name = "TB_PC";
             this.TB_PC.Size = new System.Drawing.Size(354, 50);
             this.TB_PC.TabIndex = 84;
-            this.TB_PC.Text = "";
+            this.TB_PC.Text = "1";
             this.TB_PC.TrailingIcon = null;
             // 
             // DoneButton

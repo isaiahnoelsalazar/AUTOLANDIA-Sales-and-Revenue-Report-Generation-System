@@ -76,7 +76,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
-                    if (Billing.Progress.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
+                    if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
                         RefreshRows(Billing);
                     }
@@ -100,7 +100,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
-                    if (Billing.Progress.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
+                    if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
                         RefreshRows(Billing);
                     }
@@ -113,12 +113,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
-                ColumnCount = 6
+                ColumnCount = 5
             };
             Label Id = new Label();
             Label Balance = new Label();
-            MaterialComboBox Progress = new MaterialComboBox();
-            MaterialComboBox PaymentMethod = new MaterialComboBox();
+            Label Progress = new Label();
             Label LastUpdated = new Label();
             Label DateCreated = new Label();
 
@@ -137,10 +136,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
             Panel.ColumnStyles.Clear();
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.Margin = new Padding(0);
@@ -158,7 +156,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Balance.Dock = DockStyle.Fill;
-            Balance.Text = (Billing.Discount > 0 ? $"₱{(Billing.Balance - (Billing.Balance * (Billing.Discount / 100))).ToString("0.00")} ({Billing.Discount}% | ₱{Billing.Balance.ToString("0.00")})" : $"₱{Billing.Balance.ToString("0.00")}") + (Billing.IncompletePaymentAmount > 0 ? $" (Unpaid: ₱{Billing.IncompletePaymentAmount.ToString("0.00")})" : string.Empty);
+            Balance.Text = Billing.Balance - Billing.Paid > 0 ? $"₱{(Billing.Balance - Billing.Paid).ToString("0.00")}" : "₱0.00";
             Balance.TextAlign = ContentAlignment.MiddleCenter;
             Balance.MouseEnter += (sndr, evnt) =>
             {
@@ -170,87 +168,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Progress.Dock = DockStyle.Fill;
-            Progress.Items.Add("Unpaid");
-            Progress.Items.Add("Incomplete");
-            Progress.Items.Add("Paid");
-
-            if (Billing.Progress.Equals("Unpaid"))
+            Progress.Text = Billing.Status;
+            Progress.TextAlign = ContentAlignment.MiddleCenter;
+            Progress.MouseEnter += (sndr, evnt) =>
             {
-                Progress.SelectedIndex = 0;
-            }
-            if (Billing.Progress.Equals("Incomplete"))
-            {
-                Progress.SelectedIndex = 1;
-            }
-            if (Billing.Progress.Equals("Paid"))
-            {
-                Progress.SelectedIndex = 2;
-            }
-
-            Progress.SelectedIndexChanged += (sndr, evnt) =>
-            {
-                try
-                {
-                    DateTime Now = DateTime.Now;
-
-                    RecordActivity($"Changed billing reference number [{Billing.ID}] progress from [{Billing.Progress}] to [{Progress.Text}]");
-
-                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET BillingProgress='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
-
-                    Command.ExecuteNonQuery();
-
-                    MaterialMessageBox.Show("Successfully changed billing progress!", "Notice");
-                    RefreshBillings();
-                    GlobalActivityRecordForm.RefreshActivities();
-                }
-                catch (Exception exception)
-                {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                }
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
             };
-
-            PaymentMethod.Dock = DockStyle.Fill;
-            foreach (string Payment in GlobalPaymentMethodList)
+            Progress.MouseLeave += (sndr, evnt) =>
             {
-                PaymentMethod.Items.Add(Payment);
-            }
-            for (int a = 0; a < PaymentMethod.Items.Count; a++)
-            {
-                if (Billing.PaymentMethod.Equals(PaymentMethod.Items[a]))
-                {
-                    PaymentMethod.SelectedIndex = a;
-                }
-            }
-
-            PaymentMethod.SelectedIndexChanged += (sndr, evnt) =>
-            {
-                try
-                {
-                    DateTime Now = DateTime.Now;
-
-                    RecordActivity($"Changed billing reference number [{Billing.ID}] payment method from [{Billing.PaymentMethod}] to [{PaymentMethod.Text}]");
-
-                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET PaymentMethodName='{PaymentMethod.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Billing.ID}'", SQL);
-
-                    Command.ExecuteNonQuery();
-
-                    MaterialMessageBox.Show("Successfully changed billing payment method!", "Notice");
-                    RefreshBillings();
-                    GlobalActivityRecordForm.RefreshActivities();
-
-                    //if (PaymentMethod.Text.Equals("GCash"))
-                    //{
-                    //    DialogResult NewDialogResult = MaterialMessageBox.Show("Show GCash QR code?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
-                    //    if (NewDialogResult == DialogResult.Yes)
-                    //    {
-                    //        new ShowGCashQRDialog().ShowDialog();
-                    //    }
-                    //}
-                }
-                catch (Exception exception)
-                {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                }
+                Panel.BackColor = DefaultBackgroundColor;
             };
 
             LastUpdated.Dock = DockStyle.Fill;
@@ -279,32 +205,35 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             Panel.Click += (sndr, evnt) =>
             {
-                new EditBillingDialog(this, Billing.ID).ShowDialog();
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
             Id.Click += (sndr, evnt) =>
             {
-                new EditBillingDialog(this, Billing.ID).ShowDialog();
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
             Balance.Click += (sndr, evnt) =>
             {
-                new EditBillingDialog(this, Billing.ID).ShowDialog();
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
+            };
+            Progress.Click += (sndr, evnt) =>
+            {
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
             LastUpdated.Click += (sndr, evnt) =>
             {
-                new EditBillingDialog(this, Billing.ID).ShowDialog();
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
             DateCreated.Click += (sndr, evnt) =>
             {
-                new EditBillingDialog(this, Billing.ID).ShowDialog();
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
 
             BillingList.RowStyles.Add(Row);
             Panel.Controls.Add(Id, 0, 0);
             Panel.Controls.Add(Balance, 1, 0);
             Panel.Controls.Add(Progress, 2, 0);
-            Panel.Controls.Add(PaymentMethod, 3, 0);
-            Panel.Controls.Add(LastUpdated, 4, 0);
-            Panel.Controls.Add(DateCreated, 5, 0);
+            Panel.Controls.Add(LastUpdated, 3, 0);
+            Panel.Controls.Add(DateCreated, 4, 0);
             BillingList.Controls.Add(Panel);
 
             tableLayoutPanel2.Width = BillingList.Width;

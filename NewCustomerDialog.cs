@@ -65,9 +65,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string MobileNumber = TB_MobileNumber.Text.ToUpper();
                     string CustomerID = (GlobalCustomerList.Count + 1).ToString();
 
-                    DoneButton.Enabled = false;
-                    CancelButton.Enabled = false;
-
                     RecordActivity($"Added new customer: {LName}, {FName}{(!string.IsNullOrEmpty(MName) ? $" {MName}" : string.Empty)} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
                     VehicleItem RealVehicle = GetVehicleFromID(VehicleID);
@@ -146,8 +143,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 catch (Exception exception)
                 {
                     MaterialMessageBox.Show(exception.Message, "Alert");
-                    DoneButton.Enabled = true;
-                    CancelButton.Enabled = true;
                 }
             }
             else
@@ -158,6 +153,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            if (AddCustomerVehicleDialog != null)
+            {
+                AddCustomerVehicleDialog.Close();
+            }
             Close();
         }
     }

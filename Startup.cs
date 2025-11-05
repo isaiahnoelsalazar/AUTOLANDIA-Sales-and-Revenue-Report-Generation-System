@@ -51,20 +51,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     SQL.Open();
 
-                    RecreateGlobalPaymentMethodList();
-                    ProgressBar.Increment(10);
-                    
                     RecreateGlobalServiceList();
-                    ProgressBar.Increment(5);
-
-                    RecreateGlobalServiceDisplayList();
-                    ProgressBar.Increment(5);
+                    ProgressBar.Increment(15);
 
                     RecreateGlobalPackageList();
-                    ProgressBar.Increment(5);
-
-                    RecreateGlobalPackageDisplayList();
-                    ProgressBar.Increment(5);
+                    ProgressBar.Increment(15);
 
                     RecreateGlobalVehicleModelList();
                     ProgressBar.Increment(10);
@@ -81,7 +72,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecreateGlobalEmployeeTimeList();
                     ProgressBar.Increment(10);
 
-                    RecreateGlobalOrderList();
+                    RecreateGlobalTransactionList();
                     ProgressBar.Increment(5);
 
                     RecreateGlobalBillingList();

@@ -13,7 +13,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         Color DefaultBackgroundColor;
         LinkCustomerVehicleDialog LinkCustomerVehicleDialog;
         NewTransactionDialog NewTransactionDialog;
-        EditTransactionDialog EditTransactionDialog;
+        TransactionDetailDialog EditTransactionDialog;
 
         public SelectVehicleDialog(LinkCustomerVehicleDialog LinkCustomerVehicleDialog)
         {
@@ -46,9 +46,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             for (int counter = 0; counter < Temp.Count; counter++)
             {
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Status.Equals("Complete") && !Order.Status.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
                         counter--;
@@ -68,7 +68,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RefreshVehicles();
         }
 
-        public SelectVehicleDialog(EditTransactionDialog EditTransactionDialog)
+        public SelectVehicleDialog(TransactionDetailDialog EditTransactionDialog)
         {
             InitializeComponent();
 
@@ -79,9 +79,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             for (int counter = 0; counter < Temp.Count; counter++)
             {
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
-                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled")))
+                    if (Temp[counter].ID.Equals(Order.VehicleId) && (!Order.Status.Equals("Complete") && !Order.Status.Equals("Cancelled")))
                     {
                         Temp.Remove(Temp[counter]);
                         counter--;
@@ -110,7 +110,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (NewTransactionDialog != null)
                 {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                    RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                     TableLayoutPanel Panel = new TableLayoutPanel
                     {
                         ColumnCount = 1
@@ -178,7 +178,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 else if (EditTransactionDialog != null)
                 {
-                    RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                    RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                     TableLayoutPanel Panel = new TableLayoutPanel
                     {
                         ColumnCount = 1
@@ -248,7 +248,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Vehicle.CustomerID.Equals("(None)"))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -342,7 +342,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -410,7 +410,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -487,7 +487,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -555,7 +555,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -632,7 +632,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Vehicle.PlateNumber.ToUpper().Contains(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1
@@ -708,7 +708,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     else if (string.IsNullOrEmpty(SearchBarVehicle.Text.ToUpper()))
                     {
-                        RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                        RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                         TableLayoutPanel Panel = new TableLayoutPanel
                         {
                             ColumnCount = 1

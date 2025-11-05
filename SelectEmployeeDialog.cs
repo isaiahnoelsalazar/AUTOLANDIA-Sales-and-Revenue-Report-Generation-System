@@ -13,7 +13,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         List<EmployeeItem> Temp = new List<EmployeeItem>();
         List<string> TempTime = new List<string>();
         NewTransactionDialog NewTransactionDialog;
-        EditTransactionDialog EditTransactionDialog;
+        TransactionDetailDialog EditTransactionDialog;
         string EmployeeList;
 
         public SelectEmployeeDialog(NewTransactionDialog NewTransactionDialog)
@@ -42,12 +42,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             for (int counter = 0; counter < Temp.Count; counter++)
             {
                 string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].LastName}, {Temp[counter].FirstName} {Temp[counter].MiddleName}";
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     if (Split.Contains(Temp[counter].ID))
                     {
-                        if (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled"))
+                        if (!Order.Status.Equals("Complete") && !Order.Status.Equals("Cancelled"))
                         {
                             Temp.Remove(Temp[counter]);
                             counter = 0;
@@ -101,7 +101,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public SelectEmployeeDialog(EditTransactionDialog EditTransactionDialog, string EmployeeList)
+        public SelectEmployeeDialog(TransactionDetailDialog EditTransactionDialog, string EmployeeList)
         {
             InitializeComponent();
 
@@ -115,12 +115,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             while (counter < Temp.Count)
             {
                 string EmployeeDetail = $"{Temp[counter].ID}: {Temp[counter].LastName}, {Temp[counter].FirstName} {Temp[counter].MiddleName}";
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
                     string[] Split = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     if (Split.Contains(Temp[counter].ID))
                     {
-                        if (!Order.Progress.Equals("Complete") && !Order.Progress.Equals("Cancelled"))
+                        if (!Order.Status.Equals("Complete") && !Order.Status.Equals("Cancelled"))
                         {
                             Temp.Remove(Temp[counter]);
                             counter = 0;

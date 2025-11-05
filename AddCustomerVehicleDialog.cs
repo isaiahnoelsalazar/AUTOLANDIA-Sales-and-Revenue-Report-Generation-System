@@ -69,9 +69,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string PlateNumber = TB_PlateNumber.Text.ToUpper();
                     string VehicleID = (GlobalVehicleList.Count + 1).ToString();
 
-                    DoneButton.Enabled = false;
-                    CancelButton.Enabled = false;
-
                     string CustomerName = string.Empty;
                     string CustomerPlateNumbers = string.Empty;
                     string FinalCustomerPlateNumbers = "";
@@ -116,7 +113,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         Command1.ExecuteNonQuery();
                     }
 
-                    MaterialMessageBox.Show($"Successfully added new vehicle{(string.IsNullOrEmpty(CustomerID) ? "" : " for [Customer ID " + CustomerID)}{(string.IsNullOrEmpty(CustomerName) ? "" : ": " + CustomerName + "]")}!", "Notice");
+                    OkMessageBox($"Successfully added new vehicle{(string.IsNullOrEmpty(CustomerID) ? "" : " for [Customer ID " + CustomerID)}{(string.IsNullOrEmpty(CustomerName) ? "" : ": " + CustomerName + "]")}!");
                     GlobalPeopleForm.RefreshCustomers();
                     GlobalPeopleForm.RefreshVehicles();
                     if (PreviewCustomerDialog != null)
@@ -127,8 +124,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (NewCustomerDialog != null)
                     {
-                        DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new order?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
-                        if (NewDialogResult == DialogResult.Yes)
+                        if (NoticeMessageBox("Add a new order?") == DialogResult.Yes)
                         {
                             new NewTransactionDialog(this, NewCustomerDialog, VehicleID).ShowDialog();
                         }
@@ -140,8 +136,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                     else
                     {
-                        DialogResult NewDialogResult = MaterialMessageBox.Show("Add a new customer for this vehicle?", "Notice", MessageBoxButtons.YesNo, FlexibleMaterialForm.ButtonsPosition.Right);
-                        if (NewDialogResult == DialogResult.Yes)
+                        if (NoticeMessageBox("Add a new customer for this vehicle?") == DialogResult.Yes)
                         {
                             new NewCustomerDialog(this, VehicleID).ShowDialog();
                         }
@@ -151,16 +146,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception Exception)
                 {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
-                    DoneButton.Enabled = true;
-                    CancelButton.Enabled = true;
+                    AlertMessageBox(Exception.Message);
                 }
             }
             else
             {
-                MaterialMessageBox.Show(ErrorMessage, "Alert");
+                AlertMessageBox(ErrorMessage);
             }
         }
 
@@ -248,7 +241,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             else
             {
-                MaterialMessageBox.Show("Please select a vehicle brand to auto-filter.", "Alert");
+                AlertMessageBox("Please select a vehicle brand to auto-filter.");
             }
         }
     }

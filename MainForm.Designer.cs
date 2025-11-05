@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.TabPanel = new System.Windows.Forms.Panel();
+            this.LogoutButton = new MaterialSkin.Controls.MaterialButton();
             this.ReportsTab = new MaterialSkin.Controls.MaterialButton();
             this.SettingsButton = new MaterialSkin.Controls.MaterialButton();
             this.ServicesAndPackagesTab = new MaterialSkin.Controls.MaterialButton();
@@ -38,6 +39,7 @@
             this.TransactionsTab = new MaterialSkin.Controls.MaterialButton();
             this.HomeTab = new MaterialSkin.Controls.MaterialButton();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.TimeHaha = new MaterialSkin.Controls.MaterialButton();
             this.TabPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +48,8 @@
             // 
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.TabPanel.Controls.Add(this.TimeHaha);
+            this.TabPanel.Controls.Add(this.LogoutButton);
             this.TabPanel.Controls.Add(this.ReportsTab);
             this.TabPanel.Controls.Add(this.SettingsButton);
             this.TabPanel.Controls.Add(this.ServicesAndPackagesTab);
@@ -60,6 +64,29 @@
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.Size = new System.Drawing.Size(200, 720);
             this.TabPanel.TabIndex = 1;
+            // 
+            // LogoutButton
+            // 
+            this.LogoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogoutButton.AutoSize = false;
+            this.LogoutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.LogoutButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.LogoutButton.Depth = 0;
+            this.LogoutButton.HighEmphasis = true;
+            this.LogoutButton.Icon = null;
+            this.LogoutButton.Location = new System.Drawing.Point(8, 662);
+            this.LogoutButton.Margin = new System.Windows.Forms.Padding(8);
+            this.LogoutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.LogoutButton.Size = new System.Drawing.Size(184, 50);
+            this.LogoutButton.TabIndex = 9;
+            this.LogoutButton.Text = "Logout";
+            this.LogoutButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.LogoutButton.UseAccentColor = false;
+            this.LogoutButton.UseVisualStyleBackColor = true;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // ReportsTab
             // 
@@ -94,8 +121,8 @@
             this.SettingsButton.Depth = 0;
             this.SettingsButton.HighEmphasis = true;
             this.SettingsButton.Icon = null;
-            this.SettingsButton.Location = new System.Drawing.Point(8, 662);
-            this.SettingsButton.Margin = new System.Windows.Forms.Padding(8);
+            this.SettingsButton.Location = new System.Drawing.Point(8, 604);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
             this.SettingsButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -260,6 +287,27 @@
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseMove);
             this.Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Logo_MouseUp);
             // 
+            // TimeHaha
+            // 
+            this.TimeHaha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TimeHaha.AutoSize = false;
+            this.TimeHaha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TimeHaha.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.TimeHaha.Depth = 0;
+            this.TimeHaha.HighEmphasis = true;
+            this.TimeHaha.Icon = null;
+            this.TimeHaha.Location = new System.Drawing.Point(8, 546);
+            this.TimeHaha.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.TimeHaha.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TimeHaha.Name = "TimeHaha";
+            this.TimeHaha.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.TimeHaha.Size = new System.Drawing.Size(184, 50);
+            this.TimeHaha.TabIndex = 10;
+            this.TimeHaha.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.TimeHaha.UseAccentColor = false;
+            this.TimeHaha.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +339,8 @@
         private MaterialSkin.Controls.MaterialButton ServicesAndPackagesTab;
         private MaterialSkin.Controls.MaterialButton SettingsButton;
         private MaterialSkin.Controls.MaterialButton ReportsTab;
+        private MaterialSkin.Controls.MaterialButton LogoutButton;
+        private MaterialSkin.Controls.MaterialButton TimeHaha;
     }
 }
 

@@ -105,7 +105,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 30);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Progress";
+            this.label1.Text = "Status";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7

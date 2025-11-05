@@ -56,8 +56,8 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSSimpleFunctions, Version=0.1.32.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\CSSimpleFunctions.0.1.32\lib\net45\CSSimpleFunctions.dll</HintPath>
+    <Reference Include="CSSimpleFunctions, Version=0.1.37.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\CSSimpleFunctions.0.1.37\lib\net45\CSSimpleFunctions.dll</HintPath>
     </Reference>
     <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
@@ -145,11 +145,11 @@
     <Compile Include="DatePickerDialog.Designer.cs">
       <DependentUpon>DatePickerDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditBillingDialog.cs">
+    <Compile Include="BillDetailDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditBillingDialog.Designer.cs">
-      <DependentUpon>EditBillingDialog.cs</DependentUpon>
+    <Compile Include="BillDetailDialog.Designer.cs">
+      <DependentUpon>BillDetailDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPackageDialog.cs">
       <SubType>Form</SubType>
@@ -163,11 +163,11 @@
     <Compile Include="EditServiceDialog.Designer.cs">
       <DependentUpon>EditServiceDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditTransactionDialog.cs">
+    <Compile Include="TransactionDetailDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditTransactionDialog.Designer.cs">
-      <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    <Compile Include="TransactionDetailDialog.Designer.cs">
+      <DependentUpon>TransactionDetailDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="EmployeeScheduleDialog.cs">
       <SubType>Form</SubType>
@@ -212,7 +212,12 @@
     <Compile Include="NewTransactionDialog.Designer.cs">
       <DependentUpon>NewTransactionDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackageItemDisplay.cs" />
+    <Compile Include="PaymentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentDialog.Designer.cs">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PickPerfumeCountDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,7 +263,7 @@
     <Compile Include="NewEmployeeDialog.Designer.cs">
       <DependentUpon>NewEmployeeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderItem.cs" />
+    <Compile Include="TransactionItem.cs" />
     <Compile Include="PackageItem.cs" />
     <Compile Include="PeopleForm.cs">
       <SubType>Form</SubType>
@@ -329,7 +334,6 @@
       <DependentUpon>SelectVehicleModelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceItem.cs" />
-    <Compile Include="ServiceItemDisplay.cs" />
     <Compile Include="ServicesAndPackagesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,12 +345,6 @@
     </Compile>
     <Compile Include="SettingsDialog.Designer.cs">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ShowGCashQRDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShowGCashQRDialog.Designer.cs">
-      <DependentUpon>ShowGCashQRDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
@@ -380,8 +378,8 @@
     <EmbeddedResource Include="DatePickerDialog.resx">
       <DependentUpon>DatePickerDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditBillingDialog.resx">
-      <DependentUpon>EditBillingDialog.cs</DependentUpon>
+    <EmbeddedResource Include="BillDetailDialog.resx">
+      <DependentUpon>BillDetailDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPackageDialog.resx">
       <DependentUpon>EditPackageDialog.cs</DependentUpon>
@@ -389,8 +387,8 @@
     <EmbeddedResource Include="EditServiceDialog.resx">
       <DependentUpon>EditServiceDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditTransactionDialog.resx">
-      <DependentUpon>EditTransactionDialog.cs</DependentUpon>
+    <EmbeddedResource Include="TransactionDetailDialog.resx">
+      <DependentUpon>TransactionDetailDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeScheduleDialog.resx">
       <DependentUpon>EmployeeScheduleDialog.cs</DependentUpon>
@@ -412,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewTransactionDialog.resx">
       <DependentUpon>NewTransactionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentDialog.resx">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PickPerfumeCountDialog.resx">
       <DependentUpon>PickPerfumeCountDialog.cs</DependentUpon>
@@ -483,9 +484,6 @@
     <EmbeddedResource Include="SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowGCashQRDialog.resx">
-      <DependentUpon>ShowGCashQRDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Startup.resx">
       <DependentUpon>Startup.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,9 +535,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="mock_data.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Untitled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

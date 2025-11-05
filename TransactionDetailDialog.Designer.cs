@@ -1,6 +1,6 @@
 ﻿namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
-    partial class EditTransactionDialog
+    partial class TransactionDetailDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -41,8 +41,6 @@
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.TB_Vehicle = new MaterialSkin.Controls.MaterialTextBox();
             this.TB_ID = new MaterialSkin.Controls.MaterialLabel();
-            this.CB_Progress = new MaterialSkin.Controls.MaterialComboBox();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.TB_LastUpdated = new MaterialSkin.Controls.MaterialLabel();
@@ -115,7 +113,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 696);
+            this.CancelButton.Location = new System.Drawing.Point(10, 611);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -136,7 +134,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(694, 696);
+            this.DoneButton.Location = new System.Drawing.Point(694, 611);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -281,48 +279,12 @@
             this.TB_ID.TabIndex = 82;
             this.TB_ID.Text = "Order ID";
             // 
-            // CB_Progress
-            // 
-            this.CB_Progress.AutoResize = false;
-            this.CB_Progress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CB_Progress.Depth = 0;
-            this.CB_Progress.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CB_Progress.DropDownHeight = 174;
-            this.CB_Progress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_Progress.DropDownWidth = 121;
-            this.CB_Progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.CB_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CB_Progress.FormattingEnabled = true;
-            this.CB_Progress.IntegralHeight = false;
-            this.CB_Progress.ItemHeight = 43;
-            this.CB_Progress.Location = new System.Drawing.Point(176, 362);
-            this.CB_Progress.Margin = new System.Windows.Forms.Padding(8);
-            this.CB_Progress.MaxDropDownItems = 4;
-            this.CB_Progress.MouseState = MaterialSkin.MouseState.OUT;
-            this.CB_Progress.Name = "CB_Progress";
-            this.CB_Progress.Size = new System.Drawing.Size(306, 49);
-            this.CB_Progress.StartIndex = 0;
-            this.CB_Progress.TabIndex = 83;
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.Location = new System.Drawing.Point(12, 375);
-            this.materialLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(63, 19);
-            this.materialLabel7.TabIndex = 84;
-            this.materialLabel7.Text = "Progress";
-            // 
             // materialLabel8
             // 
             this.materialLabel8.AutoSize = true;
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel8.Location = new System.Drawing.Point(12, 442);
+            this.materialLabel8.Location = new System.Drawing.Point(12, 501);
             this.materialLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
@@ -335,7 +297,7 @@
             this.materialLabel9.AutoSize = true;
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel9.Location = new System.Drawing.Point(12, 508);
+            this.materialLabel9.Location = new System.Drawing.Point(12, 545);
             this.materialLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
@@ -348,7 +310,7 @@
             this.TB_LastUpdated.AutoSize = true;
             this.TB_LastUpdated.Depth = 0;
             this.TB_LastUpdated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_LastUpdated.Location = new System.Drawing.Point(173, 442);
+            this.TB_LastUpdated.Location = new System.Drawing.Point(173, 501);
             this.TB_LastUpdated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TB_LastUpdated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_LastUpdated.Name = "TB_LastUpdated";
@@ -361,7 +323,7 @@
             this.TB_DateCreated.AutoSize = true;
             this.TB_DateCreated.Depth = 0;
             this.TB_DateCreated.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_DateCreated.Location = new System.Drawing.Point(173, 508);
+            this.TB_DateCreated.Location = new System.Drawing.Point(173, 545);
             this.TB_DateCreated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TB_DateCreated.MouseState = MaterialSkin.MouseState.HOVER;
             this.TB_DateCreated.Name = "TB_DateCreated";
@@ -419,7 +381,7 @@
             this.ServiceListContainer.Location = new System.Drawing.Point(490, 139);
             this.ServiceListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceListContainer.Name = "ServiceListContainer";
-            this.ServiceListContainer.Size = new System.Drawing.Size(268, 537);
+            this.ServiceListContainer.Size = new System.Drawing.Size(268, 444);
             this.ServiceListContainer.TabIndex = 93;
             // 
             // ServiceList
@@ -470,8 +432,8 @@
             this.ExtraListCheckBox.BackColor = System.Drawing.SystemColors.Control;
             this.ExtraListCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ExtraListCheckBox.Depth = 0;
-            this.ExtraListCheckBox.Location = new System.Drawing.Point(176, 554);
-            this.ExtraListCheckBox.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.ExtraListCheckBox.Location = new System.Drawing.Point(176, 354);
+            this.ExtraListCheckBox.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.ExtraListCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.ExtraListCheckBox.Name = "ExtraListCheckBox";
             this.ExtraListCheckBox.Size = new System.Drawing.Size(306, 122);
@@ -484,7 +446,7 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.Location = new System.Drawing.Point(12, 567);
+            this.materialLabel4.Location = new System.Drawing.Point(12, 367);
             this.materialLabel4.Margin = new System.Windows.Forms.Padding(8);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -496,7 +458,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 742);
+            this.ClientSize = new System.Drawing.Size(768, 657);
             this.Controls.Add(this.ExtraListCheckBox);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.SelectServicesButton);
@@ -506,8 +468,6 @@
             this.Controls.Add(this.TB_LastUpdated);
             this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
-            this.Controls.Add(this.materialLabel7);
-            this.Controls.Add(this.CB_Progress);
             this.Controls.Add(this.TB_ID);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.TB_Vehicle);
@@ -550,8 +510,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialTextBox TB_Vehicle;
         private MaterialSkin.Controls.MaterialLabel TB_ID;
-        private MaterialSkin.Controls.MaterialComboBox CB_Progress;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel TB_LastUpdated;

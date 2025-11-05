@@ -9,18 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
     public partial class PickPerfumeCountDialog : MaterialForm
     {
         NewTransactionDialog NewTransactionDialog;
+        TransactionDetailDialog EditTransactionDialog;
 
         public PickPerfumeCountDialog(NewTransactionDialog NewTransactionDialog)
         {
             InitializeComponent();
 
             this.NewTransactionDialog = NewTransactionDialog;
+        }
+
+        public PickPerfumeCountDialog(TransactionDetailDialog EditTransactionDialog)
+        {
+            InitializeComponent();
+
+            this.EditTransactionDialog = EditTransactionDialog;
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -31,22 +40,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (int.Parse(TB_PC.Text) > 0)
                     {
-                        NewTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        if (EditTransactionDialog != null)
+                        {
+                            EditTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        }
+                        if (NewTransactionDialog != null)
+                        {
+                            NewTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        }
                         Close();
                     }
                     else
                     {
-                        MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                        AlertMessageBox("Please enter a valid amount.");
                     }
                 }
                 catch
                 {
-                    MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                    AlertMessageBox("Please enter a valid amount.");
                 }
             }
             else
             {
-                MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                AlertMessageBox("Please enter a valid amount.");
             }
         }
 
@@ -58,23 +74,30 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (int.Parse(TB_PC.Text) > 0)
                     {
-                        NewTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        if (EditTransactionDialog != null)
+                        {
+                            EditTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        }
+                        if (NewTransactionDialog != null)
+                        {
+                            NewTransactionDialog.PickPerfumeCount(int.Parse(TB_PC.Text));
+                        }
                     }
                     else
                     {
-                        MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                        AlertMessageBox("Please enter a valid amount.");
                         e.Cancel = true;
                     }
                 }
                 catch
                 {
-                    MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                    AlertMessageBox("Please enter a valid amount.");
                     e.Cancel = true;
                 }
             }
             else
             {
-                MaterialMessageBox.Show("Please enter a valid amount.", "Alert");
+                AlertMessageBox("Please enter a valid amount.");
                 e.Cancel = true;
             }
         }

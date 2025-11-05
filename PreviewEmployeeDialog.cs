@@ -48,7 +48,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         {
                             if (Item.First() == Document)
                             {
-                                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                                 TableLayoutPanel Panel = new TableLayoutPanel
                                 {
                                     ColumnCount = 1

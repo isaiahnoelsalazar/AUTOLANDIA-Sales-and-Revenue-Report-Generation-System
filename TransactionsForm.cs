@@ -12,7 +12,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     public partial class TransactionsForm : Form
     {
         Color DefaultBackgroundColor;
-        List<OrderItem> Temp = new List<OrderItem>(GlobalOrderList);
+        List<TransactionItem> Temp = new List<TransactionItem>(GlobalTransactionList);
         DateTime Global;
 
         public TransactionsForm()
@@ -37,9 +37,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public void RefreshTransactions()
         {
-            RecreateGlobalOrderList();
+            RecreateGlobalTransactionList();
 
-            Temp = new List<OrderItem>(GlobalOrderList);
+            Temp = new List<TransactionItem>(GlobalTransactionList);
 
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
@@ -57,7 +57,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            foreach (OrderItem Order in Temp)
+            foreach (TransactionItem Order in Temp)
             {
                 RefreshRows(Order);
             }
@@ -73,7 +73,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            foreach (OrderItem Order in Temp)
+            foreach (TransactionItem Order in Temp)
             {
                 if (FilterTransaction.SelectedIndex == 0 || FilterTransaction.SelectedIndex == -1)
                 {
@@ -123,7 +123,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
-                    if (Order.Progress.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
+                    if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
                         RefreshRows(Order);
                     }
@@ -136,7 +136,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
 
-            foreach (OrderItem Order in Temp)
+            foreach (TransactionItem Order in Temp)
             {
                 if (FilterTransaction.SelectedIndex == 0 || FilterTransaction.SelectedIndex == -1)
                 {
@@ -186,7 +186,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
-                    if (Order.Progress.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
+                    if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
                         RefreshRows(Order);
                     }
@@ -194,9 +194,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        void RefreshRows(OrderItem Order)
+        void RefreshRows(TransactionItem Order)
         {
             string RealPlateNumber = string.Empty;
+            string VehicleSize = string.Empty;
             string EmployeeList = string.Empty;
             int ServiceCount = 0;
 
@@ -216,6 +217,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Vehicle.ID.Equals(Order.VehicleId))
                 {
+                    VehicleSize = Vehicle.Size;
                     RealPlateNumber = Vehicle.PlateNumber;
                 }
             }
@@ -224,13 +226,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (Package.ID.Equals(Order.PackageID))
                 {
-                    ServicePackageDetail += $"[Package] - {Package.Name}, {Package.Size} ";
+                    ServicePackageDetail += $"[Package] - {Package.Name}, {VehicleSize} ";
                     break;
                 }
             }
             if (!string.IsNullOrEmpty(Order.ServiceIDList))
             {
-                Console.WriteLine(Order.ServiceIDList);
                 string[] ServiceSplit = Order.ServiceIDList.Substring(1, Order.ServiceIDList.Length - 2).Split(',');
                 ServiceCount = ServiceSplit.Length;
                 ServicePackageDetail += "[Services] - ";
@@ -244,7 +245,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 ServicePackageDetail = ServicePackageDetail.Substring(0, ServicePackageDetail.Length - 2);
             }
 
-            RowStyle Row = new RowStyle(SizeType.Absolute, (50f + (5f * ServiceCount)));
+            RowStyle Row = new RowStyle(SizeType.Absolute, (55f + (5f * ServiceCount)));
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 7
@@ -330,26 +331,29 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Progress.Dock = DockStyle.Top;
-            Progress.Items.Add("Ready");
-            Progress.Items.Add("In progress");
-            Progress.Items.Add("Complete");
-            Progress.Items.Add("Cancelled");
 
-            if (Order.Progress.Equals("Ready"))
+            if (Order.Status.Equals("Ready"))
             {
+                Progress.Items.Add("Ready");
+                Progress.Items.Add("In progress");
                 Progress.SelectedIndex = 0;
             }
-            if (Order.Progress.Equals("In progress"))
+            if (Order.Status.Equals("In progress"))
             {
-                Progress.SelectedIndex = 1;
+                Progress.Items.Add("In progress");
+                Progress.Items.Add("Complete");
+                Progress.Items.Add("Cancelled");
+                Progress.SelectedIndex = 0;
             }
-            if (Order.Progress.Equals("Complete"))
+            if (Order.Status.Equals("Complete"))
             {
-                Progress.SelectedIndex = 2;
+                Progress.Items.Add("Complete");
+                Progress.SelectedIndex = 0;
             }
-            if (Order.Progress.Equals("Cancelled"))
+            if (Order.Status.Equals("Cancelled"))
             {
-                Progress.SelectedIndex = 3;
+                Progress.Items.Add("Cancelled");
+                Progress.SelectedIndex = 0;
             }
 
             Progress.SelectedIndexChanged += (sndr, evnt) =>
@@ -358,13 +362,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     DateTime Now = DateTime.Now;
 
-                    RecordActivity($"Changed order reference number [{Order.ID}] progress from [{Order.Progress}] to [{Progress.Text}]");
+                    RecordActivity($"Changed order reference number [{Order.ID}] progress from [{Order.Status}] to [{Progress.Text}]");
 
-                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_OrderList SET OrderProgress='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{Order.ID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_TransactionList SET TransactionStatus='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE TransactionId='{Order.ID}'", SQL);
 
                     Command.ExecuteNonQuery();
 
-                    MaterialMessageBox.Show("Successfully changed transaction progress!", "Notice");
+                    MaterialMessageBox.Show("Successfully changed transaction status!", "Notice");
                     RefreshTransactions();
                     GlobalActivityRecordForm.RefreshActivities();
                 }
@@ -400,31 +404,31 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             Panel.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             Id.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             Employees.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             Service_Package.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             PlateNumber.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             LastUpdated.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
             DateCreated.Click += (sndr, evnt) =>
             {
-                new EditTransactionDialog(this, Order.ID).ShowDialog();
+                new TransactionDetailDialog(this, Order.ID).ShowDialog();
             };
 
             TransactionList.RowStyles.Add(Row);

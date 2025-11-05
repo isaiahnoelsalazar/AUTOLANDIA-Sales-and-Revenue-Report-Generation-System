@@ -2,19 +2,18 @@
 {
     public class BillingItem
     {
-        string id, progress, paymentMethod, lastUpdated, dateCreated;
-        double orderBalance, discount, incompleteAmountPayment;
+        string id, status, lastUpdated, dateCreated;
+        double transactionBalance, discount, paid;
 
-        public BillingItem(string id, double orderBalance, double discount, string progress, string paymentMethod, string lastUpdated, string dateCreated, double incompletePaymentAmount)
+        public BillingItem(string id, double transactionBalance, double discount, double paid, string status, string lastUpdated, string dateCreated)
         {
             this.id = id;
-            this.orderBalance = orderBalance;
+            this.transactionBalance = transactionBalance;
             this.discount = discount;
-            this.progress = progress;
-            this.paymentMethod = paymentMethod;
+            this.paid = paid;
+            this.status = status;
             this.lastUpdated = lastUpdated;
             this.dateCreated = dateCreated;
-            this.incompleteAmountPayment = incompletePaymentAmount;
         }
 
         public string ID
@@ -25,8 +24,8 @@
 
         public double Balance
         {
-            get { return orderBalance; }
-            set { orderBalance = value; }
+            get { return transactionBalance; }
+            set { transactionBalance = value; }
         }
 
         public double Discount
@@ -35,16 +34,16 @@
             set { discount = value; }
         }
 
-        public string Progress
+        public string Status
         {
-            get { return progress; }
-            set { progress = value; }
+            get { return status; }
+            set { status = value; }
         }
 
-        public string PaymentMethod
+        public double Paid
         {
-            get { return paymentMethod; }
-            set { paymentMethod = value; }
+            get { return paid; }
+            set { paid = value; }
         }
 
         public string LastUpdated
@@ -57,12 +56,6 @@
         {
             get { return dateCreated; }
             set { dateCreated = value; }
-        }
-
-        public double IncompletePaymentAmount
-        {
-            get { return incompleteAmountPayment; }
-            set { incompleteAmountPayment = value; }
         }
     }
 }

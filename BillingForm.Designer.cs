@@ -28,114 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.BillingListContainer = new System.Windows.Forms.Panel();
             this.BillingList = new System.Windows.Forms.TableLayoutPanel();
             this.SearchBarBilling = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.FilterBilling = new MaterialSkin.Controls.MaterialComboBox();
             this.DatePickerButton = new MaterialSkin.Controls.MaterialButton();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.BillingListContainer.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.Controls.Add(this.label2, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label7, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 63);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(832, 48);
-            this.tableLayoutPanel2.TabIndex = 21;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(423, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 30);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Payment Method";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(713, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 30);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Date Created";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(589, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 30);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Last Updated";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(216, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(190, 30);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Progress";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(92, 9);
-            this.label5.Margin = new System.Windows.Forms.Padding(8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 30);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Order Balance";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(9, 9);
-            this.label6.Margin = new System.Windows.Forms.Padding(8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 30);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "ID";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BillingListContainer
             // 
@@ -248,6 +155,85 @@
             this.DatePickerButton.UseVisualStyleBackColor = true;
             this.DatePickerButton.Click += new System.EventHandler(this.DatePickerButton_Click);
             // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(9, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 30);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "ID";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(133, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(190, 30);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Remaining Balance";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(340, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(231, 30);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Status";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(588, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 30);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Last Updated";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.Controls.Add(this.label1, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label7, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 63);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(832, 48);
+            this.tableLayoutPanel2.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(712, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 30);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Date Created";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // BillingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,28 +250,26 @@
             this.Name = "BillingForm";
             this.Text = "BillingForm";
             this.Load += new System.EventHandler(this.BillingForm_Load);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.BillingListContainer.ResumeLayout(false);
             this.BillingListContainer.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel BillingListContainer;
         private System.Windows.Forms.TableLayoutPanel BillingList;
-        private System.Windows.Forms.Label label2;
         private MaterialSkin.Controls.MaterialTextBox SearchBarBilling;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
         private MaterialSkin.Controls.MaterialComboBox FilterBilling;
         private MaterialSkin.Controls.MaterialButton DatePickerButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
     }
 }

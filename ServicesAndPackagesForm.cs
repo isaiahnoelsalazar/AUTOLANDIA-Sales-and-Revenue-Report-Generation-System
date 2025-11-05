@@ -25,11 +25,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             PackageList.HorizontalScroll.Enabled = false;
             PackageList.HorizontalScroll.Visible = false;
 
+            FilterService.Items.Add("ID");
             FilterService.Items.Add("Name");
+            FilterService.Items.Add("Status");
             FilterService.SelectedIndex = 0;
 
+            FilterPackage.Items.Add("ID");
             FilterPackage.Items.Add("Name");
             FilterPackage.Items.Add("Services Included");
+            FilterPackage.Items.Add("Status");
             FilterPackage.SelectedIndex = 0;
         }
 
@@ -40,7 +44,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
 
-            foreach (ServiceItemDisplay Service in GlobalServiceDisplayList)
+            foreach (ServiceItem Service in GlobalServiceList)
             {
                 RefreshRows(Service);
             }
@@ -53,7 +57,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             PackageList.Controls.Clear();
             PackageList.RowStyles.Clear();
 
-            foreach (PackageItemDisplay Package in GlobalPackageDisplayList)
+            foreach (PackageItem Package in GlobalPackageList)
             {
                 RefreshRows(Package);
             }
@@ -79,79 +83,48 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void SearchBarService_TextChanged(object sender, EventArgs e)
         {
-            ServiceList.Controls.Clear();
-            ServiceList.RowStyles.Clear();
-
-            foreach (ServiceItemDisplay Service in GlobalServiceDisplayList)
-            {
-                if (FilterService.SelectedIndex == 0 || FilterService.SelectedIndex == -1)
-                {
-                    if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
-                    {
-                        RefreshRows(Service);
-                    }
-                }
-            }
+            ServiceFilter();
         }
 
         private void SearchBarPackage_TextChanged(object sender, EventArgs e)
         {
-            PackageList.Controls.Clear();
-            PackageList.RowStyles.Clear();
-
-            foreach (PackageItemDisplay Package in GlobalPackageDisplayList)
-            {
-                if (FilterPackage.SelectedIndex == 0 || FilterPackage.SelectedIndex == -1)
-                {
-                    if (Package.Name.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
-                    {
-                        RefreshRows(Package);
-                    }
-                }
-                if (FilterPackage.SelectedIndex == 1)
-                {
-                    if (Package.Details.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
-                    {
-                        RefreshRows(Package);
-                    }
-                }
-            }
+            PackageFilter();
         }
 
         private void FilterPackage_TextChanged(object sender, EventArgs e)
         {
-            PackageList.Controls.Clear();
-            PackageList.RowStyles.Clear();
-
-            foreach (PackageItemDisplay Package in GlobalPackageDisplayList)
-            {
-                if (FilterPackage.SelectedIndex == 0 || FilterPackage.SelectedIndex == -1)
-                {
-                    if (Package.Name.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
-                    {
-                        RefreshRows(Package);
-                    }
-                }
-                if (FilterPackage.SelectedIndex == 1)
-                {
-                    if (Package.Details.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
-                    {
-                        RefreshRows(Package);
-                    }
-                }
-            }
+            PackageFilter();
         }
 
         private void FilterService_TextChanged(object sender, EventArgs e)
         {
+            ServiceFilter();
+        }
+
+        void ServiceFilter()
+        {
             ServiceList.Controls.Clear();
             ServiceList.RowStyles.Clear();
 
-            foreach (ServiceItemDisplay Service in GlobalServiceDisplayList)
+            foreach (ServiceItem Service in GlobalServiceList)
             {
-                if (FilterService.SelectedIndex == 0)
+                if (FilterService.SelectedIndex == 0 || FilterService.SelectedIndex == -1)
+                {
+                    if (Service.ID.ToUpper().Contains(SearchBarService.Text.ToUpper()))
+                    {
+                        RefreshRows(Service);
+                    }
+                }
+                if (FilterService.SelectedIndex == 1)
                 {
                     if (Service.Name.ToUpper().Contains(SearchBarService.Text.ToUpper()))
+                    {
+                        RefreshRows(Service);
+                    }
+                }
+                if (FilterService.SelectedIndex == 2)
+                {
+                    if (Service.Status.ToUpper().Contains(SearchBarService.Text.ToUpper()))
                     {
                         RefreshRows(Service);
                     }
@@ -159,13 +132,52 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        void RefreshRows(PackageItemDisplay Package)
+        void PackageFilter()
         {
-            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            PackageList.Controls.Clear();
+            PackageList.RowStyles.Clear();
+
+            foreach (PackageItem Package in GlobalPackageList)
+            {
+                if (FilterPackage.SelectedIndex == 0 || FilterPackage.SelectedIndex == -1)
+                {
+                    if (Package.ID.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
+                    {
+                        RefreshRows(Package);
+                    }
+                }
+                if (FilterPackage.SelectedIndex == 1)
+                {
+                    if (Package.Name.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
+                    {
+                        RefreshRows(Package);
+                    }
+                }
+                if (FilterPackage.SelectedIndex == 2)
+                {
+                    if (Package.Details.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
+                    {
+                        RefreshRows(Package);
+                    }
+                }
+                if (FilterPackage.SelectedIndex == 3)
+                {
+                    if (Package.Status.ToUpper().Contains(SearchBarPackage.Text.ToUpper()))
+                    {
+                        RefreshRows(Package);
+                    }
+                }
+            }
+        }
+
+        void RefreshRows(PackageItem Package)
+        {
+            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
-                ColumnCount = 7
+                ColumnCount = 9
             };
+            Label ID = new Label();
             Label Name = new Label();
             Label Details = new Label();
             Label S = new Label();
@@ -173,6 +185,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Label L = new Label();
             Label XL = new Label();
             Label XXL = new Label();
+            Label Status = new Label();
 
             if (DefaultBackgroundColor == null)
             {
@@ -189,14 +202,28 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
             Panel.ColumnStyles.Clear();
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.Margin = new Padding(0);
+
+            ID.Dock = DockStyle.Fill;
+            ID.Text = Package.ID;
+            ID.TextAlign = ContentAlignment.MiddleCenter;
+            ID.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            ID.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
 
             Name.Dock = DockStyle.Fill;
             Name.Text = Package.Name;
@@ -282,60 +309,89 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
 
+            Status.Dock = DockStyle.Fill;
+            Status.Text = Package.Status;
+            Status.TextAlign = ContentAlignment.MiddleCenter;
+            Status.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Status.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
             Panel.Click += (sndr, evnt) =>
             {
-                //new EditPackageDialog(this, Package.ID).ShowDialog();
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            ID.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             Name.Click += (sndr, evnt) =>
             {
-                //new EditPackageDialog(this, Package.ID).ShowDialog();
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             Details.Click += (sndr, evnt) =>
             {
-                //new EditPackageDialog(this, Package.ID).ShowDialog();
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             S.Click += (sndr, evnt) =>
             {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             M.Click += (sndr, evnt) =>
             {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             L.Click += (sndr, evnt) =>
             {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             XL.Click += (sndr, evnt) =>
             {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
             XXL.Click += (sndr, evnt) =>
             {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
+            };
+            Status.Click += (sndr, evnt) =>
+            {
+                new EditPackageDialog(this, Package.ID).ShowDialog();
             };
 
             PackageList.RowStyles.Add(Row);
-            Panel.Controls.Add(Name, 0, 0);
-            Panel.Controls.Add(Details, 1, 0);
-            Panel.Controls.Add(S, 2, 0);
-            Panel.Controls.Add(M, 3, 0);
-            Panel.Controls.Add(L, 4, 0);
-            Panel.Controls.Add(XL, 5, 0);
-            Panel.Controls.Add(XXL, 6, 0);
+            Panel.Controls.Add(ID, 0, 0);
+            Panel.Controls.Add(Name, 1, 0);
+            Panel.Controls.Add(Details, 2, 0);
+            Panel.Controls.Add(S, 3, 0);
+            Panel.Controls.Add(M, 4, 0);
+            Panel.Controls.Add(L, 5, 0);
+            Panel.Controls.Add(XL, 6, 0);
+            Panel.Controls.Add(XXL, 7, 0);
+            Panel.Controls.Add(Status, 8, 0);
             PackageList.Controls.Add(Panel);
 
             tableLayoutPanel1.Width = PackageList.Width;
         }
 
-        void RefreshRows(ServiceItemDisplay Service)
+        void RefreshRows(ServiceItem Service)
         {
-            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
-                ColumnCount = 6
+                ColumnCount = 8
             };
+            Label ID = new Label();
             Label Name = new Label();
             Label S = new Label();
             Label M = new Label();
             Label L = new Label();
             Label XL = new Label();
             Label XXL = new Label();
+            Label Status = new Label();
 
             if (DefaultBackgroundColor == null)
             {
@@ -352,13 +408,27 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
             Panel.ColumnStyles.Clear();
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.Margin = new Padding(0);
+
+            ID.Dock = DockStyle.Fill;
+            ID.Text = Service.ID;
+            ID.TextAlign = ContentAlignment.MiddleCenter;
+            ID.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            ID.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
 
             Name.Dock = DockStyle.Fill;
             Name.Text = Service.Name;
@@ -432,42 +502,64 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
 
+            Status.Dock = DockStyle.Fill;
+            Status.Text = Service.Status;
+            Status.TextAlign = ContentAlignment.MiddleCenter;
+            Status.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            Status.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
             Panel.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            ID.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             Name.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             S.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             M.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             L.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             XL.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
             XXL.Click += (sndr, evnt) =>
             {
-                //new EditServiceDialog(this, Service.ID).ShowDialog();
+                new EditServiceDialog(this, Service.ID).ShowDialog();
+            };
+            Status.Click += (sndr, evnt) =>
+            {
+                new EditServiceDialog(this, Service.ID).ShowDialog();
             };
 
             ServiceList.RowStyles.Add(Row);
-            Panel.Controls.Add(Name, 0, 0);
-            Panel.Controls.Add(S, 1, 0);
-            Panel.Controls.Add(M, 2, 0);
-            Panel.Controls.Add(L, 3, 0);
-            Panel.Controls.Add(XL, 4, 0);
-            Panel.Controls.Add(XXL, 5, 0);
+            Panel.Controls.Add(ID, 0, 0);
+            Panel.Controls.Add(Name, 1, 0);
+            Panel.Controls.Add(S, 2, 0);
+            Panel.Controls.Add(M, 3, 0);
+            Panel.Controls.Add(L, 4, 0);
+            Panel.Controls.Add(XL, 5, 0);
+            Panel.Controls.Add(XXL, 6, 0);
+            Panel.Controls.Add(Status, 7, 0);
             ServiceList.Controls.Add(Panel);
 
             tableLayoutPanel2.Width = ServiceList.Width;

@@ -118,22 +118,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     Command.ExecuteNonQuery();
 
-                    MaterialMessageBox.Show("Successfully updated employee details!", "Notice");
+                    OkMessageBox("Successfully updated employee details!");
                     GlobalPeopleForm.RefreshEmployees();
                     PreviewEmployeeDialog.RefreshDetails();
                     GlobalActivityRecordForm.RefreshActivities();
                     Close();
                 }
-                catch (Exception exception)
+                catch (Exception Exception)
                 {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
+                    AlertMessageBox(Exception.Message);
                     DoneButton.Enabled = true;
                     CancelButton.Enabled = true;
                 }
             }
             else
             {
-                MaterialMessageBox.Show(ErrorMessage, "Alert");
+                AlertMessageBox(ErrorMessage);
             }
         }
 

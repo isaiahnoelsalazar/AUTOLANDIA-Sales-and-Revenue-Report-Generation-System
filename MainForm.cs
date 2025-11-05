@@ -166,12 +166,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     Invoke(new MethodInvoker(() =>
                     {
-                        SettingsButton.Text = $"Settings\n{DateTime.Now.ToString("hh:mm:ss tt")}";
+                        TimeHaha.Text = $"{DateTime.Now.ToString("hh:mm:ss tt")}";
                     }));
                     Thread.Sleep(1000);
                 }
             }));
             TimeThread.Start();
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)

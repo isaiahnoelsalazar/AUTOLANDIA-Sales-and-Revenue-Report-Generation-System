@@ -4,15 +4,15 @@
     {
         string id, fname, plateNumbers, mobileNumber, address, lname, mname;
 
-        public CustomerItem(string id, string fname, string plateNumbers, string mobileNumber, string address, string lname, string mname)
+        public CustomerItem(string id, string lname, string fname, string mname, string plateNumbers, string mobileNumber, string address)
         {
             this.id = id;
+            this.lname = lname;
             this.fname = fname;
+            this.mname = mname;
             this.plateNumbers = plateNumbers;
             this.mobileNumber = mobileNumber;
             this.address = address;
-            this.lname = lname;
-            this.mname = mname;
         }
 
         public string ID

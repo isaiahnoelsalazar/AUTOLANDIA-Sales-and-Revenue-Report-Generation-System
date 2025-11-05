@@ -4,15 +4,15 @@
     {
         string id, fname, mobileNumber, address, lname, mname, documents;
 
-        public EmployeeItem(string id, string fname, string mobileNumber, string address, string lname, string mname, string documents)
+        public EmployeeItem(string id, string lname, string fname, string mname, string documents, string mobileNumber, string address)
         {
             this.id = id;
-            this.fname = fname;
-            this.mobileNumber = mobileNumber;
-            this.address = address;
             this.lname = lname;
+            this.fname = fname;
             this.mname = mname;
             this.documents = documents;
+            this.mobileNumber = mobileNumber;
+            this.address = address;
         }
 
         public string ID

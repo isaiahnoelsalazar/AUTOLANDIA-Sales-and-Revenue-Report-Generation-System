@@ -2,15 +2,19 @@
 {
     public class ServiceItem
     {
-        string id, name, size;
-        double price;
+        string id, name, status;
+        double s, m, l, xl, xxl;
 
-        public ServiceItem(string id, string name, string size, double price)
+        public ServiceItem(string id, string name, double s, double m, double l, double xl, double xxl, string status)
         {
             this.id = id;
             this.name = name;
-            this.size = size;
-            this.price = price;
+            this.s = s;
+            this.m = m;
+            this.l = l;
+            this.xl = xl;
+            this.xxl = xxl;
+            this.status = status;
         }
 
         public string ID
@@ -25,16 +29,40 @@
             set { name = value; }
         }
 
-        public string Size
+        public string Status
         {
-            get { return size; }
-            set { size = value; }
+            get { return status; }
+            set { status = value; }
         }
 
-        public double Price
+        public double S
         {
-            get { return price; }
-            set { price = value; }
+            get { return s; }
+            set { s = value; }
+        }
+        
+        public double M
+        {
+            get { return m; }
+            set { m = value; }
+        }
+
+        public double L
+        {
+            get { return l; }
+            set { l = value; }
+        }
+
+        public double XL
+        {
+            get { return xl; }
+            set { xl = value; }
+        }
+
+        public double XXL
+        {
+            get { return xxl; }
+            set { xxl = value; }
         }
     }
 }

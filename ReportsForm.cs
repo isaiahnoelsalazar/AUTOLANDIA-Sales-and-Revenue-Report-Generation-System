@@ -41,7 +41,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     foreach (BillingItem Billing in GlobalBillingList)
                     {
-                        if (DateTime.Parse(Billing.LastUpdated).ToString("d").Equals(Days[a].ToString("d")) && Billing.Progress.Equals("Paid"))
+                        if (DateTime.Parse(Billing.LastUpdated).ToString("d").Equals(Days[a].ToString("d")) && Billing.Status.Equals("Paid"))
                         {
                             TotalSales += Convert.ToDouble(Billing.Balance - (Billing.Balance * (Billing.Discount / 100)));
                         }
@@ -73,7 +73,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     foreach (BillingItem Billing in GlobalBillingList)
                     {
-                        if (DateTime.Parse(Billing.LastUpdated).ToString("Y").Equals(Months[a].ToString("Y")) && Billing.Progress.Equals("Paid"))
+                        if (DateTime.Parse(Billing.LastUpdated).ToString("Y").Equals(Months[a].ToString("Y")) && Billing.Status.Equals("Paid"))
                         {
                             TotalSales += Convert.ToDouble(Billing.Balance - (Billing.Balance * (Billing.Discount / 100)));
                         }

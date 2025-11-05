@@ -364,7 +364,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 4
@@ -546,7 +546,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         void RefreshRows(CustomerItem Customer)
         {
-            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 3
@@ -639,7 +639,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         void RefreshRows(VehicleItem Vehicle)
         {
-            RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+            RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 6

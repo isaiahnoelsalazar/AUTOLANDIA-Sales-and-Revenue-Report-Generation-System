@@ -59,7 +59,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 }
 
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
                     string[] Temp1 = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     List<string> Split = new List<string>();
@@ -112,7 +112,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Timer.Start();
 
             RefreshEmployeeWork(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
-            //RefreshBilling(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
             RefreshEmployees(SummaryCalendar.MaxDate, SummaryCalendar.MaxDate);
         }
 
@@ -150,7 +149,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 double TotalSalary = 0;
 
-                foreach (OrderItem Order in GlobalOrderList)
+                foreach (TransactionItem Order in GlobalTransactionList)
                 {
                     string[] Temp = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                     List<string> Split = new List<string>();
@@ -164,7 +163,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         foreach (BillingItem Billing in GlobalBillingList)
                         {
-                            if (Billing.ID.Equals(Order.ID) && Billing.Progress.Equals("Paid"))
+                            if (Billing.ID.Equals(Order.ID) && Billing.Status.Equals("Paid"))
                             {
                                 TotalSalary += (((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count);
                             }
@@ -172,7 +171,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     }
                 }
 
-                RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
+                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
                 TableLayoutPanel Panel = new TableLayoutPanel
                 {
                     ColumnCount = 2
@@ -264,7 +263,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         string ServicePackageDetail = string.Empty;
                         int Vehicles = 0;
 
-                        foreach (OrderItem Order in GlobalOrderList)
+                        foreach (TransactionItem Order in GlobalTransactionList)
                         {
                             if (DateTimeRange.Contains(DateTime.Parse(Order.DateCreated).Date))
                             {
@@ -300,7 +299,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             {
                                                 if (Billing.ID.Equals(Order.ID))
                                                 {
-                                                    AllAmount += $"{(Billing.Progress.Equals("Paid") ? $"₱{(((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count).ToString("0.00")}" : "Bill still unpaid")}\n\n";
+                                                    AllAmount += $"{(Billing.Status.Equals("Paid") ? $"₱{(((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count).ToString("0.00")}" : "Bill still unpaid")}\n\n";
                                                 }
                                             }
 
@@ -308,7 +307,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             {
                                                 if (Package.ID.Equals(Order.PackageID))
                                                 {
-                                                    ServicePackageDetail += $"[{Package.Name}, {Package.Size}] - {Package.Details} ";
+                                                    ServicePackageDetail += $"[{Package.Name}, {RealVehicle.Size}] - {Package.Details} ";
                                                     break;
                                                 }
                                             }
@@ -487,7 +486,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
 
-                    foreach (OrderItem Order in GlobalOrderList)
+                    foreach (TransactionItem Order in GlobalTransactionList)
                     {
                         string[] Temp1 = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                         List<string> Split = new List<string>();
@@ -513,7 +512,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     EmployeeListCheckBox.Items.Clear();
                     EmployeeListCheckBox.Controls.Clear();
 
-                    foreach (OrderItem Order in GlobalOrderList)
+                    foreach (TransactionItem Order in GlobalTransactionList)
                     {
                         string[] Temp1 = Order.EmployeeIDList.Substring(1, Order.EmployeeIDList.Length - 2).Split(',');
                         List<string> Split = new List<string>();
@@ -550,7 +549,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 EmployeeListCheckBox.Items.Add(CheckBoxAll);
                 RefreshEmployees(FirstDate.Date, e.Start.Date);
                 RefreshEmployeeWork(FirstDate.Date, e.Start.Date);
-                //RefreshBilling(FirstDate, e.Start.Date);
             }
         }
     }
