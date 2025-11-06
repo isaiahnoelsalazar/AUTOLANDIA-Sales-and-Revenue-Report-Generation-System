@@ -792,7 +792,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                     };
 
                                     Price.Dock = DockStyle.Fill;
-                                    Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size).ToString("0.00")}";
+                                    Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size).ToString("N2")}";
                                     Price.TextAlign = ContentAlignment.MiddleCenter;
                                     Price.MouseEnter += (sndr, evnt) =>
                                     {
@@ -870,7 +870,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 };
 
                                 Price.Dock = DockStyle.Fill;
-                                Price.Text = $"₱{GetPackagePrice(Package.Name, RealVehicle.Size).ToString("0.00")}";
+                                Price.Text = $"₱{GetPackagePrice(Package.Name, RealVehicle.Size).ToString("N2")}";
                                 Price.TextAlign = ContentAlignment.MiddleCenter;
                                 Price.MouseEnter += (sndr, evnt) =>
                                 {

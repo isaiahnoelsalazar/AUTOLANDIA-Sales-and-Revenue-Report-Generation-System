@@ -35,6 +35,9 @@
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.TB_Balance = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.TB_Change = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // TB_Amount
@@ -45,15 +48,14 @@
             this.TB_Amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Amount.Depth = 0;
             this.TB_Amount.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TB_Amount.Hint = "Amount to pay";
             this.TB_Amount.LeadingIcon = null;
-            this.TB_Amount.Location = new System.Drawing.Point(10, 165);
+            this.TB_Amount.Location = new System.Drawing.Point(190, 165);
             this.TB_Amount.Margin = new System.Windows.Forms.Padding(8);
             this.TB_Amount.MaxLength = 50;
             this.TB_Amount.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Amount.Multiline = false;
             this.TB_Amount.Name = "TB_Amount";
-            this.TB_Amount.Size = new System.Drawing.Size(508, 50);
+            this.TB_Amount.Size = new System.Drawing.Size(328, 50);
             this.TB_Amount.TabIndex = 84;
             this.TB_Amount.Text = "";
             this.TB_Amount.TrailingIcon = null;
@@ -95,7 +97,7 @@
             this.DoneButton.Depth = 0;
             this.DoneButton.HighEmphasis = true;
             this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(454, 251);
+            this.DoneButton.Location = new System.Drawing.Point(454, 312);
             this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
             this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DoneButton.Name = "DoneButton";
@@ -116,7 +118,7 @@
             this.CancelButton.Depth = 0;
             this.CancelButton.HighEmphasis = true;
             this.CancelButton.Icon = null;
-            this.CancelButton.Location = new System.Drawing.Point(10, 251);
+            this.CancelButton.Location = new System.Drawing.Point(10, 312);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(8);
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
@@ -138,9 +140,9 @@
             this.materialLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(58, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(105, 19);
             this.materialLabel2.TabIndex = 90;
-            this.materialLabel2.Text = "Balance";
+            this.materialLabel2.Text = "Amount to pay";
             // 
             // TB_Balance
             // 
@@ -149,7 +151,7 @@
             this.TB_Balance.AnimateReadOnly = false;
             this.TB_Balance.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TB_Balance.Depth = 0;
-            this.TB_Balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Balance.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TB_Balance.LeadingIcon = null;
             this.TB_Balance.Location = new System.Drawing.Point(190, 99);
             this.TB_Balance.Margin = new System.Windows.Forms.Padding(8);
@@ -163,11 +165,61 @@
             this.TB_Balance.Text = "";
             this.TB_Balance.TrailingIcon = null;
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(12, 179);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(102, 19);
+            this.materialLabel1.TabIndex = 91;
+            this.materialLabel1.Text = "Cash tendered";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(12, 245);
+            this.materialLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(55, 19);
+            this.materialLabel3.TabIndex = 93;
+            this.materialLabel3.Text = "Change";
+            // 
+            // TB_Change
+            // 
+            this.TB_Change.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_Change.AnimateReadOnly = false;
+            this.TB_Change.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TB_Change.Depth = 0;
+            this.TB_Change.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TB_Change.LeadingIcon = null;
+            this.TB_Change.Location = new System.Drawing.Point(190, 231);
+            this.TB_Change.Margin = new System.Windows.Forms.Padding(8);
+            this.TB_Change.MaxLength = 50;
+            this.TB_Change.MouseState = MaterialSkin.MouseState.OUT;
+            this.TB_Change.Multiline = false;
+            this.TB_Change.Name = "TB_Change";
+            this.TB_Change.ReadOnly = true;
+            this.TB_Change.Size = new System.Drawing.Size(328, 50);
+            this.TB_Change.TabIndex = 92;
+            this.TB_Change.Text = "";
+            this.TB_Change.TrailingIcon = null;
+            // 
             // PaymentDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 297);
+            this.ClientSize = new System.Drawing.Size(528, 358);
+            this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.TB_Change);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.TB_Balance);
             this.Controls.Add(this.CancelButton);
@@ -195,5 +247,8 @@
         private MaterialSkin.Controls.MaterialButton CancelButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialTextBox TB_Balance;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialTextBox TB_Change;
     }
 }

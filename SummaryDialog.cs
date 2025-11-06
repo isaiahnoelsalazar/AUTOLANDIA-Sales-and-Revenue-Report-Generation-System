@@ -211,7 +211,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 };
 
                 Salary.Dock = DockStyle.Fill;
-                Salary.Text = $"₱{TotalSalary.ToString("0.00")}";
+                Salary.Text = $"₱{TotalSalary.ToString("N2")}";
                 Salary.TextAlign = ContentAlignment.MiddleCenter;
                 Salary.MouseEnter += (sndr, evnt) =>
                 {
@@ -299,7 +299,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                             {
                                                 if (Billing.ID.Equals(Order.ID))
                                                 {
-                                                    AllAmount += $"{(Billing.Status.Equals("Paid") ? $"₱{(((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count).ToString("0.00")}" : "Bill still unpaid")}\n\n";
+                                                    AllAmount += $"{(Billing.Status.Equals("Paid") ? $"₱{(((Billing.Balance - (Billing.Balance * (Billing.Discount / 100))) * 0.3) / Split.Count).ToString("N2")}" : "Bill still unpaid")}\n\n";
                                                 }
                                             }
 

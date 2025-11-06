@@ -13,6 +13,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         Color DefaultBackgroundColor;
         List<BillingItem> Temp = new List<BillingItem>(GlobalBillingList);
         DateTime Global;
+        bool PaidBillings = false;
 
         public BillingForm()
         {
@@ -37,6 +38,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RecreateGlobalBillingList();
 
             Temp = new List<BillingItem>(GlobalBillingList);
+            Temp.Reverse();
 
             BillingList.Controls.Clear();
             BillingList.RowStyles.Clear();
@@ -56,7 +58,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (BillingItem Billing in Temp)
             {
-                RefreshRows(Billing);
+                if (PaidBillings)
+                {
+                    if (Billing.Status.Equals("Paid"))
+                    {
+                        RefreshRows(Billing);
+                    }
+                }
+                else
+                {
+                    if (!Billing.Status.Equals("Paid"))
+                    {
+                        RefreshRows(Billing);
+                    }
+                }
             }
         }
 
@@ -71,14 +86,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Billing.ID.Contains(SearchBarBilling.Text))
                     {
-                        RefreshRows(Billing);
+                        if (!Billing.Status.Equals("Paid"))
+                        {
+                            RefreshRows(Billing);
+                        }
                     }
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
                     if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
-                        RefreshRows(Billing);
+                        if (!Billing.Status.Equals("Paid"))
+                        {
+                            RefreshRows(Billing);
+                        }
                     }
                 }
             }
@@ -95,14 +116,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Billing.ID.Contains(SearchBarBilling.Text))
                     {
-                        RefreshRows(Billing);
+                        if (!Billing.Status.Equals("Paid"))
+                        {
+                            RefreshRows(Billing);
+                        }
                     }
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
                     if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
-                        RefreshRows(Billing);
+                        if (!Billing.Status.Equals("Paid"))
+                        {
+                            RefreshRows(Billing);
+                        }
                     }
                 }
             }
@@ -113,10 +140,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
-                ColumnCount = 5
+                ColumnCount = 6
             };
             Label Id = new Label();
             Label Balance = new Label();
+            Label RemainingBalance = new Label();
             Label Progress = new Label();
             Label LastUpdated = new Label();
             Label DateCreated = new Label();
@@ -137,8 +165,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
             Panel.ColumnStyles.Clear();
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
-            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15f));
             Panel.Margin = new Padding(0);
@@ -156,13 +185,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             Balance.Dock = DockStyle.Fill;
-            Balance.Text = Billing.Balance - Billing.Paid > 0 ? $"₱{(Billing.Balance - Billing.Paid).ToString("0.00")}" : "₱0.00";
+            Balance.Text = $"₱{Billing.Balance.ToString("N2")}";
             Balance.TextAlign = ContentAlignment.MiddleCenter;
             Balance.MouseEnter += (sndr, evnt) =>
             {
                 Panel.BackColor = Color.FromArgb(200, 200, 200);
             };
             Balance.MouseLeave += (sndr, evnt) =>
+            {
+                Panel.BackColor = DefaultBackgroundColor;
+            };
+
+            RemainingBalance.Dock = DockStyle.Fill;
+            RemainingBalance.Text = Billing.Balance - Billing.Paid > 0 ? $"₱{(Billing.Balance - Billing.Paid).ToString("N2")}" : $"₱{(0).ToString("N2")}";
+            RemainingBalance.TextAlign = ContentAlignment.MiddleCenter;
+            RemainingBalance.MouseEnter += (sndr, evnt) =>
+            {
+                Panel.BackColor = Color.FromArgb(200, 200, 200);
+            };
+            RemainingBalance.MouseLeave += (sndr, evnt) =>
             {
                 Panel.BackColor = DefaultBackgroundColor;
             };
@@ -215,6 +256,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 new BillDetailDialog(this, Billing.ID).ShowDialog();
             };
+            RemainingBalance.Click += (sndr, evnt) =>
+            {
+                new BillDetailDialog(this, Billing.ID).ShowDialog();
+            };
             Progress.Click += (sndr, evnt) =>
             {
                 new BillDetailDialog(this, Billing.ID).ShowDialog();
@@ -231,9 +276,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.RowStyles.Add(Row);
             Panel.Controls.Add(Id, 0, 0);
             Panel.Controls.Add(Balance, 1, 0);
-            Panel.Controls.Add(Progress, 2, 0);
-            Panel.Controls.Add(LastUpdated, 3, 0);
-            Panel.Controls.Add(DateCreated, 4, 0);
+            Panel.Controls.Add(RemainingBalance, 2, 0);
+            Panel.Controls.Add(Progress, 3, 0);
+            Panel.Controls.Add(LastUpdated, 4, 0);
+            Panel.Controls.Add(DateCreated, 5, 0);
             BillingList.Controls.Add(Panel);
 
             tableLayoutPanel2.Width = BillingList.Width;
@@ -258,6 +304,40 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void DatePickerButton_Click(object sender, EventArgs e)
         {
             new DatePickerDialog(this).ShowDialog();
+        }
+
+        private void CompletedButton_Click(object sender, EventArgs e)
+        {
+            if (!PaidBillings)
+            {
+                PaidBillings = true;
+                CompletedButton.Text = "Paid bills";
+                BillingList.Controls.Clear();
+                BillingList.RowStyles.Clear();
+
+                foreach (BillingItem Bills in Temp)
+                {
+                    if (Bills.Status.Equals("Paid"))
+                    {
+                        RefreshRows(Bills);
+                    }
+                }
+            }
+            else
+            {
+                PaidBillings = false;
+                CompletedButton.Text = "Pending bills";
+                BillingList.Controls.Clear();
+                BillingList.RowStyles.Clear();
+
+                foreach (BillingItem Bills in Temp)
+                {
+                    if (!Bills.Status.Equals("Paid"))
+                    {
+                        RefreshRows(Bills);
+                    }
+                }
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         NewTransactionDialog NewTransactionDialog;
         AddCustomerVehicleDialog AddCustomerVehicleDialog;
         NewCustomerDialog NewCustomerDialog;
+        BillDetailDialog BillDetailDialog;
         string BillingId;
         BillingItem Bill;
 
@@ -16,6 +17,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
+            this.BillingId = BillingId;
+
+            Bill = GetBillFromID(BillingId.ToString());
+        }
+
+        public PaymentDialog(BillDetailDialog BillDetailDialog, string BillingId)
+        {
+            InitializeComponent();
+
+            this.BillDetailDialog = BillDetailDialog;
             this.BillingId = BillingId;
 
             Bill = GetBillFromID(BillingId.ToString());
@@ -44,32 +55,33 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (double.Parse(TB_Amount.Text) > 0)
                 {
-                    //if (double.Parse(TB_Amount.Text) >= Bill.Balance)
-                    //{
+                    if (double.Parse(TB_Amount.Text) >= Bill.Balance)
+                    {
+                        double PaidAmount = double.Parse(TB_Amount.Text);
+                        double NewBalance = (Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text);
+                        string Status = NewBalance <= 0 ? "Paid" : "Pending";
+                        UpdatePaymentInBillingList(
+                            BillingId,
+                            PaidAmount + Bill.Paid,
+                            Status,
+                            $"{DateTime.Now.ToString("yyyy")}/{DateTime.Now.ToString("MM")}/{DateTime.Now.ToString("dd")}" + $" {DateTime.Now.ToString("HH")}:{DateTime.Now.ToString("mm")}:{DateTime.Now.ToString("ss")} {DateTime.Now.ToString("tt")}"
+                        ).ExecuteNonQuery();
 
-                    //}
-                    //else
-                    //{
-                    //    AlertMessageBox("Please enter an amount equal to or higher than the current balance.");
-                    //}
-                    double PaidAmount = double.Parse(TB_Amount.Text);
-                    double NewBalance = (Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text);
-                    string Status = NewBalance <= 0 ? "Paid" : "Pending";
-                    UpdatePaymentInBillingList(
-                        BillingId,
-                        PaidAmount + Bill.Paid,
-                        Status,
-                        $"{DateTime.Now.ToString("yyyy")}/{DateTime.Now.ToString("MM")}/{DateTime.Now.ToString("dd")}" + $" {DateTime.Now.ToString("HH")}:{DateTime.Now.ToString("mm")}:{DateTime.Now.ToString("ss")} {DateTime.Now.ToString("tt")}"
-                    ).ExecuteNonQuery();
+                        RecordActivity($"Updated bill details with reference number: [{BillingId}]");
 
-                    RecordActivity($"Updated bill details with reference number: [{BillingId}]");
+                        GlobalBillingForm.RefreshBillings();
+                        GlobalActivityRecordForm.RefreshActivities();
 
-                    GlobalBillingForm.RefreshBillings();
-                    GlobalActivityRecordForm.RefreshActivities();
+                        OkMessageBox($"Successfully updated bill details!{(NewBalance <= 0 ? " Please give customer change immediately if present." : "")}");
 
-                    OkMessageBox($"Successfully updated bill details!{(NewBalance <= 0 ? " Please give customer change immediately if present." : "")}");
+                        new ReceiptDialog(BillingId, PaidAmount).ShowDialog();
 
-                    Close();
+                        Close();
+                    }
+                    else
+                    {
+                        AlertMessageBox("Please enter an amount equal to or higher than the current balance.");
+                    }
                 }
                 else
                 {
@@ -96,12 +108,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 NewTransactionDialog.Close();
             }
+            if (BillDetailDialog != null)
+            {
+                BillDetailDialog.Close();
+            }
         }
 
         private void PaymentDialog_Load(object sender, EventArgs e)
         {
             BillID.Text = $"Payment for bill number {BillingId}";
             TB_Balance.Text = $"₱{(Bill.Balance - Bill.Paid).ToString("N2")}";
+            TB_Change.Text = $"₱{(0).ToString("N2")}";
         }
 
         private void TB_Amount_TextChanged(object sender, EventArgs e)
@@ -110,16 +127,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 if (double.Parse(TB_Amount.Text) > 0)
                 {
-                    TB_Balance.Text = (Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text) > 0 ? $"₱{((Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text)).ToString("N2")}" : $"₱0.00 (Change: ₱{(double.Parse(TB_Amount.Text) - (Bill.Balance - Bill.Paid)).ToString("0.00")})";
+                    TB_Balance.Text = (Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text) > 0 ? $"₱{((Bill.Balance - Bill.Paid) - double.Parse(TB_Amount.Text)).ToString("N2")}" : $"₱{(0).ToString("N2")}";
+                    TB_Change.Text = double.Parse(TB_Amount.Text) - (Bill.Balance - Bill.Paid) > 0 ? $"₱{(double.Parse(TB_Amount.Text) - (Bill.Balance - Bill.Paid)).ToString("N2")}" : $"₱{(0).ToString("N2")}";
                 }
                 else
                 {
                     TB_Balance.Text = $"₱{Bill.Balance.ToString("N2")}";
+                    TB_Change.Text = $"₱{(0).ToString("N2")}";
                 }
             }
             catch
             {
                 TB_Balance.Text = $"₱{Bill.Balance.ToString("N2")}";
+                TB_Change.Text = $"₱{(0).ToString("N2")}";
             }
         }
     }

@@ -10,6 +10,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
     {
         NewTransactionDialog NewTransactionDialog;
         object[] args;
+        bool Back = false;
 
         public ResultDialog(NewTransactionDialog NewTransactionDialog, List<ServiceItem> Services, string Package, string Extras, object[] args)
         {
@@ -52,7 +53,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void ResultDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            NewTransactionDialog.FromResultDialog((string)args[0], (string)args[1], (string)args[2], (string)args[3], (VehicleItem)args[4], (DateTime)args[5], (double)args[6]);
+            if (!Back)
+            {
+                NewTransactionDialog.FromResultDialog((string)args[0], (string)args[1], (string)args[2], (string)args[3], (VehicleItem)args[4], (DateTime)args[5], (double)args[6]);
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Back = true;
+            Close();
         }
     }
 }

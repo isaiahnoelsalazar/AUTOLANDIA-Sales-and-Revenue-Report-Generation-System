@@ -1,5 +1,4 @@
 ﻿using MaterialSkin.Controls;
-using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -834,88 +833,89 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         public void FromResultDialog(string EmployeeIds, string ServiceIds, string PackageId, string Extras, VehicleItem RealVehicle, DateTime Now, double RealPrice)
         {
-            if (NoticeMessageBox("Proceed to payment?") == DialogResult.Yes)
+            //if (NoticeMessageBox("Proceed to payment?") == DialogResult.Yes)
+            //{
+            //    try
+            //    {
+            //        int refnum = GlobalTransactionList.Count + 1;
+            //        RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
+
+            //        InsertToTransactionList(
+            //            EmployeeIds,
+            //            ServiceIds,
+            //            PackageId,
+            //            Extras,
+            //            RealVehicle.ID,
+            //            "Ready",
+            //            $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+            //            $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+            //        ).ExecuteNonQuery();
+
+            //        InsertToBillingList(
+            //            RealPrice,
+            //            DiscountSlider.Value,
+            //            0,
+            //            "Pending",
+            //            $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+            //            $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+            //        ).ExecuteNonQuery();
+
+            //        GlobalTransactionsForm.RefreshTransactions();
+            //        GlobalBillingForm.RefreshBillings();
+            //        GlobalActivityRecordForm.RefreshActivities();
+
+            //        new PaymentDialog(this, AddCustomerVehicleDialog, NewCustomerDialog, refnum.ToString()).ShowDialog();
+            //    }
+            //    catch (Exception Exception)
+            //    {
+            //        AlertMessageBox(Exception.Message);
+            //    }
+            //}
+            //else
+            //{
+
+            //}
+            try
             {
-                try
+                RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
+
+                InsertToTransactionList(
+                    EmployeeIds,
+                    ServiceIds,
+                    PackageId,
+                    Extras,
+                    RealVehicle.ID,
+                    "Ready",
+                    $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                    $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                ).ExecuteNonQuery();
+
+                InsertToBillingList(
+                    RealPrice,
+                    DiscountSlider.Value,
+                    0,
+                    "Pending",
+                    $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
+                    $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
+                ).ExecuteNonQuery();
+
+                OkMessageBox("Successfully added new transaction!");
+                GlobalTransactionsForm.RefreshTransactions();
+                GlobalBillingForm.RefreshBillings();
+                GlobalActivityRecordForm.RefreshActivities();
+                if (AddCustomerVehicleDialog != null)
                 {
-                    int refnum = GlobalTransactionList.Count + 1;
-                    RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
-
-                    InsertToTransactionList(
-                        EmployeeIds,
-                        ServiceIds,
-                        PackageId,
-                        Extras,
-                        RealVehicle.ID,
-                        "Ready",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
-                    ).ExecuteNonQuery();
-
-                    InsertToBillingList(
-                        RealPrice,
-                        DiscountSlider.Value,
-                        0,
-                        "Pending",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
-                    ).ExecuteNonQuery();
-
-                    GlobalTransactionsForm.RefreshTransactions();
-                    GlobalBillingForm.RefreshBillings();
-                    GlobalActivityRecordForm.RefreshActivities();
-
-                    new PaymentDialog(this, AddCustomerVehicleDialog, NewCustomerDialog, refnum.ToString()).ShowDialog();
+                    AddCustomerVehicleDialog.Close();
                 }
-                catch (Exception Exception)
+                if (NewCustomerDialog != null)
                 {
-                    AlertMessageBox(Exception.Message);
+                    NewCustomerDialog.Close();
                 }
+                Close();
             }
-            else
+            catch (Exception Exception)
             {
-                try
-                {
-                    RecordActivity($"Added new order with reference number: {GlobalTransactionList.Count + 1}");
-
-                    InsertToTransactionList(
-                        EmployeeIds,
-                        ServiceIds,
-                        PackageId,
-                        Extras,
-                        RealVehicle.ID,
-                        "Ready",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
-                    ).ExecuteNonQuery();
-
-                    InsertToBillingList(
-                        RealPrice,
-                        DiscountSlider.Value,
-                        0,
-                        "Pending",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}",
-                        $"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"
-                    ).ExecuteNonQuery();
-
-                    OkMessageBox("Successfully added new transaction!");
-                    GlobalTransactionsForm.RefreshTransactions();
-                    GlobalBillingForm.RefreshBillings();
-                    GlobalActivityRecordForm.RefreshActivities();
-                    if (AddCustomerVehicleDialog != null)
-                    {
-                        AddCustomerVehicleDialog.Close();
-                    }
-                    if (NewCustomerDialog != null)
-                    {
-                        NewCustomerDialog.Close();
-                    }
-                    Close();
-                }
-                catch (Exception Exception)
-                {
-                    AlertMessageBox(Exception.Message);
-                }
+                AlertMessageBox(Exception.Message);
             }
         }
 

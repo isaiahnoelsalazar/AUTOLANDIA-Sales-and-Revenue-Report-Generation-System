@@ -337,11 +337,47 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             return null;
         }
 
+        public static EmployeeItem GetEmployeeFromID(string EmployeeID)
+        {
+            foreach (EmployeeItem Employee in GlobalEmployeeList)
+            {
+                if (Employee.ID.Equals(EmployeeID))
+                {
+                    return Employee;
+                }
+            }
+            return null;
+        }
+
+        public static TransactionItem GetTransactionFromID(string TransactionID)
+        {
+            foreach (TransactionItem Transaction in GlobalTransactionList)
+            {
+                if (Transaction.ID.Equals(TransactionID))
+                {
+                    return Transaction;
+                }
+            }
+            return null;
+        }
+
         public static PackageItem GetPackageFromName(string PackageName)
         {
             foreach (PackageItem Package in GlobalPackageList)
             {
                 if (Package.Name.Equals(PackageName))
+                {
+                    return Package;
+                }
+            }
+            return null;
+        }
+
+        public static PackageItem GetPackageFromID(string PackageID)
+        {
+            foreach (PackageItem Package in GlobalPackageList)
+            {
+                if (Package.ID.Equals(PackageID))
                 {
                     return Package;
                 }

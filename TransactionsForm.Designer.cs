@@ -43,6 +43,7 @@
             this.SearchBarTransaction = new MaterialSkin.Controls.MaterialTextBox();
             this.FilterTransaction = new MaterialSkin.Controls.MaterialComboBox();
             this.DatePickerButton = new MaterialSkin.Controls.MaterialButton();
+            this.CompletedButton = new MaterialSkin.Controls.MaterialButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.TransactionListContainer.SuspendLayout();
             this.SuspendLayout();
@@ -230,7 +231,7 @@
             this.SearchBarTransaction.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarTransaction.Multiline = false;
             this.SearchBarTransaction.Name = "SearchBarTransaction";
-            this.SearchBarTransaction.Size = new System.Drawing.Size(487, 36);
+            this.SearchBarTransaction.Size = new System.Drawing.Size(282, 36);
             this.SearchBarTransaction.TabIndex = 21;
             this.SearchBarTransaction.Text = "";
             this.SearchBarTransaction.TrailingIcon = null;
@@ -252,12 +253,12 @@
             this.FilterTransaction.FormattingEnabled = true;
             this.FilterTransaction.IntegralHeight = false;
             this.FilterTransaction.ItemHeight = 29;
-            this.FilterTransaction.Location = new System.Drawing.Point(507, 9);
+            this.FilterTransaction.Location = new System.Drawing.Point(302, 9);
             this.FilterTransaction.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.FilterTransaction.MaxDropDownItems = 4;
             this.FilterTransaction.MouseState = MaterialSkin.MouseState.OUT;
             this.FilterTransaction.Name = "FilterTransaction";
-            this.FilterTransaction.Size = new System.Drawing.Size(150, 35);
+            this.FilterTransaction.Size = new System.Drawing.Size(127, 35);
             this.FilterTransaction.StartIndex = 0;
             this.FilterTransaction.TabIndex = 28;
             this.FilterTransaction.UseTallSize = false;
@@ -284,11 +285,34 @@
             this.DatePickerButton.UseVisualStyleBackColor = true;
             this.DatePickerButton.Click += new System.EventHandler(this.DatePickerButton_Click);
             // 
+            // CompletedButton
+            // 
+            this.CompletedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompletedButton.AutoSize = false;
+            this.CompletedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CompletedButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.CompletedButton.Depth = 0;
+            this.CompletedButton.HighEmphasis = true;
+            this.CompletedButton.Icon = null;
+            this.CompletedButton.Location = new System.Drawing.Point(437, 9);
+            this.CompletedButton.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.CompletedButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CompletedButton.Name = "CompletedButton";
+            this.CompletedButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.CompletedButton.Size = new System.Drawing.Size(220, 36);
+            this.CompletedButton.TabIndex = 30;
+            this.CompletedButton.Text = "All transactions";
+            this.CompletedButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.CompletedButton.UseAccentColor = false;
+            this.CompletedButton.UseVisualStyleBackColor = true;
+            this.CompletedButton.Click += new System.EventHandler(this.CompletedButton_Click);
+            // 
             // TransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 360);
+            this.Controls.Add(this.CompletedButton);
             this.Controls.Add(this.DatePickerButton);
             this.Controls.Add(this.FilterTransaction);
             this.Controls.Add(this.SearchBarTransaction);
@@ -326,5 +350,6 @@
         private MaterialSkin.Controls.MaterialTextBox SearchBarTransaction;
         private MaterialSkin.Controls.MaterialComboBox FilterTransaction;
         private MaterialSkin.Controls.MaterialButton DatePickerButton;
+        private MaterialSkin.Controls.MaterialButton CompletedButton;
     }
 }

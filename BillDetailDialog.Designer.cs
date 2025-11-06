@@ -32,7 +32,7 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.CancelButton = new MaterialSkin.Controls.MaterialButton();
-            this.DoneButton = new MaterialSkin.Controls.MaterialButton();
+            this.ReceiptButton = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.TB_Price = new MaterialSkin.Controls.MaterialTextBox();
@@ -65,9 +65,9 @@
             this.materialLabel3.Location = new System.Drawing.Point(12, 164);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(100, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(58, 19);
             this.materialLabel3.TabIndex = 41;
-            this.materialLabel3.Text = "Order Balance";
+            this.materialLabel3.Text = "Balance";
             // 
             // materialLabel2
             // 
@@ -94,7 +94,7 @@
             this.CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.CancelButton.Size = new System.Drawing.Size(77, 36);
+            this.CancelButton.Size = new System.Drawing.Size(66, 36);
             this.CancelButton.TabIndex = 39;
             this.CancelButton.Text = "Close";
             this.CancelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -102,27 +102,27 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // DoneButton
+            // ReceiptButton
             // 
-            this.DoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DoneButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.DoneButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.DoneButton.Depth = 0;
-            this.DoneButton.HighEmphasis = true;
-            this.DoneButton.Icon = null;
-            this.DoneButton.Location = new System.Drawing.Point(412, 394);
-            this.DoneButton.Margin = new System.Windows.Forms.Padding(8);
-            this.DoneButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.DoneButton.Name = "DoneButton";
-            this.DoneButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.DoneButton.Size = new System.Drawing.Size(64, 36);
-            this.DoneButton.TabIndex = 38;
-            this.DoneButton.Text = "Done";
-            this.DoneButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.DoneButton.UseAccentColor = false;
-            this.DoneButton.UseVisualStyleBackColor = true;
-            this.DoneButton.Visible = false;
-            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            this.ReceiptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceiptButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ReceiptButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ReceiptButton.Depth = 0;
+            this.ReceiptButton.HighEmphasis = true;
+            this.ReceiptButton.Icon = null;
+            this.ReceiptButton.Location = new System.Drawing.Point(367, 394);
+            this.ReceiptButton.Margin = new System.Windows.Forms.Padding(8);
+            this.ReceiptButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ReceiptButton.Name = "ReceiptButton";
+            this.ReceiptButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ReceiptButton.Size = new System.Drawing.Size(109, 36);
+            this.ReceiptButton.TabIndex = 38;
+            this.ReceiptButton.Text = "See receipt";
+            this.ReceiptButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ReceiptButton.UseAccentColor = false;
+            this.ReceiptButton.UseVisualStyleBackColor = true;
+            this.ReceiptButton.Visible = false;
+            this.ReceiptButton.Click += new System.EventHandler(this.ReceiptButton_Click);
             // 
             // materialLabel1
             // 
@@ -287,7 +287,7 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.DoneButton);
+            this.Controls.Add(this.ReceiptButton);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -305,7 +305,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialButton CancelButton;
-        private MaterialSkin.Controls.MaterialButton DoneButton;
+        private MaterialSkin.Controls.MaterialButton ReceiptButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialTextBox TB_Price;

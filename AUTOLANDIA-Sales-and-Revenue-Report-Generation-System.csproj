@@ -163,6 +163,12 @@
     <Compile Include="EditServiceDialog.Designer.cs">
       <DependentUpon>EditServiceDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceiptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceiptDialog.Designer.cs">
+      <DependentUpon>ReceiptDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransactionDetailDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditServiceDialog.resx">
       <DependentUpon>EditServiceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiptDialog.resx">
+      <DependentUpon>ReceiptDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransactionDetailDialog.resx">
       <DependentUpon>TransactionDetailDialog.cs</DependentUpon>

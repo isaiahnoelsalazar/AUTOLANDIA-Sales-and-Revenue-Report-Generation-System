@@ -250,7 +250,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             S.Dock = DockStyle.Fill;
-            S.Text = Package.S > 0 ? $"₱{Package.S.ToString("0.00")}" : "-";
+            S.Text = Package.S > 0 ? $"₱{Package.S.ToString("N2")}" : "-";
             S.TextAlign = ContentAlignment.MiddleCenter;
             S.MouseEnter += (sndr, evnt) =>
             {
@@ -262,7 +262,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             M.Dock = DockStyle.Fill;
-            M.Text = Package.M > 0 ? $"₱{Package.M.ToString("0.00")}" : "-";
+            M.Text = Package.M > 0 ? $"₱{Package.M.ToString("N2")}" : "-";
             M.TextAlign = ContentAlignment.MiddleCenter;
             M.MouseEnter += (sndr, evnt) =>
             {
@@ -274,7 +274,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             L.Dock = DockStyle.Fill;
-            L.Text = Package.L > 0 ? $"₱{Package.L.ToString("0.00")}" : "-";
+            L.Text = Package.L > 0 ? $"₱{Package.L.ToString("N2")}" : "-";
             L.TextAlign = ContentAlignment.MiddleCenter;
             L.MouseEnter += (sndr, evnt) =>
             {
@@ -286,7 +286,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             XL.Dock = DockStyle.Fill;
-            XL.Text = Package.XL > 0 ? $"₱{Package.XL.ToString("0.00")}" : "-";
+            XL.Text = Package.XL > 0 ? $"₱{Package.XL.ToString("N2")}" : "-";
             XL.TextAlign = ContentAlignment.MiddleCenter;
             XL.MouseEnter += (sndr, evnt) =>
             {
@@ -298,7 +298,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             XXL.Dock = DockStyle.Fill;
-            XXL.Text = Package.XXL > 0 ? $"₱{Package.XXL.ToString("0.00")}" : "-";
+            XXL.Text = Package.XXL > 0 ? $"₱{Package.XXL.ToString("N2")}" : "-";
             XXL.TextAlign = ContentAlignment.MiddleCenter;
             XXL.MouseEnter += (sndr, evnt) =>
             {
@@ -443,7 +443,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             S.Dock = DockStyle.Fill;
-            S.Text = Service.S > 0 ? $"₱{Service.S.ToString("0.00")}" : "-";
+            S.Text = Service.S > 0 ? $"₱{Service.S.ToString("N2")}" : "-";
             S.TextAlign = ContentAlignment.MiddleCenter;
             S.MouseEnter += (sndr, evnt) =>
             {
@@ -455,7 +455,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             M.Dock = DockStyle.Fill;
-            M.Text = Service.M > 0 ? $"₱{Service.M.ToString("0.00")}" : "-";
+            M.Text = Service.M > 0 ? $"₱{Service.M.ToString("N2")}" : "-";
             M.TextAlign = ContentAlignment.MiddleCenter;
             M.MouseEnter += (sndr, evnt) =>
             {
@@ -467,7 +467,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             L.Dock = DockStyle.Fill;
-            L.Text = Service.L > 0 ? $"₱{Service.L.ToString("0.00")}" : "-";
+            L.Text = Service.L > 0 ? $"₱{Service.L.ToString("N2")}" : "-";
             L.TextAlign = ContentAlignment.MiddleCenter;
             L.MouseEnter += (sndr, evnt) =>
             {
@@ -479,7 +479,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             XL.Dock = DockStyle.Fill;
-            XL.Text = Service.XL > 0 ? $"₱{Service.XL.ToString("0.00")}" : "-";
+            XL.Text = Service.XL > 0 ? $"₱{Service.XL.ToString("N2")}" : "-";
             XL.TextAlign = ContentAlignment.MiddleCenter;
             XL.MouseEnter += (sndr, evnt) =>
             {
@@ -491,7 +491,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             };
 
             XXL.Dock = DockStyle.Fill;
-            XXL.Text = Service.XXL > 0 ? $"₱{Service.XXL.ToString("0.00")}" : "-";
+            XXL.Text = Service.XXL > 0 ? $"₱{Service.XXL.ToString("N2")}" : "-";
             XXL.TextAlign = ContentAlignment.MiddleCenter;
             XXL.MouseEnter += (sndr, evnt) =>
             {

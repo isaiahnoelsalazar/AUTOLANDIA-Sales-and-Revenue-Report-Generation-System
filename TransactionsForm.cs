@@ -14,6 +14,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         Color DefaultBackgroundColor;
         List<TransactionItem> Temp = new List<TransactionItem>(GlobalTransactionList);
         DateTime Global;
+        bool CompletedTransactions = false;
 
         public TransactionsForm()
         {
@@ -28,7 +29,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterTransaction.Items.Add("ID");
             FilterTransaction.Items.Add("Employee(s)");
             FilterTransaction.Items.Add("Plate Number");
-            FilterTransaction.Items.Add("Progress");
+            FilterTransaction.Items.Add("Status");
+            FilterTransaction.Items.Add("Ready");
+            FilterTransaction.Items.Add("In progress");
+            FilterTransaction.Items.Add("Cancelled");
             FilterTransaction.SelectedIndex = 2;
 
             Global = DateTime.Now;
@@ -40,6 +44,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             RecreateGlobalTransactionList();
 
             Temp = new List<TransactionItem>(GlobalTransactionList);
+            Temp.Reverse();
 
             TransactionList.Controls.Clear();
             TransactionList.RowStyles.Clear();
@@ -59,7 +64,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
             foreach (TransactionItem Order in Temp)
             {
-                RefreshRows(Order);
+                if (CompletedTransactions)
+                {
+                    if (Order.Status.Equals("Complete"))
+                    {
+                        RefreshRows(Order);
+                    }
+                }
+                else
+                {
+                    if (!Order.Status.Equals("Complete"))
+                    {
+                        RefreshRows(Order);
+                    }
+                }
             }
         }
 
@@ -79,7 +97,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Order.ID.Contains(SearchBarTransaction.Text))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 1)
@@ -101,7 +122,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (EmployeeList1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 2)
@@ -118,14 +142,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (RealPlateNumber1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
                     if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
             }
@@ -142,7 +172,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Order.ID.Contains(SearchBarTransaction.Text))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 1)
@@ -164,7 +197,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (EmployeeList1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 2)
@@ -181,12 +217,39 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (RealPlateNumber1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        RefreshRows(Order);
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
                     if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
+                    {
+                        if (!Order.Status.Equals("Complete"))
+                        {
+                            RefreshRows(Order);
+                        }
+                    }
+                }
+                if (FilterTransaction.SelectedIndex == 4)
+                {
+                    if (Order.Status.Equals("Ready"))
+                    {
+                        RefreshRows(Order);
+                    }
+                }
+                if (FilterTransaction.SelectedIndex == 5)
+                {
+                    if (Order.Status.Equals("In progress"))
+                    {
+                        RefreshRows(Order);
+                    }
+                }
+                if (FilterTransaction.SelectedIndex == 6)
+                {
+                    if (Order.Status.Equals("Cancelled"))
                     {
                         RefreshRows(Order);
                     }
@@ -368,13 +431,25 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     Command.ExecuteNonQuery();
 
-                    MaterialMessageBox.Show("Successfully changed transaction status!", "Notice");
+                    OkMessageBox("Successfully changed transaction status!");
                     RefreshTransactions();
                     GlobalActivityRecordForm.RefreshActivities();
+
+                    if (Progress.Text.Equals("Complete"))
+                    {
+                        BillingItem Bill = GetBillFromID(Order.ID);
+                        if (!Bill.Status.Equals("Paid"))
+                        {
+                            if (NoticeMessageBox("Proceed to payment?") == DialogResult.Yes)
+                            {
+                                new PaymentDialog(Order.ID).ShowDialog();
+                            }
+                        }
+                    }
                 }
-                catch (Exception exception)
+                catch (Exception Exception)
                 {
-                    MaterialMessageBox.Show(exception.Message, "Alert");
+                    AlertMessageBox(Exception.Message);
                 }
             };
 
@@ -463,6 +538,40 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void DatePickerButton_Click(object sender, EventArgs e)
         {
             new DatePickerDialog(this).ShowDialog();
+        }
+
+        private void CompletedButton_Click(object sender, EventArgs e)
+        {
+            if (!CompletedTransactions)
+            {
+                CompletedTransactions = true;
+                CompletedButton.Text = "Completed transactions";
+                TransactionList.Controls.Clear();
+                TransactionList.RowStyles.Clear();
+
+                foreach (TransactionItem Transaction in Temp)
+                {
+                    if (Transaction.Status.Equals("Complete"))
+                    {
+                        RefreshRows(Transaction);
+                    }
+                }
+            }
+            else
+            {
+                CompletedTransactions = false;
+                CompletedButton.Text = "All transactions";
+                TransactionList.Controls.Clear();
+                TransactionList.RowStyles.Clear();
+
+                foreach (TransactionItem Transaction in Temp)
+                {
+                    if (!Transaction.Status.Equals("Complete"))
+                    {
+                        RefreshRows(Transaction);
+                    }
+                }
+            }
         }
     }
 }
