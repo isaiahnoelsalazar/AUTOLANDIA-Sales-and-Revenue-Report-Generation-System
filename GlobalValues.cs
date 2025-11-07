@@ -342,6 +342,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             return new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET BalancePaid={BalancePaid}, BillingStatus='{BillingStatus}', DateUpdated='{DateUpdated}' WHERE BillingId='{BillingId}'", SQL);
         }
 
+        public static SqliteCommand InsertToAccount(string Username, string Password, int Type)
+        {
+            return new SqliteCommand($"INSERT INTO AUTOLANDIA_{(Type == 0 ? "Admin" : "User")}List(Username, Password) VALUES ('{Username}', '{Password}')", SQL);
+        }
+
+        public static SqliteCommand DeleteAccount(string Username, int Type)
+        {
+            return new SqliteCommand($"DELETE FROM AUTOLANDIA_{(Type == 0 ? "Admin" : "User")}List WHERE Username='{Username}'", SQL);
+        }
+
+        public static void UpdateAccount(string Username, string Password, int Type, int OriginalType)
+        {
+            new SqliteCommand($"DELETE FROM AUTOLANDIA_{(OriginalType == 0 ? "Admin" : "User")}List WHERE Username='{Username}'", SQL).ExecuteNonQuery();
+            new SqliteCommand($"INSERT INTO AUTOLANDIA_{(Type == 0 ? "Admin" : "User")}List(Username, Password) VALUES ('{Username}', '{Password}')", SQL).ExecuteNonQuery();
+        }
+
         public static SqliteCommand ChangePassword(string Username, string New)
         {
             return new SqliteCommand($"UPDATE AUTOLANDIA_AdminList SET Password='{New}' WHERE Username='{Username}'", SQL);

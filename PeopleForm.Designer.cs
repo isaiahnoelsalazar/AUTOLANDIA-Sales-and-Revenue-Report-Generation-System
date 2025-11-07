@@ -69,6 +69,17 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.VehicleList = new System.Windows.Forms.TableLayoutPanel();
             this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             this.AddNewVehicleButton = new MaterialSkin.Controls.MaterialButton();
+            this.UserAccountsTab = new System.Windows.Forms.TabPage();
+            this.FilterUser = new MaterialSkin.Controls.MaterialComboBox();
+            this.SearchUser = new MaterialSkin.Controls.MaterialTextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.UserList = new System.Windows.Forms.TableLayoutPanel();
+            this.materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
+            this.AddUserButton = new MaterialSkin.Controls.MaterialButton();
             this.tabControl1.SuspendLayout();
             this.EmployeesTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -79,6 +90,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.VehiclesTab.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.VehicleListContainer.SuspendLayout();
+            this.UserAccountsTab.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -86,6 +100,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.tabControl1.Controls.Add(this.EmployeesTab);
             this.tabControl1.Controls.Add(this.CustomersTab);
             this.tabControl1.Controls.Add(this.VehiclesTab);
+            this.tabControl1.Controls.Add(this.UserAccountsTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(96, 48);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -201,7 +216,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(936, 48);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
@@ -711,6 +726,185 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.AddNewVehicleButton.UseVisualStyleBackColor = true;
             this.AddNewVehicleButton.Click += new System.EventHandler(this.AddNewVehicleButton_Click);
             // 
+            // UserAccountsTab
+            // 
+            this.UserAccountsTab.BackColor = System.Drawing.Color.White;
+            this.UserAccountsTab.Controls.Add(this.FilterUser);
+            this.UserAccountsTab.Controls.Add(this.SearchUser);
+            this.UserAccountsTab.Controls.Add(this.tableLayoutPanel4);
+            this.UserAccountsTab.Controls.Add(this.panel1);
+            this.UserAccountsTab.Controls.Add(this.materialDivider4);
+            this.UserAccountsTab.Controls.Add(this.AddUserButton);
+            this.UserAccountsTab.Location = new System.Drawing.Point(4, 52);
+            this.UserAccountsTab.Name = "UserAccountsTab";
+            this.UserAccountsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.UserAccountsTab.Size = new System.Drawing.Size(952, 304);
+            this.UserAccountsTab.TabIndex = 3;
+            this.UserAccountsTab.Text = "User Accounts";
+            this.UserAccountsTab.Enter += new System.EventHandler(this.UserAccountsTab_Enter);
+            // 
+            // FilterUser
+            // 
+            this.FilterUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterUser.AutoResize = false;
+            this.FilterUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.FilterUser.Depth = 0;
+            this.FilterUser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.FilterUser.DropDownHeight = 118;
+            this.FilterUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterUser.DropDownWidth = 121;
+            this.FilterUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FilterUser.FormattingEnabled = true;
+            this.FilterUser.IntegralHeight = false;
+            this.FilterUser.ItemHeight = 29;
+            this.FilterUser.Location = new System.Drawing.Point(657, 8);
+            this.FilterUser.MaxDropDownItems = 4;
+            this.FilterUser.MouseState = MaterialSkin.MouseState.OUT;
+            this.FilterUser.Name = "FilterUser";
+            this.FilterUser.Size = new System.Drawing.Size(150, 35);
+            this.FilterUser.StartIndex = 0;
+            this.FilterUser.TabIndex = 33;
+            this.FilterUser.UseTallSize = false;
+            // 
+            // SearchUser
+            // 
+            this.SearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchUser.AnimateReadOnly = false;
+            this.SearchUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchUser.Depth = 0;
+            this.SearchUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchUser.Hint = "Search";
+            this.SearchUser.LeadingIcon = null;
+            this.SearchUser.Location = new System.Drawing.Point(8, 8);
+            this.SearchUser.MaxLength = 50;
+            this.SearchUser.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchUser.Multiline = false;
+            this.SearchUser.Name = "SearchUser";
+            this.SearchUser.Size = new System.Drawing.Size(570, 36);
+            this.SearchUser.TabIndex = 32;
+            this.SearchUser.Text = "";
+            this.SearchUser.TrailingIcon = null;
+            this.SearchUser.UseTallSize = false;
+            this.SearchUser.TextChanged += new System.EventHandler(this.SearchUser_TextChanged);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label18, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label19, 1, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(8, 62);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(936, 48);
+            this.tableLayoutPanel4.TabIndex = 31;
+            // 
+            // label15
+            // 
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(9, 9);
+            this.label15.Margin = new System.Windows.Forms.Padding(8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(356, 30);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Username";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Location = new System.Drawing.Point(755, 9);
+            this.label18.Margin = new System.Windows.Forms.Padding(8);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(172, 30);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Type";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Location = new System.Drawing.Point(382, 9);
+            this.label19.Margin = new System.Windows.Forms.Padding(8);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(356, 30);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Password";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.UserList);
+            this.panel1.Location = new System.Drawing.Point(8, 110);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(936, 189);
+            this.panel1.TabIndex = 30;
+            // 
+            // UserList
+            // 
+            this.UserList.AutoSize = true;
+            this.UserList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.UserList.ColumnCount = 1;
+            this.UserList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UserList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UserList.Location = new System.Drawing.Point(0, 0);
+            this.UserList.Margin = new System.Windows.Forms.Padding(0);
+            this.UserList.Name = "UserList";
+            this.UserList.RowCount = 1;
+            this.UserList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UserList.Size = new System.Drawing.Size(936, 0);
+            this.UserList.TabIndex = 0;
+            // 
+            // materialDivider4
+            // 
+            this.materialDivider4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialDivider4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider4.Depth = 0;
+            this.materialDivider4.Location = new System.Drawing.Point(8, 52);
+            this.materialDivider4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider4.Name = "materialDivider4";
+            this.materialDivider4.Size = new System.Drawing.Size(936, 2);
+            this.materialDivider4.TabIndex = 29;
+            this.materialDivider4.Text = "materialDivider4";
+            // 
+            // AddUserButton
+            // 
+            this.AddUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddUserButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AddUserButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.AddUserButton.Depth = 0;
+            this.AddUserButton.HighEmphasis = true;
+            this.AddUserButton.Icon = null;
+            this.AddUserButton.Location = new System.Drawing.Point(818, 8);
+            this.AddUserButton.Margin = new System.Windows.Forms.Padding(8);
+            this.AddUserButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AddUserButton.Name = "AddUserButton";
+            this.AddUserButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.AddUserButton.Size = new System.Drawing.Size(126, 36);
+            this.AddUserButton.TabIndex = 28;
+            this.AddUserButton.Text = "Add new user";
+            this.AddUserButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.AddUserButton.UseAccentColor = false;
+            this.AddUserButton.UseVisualStyleBackColor = true;
+            this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
+            // 
             // PeopleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,6 +932,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.tableLayoutPanel3.ResumeLayout(false);
             this.VehicleListContainer.ResumeLayout(false);
             this.VehicleListContainer.PerformLayout();
+            this.UserAccountsTab.ResumeLayout(false);
+            this.UserAccountsTab.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -783,5 +982,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private MaterialSkin.Controls.MaterialComboBox FilterCustomer;
         private MaterialSkin.Controls.MaterialComboBox FilterVehicle;
         private MaterialSkin.Controls.MaterialButton EmployeeScheduleButton;
+        private TabPage UserAccountsTab;
+        private MaterialSkin.Controls.MaterialComboBox FilterUser;
+        private MaterialSkin.Controls.MaterialTextBox SearchUser;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Label label15;
+        private Label label18;
+        private Label label19;
+        private Panel panel1;
+        private TableLayoutPanel UserList;
+        private MaterialSkin.Controls.MaterialDivider materialDivider4;
+        private MaterialSkin.Controls.MaterialButton AddUserButton;
     }
 }

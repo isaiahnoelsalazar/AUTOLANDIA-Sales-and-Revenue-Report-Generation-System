@@ -15,6 +15,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             InitializeComponent();
 
+            if (!LoggedAccount.IsAdmin)
+            {
+                tabControl1.TabPages.Remove(UserAccountsTab);
+            }
+
             EmployeeList.Controls.Clear();
             EmployeeList.RowStyles.Clear();
             EmployeeList.VerticalScroll.Visible = true;
@@ -33,6 +38,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             VehicleList.HorizontalScroll.Enabled = false;
             VehicleList.HorizontalScroll.Visible = false;
 
+            UserList.Controls.Clear();
+            UserList.RowStyles.Clear();
+            UserList.VerticalScroll.Visible = true;
+            UserList.HorizontalScroll.Enabled = false;
+            UserList.HorizontalScroll.Visible = false;
+
             FilterEmployee.Items.Add("ID");
             FilterEmployee.Items.Add("Name");
             FilterEmployee.SelectedIndex = 1;
@@ -48,6 +59,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             FilterVehicle.Items.Add("Plate Number");
             FilterVehicle.Items.Add("Owner Name");
             FilterVehicle.SelectedIndex = 4;
+
+            FilterUser.Items.Add("Username");
+            FilterUser.Items.Add("Type");
+            FilterUser.SelectedIndex = 0;
         }
 
         public void RefreshEmployees()
@@ -90,6 +105,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public void RefreshAccounts()
+        {
+            RecreateGlobalAccountList();
+
+            UserList.Controls.Clear();
+            UserList.RowStyles.Clear();
+
+            foreach (AccountItem Account in GlobalAccountList)
+            {
+                RefreshRows(Account);
+            }
+        }
+
         private void AddNewCustomerButton_Click(object sender, EventArgs e)
         {
             new NewCustomerDialog().ShowDialog();
@@ -100,9 +128,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             tableLayoutPanel2.Width = EmployeeList.Width;
             tableLayoutPanel1.Width = CustomerList.Width;
             tableLayoutPanel3.Width = VehicleList.Width;
+            tableLayoutPanel4.Width = UserList.Width;
             RefreshEmployees();
             RefreshCustomers();
             RefreshVehicles();
+            RefreshAccounts();
         }
 
         private void AddNewEmployeeButton_Click(object sender, EventArgs e)
@@ -797,9 +827,149 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             tableLayoutPanel3.Width = VehicleList.Width;
         }
 
+        void RefreshRows(AccountItem Account)
+        {
+            if (!LoggedAccount.Username.Equals(Account.Username))
+            {
+                RowStyle Row = new RowStyle(SizeType.Absolute, 55f);
+                TableLayoutPanel Panel = new TableLayoutPanel
+                {
+                    ColumnCount = 3
+                };
+                Label Username = new Label();
+                Label Password = new Label();
+                Label Type = new Label();
+
+                if (DefaultBackgroundColor == null)
+                {
+                    DefaultBackgroundColor = Panel.BackColor;
+                }
+
+                Panel.Dock = DockStyle.Fill;
+                Panel.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Panel.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+                Panel.ColumnStyles.Clear();
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40f));
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40f));
+                Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+                Panel.Margin = new Padding(0);
+
+                Username.Dock = DockStyle.Fill;
+                Username.Text = Account.Username;
+                Username.TextAlign = ContentAlignment.MiddleCenter;
+                Username.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Username.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                Password.Dock = DockStyle.Fill;
+                Password.Text = "***";
+                Password.TextAlign = ContentAlignment.MiddleCenter;
+                Password.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Password.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                Type.Dock = DockStyle.Fill;
+                Type.Text = Account.IsAdmin ? "Admin" : "User";
+                Type.TextAlign = ContentAlignment.MiddleCenter;
+                Type.MouseEnter += (sndr, evnt) =>
+                {
+                    Panel.BackColor = Color.FromArgb(200, 200, 200);
+                };
+                Type.MouseLeave += (sndr, evnt) =>
+                {
+                    Panel.BackColor = DefaultBackgroundColor;
+                };
+
+                Panel.Click += (sndr, evnt) =>
+                {
+                    new EditUserDialog(Account.Username, Account.Password, Account.IsAdmin ? 0 : 1).ShowDialog();
+                };
+                Username.Click += (sndr, evnt) =>
+                {
+                    new EditUserDialog(Account.Username, Account.Password, Account.IsAdmin ? 0 : 1).ShowDialog();
+                };
+                Password.Click += (sndr, evnt) =>
+                {
+                    new EditUserDialog(Account.Username, Account.Password, Account.IsAdmin ? 0 : 1).ShowDialog();
+                };
+                Type.Click += (sndr, evnt) =>
+                {
+                    new EditUserDialog(Account.Username, Account.Password, Account.IsAdmin ? 0 : 1).ShowDialog();
+                };
+
+                UserList.RowStyles.Add(Row);
+                Panel.Controls.Add(Username, 0, 0);
+                Panel.Controls.Add(Password, 1, 0);
+                Panel.Controls.Add(Type, 2, 0);
+                UserList.Controls.Add(Panel);
+
+                tableLayoutPanel4.Width = VehicleList.Width;
+            }
+        }
+
         private void EmployeeScheduleButton_Click(object sender, EventArgs e)
         {
             new EmployeeScheduleDialog().ShowDialog();
+        }
+
+        private void AddUserButton_Click(object sender, EventArgs e)
+        {
+            new NewUserDialog().ShowDialog();
+        }
+
+        private void SearchUser_TextChanged(object sender, EventArgs e)
+        {
+            UserList.Controls.Clear();
+            UserList.RowStyles.Clear();
+            
+            foreach (AccountItem Account in GlobalAccountList)
+            {
+                if (FilterUser.SelectedIndex == 0 || FilterUser.SelectedIndex == -1)
+                {
+                    if (Account.Username.ToUpper().Contains(SearchUser.Text.ToUpper()))
+                    {
+                        RefreshRows(Account);
+                    }
+                }
+                if (FilterUser.SelectedIndex == 1)
+                {
+                    if ("ADMIN".Contains(SearchUser.Text.ToUpper()))
+                    {
+                        if (Account.IsAdmin)
+                        {
+                            RefreshRows(Account);
+                        }
+                    }
+                    if ("USER".Contains(SearchUser.Text.ToUpper()))
+                    {
+                        if (!Account.IsAdmin)
+                        {
+                            RefreshRows(Account);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void UserAccountsTab_Enter(object sender, EventArgs e)
+        {
+            tableLayoutPanel4.Width = UserList.Width;
         }
     }
 }

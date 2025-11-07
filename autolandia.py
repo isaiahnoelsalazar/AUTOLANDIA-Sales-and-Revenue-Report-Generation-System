@@ -106,6 +106,11 @@ if not os.path.isfile("AUTOLANDIA.db"):
         {"Password": "admin"}
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_AdminList", admin_value_0)
+    user_value_0 = [
+        {"Username": "cashier"},
+        {"Password": "cashier"}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_UserList", user_value_0)
 
     employee_value_0 = [
         {"EmployeeId": "1"},

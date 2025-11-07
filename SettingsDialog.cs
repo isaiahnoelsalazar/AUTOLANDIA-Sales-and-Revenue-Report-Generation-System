@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -10,6 +11,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public SettingsDialog()
         {
             InitializeComponent();
+
+            if (!LoggedAccount.IsAdmin)
+            {
+                ChangePassword.Visible = false;
+            }
         }
 
         private void BackupButton_Click(object sender, EventArgs e)
