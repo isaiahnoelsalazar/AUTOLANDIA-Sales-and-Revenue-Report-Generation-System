@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DailyButton = new MaterialSkin.Controls.MaterialButton();
             this.MonthlyButton = new MaterialSkin.Controls.MaterialButton();
@@ -42,8 +42,8 @@
             this.SalesChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.SalesChart.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.SalesChart.ChartAreas.Add(chartArea1);
             this.SalesChart.Location = new System.Drawing.Point(169, 8);
             this.SalesChart.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.SalesChart.Name = "SalesChart";
@@ -111,7 +111,7 @@
             this.ExportDataButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.ExportDataButton.Size = new System.Drawing.Size(150, 36);
             this.ExportDataButton.TabIndex = 34;
-            this.ExportDataButton.Text = "Export Data";
+            this.ExportDataButton.Text = "Export to PDF";
             this.ExportDataButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.ExportDataButton.UseAccentColor = false;
             this.ExportDataButton.UseVisualStyleBackColor = true;
