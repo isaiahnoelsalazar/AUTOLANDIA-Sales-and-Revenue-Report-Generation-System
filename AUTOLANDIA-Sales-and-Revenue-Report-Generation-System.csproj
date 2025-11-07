@@ -119,6 +119,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountItem.cs" />
     <Compile Include="ActivityRecordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +132,7 @@
     <Compile Include="AddCustomerVehicleDialog.Designer.cs">
       <DependentUpon>AddCustomerVehicleDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminItem.cs" />
     <Compile Include="BillingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +140,12 @@
       <DependentUpon>BillingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BillingItem.cs" />
+    <Compile Include="ChangePasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordDialog.Designer.cs">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConstantVehicleModelList.cs" />
     <Compile Include="DatePickerDialog.cs">
       <SubType>Form</SubType>
@@ -370,6 +378,7 @@
     <Compile Include="TransactionsForm.Designer.cs">
       <DependentUpon>TransactionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserItem.cs" />
     <Compile Include="VehicleItem.cs" />
     <Compile Include="VehicleModelItem.cs" />
     <EmbeddedResource Include="ActivityRecordForm.resx">
@@ -380,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BillingForm.resx">
       <DependentUpon>BillingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatePickerDialog.resx">
       <DependentUpon>DatePickerDialog.cs</DependentUpon>

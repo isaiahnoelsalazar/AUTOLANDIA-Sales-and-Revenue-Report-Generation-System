@@ -32,6 +32,7 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.BackupButton = new MaterialSkin.Controls.MaterialButton();
             this.RestoreButton = new MaterialSkin.Controls.MaterialButton();
+            this.ChangePassword = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -108,11 +109,35 @@
             this.RestoreButton.UseVisualStyleBackColor = true;
             this.RestoreButton.Click += new System.EventHandler(this.RestoreButton_Click);
             // 
+            // ChangePassword
+            // 
+            this.ChangePassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangePassword.AutoSize = false;
+            this.ChangePassword.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ChangePassword.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ChangePassword.Depth = 0;
+            this.ChangePassword.HighEmphasis = true;
+            this.ChangePassword.Icon = null;
+            this.ChangePassword.Location = new System.Drawing.Point(11, 209);
+            this.ChangePassword.Margin = new System.Windows.Forms.Padding(8, 0, 8, 8);
+            this.ChangePassword.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ChangePassword.Name = "ChangePassword";
+            this.ChangePassword.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ChangePassword.Size = new System.Drawing.Size(353, 49);
+            this.ChangePassword.TabIndex = 83;
+            this.ChangePassword.Text = "Change password";
+            this.ChangePassword.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ChangePassword.UseAccentColor = false;
+            this.ChangePassword.UseVisualStyleBackColor = true;
+            this.ChangePassword.Click += new System.EventHandler(this.ChangePassword_Click);
+            // 
             // SettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 211);
+            this.ClientSize = new System.Drawing.Size(374, 268);
+            this.Controls.Add(this.ChangePassword);
             this.Controls.Add(this.RestoreButton);
             this.Controls.Add(this.BackupButton);
             this.Controls.Add(this.materialLabel1);
@@ -133,5 +158,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialButton BackupButton;
         private MaterialSkin.Controls.MaterialButton RestoreButton;
+        private MaterialSkin.Controls.MaterialButton ChangePassword;
     }
 }

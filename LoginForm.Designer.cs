@@ -87,6 +87,7 @@
             this.TB_Password.MouseState = MaterialSkin.MouseState.OUT;
             this.TB_Password.Multiline = false;
             this.TB_Password.Name = "TB_Password";
+            this.TB_Password.Password = true;
             this.TB_Password.Size = new System.Drawing.Size(493, 50);
             this.TB_Password.TabIndex = 85;
             this.TB_Password.Text = "";

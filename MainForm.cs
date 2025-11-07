@@ -26,12 +26,15 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         };
         List<MaterialButton> TabButtons = new List<MaterialButton>();
         Thread TimeThread;
+        LoginForm LoginForm;
+        bool Logout = false;
 
         public MainForm(LoginForm LoginForm)
         {
             InitializeComponent();
 
-            LoginForm.Hide();
+            this.LoginForm = LoginForm;
+            this.LoginForm.Hide();
 
             Logo.Image = Resources.autolandia_logo;
             Logo.BackColor = Color.Black;
@@ -125,7 +128,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             TimeThread.Abort();
-            Application.Exit();
+            if (!Logout)
+            {
+                Application.Exit();
+            }
         }
 
         private void Logo_MouseDown(object sender, MouseEventArgs e)
@@ -176,7 +182,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            LoggedAccount = null;
+            Logout = true;
+            Close();
+            LoginForm.Show();
         }
 
         private void Logo_MouseUp(object sender, MouseEventArgs e)

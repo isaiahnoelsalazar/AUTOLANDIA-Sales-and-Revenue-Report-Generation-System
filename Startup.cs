@@ -43,19 +43,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     PyCS pyCS = new PyCS();
                     pyCS.RunFile("autolandia.py");
-                    //if (!File.Exists("mock_data.py"))
-                    //{
-                    //    SimpleFileHandler.ProjectToLocation(Assembly.GetExecutingAssembly(), "mock_data.py");
-                    //    pyCS.RunFile("mock_data.py");
-                    //}
+                    if (!File.Exists("ft.autlndia"))
+                    {
+                        SimpleFileHandler.Write("ft.autlndia", "0");
+                    }
 
                     SQL.Open();
 
                     RecreateGlobalServiceList();
-                    ProgressBar.Increment(15);
+                    ProgressBar.Increment(10);
+
+                    RecreateGlobalAdminList();
+                    ProgressBar.Increment(5);
+
+                    RecreateGlobalUserList();
+                    ProgressBar.Increment(5);
 
                     RecreateGlobalPackageList();
-                    ProgressBar.Increment(15);
+                    ProgressBar.Increment(10);
 
                     RecreateGlobalVehicleModelList();
                     ProgressBar.Increment(10);
@@ -81,12 +86,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RecreateGlobalActivityList();
                     ProgressBar.Increment(10);
 
+                    RecreateGlobalAccountList();
+
                     new LoginForm(this).Show();
                 }
-                catch (Exception exception)
+                catch (Exception Exception)
                 {
                     Timer.Stop();
-                    MaterialMessageBox.Show(exception.Message, "Alert");
+                    AlertMessageBox(Exception.Message);
                     Application.Exit();
                 }
             };

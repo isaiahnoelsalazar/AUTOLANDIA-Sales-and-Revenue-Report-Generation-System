@@ -21,6 +21,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static List<EmployeeItem> GlobalEmployeeList = new List<EmployeeItem>();
         public static List<EmployeeTimeItem> GlobalEmployeeTimeList = new List<EmployeeTimeItem>();
         public static List<string> GlobalActivityList = new List<string>();
+        public static List<AdminItem> GlobalAdminList = new List<AdminItem>();
+        public static List<UserItem> GlobalUserList = new List<UserItem>();
+        public static List<AccountItem> GlobalAccountList = new List<AccountItem>();
 
         public static HomeForm GlobalHomeForm;
         public static PeopleForm GlobalPeopleForm;
@@ -29,6 +32,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static BillingForm GlobalBillingForm;
         public static ReportsForm GlobalReportsForm;
         public static ActivityRecordForm GlobalActivityRecordForm;
+
+        public static AccountItem LoggedAccount;
 
         public static void SET_SKIN(MaterialForm MaterialForm)
         {
@@ -60,10 +65,56 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 RecreateGlobalTransactionList();
                 RecreateGlobalBillingList();
                 RecreateGlobalActivityList();
+                RecreateGlobalAdminList();
+                RecreateGlobalUserList();
             }
-            catch (Exception exception)
+            catch (Exception Exception)
             {
-                MaterialMessageBox.Show(exception.Message, "Alert");
+                AlertMessageBox(Exception.Message);
+            }
+        }
+
+        public static void RecreateGlobalUserList()
+        {
+            GlobalUserList.Clear();
+
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_UserList", SQL);
+
+            try
+            {
+                using (SqliteDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        GlobalUserList.Add(new UserItem(Reader.GetString(0), Reader.GetString(1)));
+                    }
+                }
+            }
+            catch (Exception Exception)
+            {
+                AlertMessageBox(Exception.Message);
+            }
+        }
+
+        public static void RecreateGlobalAdminList()
+        {
+            GlobalAdminList.Clear();
+
+            SqliteCommand Command = new SqliteCommand("SELECT * FROM AUTOLANDIA_AdminList", SQL);
+
+            try
+            {
+                using (SqliteDataReader Reader = Command.ExecuteReader())
+                {
+                    while (Reader.Read())
+                    {
+                        GlobalAdminList.Add(new AdminItem(Reader.GetString(0), Reader.GetString(1)));
+                    }
+                }
+            }
+            catch (Exception Exception)
+            {
+                AlertMessageBox(Exception.Message);
             }
         }
 
@@ -221,6 +272,30 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
+        public static void RecreateGlobalAccountList()
+        {
+            GlobalAccountList.Clear();
+
+            try
+            {
+                RecreateGlobalAdminList();
+                RecreateGlobalUserList();
+
+                foreach (AdminItem Admin in GlobalAdminList)
+                {
+                    GlobalAccountList.Add(new AccountItem(Admin.Username, Admin.Password, true));
+                }
+                foreach (UserItem User in GlobalUserList)
+                {
+                    GlobalAccountList.Add(new AccountItem(User.Username, User.Password, false));
+                }
+            }
+            catch (Exception Exception)
+            {
+                AlertMessageBox(Exception.Message);
+            }
+        }
+
         public static double GetServicePrice(string ServiceName, string Size)
         {
             foreach (ServiceItem Service in GlobalServiceList)
@@ -265,6 +340,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public static SqliteCommand UpdatePaymentInBillingList(string BillingId, double BalancePaid, string BillingStatus, string DateUpdated)
         {
             return new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET BalancePaid={BalancePaid}, BillingStatus='{BillingStatus}', DateUpdated='{DateUpdated}' WHERE BillingId='{BillingId}'", SQL);
+        }
+
+        public static SqliteCommand ChangePassword(string Username, string New)
+        {
+            return new SqliteCommand($"UPDATE AUTOLANDIA_AdminList SET Password='{New}' WHERE Username='{Username}'", SQL);
         }
 
         public static DialogResult OkMessageBox(string Message)

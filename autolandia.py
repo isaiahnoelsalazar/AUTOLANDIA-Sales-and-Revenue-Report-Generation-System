@@ -80,6 +80,14 @@ if not os.path.isfile("AUTOLANDIA.db"):
         {"DateUpdated": "varchar"},
         {"DateCreated": "varchar"},
     ]
+    AUTOLANDIA_AdminList_columns = [
+        {"Username": "varchar"},
+        {"Password": "varchar"}
+    ]
+    AUTOLANDIA_UserList_columns = [
+        {"Username": "varchar"},
+        {"Password": "varchar"}
+    ]
 
     a.createTable("AUTOLANDIA", "AUTOLANDIA_ServiceList", AUTOLANDIA_ServiceList_columns)
     a.createTable("AUTOLANDIA", "AUTOLANDIA_PackageList", AUTOLANDIA_PackageList_columns)
@@ -90,6 +98,14 @@ if not os.path.isfile("AUTOLANDIA.db"):
     a.createTable("AUTOLANDIA", "AUTOLANDIA_ActivityList", AUTOLANDIA_ActivityList_columns)
     a.createTable("AUTOLANDIA", "AUTOLANDIA_TransactionList", AUTOLANDIA_TransactionList_columns)
     a.createTable("AUTOLANDIA", "AUTOLANDIA_BillingList", AUTOLANDIA_BillingList_columns)
+    a.createTable("AUTOLANDIA", "AUTOLANDIA_AdminList", AUTOLANDIA_AdminList_columns)
+    a.createTable("AUTOLANDIA", "AUTOLANDIA_UserList", AUTOLANDIA_UserList_columns)
+
+    admin_value_0 = [
+        {"Username": "admin"},
+        {"Password": "admin"}
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_AdminList", admin_value_0)
 
     employee_value_0 = [
         {"EmployeeId": "1"},
