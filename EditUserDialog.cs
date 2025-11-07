@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using CSSimpleFunctions;
+using MaterialSkin.Controls;
 using System;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
@@ -64,6 +65,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (string.IsNullOrEmpty(TB_P.Text))
             {
                 ErrorMessage += "Please input a password.\n";
+            }
+            if (Check.HasSymbols(TB_U.Text) || Check.HasSpaces(TB_U.Text))
+            {
+                ErrorMessage += "Username cannot contain spaces nor symbols.\n";
+            }
+            if (Check.HasSymbols(TB_P.Text) || Check.HasSpaces(TB_P.Text))
+            {
+                ErrorMessage += "Password cannot contain spaces nor symbols.\n";
             }
             if (CB_T.SelectedIndex < 0)
             {
