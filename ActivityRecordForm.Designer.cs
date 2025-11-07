@@ -28,24 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ActivityTable = new System.Windows.Forms.ListView();
             this.SearchBarActivity = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ActivityListContainer = new System.Windows.Forms.Panel();
+            this.ActivityList = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.ActivityListContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ActivityTable
-            // 
-            this.ActivityTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActivityTable.HideSelection = false;
-            this.ActivityTable.Location = new System.Drawing.Point(9, 63);
-            this.ActivityTable.Margin = new System.Windows.Forms.Padding(0);
-            this.ActivityTable.Name = "ActivityTable";
-            this.ActivityTable.Size = new System.Drawing.Size(622, 288);
-            this.ActivityTable.TabIndex = 7;
-            this.ActivityTable.UseCompatibleStateImageBehavior = false;
-            this.ActivityTable.View = System.Windows.Forms.View.Details;
             // 
             // SearchBarActivity
             // 
@@ -62,7 +54,7 @@
             this.SearchBarActivity.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarActivity.Multiline = false;
             this.SearchBarActivity.Name = "SearchBarActivity";
-            this.SearchBarActivity.Size = new System.Drawing.Size(622, 36);
+            this.SearchBarActivity.Size = new System.Drawing.Size(916, 36);
             this.SearchBarActivity.TabIndex = 24;
             this.SearchBarActivity.Text = "";
             this.SearchBarActivity.TrailingIcon = null;
@@ -79,30 +71,106 @@
             this.materialDivider2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(622, 2);
+            this.materialDivider2.Size = new System.Drawing.Size(916, 2);
             this.materialDivider2.TabIndex = 23;
             this.materialDivider2.Text = "materialDivider2";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 63);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(916, 48);
+            this.tableLayoutPanel2.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(192, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(715, 30);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Message";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(9, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(166, 30);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Date";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ActivityListContainer
+            // 
+            this.ActivityListContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ActivityListContainer.AutoScroll = true;
+            this.ActivityListContainer.Controls.Add(this.ActivityList);
+            this.ActivityListContainer.Location = new System.Drawing.Point(9, 111);
+            this.ActivityListContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.ActivityListContainer.Name = "ActivityListContainer";
+            this.ActivityListContainer.Size = new System.Drawing.Size(916, 240);
+            this.ActivityListContainer.TabIndex = 25;
+            // 
+            // ActivityList
+            // 
+            this.ActivityList.AutoSize = true;
+            this.ActivityList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActivityList.ColumnCount = 1;
+            this.ActivityList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ActivityList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ActivityList.Location = new System.Drawing.Point(0, 0);
+            this.ActivityList.Margin = new System.Windows.Forms.Padding(0);
+            this.ActivityList.Name = "ActivityList";
+            this.ActivityList.RowCount = 1;
+            this.ActivityList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ActivityList.Size = new System.Drawing.Size(916, 0);
+            this.ActivityList.TabIndex = 0;
             // 
             // ActivityRecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(934, 360);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.ActivityListContainer);
             this.Controls.Add(this.SearchBarActivity);
             this.Controls.Add(this.materialDivider2);
-            this.Controls.Add(this.ActivityTable);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ActivityRecordForm";
             this.Text = "ActivityRecordForm";
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.ActivityListContainer.ResumeLayout(false);
+            this.ActivityListContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ListView ActivityTable;
         private MaterialSkin.Controls.MaterialTextBox SearchBarActivity;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel ActivityListContainer;
+        private System.Windows.Forms.TableLayoutPanel ActivityList;
     }
 }
