@@ -108,7 +108,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             ServiceList.RowStyles.Clear();
 
             ServicePrice = 0;
-            ServiceCheckedboxes = ServiceCheckboxes;
+            bool HasCheck = false;
+            foreach (MaterialCheckbox S in ServiceCheckboxes)
+            {
+                if (S.Checked)
+                {
+                    HasCheck = true;
+                    break;
+                }
+            }
+
+            if (HasCheck)
+            {
+                ServiceCheckedboxes = ServiceCheckboxes;
+            }
+            else
+            {
+                ServiceCheckedboxes = null;
+            }
 
             VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
