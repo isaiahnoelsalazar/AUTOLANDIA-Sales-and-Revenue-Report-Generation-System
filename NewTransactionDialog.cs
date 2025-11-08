@@ -245,8 +245,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 };
 
                                 Price.Dock = DockStyle.Fill;
-                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size)}";
-                                ServicePrice += GetServicePrice(Service.Name, RealVehicle.Size);
+                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle != null ? RealVehicle.Size : "S")}";
+                                ServicePrice += GetServicePrice(Service.Name, RealVehicle != null ? RealVehicle.Size : "S");
                                 Price.TextAlign = ContentAlignment.MiddleCenter;
                                 Price.MouseEnter += (sndr, evnt) =>
                                 {
@@ -312,7 +312,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 };
 
                 Price.Dock = DockStyle.Fill;
-                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle.Size)}";
+                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle != null ? RealVehicle.Size : "S")}";
                 Price.TextAlign = ContentAlignment.MiddleCenter;
                 Price.MouseEnter += (sndr, evnt) =>
                 {
@@ -562,8 +562,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                                 };
 
                                 Price.Dock = DockStyle.Fill;
-                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle.Size)}";
-                                ServicePrice += GetServicePrice(Service.Name, RealVehicle.Size);
+                                Price.Text = $"₱{GetServicePrice(Service.Name, RealVehicle != null ? RealVehicle.Size : "S")}";
+                                ServicePrice += GetServicePrice(Service.Name, RealVehicle != null ? RealVehicle.Size : "S");
                                 Price.TextAlign = ContentAlignment.MiddleCenter;
                                 Price.MouseEnter += (sndr, evnt) =>
                                 {
@@ -629,7 +629,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 };
 
                 Price.Dock = DockStyle.Fill;
-                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle.Size)}";
+                Price.Text = $"₱{GetPackagePrice(RealPackage.Name, RealVehicle != null ? RealVehicle.Size : "S")}";
                 Price.TextAlign = ContentAlignment.MiddleCenter;
                 Price.MouseEnter += (sndr, evnt) =>
                 {
