@@ -90,7 +90,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
-            TB_Employee.Text = TB_Employee.Text.Substring(0, TB_Employee.Text.Length - 2);
+            if (!string.IsNullOrEmpty(TB_Employee.Text))
+            {
+                TB_Employee.Text = TB_Employee.Text.Substring(0, TB_Employee.Text.Length - 2);
+            }
         }
 
         public void PickPerfumeCount(int Count)
