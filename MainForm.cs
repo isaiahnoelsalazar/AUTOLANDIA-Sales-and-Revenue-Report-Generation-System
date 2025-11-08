@@ -83,16 +83,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 Forms[Index].Show();
             }
-            
-            foreach (Control Control in Forms[Index].Controls)
-            {
-                Control.GotFocus += (s1, e1) =>
-                {
-                    TabButtons[Index].Focus();
-                };
-            }
-
-            TabButtons[Index].Focus();
         }
 
         private void HomeTab_Click(object sender, EventArgs e)

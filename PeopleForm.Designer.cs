@@ -185,7 +185,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.SearchBarEmployee.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarEmployee.Hint = "Search";
             this.SearchBarEmployee.LeadingIcon = null;
-            this.SearchBarEmployee.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarEmployee.Location = new System.Drawing.Point(8, 9);
             this.SearchBarEmployee.MaxLength = 50;
             this.SearchBarEmployee.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarEmployee.Multiline = false;
@@ -379,7 +379,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.SearchBarCustomer.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarCustomer.Hint = "Search";
             this.SearchBarCustomer.LeadingIcon = null;
-            this.SearchBarCustomer.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarCustomer.Location = new System.Drawing.Point(8, 9);
             this.SearchBarCustomer.MaxLength = 50;
             this.SearchBarCustomer.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarCustomer.Multiline = false;
@@ -559,7 +559,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.SearchBarVehicle.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchBarVehicle.Hint = "Search";
             this.SearchBarVehicle.LeadingIcon = null;
-            this.SearchBarVehicle.Location = new System.Drawing.Point(8, 8);
+            this.SearchBarVehicle.Location = new System.Drawing.Point(8, 9);
             this.SearchBarVehicle.MaxLength = 50;
             this.SearchBarVehicle.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchBarVehicle.Multiline = false;
@@ -758,11 +758,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.FilterUser.FormattingEnabled = true;
             this.FilterUser.IntegralHeight = false;
             this.FilterUser.ItemHeight = 29;
-            this.FilterUser.Location = new System.Drawing.Point(657, 8);
+            this.FilterUser.Location = new System.Drawing.Point(656, 9);
             this.FilterUser.MaxDropDownItems = 4;
             this.FilterUser.MouseState = MaterialSkin.MouseState.OUT;
             this.FilterUser.Name = "FilterUser";
-            this.FilterUser.Size = new System.Drawing.Size(150, 35);
+            this.FilterUser.Size = new System.Drawing.Size(151, 35);
             this.FilterUser.StartIndex = 0;
             this.FilterUser.TabIndex = 33;
             this.FilterUser.UseTallSize = false;
@@ -774,10 +774,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             this.SearchUser.AnimateReadOnly = false;
             this.SearchUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchUser.Depth = 0;
-            this.SearchUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchUser.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SearchUser.Hint = "Search";
             this.SearchUser.LeadingIcon = null;
-            this.SearchUser.Location = new System.Drawing.Point(8, 8);
+            this.SearchUser.Location = new System.Drawing.Point(8, 9);
             this.SearchUser.MaxLength = 50;
             this.SearchUser.MouseState = MaterialSkin.MouseState.OUT;
             this.SearchUser.Multiline = false;

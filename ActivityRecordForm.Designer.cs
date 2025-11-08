@@ -28,38 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SearchBarActivity = new MaterialSkin.Controls.MaterialTextBox();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ActivityListContainer = new System.Windows.Forms.Panel();
             this.ActivityList = new System.Windows.Forms.TableLayoutPanel();
+            this.SearchBarActivity = new MaterialSkin.Controls.MaterialTextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.ActivityListContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // SearchBarActivity
-            // 
-            this.SearchBarActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBarActivity.AnimateReadOnly = false;
-            this.SearchBarActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBarActivity.Depth = 0;
-            this.SearchBarActivity.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.SearchBarActivity.Hint = "Search";
-            this.SearchBarActivity.LeadingIcon = null;
-            this.SearchBarActivity.Location = new System.Drawing.Point(9, 9);
-            this.SearchBarActivity.MaxLength = 50;
-            this.SearchBarActivity.MouseState = MaterialSkin.MouseState.OUT;
-            this.SearchBarActivity.Multiline = false;
-            this.SearchBarActivity.Name = "SearchBarActivity";
-            this.SearchBarActivity.Size = new System.Drawing.Size(916, 36);
-            this.SearchBarActivity.TabIndex = 24;
-            this.SearchBarActivity.Text = "";
-            this.SearchBarActivity.TrailingIcon = null;
-            this.SearchBarActivity.UseTallSize = false;
-            this.SearchBarActivity.TextChanged += new System.EventHandler(this.SearchBarActivity_TextChanged);
             // 
             // materialDivider2
             // 
@@ -143,14 +121,37 @@
             this.ActivityList.Size = new System.Drawing.Size(916, 0);
             this.ActivityList.TabIndex = 0;
             // 
+            // SearchBarActivity
+            // 
+            this.SearchBarActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBarActivity.AnimateReadOnly = false;
+            this.SearchBarActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBarActivity.Depth = 0;
+            this.SearchBarActivity.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.SearchBarActivity.Hint = "Search";
+            this.SearchBarActivity.LeadingIcon = null;
+            this.SearchBarActivity.Location = new System.Drawing.Point(9, 9);
+            this.SearchBarActivity.Margin = new System.Windows.Forms.Padding(0);
+            this.SearchBarActivity.MaxLength = 50;
+            this.SearchBarActivity.MouseState = MaterialSkin.MouseState.OUT;
+            this.SearchBarActivity.Multiline = false;
+            this.SearchBarActivity.Name = "SearchBarActivity";
+            this.SearchBarActivity.Size = new System.Drawing.Size(916, 36);
+            this.SearchBarActivity.TabIndex = 27;
+            this.SearchBarActivity.Text = "";
+            this.SearchBarActivity.TrailingIcon = null;
+            this.SearchBarActivity.UseTallSize = false;
+            this.SearchBarActivity.TextChanged += new System.EventHandler(this.SearchBarActivity_TextChanged);
+            // 
             // ActivityRecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 360);
+            this.Controls.Add(this.SearchBarActivity);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.ActivityListContainer);
-            this.Controls.Add(this.SearchBarActivity);
             this.Controls.Add(this.materialDivider2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -165,12 +166,12 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialTextBox SearchBarActivity;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel ActivityListContainer;
         private System.Windows.Forms.TableLayoutPanel ActivityList;
+        private MaterialSkin.Controls.MaterialTextBox SearchBarActivity;
     }
 }
