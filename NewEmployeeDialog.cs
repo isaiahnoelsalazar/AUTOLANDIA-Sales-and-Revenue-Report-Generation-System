@@ -55,11 +55,11 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string FName = TB_FName.Text.ToUpper();
-                    string MName = TB_MName.Text.ToUpper();
-                    string LName = TB_LName.Text.ToUpper();
-                    string Address = TB_Address.Text.ToUpper();
-                    string MobileNumber = TB_MobileNumber.Text.ToUpper();
+                    string FName = TB_FName.Text.ToUpper().Trim();
+                    string MName = TB_MName.Text.ToUpper().Trim();
+                    string LName = TB_LName.Text.ToUpper().Trim();
+                    string Address = TB_Address.Text.ToUpper().Trim();
+                    string MobileNumber = TB_MobileNumber.Text.ToUpper().Trim();
                     string Documents = string.Empty;
 
                     foreach (CheckBox Item in DocumentListCheckBox.Items)
@@ -69,6 +69,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                             Documents += Item.Text.First();
                         }
                     }
+
+                    Documents = Documents.Trim();
 
                     DoneButton.Enabled = false;
                     CancelButton.Enabled = false;

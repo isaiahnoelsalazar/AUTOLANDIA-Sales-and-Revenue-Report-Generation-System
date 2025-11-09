@@ -1,7 +1,11 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using Microsoft.Data.Sqlite;
+using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
+using static TheArtOfDev.HtmlRenderer.Adapters.RGraphicsPath;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -185,7 +189,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Label L = new Label();
             Label XL = new Label();
             Label XXL = new Label();
-            Label Status = new Label();
+            MaterialComboBox Status = new MaterialComboBox();
 
             if (DefaultBackgroundColor == null)
             {
@@ -309,16 +313,37 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
 
-            Status.Dock = DockStyle.Fill;
-            Status.Text = Package.Status;
-            Status.TextAlign = ContentAlignment.MiddleCenter;
-            Status.MouseEnter += (sndr, evnt) =>
+            Status.Dock = DockStyle.Top;
+            Status.Items.Add("Available");
+            Status.Items.Add("Unavailable");
+            if (Package.Status.Equals("Available"))
             {
-                Panel.BackColor = Color.FromArgb(200, 200, 200);
-            };
-            Status.MouseLeave += (sndr, evnt) =>
+                Status.SelectedIndex = 0;
+            }
+            if (Package.Status.Equals("Unavailable"))
             {
-                Panel.BackColor = DefaultBackgroundColor;
+                Status.SelectedIndex = 1;
+            }
+            Status.SelectedIndexChanged += (sndr, evnt) =>
+            {
+                try
+                {
+                    DateTime Now = DateTime.Now;
+
+                    RecordActivity($"Changed package [{Package.ID}] status from [{Package.Status}] to [{Status.Text}]");
+
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_PackageList SET PackageStatus='{Status.Text}' WHERE PackageId='{Package.ID}'", SQL);
+
+                    Command.ExecuteNonQuery();
+
+                    OkMessageBox("Successfully changed package status!");
+                    RefreshPackages();
+                    GlobalActivityRecordForm.RefreshActivities();
+                }
+                catch (Exception Exception)
+                {
+                    AlertMessageBox(Exception.Message);
+                }
             };
 
             Panel.Click += (sndr, evnt) =>
@@ -357,10 +382,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 new EditPackageDialog(this, Package.ID).ShowDialog();
             };
-            Status.Click += (sndr, evnt) =>
-            {
-                new EditPackageDialog(this, Package.ID).ShowDialog();
-            };
 
             PackageList.RowStyles.Add(Row);
             Panel.Controls.Add(ID, 0, 0);
@@ -391,7 +412,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             Label L = new Label();
             Label XL = new Label();
             Label XXL = new Label();
-            Label Status = new Label();
+            MaterialComboBox Status = new MaterialComboBox();
 
             if (DefaultBackgroundColor == null)
             {
@@ -502,16 +523,37 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 Panel.BackColor = DefaultBackgroundColor;
             };
 
-            Status.Dock = DockStyle.Fill;
-            Status.Text = Service.Status;
-            Status.TextAlign = ContentAlignment.MiddleCenter;
-            Status.MouseEnter += (sndr, evnt) =>
+            Status.Dock = DockStyle.Top;
+            Status.Items.Add("Available");
+            Status.Items.Add("Unavailable");
+            if (Service.Status.Equals("Available"))
             {
-                Panel.BackColor = Color.FromArgb(200, 200, 200);
-            };
-            Status.MouseLeave += (sndr, evnt) =>
+                Status.SelectedIndex = 0;
+            }
+            if (Service.Status.Equals("Unavailable"))
             {
-                Panel.BackColor = DefaultBackgroundColor;
+                Status.SelectedIndex = 1;
+            }
+            Status.SelectedIndexChanged += (sndr, evnt) =>
+            {
+                try
+                {
+                    DateTime Now = DateTime.Now;
+
+                    RecordActivity($"Changed service [{Service.ID}] status from [{Service.Status}] to [{Status.Text}]");
+
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_ServiceList SET ServiceStatus='{Status.Text}' WHERE ServiceId='{Service.ID}'", SQL);
+
+                    Command.ExecuteNonQuery();
+
+                    OkMessageBox("Successfully changed service status!");
+                    RefreshServices();
+                    GlobalActivityRecordForm.RefreshActivities();
+                }
+                catch (Exception Exception)
+                {
+                    AlertMessageBox(Exception.Message);
+                }
             };
 
             Panel.Click += (sndr, evnt) =>
@@ -546,11 +588,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 new EditServiceDialog(this, Service.ID).ShowDialog();
             };
-            Status.Click += (sndr, evnt) =>
-            {
-                new EditServiceDialog(this, Service.ID).ShowDialog();
-            };
-
+            
             ServiceList.RowStyles.Add(Row);
             Panel.Controls.Add(ID, 0, 0);
             Panel.Controls.Add(Name, 1, 0);

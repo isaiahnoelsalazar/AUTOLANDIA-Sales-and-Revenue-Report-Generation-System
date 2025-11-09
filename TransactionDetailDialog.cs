@@ -376,7 +376,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void SelectServicesButton_Click(object sender, EventArgs e)
         {
-            new SelectServicesDialog(this, ServiceList.Controls, RealVehicle.Brand).ShowDialog();
+            new SelectServicesDialog(this, ServiceList.Controls, RealVehicle.Brand, RealVehicle.Model).ShowDialog();
         }
 
         private void CB_Packages_TextChanged(object sender, EventArgs e)

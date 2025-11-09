@@ -13,17 +13,38 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         TransactionDetailDialog EditTransactionDialog;
         TableLayoutControlCollection ServiceListControls;
 
-        public SelectServicesDialog(NewTransactionDialog NewTransactionDialog, string Brand)
+        public SelectServicesDialog(NewTransactionDialog NewTransactionDialog, string Brand, string Model)
         {
             InitializeComponent();
             this.NewTransactionDialog = NewTransactionDialog;
 
             List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+
+            if (Brand.Equals("GENERAL"))
+            {
+                Temp.RemoveRange(0, Temp.Count - 5);
+                if (Model.Equals("EBIKE") || Model.Equals("MOTOR") || Model.Equals("TRUCK"))
+                {
+                    Temp.RemoveAt(2);
+                    Temp.RemoveAt(1);
+                }
+                if (Model.Equals("TRICYCLE"))
+                {
+                    Temp.RemoveRange(2, 3);
+                    Temp.RemoveAt(0);
+                }
+                if (Model.Equals("PUV"))
+                {
+                    Temp.RemoveRange(3, 2);
+                    Temp.RemoveRange(0, 2);
+                }
+            }
+
             Temp.Reverse();
 
             foreach (ServiceItem Service in Temp)
             {
-                if (!InCheckedListBox(Service.Name))
+                if (!InCheckedListBox(Service.Name) && Service.Status.Equals("Available"))
                 {
                     ServiceListCheckBox.Items.Add(Service.Name);
                 }
@@ -42,18 +63,39 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        public SelectServicesDialog(TransactionDetailDialog EditTransactionDialog, TableLayoutControlCollection ServiceListControls, string Brand)
+        public SelectServicesDialog(TransactionDetailDialog EditTransactionDialog, TableLayoutControlCollection ServiceListControls, string Brand, string Model)
         {
             InitializeComponent();
             this.EditTransactionDialog = EditTransactionDialog;
             this.ServiceListControls = ServiceListControls;
 
             List<ServiceItem> Temp = new List<ServiceItem>(GlobalServiceList);
+
+            if (Brand.Equals("GENERAL"))
+            {
+                Temp.RemoveRange(0, Temp.Count - 5);
+                if (Model.Equals("EBIKE") || Model.Equals("MOTOR") || Model.Equals("TRUCK"))
+                {
+                    Temp.RemoveAt(2);
+                    Temp.RemoveAt(1);
+                }
+                if (Model.Equals("TRICYCLE"))
+                {
+                    Temp.RemoveRange(2, 3);
+                    Temp.RemoveAt(0);
+                }
+                if (Model.Equals("PUV"))
+                {
+                    Temp.RemoveRange(3, 2);
+                    Temp.RemoveRange(0, 2);
+                }
+            }
+
             Temp.Reverse();
 
             foreach (ServiceItem Service in Temp)
             {
-                if (!InCheckedListBox(Service.Name))
+                if (!InCheckedListBox(Service.Name) && Service.Status.Equals("Available"))
                 {
                     ServiceListCheckBox.Items.Add(Service.Name);
                 }

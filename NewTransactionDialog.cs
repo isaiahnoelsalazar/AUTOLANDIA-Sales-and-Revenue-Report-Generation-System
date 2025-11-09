@@ -476,21 +476,21 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (RealVehicle.Brand.Equals("GENERAL"))
                     {
-                        new SelectServicesDialog(this, "GENERAL").ShowDialog();
+                        new SelectServicesDialog(this, "GENERAL", RealVehicle.Model).ShowDialog();
                     }
                     else
                     {
-                        new SelectServicesDialog(this, "").ShowDialog();
+                        new SelectServicesDialog(this, "", "").ShowDialog();
                     }
                 }
                 else
                 {
-                    new SelectServicesDialog(this, "").ShowDialog();
+                    new SelectServicesDialog(this, "", "").ShowDialog();
                 }
             }
             catch
             {
-                new SelectServicesDialog(this, "").ShowDialog();
+                new SelectServicesDialog(this, "", "").ShowDialog();
             }
         }
 

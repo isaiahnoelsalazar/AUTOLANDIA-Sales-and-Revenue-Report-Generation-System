@@ -2,6 +2,7 @@
 using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -58,15 +59,24 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 ErrorMessage += "Please enter the vehicle's plate number." + Environment.NewLine;
             }
+            List<string> ExistingPlateNumbers = new List<string>();
+            foreach (VehicleItem Vehicle in GlobalVehicleList)
+            {
+                ExistingPlateNumbers.Add(Vehicle.PlateNumber);
+            }
+            if (ExistingPlateNumbers.Contains(TB_PlateNumber.Text.ToUpper().Trim()))
+            {
+                ErrorMessage += "This plate number already exists." + Environment.NewLine;
+            }
 
             if (ErrorMessage.Equals(""))
             {
                 try
                 {
-                    string Brand = TB_Brand.Text.ToUpper();
-                    string Model = TB_Model.Text.ToUpper();
-                    string Size = GetSize().ToUpper();
-                    string PlateNumber = TB_PlateNumber.Text.ToUpper();
+                    string Brand = TB_Brand.Text.ToUpper().Trim();
+                    string Model = TB_Model.Text.ToUpper().Trim();
+                    string Size = GetSize().ToUpper().Trim();
+                    string PlateNumber = TB_PlateNumber.Text.ToUpper().Trim();
                     string VehicleID = (GlobalVehicleList.Count + 1).ToString();
 
                     string CustomerName = string.Empty;

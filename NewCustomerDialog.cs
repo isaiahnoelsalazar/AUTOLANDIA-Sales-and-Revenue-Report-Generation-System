@@ -58,12 +58,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 try
                 {
-                    string FName = TB_FName.Text.ToUpper();
-                    string MName = TB_MName.Text.ToUpper();
-                    string LName = TB_LName.Text.ToUpper();
-                    string Address = TB_Address.Text.ToUpper();
-                    string MobileNumber = TB_MobileNumber.Text.ToUpper();
-                    string CustomerID = (GlobalCustomerList.Count + 1).ToString();
+                    string FName = TB_FName.Text.ToUpper().Trim();
+                    string MName = TB_MName.Text.ToUpper().Trim();
+                    string LName = TB_LName.Text.ToUpper().Trim();
+                    string Address = TB_Address.Text.ToUpper().Trim();
+                    string MobileNumber = TB_MobileNumber.Text.ToUpper().Trim();
+                    string CustomerID = (GlobalCustomerList.Count + 1).ToString().Trim();
 
                     RecordActivity($"Added new customer: {LName}, {FName}{(!string.IsNullOrEmpty(MName) ? $" {MName}" : string.Empty)} ({(string.IsNullOrEmpty(MobileNumber) ? "Mobile number not set" : "Mobile number set and hidden")} | {(string.IsNullOrEmpty(Address) ? "Address not set" : "Address set and hidden")})");
 
