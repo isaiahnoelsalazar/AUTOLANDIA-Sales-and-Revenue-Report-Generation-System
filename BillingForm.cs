@@ -311,7 +311,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (!PaidBillings)
             {
                 PaidBillings = true;
-                CompletedButton.Text = "Paid bills";
+                CompletedButton.Text = "Switch to all";
                 BillingList.Controls.Clear();
                 BillingList.RowStyles.Clear();
 
@@ -326,7 +326,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             else
             {
                 PaidBillings = false;
-                CompletedButton.Text = "Pending bills";
+                CompletedButton.Text = "Switch to paid";
                 BillingList.Controls.Clear();
                 BillingList.RowStyles.Clear();
 

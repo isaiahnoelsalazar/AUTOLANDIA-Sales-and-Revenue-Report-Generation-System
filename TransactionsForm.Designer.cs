@@ -301,7 +301,7 @@
             this.CompletedButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.CompletedButton.Size = new System.Drawing.Size(220, 36);
             this.CompletedButton.TabIndex = 30;
-            this.CompletedButton.Text = "All transactions";
+            this.CompletedButton.Text = "Switch to completed";
             this.CompletedButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.CompletedButton.UseAccentColor = false;
             this.CompletedButton.UseVisualStyleBackColor = true;

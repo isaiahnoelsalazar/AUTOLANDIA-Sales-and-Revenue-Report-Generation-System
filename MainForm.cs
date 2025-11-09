@@ -83,6 +83,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 Forms[Index].Show();
             }
+
+            TabButtons[Index].Focus();
         }
 
         private void HomeTab_Click(object sender, EventArgs e)

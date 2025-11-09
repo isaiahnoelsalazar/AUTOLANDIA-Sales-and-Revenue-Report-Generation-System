@@ -265,7 +265,7 @@
             this.CompletedButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.CompletedButton.Size = new System.Drawing.Size(126, 36);
             this.CompletedButton.TabIndex = 31;
-            this.CompletedButton.Text = "Pending bills";
+            this.CompletedButton.Text = "Switch to paid";
             this.CompletedButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.CompletedButton.UseAccentColor = false;
             this.CompletedButton.UseVisualStyleBackColor = true;

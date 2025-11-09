@@ -36,13 +36,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             CB_Packages.Items.Add("None");
             foreach (PackageItem Package in GlobalPackageList)
             {
-                if (!CB_Packages.Items.Contains(Package.Name))
+                if (!CB_Packages.Items.Contains(Package.Name) && Package.Status.Equals("Available"))
                 {
                     CB_Packages.Items.Add(Package.Name);
                 }
             }
             CB_Packages.SelectedIndex = 0;
 
+            ExtraListCheckBox.Controls.Clear();
+            ExtraListCheckBox.Items.Clear();
+            ExtraList.Clear();
             Perfume = new MaterialCheckbox()
             {
                 Text = "Perfume (₱150.00)"
@@ -650,31 +653,55 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
-                string ServiceIds = "[";
+                string Extras = string.Empty;
+                for (int a = 0; a < ExtraListCheckBox.Items.Count; a++)
+                {
+                    foreach (string Item in ExtraList)
+                    {
+                        if (ExtraListCheckBox.Items[a].Text.Equals(Item) && ExtraListCheckBox.Items[a].Checked)
+                        {
+                            Extras += Item.ToCharArray()[0] == 'P' ? $"{PerfumeCount}{Item.ToCharArray()[0]}" : Item.ToCharArray()[0].ToString();
+                            break;
+                        }
+                    }
+                }
+
+                RealPrice += PerfumeCount * 150;
+                RealPrice += Extras.Count(c => c == 'C') * 20;
+
+                string ServiceIds = string.Empty;
                 for (int a = 0; a < ServiceList.Controls.Count; a++)
                 {
                     foreach (ServiceItem Service in GlobalServiceList)
                     {
-                        if (Service.Name.Equals(ServiceList.Controls[a].Controls[0].Text))
+                        if (Service.Name.Equals(ServiceList.Controls[a].Controls[0].Text) && !string.IsNullOrEmpty(ServiceList.Controls[a].Controls[1].Text))
                         {
                             ServiceIds += Service.ID + ",";
                             break;
                         }
                     }
                 }
-                ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 1);
-                ServiceIds += "]";
+                if (ServiceIds.Length > 0)
+                {
+                    ServiceIds = ServiceIds.Substring(0, ServiceIds.Length - 1);
+                    if (ServiceIds.Length > 0)
+                    {
+                        ServiceIds = "[" + ServiceIds + "]";
+                    }
+                }
 
                 RealPrice += ServicePrice;
 
                 string PackageId = string.Empty;
+                string PACKAGESIZE = string.Empty;
 
                 foreach (PackageItem Package in GlobalPackageList)
                 {
                     if (Package.Name.Equals(CB_Packages.Text))
                     {
                         PackageId = Package.ID;
-                        RealPrice += GetPackagePrice(Package.Name, RealVehicle.Size);
+                        PACKAGESIZE = RealVehicle.Size;
+                        RealPrice += GetPackagePrice(Package.Name, PACKAGESIZE);
                         break;
                     }
                 }
@@ -702,7 +729,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RecordActivity($"Updated details of transaction with reference number [{OrderID}]");
 
-                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_TransactionList SET EmployeeIdList='{EmployeeIds}', ServiceIdList='{ServiceIds}', PackageId='{PackageId}', VehicleId='{RealVehicle.ID}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE OrderId='{OrderID}'", SQL);
+                    SqliteCommand Command = new SqliteCommand($"UPDATE AUTOLANDIA_TransactionList SET EmployeeIdList='{EmployeeIds}', ServiceIdList='{ServiceIds}', PackageId='{PackageId}', VehicleId='{RealVehicle.ID}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE TransactionId='{OrderID}'", SQL);
                     SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET TransactionBalance={RealPrice}, DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{OrderID}'", SQL);
 
                     Command.ExecuteNonQuery();
@@ -739,6 +766,67 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     RealVehicle = GetVehicleFromID(Order.VehicleId);
                     TB_Vehicle.Text = $"{RealVehicle.ID}: {RealVehicle.Brand}, {RealVehicle.Model}, {RealVehicle.PlateNumber}";
+
+                    if (RealVehicle != null)
+                    {
+                        if (RealVehicle.Brand.Equals("GENERAL"))
+                        {
+                            ExtraListCheckBox.Controls.Clear();
+                            ExtraListCheckBox.Items.Clear();
+                            ExtraList.Clear();
+                            Perfume = new MaterialCheckbox()
+                            {
+                                Text = "Perfume (₱150.00)"
+                            };
+                            Perfume.CheckedChanged += (s, en) =>
+                            {
+                                if (Perfume.Checked)
+                                {
+                                    new PickPerfumeCountDialog(this).ShowDialog();
+                                }
+                                else
+                                {
+                                    Perfume.Text = "Perfume (₱150.00)";
+                                    PerfumeCount = 0;
+                                }
+                            };
+
+                            ExtraListCheckBox.Items.Add(Perfume);
+                            foreach (string Item in ExtraList)
+                            {
+                                ExtraListCheckBox.Items.Add(Item);
+                            }
+                        }
+                        else
+                        {
+                            ExtraListCheckBox.Controls.Clear();
+                            ExtraListCheckBox.Items.Clear();
+                            ExtraList.Clear();
+                            Perfume = new MaterialCheckbox()
+                            {
+                                Text = "Perfume (₱150.00)"
+                            };
+                            Perfume.CheckedChanged += (s, en) =>
+                            {
+                                if (Perfume.Checked)
+                                {
+                                    new PickPerfumeCountDialog(this).ShowDialog();
+                                }
+                                else
+                                {
+                                    Perfume.Text = "Perfume (₱150.00)";
+                                    PerfumeCount = 0;
+                                }
+                            };
+                            ExtraList.Add("Car w/ Carrier (₱20.00)");
+
+                            ExtraListCheckBox.Items.Add(Perfume);
+                            foreach (string Item in ExtraList)
+                            {
+                                ExtraListCheckBox.Items.Add(Item);
+                            }
+                        }
+                    }
 
                     if (RealVehicle != null)
                     {
@@ -998,6 +1086,18 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                         }
                     }
                     TB_Employee.Text = TB_Employee.Text.Substring(0, TB_Employee.Text.Length - 2);
+
+                    if (!Order.Status.Equals("Ready"))
+                    {
+                        TB_Employee.Enabled = false;
+                        PickEmployeeButton.Enabled = false;
+                        SelectServicesButton.Visible = false;
+                        CB_Packages.Visible = false;
+                        PackageLabel.Visible = false;
+                        materialLabel4.Visible = false;
+                        ExtraListCheckBox.Visible = false;
+                        DoneButton.Visible = false;
+                    }
                 }
             }
         }
@@ -1005,6 +1105,68 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         public void SetVehicle(string Vehicle)
         {
             TB_Vehicle.Text = Vehicle;
+            VehicleItem GetVehicle = GetVehicleFromID(Vehicle.Split(':')[0].Trim());
+
+            if (GetVehicle != null)
+            {
+                if (GetVehicle.Brand.Equals("GENERAL"))
+                {
+                    ExtraListCheckBox.Controls.Clear();
+                    ExtraListCheckBox.Items.Clear();
+                    ExtraList.Clear();
+                    Perfume = new MaterialCheckbox()
+                    {
+                        Text = "Perfume (₱150.00)"
+                    };
+                    Perfume.CheckedChanged += (s, e) =>
+                    {
+                        if (Perfume.Checked)
+                        {
+                            new PickPerfumeCountDialog(this).ShowDialog();
+                        }
+                        else
+                        {
+                            Perfume.Text = "Perfume (₱150.00)";
+                            PerfumeCount = 0;
+                        }
+                    };
+
+                    ExtraListCheckBox.Items.Add(Perfume);
+                    foreach (string Item in ExtraList)
+                    {
+                        ExtraListCheckBox.Items.Add(Item);
+                    }
+                }
+                else
+                {
+                    ExtraListCheckBox.Controls.Clear();
+                    ExtraListCheckBox.Items.Clear();
+                    ExtraList.Clear();
+                    Perfume = new MaterialCheckbox()
+                    {
+                        Text = "Perfume (₱150.00)"
+                    };
+                    Perfume.CheckedChanged += (s, e) =>
+                    {
+                        if (Perfume.Checked)
+                        {
+                            new PickPerfumeCountDialog(this).ShowDialog();
+                        }
+                        else
+                        {
+                            Perfume.Text = "Perfume (₱150.00)";
+                            PerfumeCount = 0;
+                        }
+                    };
+                    ExtraList.Add("Car w/ Carrier (₱20.00)");
+
+                    ExtraListCheckBox.Items.Add(Perfume);
+                    foreach (string Item in ExtraList)
+                    {
+                        ExtraListCheckBox.Items.Add(Item);
+                    }
+                }
+            }
         }
     }
 }

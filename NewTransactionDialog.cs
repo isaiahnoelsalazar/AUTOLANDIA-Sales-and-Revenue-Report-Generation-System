@@ -32,13 +32,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             CB_Packages.Items.Add("None");
             foreach (PackageItem Package in GlobalPackageList)
             {
-                if (!CB_Packages.Items.Contains(Package.Name))
+                if (!CB_Packages.Items.Contains(Package.Name) && Package.Status.Equals("Available"))
                 {
                     CB_Packages.Items.Add(Package.Name);
                 }
             }
             CB_Packages.SelectedIndex = 0;
 
+            ExtraListCheckBox.Controls.Clear();
+            ExtraListCheckBox.Items.Clear();
+            ExtraList.Clear();
             Perfume = new MaterialCheckbox()
             {
                 Text = "Perfume (₱150.00)"
@@ -79,7 +82,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             CB_Packages.Items.Add("None");
             foreach (PackageItem Package in GlobalPackageList)
             {
-                if (!CB_Packages.Items.Contains(Package.Name))
+                if (!CB_Packages.Items.Contains(Package.Name) && Package.Status.Equals("Available"))
                 {
                     CB_Packages.Items.Add(Package.Name);
                 }
@@ -105,6 +108,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
             }
 
+            ExtraListCheckBox.Controls.Clear();
             Perfume = new MaterialCheckbox()
             {
                 Text = "Perfume (₱150.00)"
@@ -417,7 +421,68 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         {
             TB_Vehicle.Text = Vehicle;
             VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
-            
+
+            if (RealVehicle != null)
+            {
+                if (RealVehicle.Brand.Equals("GENERAL"))
+                {
+                    ExtraListCheckBox.Controls.Clear();
+                    ExtraListCheckBox.Items.Clear();
+                    ExtraList.Clear();
+                    Perfume = new MaterialCheckbox()
+                    {
+                        Text = "Perfume (₱150.00)"
+                    };
+                    Perfume.CheckedChanged += (s, e) =>
+                    {
+                        if (Perfume.Checked)
+                        {
+                            new PickPerfumeCountDialog(this).ShowDialog();
+                        }
+                        else
+                        {
+                            Perfume.Text = "Perfume (₱150.00)";
+                            PerfumeCount = 0;
+                        }
+                    };
+
+                    ExtraListCheckBox.Items.Add(Perfume);
+                    foreach (string Item in ExtraList)
+                    {
+                        ExtraListCheckBox.Items.Add(Item);
+                    }
+                }
+                else
+                {
+                    ExtraListCheckBox.Controls.Clear();
+                    ExtraListCheckBox.Items.Clear();
+                    ExtraList.Clear();
+                    Perfume = new MaterialCheckbox()
+                    {
+                        Text = "Perfume (₱150.00)"
+                    };
+                    Perfume.CheckedChanged += (s, e) =>
+                    {
+                        if (Perfume.Checked)
+                        {
+                            new PickPerfumeCountDialog(this).ShowDialog();
+                        }
+                        else
+                        {
+                            Perfume.Text = "Perfume (₱150.00)";
+                            PerfumeCount = 0;
+                        }
+                    };
+                    ExtraList.Add("Car w/ Carrier (₱20.00)");
+
+                    ExtraListCheckBox.Items.Add(Perfume);
+                    foreach (string Item in ExtraList)
+                    {
+                        ExtraListCheckBox.Items.Add(Item);
+                    }
+                }
+            }
+
             if (RealVehicle != null)
             {
                 if (RealVehicle.Brand.Equals("GENERAL"))

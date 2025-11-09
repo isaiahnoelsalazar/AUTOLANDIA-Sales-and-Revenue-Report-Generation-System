@@ -435,6 +435,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     RefreshTransactions();
                     GlobalActivityRecordForm.RefreshActivities();
 
+                    if (Progress.Text.Equals("Cancelled"))
+                    {
+                        SqliteCommand Command1 = new SqliteCommand($"UPDATE AUTOLANDIA_BillingList SET BillingStatus='{Progress.Text}', DateUpdated='{$"{Now.ToString("yyyy")}/{Now.ToString("MM")}/{Now.ToString("dd")}" + $" {Now.ToString("HH")}:{Now.ToString("mm")}:{Now.ToString("ss")} {Now.ToString("tt")}"}' WHERE BillingId='{Order.ID}'", SQL);
+
+                        Command1.ExecuteNonQuery();
+                        GlobalBillingForm.RefreshBillings();
+                    }
                     if (Progress.Text.Equals("Complete"))
                     {
                         BillingItem Bill = GetBillFromID(Order.ID);
@@ -545,7 +552,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (!CompletedTransactions)
             {
                 CompletedTransactions = true;
-                CompletedButton.Text = "Completed transactions";
+                CompletedButton.Text = "Switch to all";
                 TransactionList.Controls.Clear();
                 TransactionList.RowStyles.Clear();
 
@@ -560,7 +567,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             else
             {
                 CompletedTransactions = false;
-                CompletedButton.Text = "All transactions";
+                CompletedButton.Text = "Switch to completed";
                 TransactionList.Controls.Clear();
                 TransactionList.RowStyles.Clear();
 
