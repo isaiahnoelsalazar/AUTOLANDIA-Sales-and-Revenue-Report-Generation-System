@@ -2,6 +2,7 @@
 using MaterialSkin.Controls;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
@@ -52,6 +53,22 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (string.IsNullOrEmpty(TB_LName.Text))
             {
                 ErrorMessage += "Please enter the customer's last name." + Environment.NewLine;
+            }
+            List<string> LastNames = new List<string>();
+            List<string> FirstNames = new List<string>();
+            foreach (CustomerItem Customer in GlobalCustomerList)
+            {
+                LastNames.Add(Customer.LastName);
+                FirstNames.Add(Customer.FirstName);
+            }
+
+            for (int a = 0; a < LastNames.Count; a++)
+            {
+                if ($"{LastNames[a].ToUpper().Trim()}:{FirstNames[a].ToUpper().Trim()}".Equals($"{TB_LName.Text.ToUpper().Trim()}{TB_FName.Text.ToUpper().Trim()}"))
+                {
+                    ErrorMessage += "This customer already exists." + Environment.NewLine;
+                    break;
+                }
             }
 
             if (ErrorMessage.Equals(""))
