@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.Properties;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,6 +14,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             InitializeComponent();
 
             Startup.Hide();
+
+            Banner.Image = Resources.autolandia_logo;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
