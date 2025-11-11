@@ -73,10 +73,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 else
                 {
-                    if (!Order.Status.Equals("Complete"))
-                    {
-                        RefreshRows(Order);
-                    }
+                    RefreshRows(Order);
                 }
             }
         }
@@ -97,10 +94,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Order.ID.Contains(SearchBarTransaction.Text))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 1)
@@ -122,10 +116,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (EmployeeList1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 2)
@@ -142,20 +133,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (RealPlateNumber1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
                     if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
             }
@@ -172,10 +157,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Order.ID.Contains(SearchBarTransaction.Text))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 1)
@@ -197,10 +179,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (EmployeeList1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 2)
@@ -217,20 +196,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                     if (RealPlateNumber1.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 3)
                 {
                     if (Order.Status.ToUpper().Contains(SearchBarTransaction.Text.ToUpper()))
                     {
-                        if (!Order.Status.Equals("Complete"))
-                        {
-                            RefreshRows(Order);
-                        }
+                        RefreshRows(Order);
                     }
                 }
                 if (FilterTransaction.SelectedIndex == 4)
@@ -398,6 +371,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             if (Order.Status.Equals("Ready"))
             {
                 Progress.Items.Add("Ready");
+                Progress.Items.Add("Cancelled");
                 Progress.Items.Add("In progress");
                 Progress.SelectedIndex = 0;
             }
@@ -405,7 +379,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 Progress.Items.Add("In progress");
                 Progress.Items.Add("Complete");
-                Progress.Items.Add("Cancelled");
                 Progress.SelectedIndex = 0;
             }
             if (Order.Status.Equals("Complete"))
@@ -573,10 +546,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 foreach (TransactionItem Transaction in Temp)
                 {
-                    if (!Transaction.Status.Equals("Complete"))
-                    {
-                        RefreshRows(Transaction);
-                    }
+                    RefreshRows(Transaction);
                 }
             }
         }

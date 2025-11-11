@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.TabPanel = new System.Windows.Forms.Panel();
-            this.TimeHaha = new MaterialSkin.Controls.MaterialButton();
             this.LogoutButton = new MaterialSkin.Controls.MaterialButton();
             this.ReportsTab = new MaterialSkin.Controls.MaterialButton();
             this.SettingsButton = new MaterialSkin.Controls.MaterialButton();
@@ -48,7 +47,6 @@
             // 
             this.TabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TabPanel.Controls.Add(this.TimeHaha);
             this.TabPanel.Controls.Add(this.LogoutButton);
             this.TabPanel.Controls.Add(this.ReportsTab);
             this.TabPanel.Controls.Add(this.SettingsButton);
@@ -64,27 +62,6 @@
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.Size = new System.Drawing.Size(200, 720);
             this.TabPanel.TabIndex = 1;
-            // 
-            // TimeHaha
-            // 
-            this.TimeHaha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TimeHaha.AutoSize = false;
-            this.TimeHaha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TimeHaha.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.TimeHaha.Depth = 0;
-            this.TimeHaha.HighEmphasis = true;
-            this.TimeHaha.Icon = null;
-            this.TimeHaha.Location = new System.Drawing.Point(8, 546);
-            this.TimeHaha.Margin = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.TimeHaha.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TimeHaha.Name = "TimeHaha";
-            this.TimeHaha.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.TimeHaha.Size = new System.Drawing.Size(184, 50);
-            this.TimeHaha.TabIndex = 10;
-            this.TimeHaha.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.TimeHaha.UseAccentColor = false;
-            this.TimeHaha.UseVisualStyleBackColor = true;
             // 
             // LogoutButton
             // 
@@ -340,7 +317,6 @@
         private MaterialSkin.Controls.MaterialButton SettingsButton;
         private MaterialSkin.Controls.MaterialButton ReportsTab;
         private MaterialSkin.Controls.MaterialButton LogoutButton;
-        private MaterialSkin.Controls.MaterialButton TimeHaha;
     }
 }
 

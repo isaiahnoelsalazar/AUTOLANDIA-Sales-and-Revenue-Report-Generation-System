@@ -827,11 +827,16 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 VehicleItem RealVehicle = GetVehicleFromID(TB_Vehicle.Text.Split(':')[0].Trim());
 
                 string Extras = string.Empty;
+
+                List<string> TempExtras = new List<string>();
+                TempExtras.Add("P");
+                TempExtras.Add("C");
+
                 for (int a = 0; a < ExtraListCheckBox.Items.Count; a++)
                 {
-                    foreach (string Item in ExtraList)
+                    foreach (string Item in TempExtras)
                     {
-                        if (ExtraListCheckBox.Items[a].Text.Equals(Item) && ExtraListCheckBox.Items[a].Checked)
+                        if (ExtraListCheckBox.Items[a].Text.ToCharArray()[0].Equals(Item.ToCharArray()[0]) && ExtraListCheckBox.Items[a].Checked)
                         {
                             Extras += Item.ToCharArray()[0] == 'P' ? $"{PerfumeCount}{Item.ToCharArray()[0]}" : Item.ToCharArray()[0].ToString();
                             break;
@@ -988,14 +993,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 GlobalTransactionsForm.RefreshTransactions();
                 GlobalBillingForm.RefreshBillings();
                 GlobalActivityRecordForm.RefreshActivities();
-                if (AddCustomerVehicleDialog != null)
-                {
-                    AddCustomerVehicleDialog.Close();
-                }
-                if (NewCustomerDialog != null)
-                {
-                    NewCustomerDialog.Close();
-                }
                 Close();
             }
             catch (Exception Exception)
@@ -1004,7 +1001,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void DiscountSlider_onValueChanged(object sender, int newValue)
+        {
+            materialLabel6.Text = $"Discount: {newValue}% (Max: 20%)";
+        }
+
+        private void NewTransactionDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (AddCustomerVehicleDialog != null)
             {
@@ -1014,6 +1016,10 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 NewCustomerDialog.Close();
             }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

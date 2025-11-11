@@ -34,10 +34,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 Extra += $"{Extras.Split('P')[0]} Perfume(s), ";
             }
-            else
-            {
-                Extra = Extra.TrimEnd(',', ' ');
-            }
+            Extra = Extra.TrimEnd(',', ' ');
 
             L_Service.Text = $"{(ServiceNames.Equals("[Services]") ? string.Empty : ServiceNames)} {Package}";
             L_Service.Text = L_Service.Text.EndsWith(" [ - ]") ? L_Service.Text.Split(new string[] { " [ - ]" }, StringSplitOptions.None)[0] : L_Service.Text;

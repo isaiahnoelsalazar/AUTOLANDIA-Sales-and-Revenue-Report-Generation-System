@@ -37,6 +37,9 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
+            bool NoPlateNumber = false;
+            int PeriodCounter = 0;
+
             string ErrorMessage = "";
 
             if (Check.HasNumbers(TB_Brand.Text) || Check.HasSymbols(TB_Brand.Text))
@@ -57,7 +60,8 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             if (string.IsNullOrEmpty(TB_PlateNumber.Text))
             {
-                ErrorMessage += "Please enter the vehicle's plate number." + Environment.NewLine;
+                NoPlateNumber = true;
+                //ErrorMessage += "Please enter the vehicle's plate number." + Environment.NewLine;
             }
             List<string> ExistingPlateNumbers = new List<string>();
             foreach (VehicleItem Vehicle in GlobalVehicleList)
@@ -66,7 +70,20 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             }
             if (ExistingPlateNumbers.Contains(TB_PlateNumber.Text.ToUpper().Trim()))
             {
-                ErrorMessage += "This plate number already exists." + Environment.NewLine;
+                if (!NoPlateNumber)
+                {
+                    ErrorMessage += "This plate number already exists." + Environment.NewLine;
+                }
+                else
+                {
+                    foreach (string PN in ExistingPlateNumbers)
+                    {
+                        if (PN.StartsWith("."))
+                        {
+                            PeriodCounter++;
+                        }
+                    }
+                }
             }
 
             if (ErrorMessage.Equals(""))
@@ -76,7 +93,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string Brand = TB_Brand.Text.ToUpper().Trim();
                     string Model = TB_Model.Text.ToUpper().Trim();
                     string Size = GetSize().ToUpper().Trim();
-                    string PlateNumber = TB_PlateNumber.Text.ToUpper().Trim();
+                    string PlateNumber = NoPlateNumber ? $".NO_PLATE_NUMBER-{PeriodCounter}" : TB_PlateNumber.Text.ToUpper().Trim();
                     string VehicleID = (GlobalVehicleList.Count + 1).ToString();
 
                     string CustomerName = string.Empty;

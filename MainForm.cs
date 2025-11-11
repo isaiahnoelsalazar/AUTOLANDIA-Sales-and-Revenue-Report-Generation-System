@@ -25,7 +25,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         };
         List<MaterialButton> TabButtons = new List<MaterialButton>();
-        Thread TimeThread;
         LoginForm LoginForm;
         bool Logout = false;
 
@@ -119,7 +118,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            TimeThread.Abort();
             if (!Logout)
             {
                 Application.Exit();
@@ -158,18 +156,6 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            TimeThread = new Thread(new ThreadStart(() =>
-            {
-                while (true)
-                {
-                    Invoke(new MethodInvoker(() =>
-                    {
-                        TimeHaha.Text = $"{DateTime.Now.ToString("hh:mm:ss tt")}";
-                    }));
-                    Thread.Sleep(1000);
-                }
-            }));
-            TimeThread.Start();
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

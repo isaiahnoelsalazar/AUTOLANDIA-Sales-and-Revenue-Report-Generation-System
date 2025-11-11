@@ -412,14 +412,14 @@
             // 
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(12, 477);
+            this.materialLabel6.Location = new System.Drawing.Point(12, 461);
             this.materialLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(70, 40);
+            this.materialLabel6.Size = new System.Drawing.Size(118, 72);
             this.materialLabel6.TabIndex = 90;
-            this.materialLabel6.Text = "Discount";
-            this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.materialLabel6.Text = "Discount: 0% (Max: 20%)";
+            this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DiscountSlider
             // 
@@ -433,10 +433,12 @@
             this.DiscountSlider.MouseState = MaterialSkin.MouseState.HOVER;
             this.DiscountSlider.Name = "DiscountSlider";
             this.DiscountSlider.RangeMax = 20;
+            this.DiscountSlider.ShowValue = false;
             this.DiscountSlider.Size = new System.Drawing.Size(236, 40);
             this.DiscountSlider.TabIndex = 89;
             this.DiscountSlider.Text = "";
             this.DiscountSlider.Value = 0;
+            this.DiscountSlider.onValueChanged += new MaterialSkin.Controls.MaterialSlider.ValueChanged(this.DiscountSlider_onValueChanged);
             // 
             // NewTransactionDialog
             // 
@@ -468,6 +470,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 20, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewTransactionDialog";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewTransactionDialog_FormClosing);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ServiceListContainer.ResumeLayout(false);
             this.ServiceListContainer.PerformLayout();

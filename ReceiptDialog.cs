@@ -28,7 +28,12 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             BillingList.HorizontalScroll.Enabled = false;
             BillingList.HorizontalScroll.Visible = false;
             Transaction = GetTransactionFromID(ID);
+            BillingItem Bill = GetBillFromID(ID);
 
+            RefreshRows("--------------------------------------------------------------------------------", "");
+            RefreshRows("Date", Bill.LastUpdated);
+            RefreshRows("--------------------------------------------------------------------------------", "");
+            RefreshRows("Cashier", LoggedAccount.Username);
             RefreshRows("--------------------------------------------------------------------------------", "");
             string[] EmployeeSplit = Transaction.EmployeeIDList.Substring(1, Transaction.EmployeeIDList.Length - 2).Split(',');
             for (int a = 0; a < EmployeeSplit.Length; a++)

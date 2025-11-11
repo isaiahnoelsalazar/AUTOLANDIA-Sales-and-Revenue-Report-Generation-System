@@ -67,10 +67,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 }
                 else
                 {
-                    if (!Billing.Status.Equals("Paid"))
-                    {
-                        RefreshRows(Billing);
-                    }
+                    RefreshRows(Billing);
                 }
             }
         }
@@ -86,20 +83,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Billing.ID.Contains(SearchBarBilling.Text))
                     {
-                        if (!Billing.Status.Equals("Paid"))
-                        {
-                            RefreshRows(Billing);
-                        }
+                        RefreshRows(Billing);
                     }
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
                     if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
-                        if (!Billing.Status.Equals("Paid"))
-                        {
-                            RefreshRows(Billing);
-                        }
+                        RefreshRows(Billing);
                     }
                 }
             }
@@ -116,20 +107,14 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                 {
                     if (Billing.ID.Contains(SearchBarBilling.Text))
                     {
-                        if (!Billing.Status.Equals("Paid"))
-                        {
-                            RefreshRows(Billing);
-                        }
+                        RefreshRows(Billing);
                     }
                 }
                 if (FilterBilling.SelectedIndex == 1)
                 {
                     if (Billing.Status.ToUpper().Contains(SearchBarBilling.Text.ToUpper()))
                     {
-                        if (!Billing.Status.Equals("Paid"))
-                        {
-                            RefreshRows(Billing);
-                        }
+                        RefreshRows(Billing);
                     }
                 }
             }
@@ -332,10 +317,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
                 foreach (BillingItem Bills in Temp)
                 {
-                    if (!Bills.Status.Equals("Paid"))
-                    {
-                        RefreshRows(Bills);
-                    }
+                    RefreshRows(Bills);
                 }
             }
         }

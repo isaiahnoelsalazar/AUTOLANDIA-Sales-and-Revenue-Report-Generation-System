@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using static AUTOLANDIA_Sales_and_Revenue_Report_Generation_System.GlobalValues;
 
 namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 {
@@ -23,7 +24,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         GreetingLabel.BeginInvoke((MethodInvoker)delegate ()
                         {
-                            GreetingLabel.Text = $"Good {Time}!";
+                            GreetingLabel.Text = $"Good {Time}, {LoggedAccount.Username}! Today is {DateTime.Now.ToString("D")} - {DateTime.Now.ToString("hh:mm:ss tt")}";
                         });
                     }
                     catch
