@@ -14,19 +14,19 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TB_OldPassword.Text) || string.IsNullOrEmpty(TB_NewPassword.Text))
+            if (string.IsNullOrEmpty(TB_OldPassword.Text.Trim()) || string.IsNullOrEmpty(TB_NewPassword.Text.Trim()))
             {
                 AlertMessageBox("Current and new passwords cannot be empty.");
             }
             else
             {
-                if (LoggedAccount.Password.Equals(TB_OldPassword.Text))
+                if (LoggedAccount.Password.Equals(TB_OldPassword.Text.Trim()))
                 {
                     if (NoticeMessageBox("Are you sure you want to change your password?") == DialogResult.Yes)
                     {
                         try
                         {
-                            ChangePassword(LoggedAccount.Username, TB_NewPassword.Text).ExecuteNonQuery();
+                            ChangePassword(LoggedAccount.Username, TB_NewPassword.Text.Trim()).ExecuteNonQuery();
                             OkMessageBox("Successfully changed password!");
                             RecreateGlobalAccountList();
                             Close();

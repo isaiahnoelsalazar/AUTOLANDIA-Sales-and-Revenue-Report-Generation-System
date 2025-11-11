@@ -23,13 +23,13 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
             {
                 TempUsernames.Add(GlobalAccountList[a].Username);
             }
-            if (TempUsernames.Contains(TB_Username.Text))
+            if (TempUsernames.Contains(TB_Username.Text.Trim()))
             {
                 for (int a = 0; a < GlobalAccountList.Count; a++)
                 {
-                    if (GlobalAccountList[a].Username.Equals(TB_Username.Text))
+                    if (GlobalAccountList[a].Username.Equals(TB_Username.Text.Trim()))
                     {
-                        if (GlobalAccountList[a].Password.Equals(TB_Password.Text))
+                        if (GlobalAccountList[a].Password.Equals(TB_Password.Text.Trim()))
                         {
                             TB_Username.Text = string.Empty;
                             TB_Password.Text = string.Empty;

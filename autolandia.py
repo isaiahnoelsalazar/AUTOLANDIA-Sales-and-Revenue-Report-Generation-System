@@ -114,114 +114,147 @@ if not os.path.isfile("AUTOLANDIA.db"):
 
     employee_value_0 = [
         {"EmployeeId": "1"},
-        {"LastName": "EXODUS"},
-        {"FirstName": "CARENCIA"},
+        {"FirstName": "DOMINIC"},
+        {"LastName": "BARRETTO"},
         {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_0)
     employee_value_1 = [
         {"EmployeeId": "2"},
-        {"LastName": "SMITH"},
-        {"FirstName": "JOHN"},
-        {"MiddleName": "ADAM"},
+        {"FirstName": "ARJAY"},
+        {"LastName": "LOLONG"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_1)
     employee_value_2 = [
         {"EmployeeId": "3"},
-        {"LastName": "JOHNSON"},
-        {"FirstName": "MARY"},
-        {"MiddleName": "ELIZABETH"},
+        {"FirstName": "HENRY"},
+        {"LastName": "CATALAN"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_2)
     employee_value_3 = [
         {"EmployeeId": "4"},
-        {"LastName": "WILLIAMS"},
-        {"FirstName": "JAMES"},
-        {"MiddleName": "ROBERT"},
+        {"FirstName": "JOHN PAUL"},
+        {"LastName": "APIN"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_3)
     employee_value_4 = [
         {"EmployeeId": "5"},
-        {"LastName": "BROWN"},
-        {"FirstName": "PATRICIA"},
-        {"MiddleName": "ANNE"},
+        {"FirstName": "PHILIP"},
+        {"LastName": "AREVALO"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_4)
     employee_value_5 = [
         {"EmployeeId": "6"},
-        {"LastName": "JONES"},
-        {"FirstName": "MICHAEL"},
-        {"MiddleName": "DAVID"},
+        {"FirstName": "JOHN CRIS"},
+        {"LastName": "CARULLO"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_5)
     employee_value_6 = [
         {"EmployeeId": "7"},
-        {"LastName": "GARCIA"},
-        {"FirstName": "JENNIFER"},
-        {"MiddleName": "LYNN"},
+        {"FirstName": "JEROME"},
+        {"LastName": "APIN"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_6)
     employee_value_7 = [
         {"EmployeeId": "8"},
-        {"LastName": "MILLER"},
-        {"FirstName": "WILLIAM"},
-        {"MiddleName": "JOSEPH"},
+        {"FirstName": "JOSHUA"},
+        {"LastName": "SALAZAR"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_7)
     employee_value_8 = [
         {"EmployeeId": "9"},
-        {"LastName": "DAVIS"},
-        {"FirstName": "LINDA"},
-        {"MiddleName": "SUSAN"},
+        {"FirstName": "LOWEI JAY"},
+        {"LastName": "AGUDO"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_8)
     employee_value_9 = [
         {"EmployeeId": "10"},
-        {"LastName": "RODRIGUEZ"},
-        {"FirstName": "RICHARD"},
-        {"MiddleName": "CHARLES"},
+        {"FirstName": "SALVADOR"},
+        {"LastName": "SALAZAR"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_9)
     employee_value_10 = [
         {"EmployeeId": "11"},
-        {"LastName": "MARTINEZ"},
-        {"FirstName": "KAREN"},
-        {"MiddleName": "LEE"},
+        {"FirstName": "LARRY"},
+        {"LastName": "CARULLO"},
+        {"MiddleName": ""},
         {"EmployeeDocuments": ""},
         {"MobileNumber": "(Mobile number not set)"},
         {"EmployeeAddress": "(Address not set)"}
+
     ]
     a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_10)
+    employee_value_11 = [
+        {"EmployeeId": "12"},
+        {"FirstName": "GREG"},
+        {"LastName": "NEPOMUCENO"},
+        {"MiddleName": ""},
+        {"EmployeeDocuments": ""},
+        {"MobileNumber": "(Mobile number not set)"},
+        {"EmployeeAddress": "(Address not set)"}
+
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_11)
+    employee_value_12 = [
+        {"EmployeeId": "13"},
+        {"FirstName": "JAIMIE"},
+        {"LastName": "CONOCIDO"},
+        {"MiddleName": ""},
+        {"EmployeeDocuments": ""},
+        {"MobileNumber": "(Mobile number not set)"},
+        {"EmployeeAddress": "(Address not set)"}
+
+    ]
+    a.insertToTable("AUTOLANDIA", "AUTOLANDIA_EmployeeList", employee_value_12)
 
     package_value_0 = [
         {"PackageId": "P_B"},
