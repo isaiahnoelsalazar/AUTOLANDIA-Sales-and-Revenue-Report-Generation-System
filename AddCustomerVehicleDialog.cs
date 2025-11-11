@@ -38,7 +38,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
         private void DoneButton_Click(object sender, EventArgs e)
         {
             bool NoPlateNumber = false;
-            int PeriodCounter = 0;
+            string Suffix = "0";
 
             string ErrorMessage = "";
 
@@ -80,7 +80,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     {
                         if (PN.StartsWith("."))
                         {
-                            PeriodCounter++;
+                            Suffix = PN.Split('-')[1];
                         }
                     }
                 }
@@ -93,7 +93,7 @@ namespace AUTOLANDIA_Sales_and_Revenue_Report_Generation_System
                     string Brand = TB_Brand.Text.ToUpper().Trim();
                     string Model = TB_Model.Text.ToUpper().Trim();
                     string Size = GetSize().ToUpper().Trim();
-                    string PlateNumber = NoPlateNumber ? $".NO_PLATE_NUMBER-{PeriodCounter}" : TB_PlateNumber.Text.ToUpper().Trim();
+                    string PlateNumber = NoPlateNumber ? $".NO_PLATE_NUMBER-{int.Parse(Suffix) + 1}" : TB_PlateNumber.Text.ToUpper().Trim();
                     string VehicleID = (GlobalVehicleList.Count + 1).ToString();
 
                     string CustomerName = string.Empty;
